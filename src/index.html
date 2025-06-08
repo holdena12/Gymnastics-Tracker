@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gymnastics Skills Tracker</title>
+    <script type="module" src="/main.js" defer></script>
+  </head>
+
+  <body>
+    <header class="header">
+      <h1>Gymnastics Skills Tracker</h1>
+      <p>Track your progress across all men's gymnastics events</p>
+    </header>
+
+    <main class="container">
+      <div class="events-grid">
+        <!-- Floor Exercise -->
+        <div class="event-card" data-event="floor">
+          <div class="event-header">
+            <h2>Floor Exercise</h2>
+            <button class="add-routine-btn" data-event="floor">+ Add Routine</button>
+          </div>
+          <div class="routines-container" id="floor-routines"></div>
+        </div>
+
+        <!-- Pommel Horse -->
+        <div class="event-card" data-event="pommel">
+          <div class="event-header">
+            <h2>Pommel Horse</h2>
+            <button class="add-routine-btn" data-event="pommel">+ Add Routine</button>
+          </div>
+          <div class="routines-container" id="pommel-routines"></div>
+        </div>
+
+        <!-- Still Rings -->
+        <div class="event-card" data-event="rings">
+          <div class="event-header">
+            <h2>Still Rings</h2>
+            <button class="add-routine-btn" data-event="rings">+ Add Routine</button>
+          </div>
+          <div class="routines-container" id="rings-routines"></div>
+        </div>
+
+        <!-- Vault -->
+        <div class="event-card" data-event="vault">
+          <div class="event-header">
+            <h2>Vault</h2>
+            <button class="add-routine-btn" data-event="vault">+ Add Routine</button>
+          </div>
+          <div class="routines-container" id="vault-routines"></div>
+        </div>
+
+        <!-- Parallel Bars -->
+        <div class="event-card" data-event="pbars">
+          <div class="event-header">
+            <h2>Parallel Bars</h2>
+            <button class="add-routine-btn" data-event="pbars">+ Add Routine</button>
+          </div>
+          <div class="routines-container" id="pbars-routines"></div>
+        </div>
+
+        <!-- High Bar -->
+        <div class="event-card" data-event="hbar">
+          <div class="event-header">
+            <h2>High Bar</h2>
+            <button class="add-routine-btn" data-event="hbar">+ Add Routine</button>
+          </div>
+          <div class="routines-container" id="hbar-routines"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Modal for adding routines -->
+    <div id="routine-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add New Routine</h2>
+        <form id="routine-form">
+          <div class="form-group">
+            <label for="routine-name">Routine Name:</label>
+            <input type="text" id="routine-name" required placeholder="e.g., Competition Routine 2024">
+          </div>
+          <div class="form-group">
+            <label for="routine-date">Target Date:</label>
+            <input type="date" id="routine-date" required>
+          </div>
+          <div class="form-group">
+            <label for="routine-notes">Notes:</label>
+            <textarea id="routine-notes" placeholder="Optional notes about this routine..."></textarea>
+          </div>
+          <button type="submit">Create Routine</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal for adding skills -->
+    <div id="skill-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add Skill</h2>
+        <form id="skill-form">
+          <div class="form-group">
+            <label for="skill-name">Skill Name:</label>
+            <input type="text" id="skill-name" required placeholder="e.g., Double Back Tuck">
+          </div>
+          <div class="form-group">
+            <label for="skill-difficulty">Difficulty:</label>
+            <select id="skill-difficulty" required>
+              <option value="">Select difficulty</option>
+              <option value="A">A - 0.1</option>
+              <option value="B">B - 0.2</option>
+              <option value="C">C - 0.3</option>
+              <option value="D">D - 0.4</option>
+              <option value="E">E - 0.5</option>
+              <option value="F">F - 0.6</option>
+              <option value="G">G - 0.7</option>
+              <option value="H">H - 0.8</option>
+              <option value="I">I - 0.9</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="skill-target-date">Target Date:</label>
+            <input type="date" id="skill-target-date">
+          </div>
+          <div class="form-group">
+            <label for="skill-notes">Notes:</label>
+            <textarea id="skill-notes" placeholder="Training notes, tips, etc."></textarea>
+          </div>
+          <button type="submit">Add Skill</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal for adding progressions -->
+    <div id="progression-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Add Progression Step</h2>
+        <p class="modal-subtitle">Add a skill you need to master before attempting <span id="target-skill-name"></span></p>
+        <form id="progression-form">
+          <div class="form-group">
+            <label for="progression-name">Progression Step:</label>
+            <input type="text" id="progression-name" required placeholder="e.g., Back tuck on trampoline">
+          </div>
+          <div class="form-group">
+            <label for="progression-difficulty">Difficulty (optional):</label>
+            <select id="progression-difficulty">
+              <option value="">No difficulty rating</option>
+              <option value="A">A - 0.1</option>
+              <option value="B">B - 0.2</option>
+              <option value="C">C - 0.3</option>
+              <option value="D">D - 0.4</option>
+              <option value="E">E - 0.5</option>
+              <option value="F">F - 0.6</option>
+              <option value="G">G - 0.7</option>
+              <option value="H">H - 0.8</option>
+              <option value="I">I - 0.9</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="progression-target-date">Target Date:</label>
+            <input type="date" id="progression-target-date">
+          </div>
+          <div class="form-group">
+            <label for="progression-notes">Notes:</label>
+            <textarea id="progression-notes" placeholder="Training tips, requirements, etc."></textarea>
+          </div>
+          <button type="submit">Add Progression Step</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
