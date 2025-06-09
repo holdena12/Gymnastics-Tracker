@@ -1,154 +1,88 @@
 // Import skills database
 import { searchSkills, getSkillsForEvent } from './skills-database.js';
+import authService from './auth-service.js';
 
 // Mobile Detection and CSS Loading
 class MobileDetector {
-  static isMobile() {
-    // Multiple detection methods for comprehensive mobile detection
-    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    
-    // Check user agent strings for mobile devices
-    const mobileRegex = /android|blackberry|iemobile|ipad|iphone|ipod|opera mini|mobile/i;
-    const isUserAgentMobile = mobileRegex.test(userAgent);
-    
-    // Check for touch capability
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    
-    // Check screen dimensions (mobile-like screen size)
-    const isSmallScreen = window.innerWidth <= 768 || window.innerHeight <= 768;
-    
-    // Check device pixel ratio (often higher on mobile)
-    const isHighDPI = window.devicePixelRatio > 1;
-    
-    // Comprehensive mobile detection
-    return isUserAgentMobile || (isTouchDevice && isSmallScreen);
+  constructor() {
+    this.isMobile = this.detectMobile();
+    this.init();
   }
   
-  static isTablet() {
+  detectMobile() {
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-    const tabletRegex = /ipad|tablet|playbook|silk/i;
-    const isTabletUserAgent = tabletRegex.test(userAgent);
+    const mobileRegex = /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i;
+    const touchCapable = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const smallScreen = window.innerWidth <= 768;
     
-    // Screen size between mobile and desktop
-    const isTabletScreen = window.innerWidth > 768 && window.innerWidth <= 1024;
-    
-    return isTabletUserAgent || isTabletScreen;
+    return mobileRegex.test(userAgent) || (touchCapable && smallScreen);
   }
   
-  static loadMobileCSS() {
-    // Remove existing mobile CSS if any
-    const existingMobileCSS = document.getElementById('mobile-styles');
-    if (existingMobileCSS) {
-      existingMobileCSS.remove();
+  init() {
+    if (this.isMobile) {
+      document.body.classList.add('mobile-device');
+      this.loadMobileCSS();
+      this.setupMobileOptimizations();
     }
-    
-    // Create and inject mobile-specific CSS
-    const mobileCSS = document.createElement('link');
-    mobileCSS.id = 'mobile-styles';
-    mobileCSS.rel = 'stylesheet';
-    mobileCSS.href = './mobile-styles.css';
-    mobileCSS.media = 'screen';
-    
-    // Add CSS to head
-    document.head.appendChild(mobileCSS);
-    
-    // Add mobile class to body for additional styling hooks
-    document.body.classList.add('mobile-device');
-    
-    console.log('Mobile-optimized CSS loaded');
   }
   
-  static loadTabletCSS() {
-    // Add tablet-specific optimizations
-    document.body.classList.add('tablet-device');
-    console.log('Tablet optimizations applied');
+  loadMobileCSS() {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = './mobile-styles.css';
+    document.head.appendChild(link);
   }
   
-  static applyMobileOptimizations() {
-    // Viewport meta tag optimization for mobile
-    let viewport = document.querySelector('meta[name="viewport"]');
-    if (!viewport) {
-      viewport = document.createElement('meta');
+  setupMobileOptimizations() {
+    // Add viewport meta tag if not present
+    if (!document.querySelector('meta[name="viewport"]')) {
+      const viewport = document.createElement('meta');
       viewport.name = 'viewport';
+      viewport.content = 'width=device-width, initial-scale=1.0, user-scalable=no';
       document.head.appendChild(viewport);
     }
-    
-    // Optimized viewport settings for mobile
-    viewport.content = 'width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover';
-    
-    // Prevent zoom on inputs (iOS Safari fix)
-    document.addEventListener('touchstart', function() {}, { passive: true });
-    
-    // Enhanced touch feedback
-    document.body.style.webkitTapHighlightColor = 'transparent';
-    document.body.style.webkitTouchCallout = 'none';
-    document.body.style.webkitUserSelect = 'none';
-    document.body.style.userSelect = 'none';
-    
-    console.log('Mobile optimizations applied');
-  }
-  
-  static init() {
-    if (this.isMobile()) {
-      this.loadMobileCSS();
-      this.applyMobileOptimizations();
-    } else if (this.isTablet()) {
-      this.loadTabletCSS();
-    }
-    
-    // Log device information for debugging
-    console.log('Device Detection:', {
-      isMobile: this.isMobile(),
-      isTablet: this.isTablet(),
-      screenWidth: window.innerWidth,
-      screenHeight: window.innerHeight,
-      devicePixelRatio: window.devicePixelRatio,
-      touchSupport: 'ontouchstart' in window,
-      userAgent: navigator.userAgent
-    });
   }
 }
 
 // Gymnastics Skills Tracker with Profile Management
 class GymnasticsTracker {
   constructor() {
-    // Initialize mobile detection first
-    MobileDetector.init();
+    // Initialize mobile detector first
+    this.mobileDetector = new MobileDetector();
     
-    // Profile management properties
+    // Initialize Firebase auth service
+    this.authService = authService;
+    
+    // Core app properties
     this.currentUser = null;
-    this.profiles = this.loadProfiles();
-    
-    // App properties
-    this.data = {};
-    this.currentEvent = null;
-    this.currentRoutineId = null;
-    this.currentSkillId = null;
-    this.currentPage = 'login'; // Start with login page
-    this.currentRoutineView = null;
-    this.difficultyValues = {
-      'A': 0.1, 'B': 0.2, 'C': 0.3, 'D': 0.4, 'E': 0.5, 
-      'F': 0.6, 'G': 0.7, 'H': 0.8, 'I': 0.9, 'J': 1.0
+    this.userData = {
+      routines: {},
+      skills: {}
     };
+    this.currentEvent = '';
+    this.currentRoutine = '';
     
+    // Initialize the app
     this.init();
   }
 
-  init() {
-    // Check if user is already logged in
-    this.checkAuthStatus();
+  async init() {
+    this.showLoginPage();
     this.setupEventListeners();
+    this.setupMobileFeatures();
     
-    // Initialize mobile-specific features
-    if (MobileDetector.isMobile()) {
-      this.setupMobileFeatures();
+    // Listen for auth state changes
+    this.authService.getCurrentUser();
+    if (this.authService.isSignedIn()) {
+      await this.loadUserData();
+      this.showMainPage();
     }
     
-    if (this.currentUser) {
-      this.showMainApp();
-    } else {
-      this.showLoginPage();
-    }
+    // Listen for data sync events
+    window.addEventListener('userDataSynced', (event) => {
+      this.userData = event.detail;
+      this.refreshUI();
+    });
   }
 
   setupMobileFeatures() {
@@ -1532,34 +1466,44 @@ class GymnasticsTracker {
   }
 
   // Profile Management Handlers
-  handleLogin() {
-    const username = document.getElementById('login-username').value.trim();
+  async handleLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById('login-email').value;
     const password = document.getElementById('login-password').value;
 
-    if (!username || !password) {
-      this.showNotification('Please enter both username and password', 'warning');
+    if (!email || !password) {
+      this.showNotification('Please enter both email and password', 'warning');
       return;
     }
 
     try {
-      this.authenticateUser(username, password);
-      this.showNotification('Login successful!', 'success');
-      this.showMainApp();
+      const result = await this.authService.signIn(email, password);
+      
+      if (result.success) {
+        this.currentUser = result.user;
+        await this.loadUserData();
+        this.showMainPage();
+        this.showNotification(`Welcome back, ${this.currentUser.displayName || 'User'}!`, 'success');
+      } else {
+        this.showNotification(result.error, 'warning');
+      }
     } catch (error) {
-      this.showNotification(error.message, 'warning');
+      console.error('Login error:', error);
+      this.showNotification('An error occurred during sign in', 'warning');
     }
   }
 
-  handleRegister() {
-    const username = document.getElementById('register-username').value.trim();
+  async handleRegister(event) {
+    event.preventDefault();
+    const email = document.getElementById('register-email').value;
     const password = document.getElementById('register-password').value;
     const confirmPassword = document.getElementById('register-confirm-password').value;
-    const fullName = document.getElementById('register-fullname').value.trim();
+    const fullName = document.getElementById('register-fullname').value;
     const level = document.getElementById('register-level').value;
 
     // Validation
-    if (!username || !password) {
-      this.showNotification('Username and password are required', 'warning');
+    if (!email || !password) {
+      this.showNotification('Please enter both email and password', 'warning');
       return;
     }
 
@@ -1568,18 +1512,101 @@ class GymnasticsTracker {
       return;
     }
 
-    if (password.length < 4) {
-      this.showNotification('Password must be at least 4 characters long', 'warning');
+    if (password.length < 6) {
+      this.showNotification('Password must be at least 6 characters long', 'warning');
       return;
     }
 
     try {
-      this.createProfile(username, password, fullName, level);
-      this.authenticateUser(username, password);
-      this.showNotification('Profile created successfully!', 'success');
-      this.showMainApp();
+      const result = await this.authService.createAccount(email, password, fullName, level);
+      
+      if (result.success) {
+        this.currentUser = result.user;
+        await this.loadUserData();
+        this.showMainPage();
+        this.showNotification('Account created successfully! Your data will sync across all devices.', 'success');
+      } else {
+        this.showNotification(result.error, 'warning');
+      }
     } catch (error) {
-      this.showNotification(error.message, 'warning');
+      console.error('Registration error:', error);
+      this.showNotification('An error occurred during account creation', 'warning');
+    }
+  }
+
+  async logout() {
+    try {
+      const result = await this.authService.signOutUser();
+      
+      if (result.success) {
+        this.currentUser = null;
+        this.userData = { routines: {}, skills: {} };
+        this.showLoginPage();
+        this.showNotification('Signed out successfully', 'info');
+      } else {
+        this.showNotification('Error signing out', 'warning');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+      this.showNotification('Error signing out', 'warning');
+    }
+  }
+
+  // Data Management Methods
+  async loadUserData() {
+    if (!this.authService.isSignedIn()) {
+      return;
+    }
+
+    try {
+      const data = await this.authService.loadUserData();
+      if (data) {
+        this.userData = data;
+        this.refreshUI();
+      }
+    } catch (error) {
+      console.error('Error loading user data:', error);
+      this.showNotification('Error loading your data', 'warning');
+    }
+  }
+
+  async saveUserData() {
+    if (!this.authService.isSignedIn()) {
+      return false;
+    }
+
+    try {
+      const success = await this.authService.saveUserData(this.userData);
+      if (success) {
+        // Data saved successfully
+        return true;
+      } else {
+        this.showNotification('Error saving data', 'warning');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error saving user data:', error);
+      this.showNotification('Error saving data', 'warning');
+      return false;
+    }
+  }
+
+  // Update profile information
+  async updateUserProfile(profileData) {
+    try {
+      const success = await this.authService.updateUserProfile(profileData);
+      if (success) {
+        this.showNotification('Profile updated successfully', 'success');
+        this.updateCurrentProfileDisplay();
+        return true;
+      } else {
+        this.showNotification('Error updating profile', 'warning');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error updating profile:', error);
+      this.showNotification('Error updating profile', 'warning');
+      return false;
     }
   }
 

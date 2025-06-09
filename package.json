@@ -1,19 +1,36 @@
 {
-  "name": "gymnastics-tracker",
-  "private": true,
-  "version": "0.1.0",
+  "name": "gymnastics-skills-tracker",
+  "version": "1.0.0",
+  "description": "A comprehensive gymnastics skills tracking application with cross-device synchronization",
+  "main": "src/main.js",
   "type": "module",
   "scripts": {
-    "dev": "npx http-server src --port 8080 --cors",
-    "build": "mkdir -p dist && cp -r src/* dist/",
-    "preview": "npx http-server dist --port 8080",
-    "tauri": "tauri",
-    "tauri:dev": "tauri dev",
-    "tauri:build": "tauri build"
+    "start": "python3 -m http.server 8000 --directory src",
+    "dev": "python3 -m http.server 8001 --directory src",
+    "build": "echo 'No build step required for this client-side app'",
+    "install-firebase": "npm install firebase",
+    "setup": "npm run install-firebase && echo 'Setup complete! Configure Firebase settings in firebase-config.js'"
   },
-  "devDependencies": {
-    "@tauri-apps/cli": "^2",
-    "http-server": "^14.1.1"
+  "dependencies": {
+    "firebase": "^10.7.1"
   },
-  "dependencies": {}
+  "devDependencies": {},
+  "keywords": [
+    "gymnastics",
+    "skills-tracker",
+    "firebase",
+    "cross-device",
+    "progressive-web-app",
+    "mobile-optimized"
+  ],
+  "author": "Gymnastics Skills Tracker",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/holdena12/Gymnastics-Tracker.git"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
 }
