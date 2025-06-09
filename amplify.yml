@@ -4,11 +4,13 @@ frontend:
     preBuild:
       commands:
         - npm install
+        - echo "Firebase dependencies installed successfully"
     build:
       commands:
-        - npm run build
+        - echo "No build step required - serving static files"
+        - ls -la src/
   artifacts:
-    baseDirectory: dist
+    baseDirectory: src
     files:
       - '**/*'
   cache:
