@@ -777,8 +777,8 @@ export default {
     {
       "name": "(Shirai 3)",
       "realName": "(Shirai 3)",
-      "difficulty": "I",
-      "value": 0.9
+      "difficulty": "F",
+      "value": 0.6
     },
     {
       "name": "Double salto bwd. str. with 7/2 t.",
