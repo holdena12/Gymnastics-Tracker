@@ -1,3 +1,6 @@
+// Import skills database
+import { searchSkills, getSkillsForEvent } from './skills-database.js';
+
 // Gymnastics Skills Tracker
 class GymnasticsTracker {
   constructor() {
@@ -158,8 +161,95 @@ class GymnasticsTracker {
   showSkillModal(eventType, routineId) {
     this.currentEvent = eventType;
     this.currentRoutineId = routineId;
+    
+    // Map event types to database names
+    const eventNameMap = {
+      'floor': 'Floor Exercise',
+      'pommel': 'Pommel Horse',
+      'rings': 'Still Rings',
+      'vault': 'Vault',
+      'pbars': 'Parallel Bars',
+      'hbar': 'High Bar'
+    };
+    
+    const eventName = eventNameMap[eventType];
+    
+    // Set up search functionality
+    this.setupSkillSearch(eventName);
+    
+    // Load initial skills list for this event
+    this.renderSkillsSearchResults(eventName, '');
+    
     document.getElementById('skill-modal').style.display = 'block';
-    document.getElementById('skill-name').focus();
+    document.getElementById('skill-search').focus();
+  }
+
+  setupSkillSearch(eventName) {
+    const searchInput = document.getElementById('skill-search');
+    const resultsContainer = document.getElementById('skills-search-results');
+    
+    // Clear previous event listeners
+    searchInput.replaceWith(searchInput.cloneNode(true));
+    const newSearchInput = document.getElementById('skill-search');
+    
+    // Add search input listener
+    newSearchInput.addEventListener('input', (e) => {
+      const query = e.target.value.trim();
+      this.renderSkillsSearchResults(eventName, query);
+    });
+    
+    // Clear any previous results
+    resultsContainer.innerHTML = '';
+  }
+
+  renderSkillsSearchResults(eventName, query) {
+    const resultsContainer = document.getElementById('skills-search-results');
+    const skills = searchSkills(eventName, query);
+    
+    if (skills.length === 0) {
+      resultsContainer.innerHTML = `
+        <div class="empty-results">
+          ${query ? `No skills found matching "${query}"` : `No skills available for ${eventName}`}
+        </div>
+      `;
+      return;
+    }
+    
+    resultsContainer.innerHTML = skills.map(skill => `
+      <div class="skill-item" data-skill-name="${skill.name}" data-skill-difficulty="${skill.difficulty}">
+        <span class="skill-name">${skill.name}</span>
+        <span class="skill-difficulty ${skill.difficulty}">${skill.difficulty}</span>
+      </div>
+    `).join('');
+    
+    // Add click listeners to skill items
+    resultsContainer.querySelectorAll('.skill-item').forEach(item => {
+      item.addEventListener('click', () => {
+        this.selectSkillFromDatabase(
+          item.dataset.skillName, 
+          item.dataset.skillDifficulty
+        );
+      });
+    });
+  }
+
+  selectSkillFromDatabase(skillName, difficulty) {
+    // Populate the form with selected skill
+    document.getElementById('skill-name').value = skillName;
+    document.getElementById('skill-difficulty').value = difficulty;
+    
+    // Highlight selected item
+    document.querySelectorAll('.skill-item').forEach(item => {
+      item.classList.remove('selected');
+    });
+    
+    const selectedItem = document.querySelector(`[data-skill-name="${skillName}"]`);
+    if (selectedItem) {
+      selectedItem.classList.add('selected');
+    }
+    
+    // Clear search to show selection
+    document.getElementById('skill-search').value = `Selected: ${skillName} (${difficulty})`;
   }
 
   showProgressionModal(eventType, routineId, skillId) {
@@ -183,6 +273,15 @@ class GymnasticsTracker {
     modal.style.display = 'none';
     // Reset forms
     modal.querySelectorAll('form').forEach(form => form.reset());
+    
+    // Reset skill search if closing skill modal
+    if (modal.id === 'skill-modal') {
+      document.getElementById('skill-search').value = '';
+      document.getElementById('skills-search-results').innerHTML = '';
+      document.querySelectorAll('.skill-item').forEach(item => {
+        item.classList.remove('selected');
+      });
+    }
   }
 
   // Routine Management

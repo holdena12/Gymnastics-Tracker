@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="styles.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gymnastics Skills Tracker</title>
-    <script type="module" src="/main.js" defer></script>
+    <script type="module" src="main.js" defer></script>
   </head>
 
   <body>
@@ -100,6 +100,21 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Add Skill</h2>
+        
+        <!-- Skills Search Section -->
+        <div class="skills-search-section">
+          <div class="form-group">
+            <label for="skill-search">Search Skills Database:</label>
+            <input type="text" id="skill-search" placeholder="Search by skill name or difficulty...">
+          </div>
+          <div id="skills-search-results" class="skills-list"></div>
+        </div>
+        
+        <div class="modal-divider">
+          <span>OR</span>
+        </div>
+        
+        <!-- Manual Entry Form -->
         <form id="skill-form">
           <div class="form-group">
             <label for="skill-name">Skill Name:</label>
