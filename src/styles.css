@@ -2206,6 +2206,20 @@ select:focus-visible {
   cursor: pointer;
   transition: all var(--transition-fast);
   border-bottom: 2px solid transparent;
+  /* Mobile touch targets */
+  min-height: 44px;
+  min-width: 44px;
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Prevent mobile quirks */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  position: relative;
+  z-index: 1;
 }
 
 .login-tab.active {
@@ -2664,6 +2678,19 @@ select:focus-visible {
 
   .login-header h1 {
     font-size: 2rem;
+  }
+  
+  /* Mobile login tab improvements */
+  .login-tab {
+    padding: 1.25rem 0.5rem;
+    font-size: 1.1rem;
+    min-height: 48px;
+  }
+  
+  .auth-btn {
+    padding: 1.125rem 1.5rem;
+    font-size: 1.1rem;
+    min-height: 48px;
   }
 
   .header {

@@ -503,7 +503,11 @@ class GymnasticsTracker {
     
     // Login/Register Tab Switching
     document.querySelectorAll('.login-tab').forEach(tab => {
-      tab.addEventListener('click', (e) => {
+      // Add both click and touchend event listeners for better mobile support
+      const handleTabSwitch = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
         const targetTab = e.target.dataset.tab;
         
         // Update tab active states
@@ -517,7 +521,10 @@ class GymnasticsTracker {
         } else if (targetTab === 'register') {
           document.getElementById('register-form').classList.add('active');
         }
-      });
+      };
+      
+      tab.addEventListener('click', handleTabSwitch);
+      tab.addEventListener('touchend', handleTabSwitch);
     });
 
     // Authentication Forms
