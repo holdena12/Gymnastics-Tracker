@@ -11,6 +11,7 @@ export const skillsDatabase = {
         { name: "Handstand 2 seconds", difficulty: "A", value: 0.1 },
         { name: "Scale (2 sec)", difficulty: "A", value: 0.1 },
         { name: "Straight jump full turn", difficulty: "A", value: 0.1 },
+        { name: "Straight jump half turn", difficulty: "A", value: 0.1 },
         
         // B Skills (0.2)
         { name: "Back handspring", difficulty: "B", value: 0.2 },
@@ -19,8 +20,8 @@ export const skillsDatabase = {
         { name: "Forward somersault tucked", difficulty: "B", value: 0.2 },
         { name: "Side somersault", difficulty: "B", value: 0.2 },
         { name: "Flair", difficulty: "B", value: 0.2 },
-        { name: "Thomas flair", difficulty: "B", value: 0.2 },
         { name: "Straddle press to handstand", difficulty: "B", value: 0.2 },
+        { name: "L-support (2 sec)", difficulty: "B", value: 0.2 },
         
         // C Skills (0.3)
         { name: "Back somersault piked", difficulty: "C", value: 0.3 },
@@ -29,8 +30,9 @@ export const skillsDatabase = {
         { name: "Front somersault straight", difficulty: "C", value: 0.3 },
         { name: "Arabian dive roll", difficulty: "C", value: 0.3 },
         { name: "Back somersault with 1/2 turn", difficulty: "C", value: 0.3 },
+        { name: "Thomas flair", difficulty: "C", value: 0.3 },
         { name: "Russian 1080°", difficulty: "C", value: 0.3 },
-        { name: "Healy", difficulty: "C", value: 0.3 },
+        { name: "V-support (2 sec)", difficulty: "C", value: 0.3 },
         
         // D Skills (0.4)
         { name: "Double back somersault tucked", difficulty: "D", value: 0.4 },
@@ -39,8 +41,8 @@ export const skillsDatabase = {
         { name: "Arabian straight", difficulty: "D", value: 0.4 },
         { name: "Double front somersault tucked", difficulty: "D", value: 0.4 },
         { name: "Back somersault 1 1/2 turn", difficulty: "D", value: 0.4 },
+        { name: "Healy", difficulty: "D", value: 0.4 },
         { name: "Sagi", difficulty: "D", value: 0.4 },
-        { name: "V-support (2 sec)", difficulty: "D", value: 0.4 },
         
         // E Skills (0.5)
         { name: "Double back somersault piked", difficulty: "E", value: 0.5 },
@@ -50,13 +52,14 @@ export const skillsDatabase = {
         { name: "Front somersault full turn", difficulty: "E", value: 0.5 },
         { name: "Triple back somersault tucked", difficulty: "E", value: 0.5 },
         { name: "Shirai", difficulty: "E", value: 0.5 },
+        { name: "Manna (2 sec)", difficulty: "E", value: 0.5 },
         
         // F Skills (0.6)
         { name: "Double front somersault straight", difficulty: "F", value: 0.6 },
         { name: "Triple back somersault piked", difficulty: "F", value: 0.6 },
         { name: "Back 2 1/2 somersaults", difficulty: "F", value: 0.6 },
-        { name: "Manna (2 sec)", difficulty: "F", value: 0.6 },
         { name: "Azarian", difficulty: "F", value: 0.6 },
+        { name: "Back somersault 2 1/2 turns", difficulty: "F", value: 0.6 },
         
         // G Skills (0.7)
         { name: "Triple back somersault straight", difficulty: "G", value: 0.7 },
@@ -75,6 +78,7 @@ export const skillsDatabase = {
         { name: "Flank from support", difficulty: "A", value: 0.1 },
         { name: "Single leg circle", difficulty: "A", value: 0.1 },
         { name: "Loop", difficulty: "A", value: 0.1 },
+        { name: "Simple travel", difficulty: "A", value: 0.1 },
         
         // B Skills (0.2)
         { name: "Double leg circle", difficulty: "B", value: 0.2 },
@@ -83,6 +87,7 @@ export const skillsDatabase = {
         { name: "Sivado", difficulty: "B", value: 0.2 },
         { name: "Back spindle", difficulty: "B", value: 0.2 },
         { name: "Front spindle", difficulty: "B", value: 0.2 },
+        { name: "Simple Russian wendeswing", difficulty: "B", value: 0.2 },
         
         // C Skills (0.3)
         { name: "Tramlot", difficulty: "C", value: 0.3 },
@@ -91,6 +96,7 @@ export const skillsDatabase = {
         { name: "Roth", difficulty: "C", value: 0.3 },
         { name: "Wu Guonian", difficulty: "C", value: 0.3 },
         { name: "Flop", difficulty: "C", value: 0.3 },
+        { name: "Travel on one pommel", difficulty: "C", value: 0.3 },
         
         // D Skills (0.4)
         { name: "Thomas", difficulty: "D", value: 0.4 },
@@ -99,17 +105,19 @@ export const skillsDatabase = {
         { name: "Spindle travel", difficulty: "D", value: 0.4 },
         { name: "Shohn", difficulty: "D", value: 0.4 },
         { name: "Meyland", difficulty: "D", value: 0.4 },
+        { name: "Wende", difficulty: "D", value: 0.4 },
         
         // E Skills (0.5)
         { name: "Diamidov", difficulty: "E", value: 0.5 },
-        { name: "Wende", difficulty: "E", value: 0.5 },
         { name: "Bertoncelj", difficulty: "E", value: 0.5 },
         { name: "Kroll", difficulty: "E", value: 0.5 },
         { name: "Sohn", difficulty: "E", value: 0.5 },
+        { name: "Flop to handstand", difficulty: "E", value: 0.5 },
         
         // F Skills (0.6)
         { name: "Berki", difficulty: "F", value: 0.6 },
         { name: "Dos Santos", difficulty: "F", value: 0.6 },
+        { name: "Combined travel", difficulty: "F", value: 0.6 },
         
         // G Skills (0.7)
         { name: "Whitlock", difficulty: "G", value: 0.7 }
@@ -123,6 +131,7 @@ export const skillsDatabase = {
         { name: "Muscle up", difficulty: "A", value: 0.1 },
         { name: "Inlocate", difficulty: "A", value: 0.1 },
         { name: "Dislocate", difficulty: "A", value: 0.1 },
+        { name: "Support swing", difficulty: "A", value: 0.1 },
         
         // B Skills (0.2)
         { name: "V-support (2 sec)", difficulty: "B", value: 0.2 },
@@ -132,6 +141,7 @@ export const skillsDatabase = {
         { name: "Handstand (2 sec)", difficulty: "B", value: 0.2 },
         { name: "Press to handstand", difficulty: "B", value: 0.2 },
         { name: "Cast to handstand", difficulty: "B", value: 0.2 },
+        { name: "Hang scale (2 sec)", difficulty: "B", value: 0.2 },
         
         // C Skills (0.3)
         { name: "Maltese (2 sec)", difficulty: "C", value: 0.3 },
@@ -140,6 +150,7 @@ export const skillsDatabase = {
         { name: "Front somersault", difficulty: "C", value: 0.3 },
         { name: "Yamawaki", difficulty: "C", value: 0.3 },
         { name: "Jonasson", difficulty: "C", value: 0.3 },
+        { name: "Kip to support", difficulty: "C", value: 0.3 },
         
         // D Skills (0.4)
         { name: "Inverted cross (2 sec)", difficulty: "D", value: 0.4 },
@@ -148,6 +159,7 @@ export const skillsDatabase = {
         { name: "Hayabusa", difficulty: "D", value: 0.4 },
         { name: "Savolainen", difficulty: "D", value: 0.4 },
         { name: "Liu Yang", difficulty: "D", value: 0.4 },
+        { name: "Iron cross (2 sec)", difficulty: "D", value: 0.4 },
         
         // E Skills (0.5)
         { name: "Azarian cross (2 sec)", difficulty: "E", value: 0.5 },
@@ -155,45 +167,49 @@ export const skillsDatabase = {
         { name: "Triple back somersault", difficulty: "E", value: 0.5 },
         { name: "Zanetti", difficulty: "E", value: 0.5 },
         { name: "Petrounias", difficulty: "E", value: 0.5 },
+        { name: "Back lever pull to inverted hang", difficulty: "E", value: 0.5 },
         
         // F Skills (0.6)
         { name: "Nakayama (2 sec)", difficulty: "F", value: 0.6 },
         { name: "Quadruple back somersault", difficulty: "F", value: 0.6 },
+        { name: "Maltese cross (2 sec)", difficulty: "F", value: 0.6 },
         
         // G Skills (0.7)
         { name: "Chen Yibing", difficulty: "G", value: 0.7 }
     ],
 
     "Vault": [
-        // A Skills (0.1)
+        // Note: Vault difficulties are different - they're based on start values, not A-I scale
+        // Converting to equivalent difficulties for consistency in the app
+        
+        // A-B equivalent (Simple vaults)
         { name: "Straight jump", difficulty: "A", value: 0.1 },
         { name: "Straddle jump", difficulty: "A", value: 0.1 },
         { name: "Squat through", difficulty: "A", value: 0.1 },
-        { name: "Straddle through", difficulty: "A", value: 0.1 },
-        
-        // B Skills (0.2)
+        { name: "Straddle through", difficulty: "B", value: 0.2 },
         { name: "Handspring", difficulty: "B", value: 0.2 },
-        { name: "Front somersault", difficulty: "B", value: 0.2 },
-        { name: "Yamashita", difficulty: "B", value: 0.2 },
         
-        // C Skills (0.3)
+        // C equivalent (Group 1-2 vaults, ~13.0-14.0 start value)
+        { name: "Yamashita", difficulty: "C", value: 0.3 },
+        { name: "Front somersault", difficulty: "C", value: 0.3 },
         { name: "Tsukahara", difficulty: "C", value: 0.3 },
         { name: "Kasamatsu", difficulty: "C", value: 0.3 },
         { name: "Yurchenko", difficulty: "C", value: 0.3 },
-        { name: "Handspring double full", difficulty: "C", value: 0.3 },
         
-        // D Skills (0.4)
+        // D equivalent (Group 3-4 vaults, ~14.4-15.0 start value)
+        { name: "Handspring double full", difficulty: "D", value: 0.4 },
         { name: "Tsukahara double full", difficulty: "D", value: 0.4 },
         { name: "Kasamatsu double full", difficulty: "D", value: 0.4 },
         { name: "Yurchenko double full", difficulty: "D", value: 0.4 },
         { name: "Dragulescu", difficulty: "D", value: 0.4 },
         
-        // E Skills (0.5)
+        // E equivalent (Group 5 vaults, ~15.4+ start value)
         { name: "Tsukahara triple full", difficulty: "E", value: 0.5 },
         { name: "Ri Se Gwang", difficulty: "E", value: 0.5 },
         { name: "Shirai", difficulty: "E", value: 0.5 },
+        { name: "Yurchenko 2.5", difficulty: "E", value: 0.5 },
         
-        // F Skills (0.6)
+        // F equivalent (Highest difficulty vaults, 16.0+ start value)
         { name: "Biles", difficulty: "F", value: 0.6 },
         { name: "Produnova", difficulty: "F", value: 0.6 }
     ],
@@ -205,6 +221,7 @@ export const skillsDatabase = {
         { name: "Upper arm hang", difficulty: "A", value: 0.1 },
         { name: "Swing in support", difficulty: "A", value: 0.1 },
         { name: "Cast", difficulty: "A", value: 0.1 },
+        { name: "Shoulder roll", difficulty: "A", value: 0.1 },
         
         // B Skills (0.2)
         { name: "V-support (2 sec)", difficulty: "B", value: 0.2 },
@@ -213,6 +230,7 @@ export const skillsDatabase = {
         { name: "Glide kip", difficulty: "B", value: 0.2 },
         { name: "Peach basket", difficulty: "B", value: 0.2 },
         { name: "Wende", difficulty: "B", value: 0.2 },
+        { name: "Cut catch", difficulty: "B", value: 0.2 },
         
         // C Skills (0.3)
         { name: "Stutz", difficulty: "C", value: 0.3 },
@@ -221,6 +239,7 @@ export const skillsDatabase = {
         { name: "Front somersault", difficulty: "C", value: 0.3 },
         { name: "Morisue", difficulty: "C", value: 0.3 },
         { name: "Tippelt", difficulty: "C", value: 0.3 },
+        { name: "Swing to handstand", difficulty: "C", value: 0.3 },
         
         // D Skills (0.4)
         { name: "Double back somersault", difficulty: "D", value: 0.4 },
@@ -229,16 +248,19 @@ export const skillsDatabase = {
         { name: "Tanaka", difficulty: "D", value: 0.4 },
         { name: "Belle", difficulty: "D", value: 0.4 },
         { name: "Moy", difficulty: "D", value: 0.4 },
+        { name: "Bhavsar", difficulty: "D", value: 0.4 },
         
         // E Skills (0.5)
         { name: "Double front somersault", difficulty: "E", value: 0.5 },
         { name: "Zou Li Min", difficulty: "E", value: 0.5 },
         { name: "Gaylord II", difficulty: "E", value: 0.5 },
         { name: "Bretschneider", difficulty: "E", value: 0.5 },
+        { name: "Tsolakidis", difficulty: "E", value: 0.5 },
         
         // F Skills (0.6)
         { name: "Triple back somersault", difficulty: "F", value: 0.6 },
         { name: "Liukin", difficulty: "F", value: 0.6 },
+        { name: "Sohn", difficulty: "F", value: 0.6 },
         
         // G Skills (0.7)
         { name: "Zou Kai", difficulty: "G", value: 0.7 }
@@ -251,6 +273,7 @@ export const skillsDatabase = {
         { name: "Glide kip", difficulty: "A", value: 0.1 },
         { name: "Pullover", difficulty: "A", value: 0.1 },
         { name: "Mill circle", difficulty: "A", value: 0.1 },
+        { name: "Sole circle", difficulty: "A", value: 0.1 },
         
         // B Skills (0.2)
         { name: "Cast to handstand", difficulty: "B", value: 0.2 },
@@ -259,6 +282,7 @@ export const skillsDatabase = {
         { name: "Stalder", difficulty: "B", value: 0.2 },
         { name: "Endo", difficulty: "B", value: 0.2 },
         { name: "Back somersault dismount", difficulty: "B", value: 0.2 },
+        { name: "Dislocate", difficulty: "B", value: 0.2 },
         
         // C Skills (0.3)
         { name: "Tkatchev", difficulty: "C", value: 0.3 },
@@ -267,6 +291,7 @@ export const skillsDatabase = {
         { name: "Jaeger", difficulty: "C", value: 0.3 },
         { name: "Double back dismount", difficulty: "C", value: 0.3 },
         { name: "Full twisting double back", difficulty: "C", value: 0.3 },
+        { name: "Adler", difficulty: "C", value: 0.3 },
         
         // D Skills (0.4)
         { name: "Kovacs", difficulty: "D", value: 0.4 },
@@ -275,6 +300,7 @@ export const skillsDatabase = {
         { name: "Double front dismount", difficulty: "D", value: 0.4 },
         { name: "Triple back dismount", difficulty: "D", value: 0.4 },
         { name: "Cassina", difficulty: "D", value: 0.4 },
+        { name: "Church", difficulty: "D", value: 0.4 },
         
         // E Skills (0.5)
         { name: "Kolman", difficulty: "E", value: 0.5 },
@@ -282,10 +308,12 @@ export const skillsDatabase = {
         { name: "Bretschneider", difficulty: "E", value: 0.5 },
         { name: "Quadruple back dismount", difficulty: "E", value: 0.5 },
         { name: "Mo Salto", difficulty: "E", value: 0.5 },
+        { name: "Weiler", difficulty: "E", value: 0.5 },
         
         // F Skills (0.6)
         { name: "Liukin", difficulty: "F", value: 0.6 },
         { name: "Rybalko", difficulty: "F", value: 0.6 },
+        { name: "Quintuple back dismount", difficulty: "F", value: 0.6 },
         
         // G Skills (0.7)
         { name: "Nagornyy", difficulty: "G", value: 0.7 }
