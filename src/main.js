@@ -8,9 +8,11 @@ class GymnasticsTracker {
     this.currentEvent = null;
     this.currentRoutineId = null;
     this.currentSkillId = null;
+    this.currentPage = 'main'; // Track current page
+    this.currentRoutineView = null; // Track routine being viewed
     this.difficultyValues = {
       'A': 0.1, 'B': 0.2, 'C': 0.3, 'D': 0.4, 'E': 0.5, 
-      'F': 0.6, 'G': 0.7, 'H': 0.8, 'I': 0.9
+      'F': 0.6, 'G': 0.7, 'H': 0.8, 'I': 0.9, 'J': 1.0
     };
     this.init();
   }
@@ -59,8 +61,16 @@ class GymnasticsTracker {
   }
 
   // Calculate start value for a routine
-  calculateStartValue(routine) {
+  calculateStartValue(routine, eventType = null) {
     if (!routine.skills || routine.skills.length === 0) {
+      if (eventType === 'vault') {
+        return {
+          total: 10.0,
+          skillsValue: 0.0,
+          baseValue: 10.0,
+          skillCount: 0
+        };
+      }
       return {
         total: 12.0,
         skillsValue: 0.0,
@@ -69,16 +79,31 @@ class GymnasticsTracker {
       };
     }
 
-    const skillsValue = routine.skills.reduce((sum, skill) => {
-      return sum + (this.difficultyValues[skill.difficulty] || 0);
-    }, 0);
+    if (eventType === 'vault') {
+      // Vault scoring: 10.0 + D-score (vault should typically have only 1 skill)
+      // For vault, skills have D-scores as their difficulty value (e.g., 5.6, 4.8, etc.)
+      const vaultDScore = routine.skills.length > 0 ? 
+        parseFloat(routine.skills[0].difficulty) || 0 : 0;
+      
+      return {
+        total: Math.round((10.0 + vaultDScore) * 10) / 10,
+        skillsValue: Math.round(vaultDScore * 10) / 10,
+        baseValue: 10.0,
+        skillCount: routine.skills.length
+      };
+    } else {
+      // Other events: 12.0 + accumulated difficulty values
+      const skillsValue = routine.skills.reduce((sum, skill) => {
+        return sum + (this.difficultyValues[skill.difficulty] || 0);
+      }, 0);
 
-    return {
-      total: Math.round((12.0 + skillsValue) * 10) / 10, // Round to 1 decimal
-      skillsValue: Math.round(skillsValue * 10) / 10,
-      baseValue: 12.0,
-      skillCount: routine.skills.length
-    };
+      return {
+        total: Math.round((12.0 + skillsValue) * 10) / 10, // Round to 1 decimal
+        skillsValue: Math.round(skillsValue * 10) / 10,
+        baseValue: 12.0,
+        skillCount: routine.skills.length
+      };
+    }
   }
 
   // Calculate progression progress for a skill
@@ -97,6 +122,84 @@ class GymnasticsTracker {
   showNotification(message, type = 'info') {
     // Simple notification system (you could enhance this with a toast library)
     console.log(`${type.toUpperCase()}: ${message}`);
+  }
+
+  // Navigation methods
+  showRoutinePage(eventType, routineId) {
+    const routine = this.data[eventType].find(r => r.id === routineId);
+    if (!routine) return;
+
+    this.currentPage = 'routine';
+    this.currentRoutineView = { eventType, routineId, routine };
+
+    // Hide main page, show routine page
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('routine-page').style.display = 'block';
+
+    // Update page content
+    this.renderRoutinePage(eventType, routine);
+  }
+
+  showMainPage() {
+    this.currentPage = 'main';
+    this.currentRoutineView = null;
+
+    // Hide routine page, show main page
+    document.getElementById('routine-page').style.display = 'none';
+    document.getElementById('main-page').style.display = 'block';
+  }
+
+  renderRoutinePage(eventType, routine) {
+    const eventNames = {
+      'floor': 'Floor Exercise',
+      'pommel': 'Pommel Horse',
+      'rings': 'Still Rings',
+      'vault': 'Vault',
+      'pbars': 'Parallel Bars',
+      'hbar': 'High Bar'
+    };
+
+    // Update page title and event badge
+    document.getElementById('routine-page-title').textContent = routine.name;
+    document.getElementById('routine-page-event').textContent = eventNames[eventType];
+
+    // Update add skill button
+    const addSkillBtn = document.getElementById('routine-add-skill');
+    addSkillBtn.dataset.event = eventType;
+    addSkillBtn.dataset.routine = routine.id;
+
+    // Render skills in the routine page
+    this.renderRoutineSkills(eventType, routine);
+
+    // Update notes
+    const notesContent = document.getElementById('routine-notes-content');
+    notesContent.textContent = routine.notes || 'No notes added yet.';
+  }
+
+  renderRoutineSkills(eventType, routine) {
+    const container = document.getElementById('routine-skills-list');
+    
+    if (!routine.skills || routine.skills.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">🤸‍♂️</div>
+          <div class="empty-state-text">No skills added yet</div>
+          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+            Click "Add Skill" to start building your routine
+          </p>
+        </div>
+      `;
+      return;
+    }
+
+    const skillsHtml = routine.skills.map((skill, index) => 
+      this.renderSkill(eventType, routine.id, skill, index)
+    ).join('');
+    
+    container.innerHTML = `<ul class="skills-list" id="routine-page-skills-list">${skillsHtml}</ul>`;
+
+    // Set up event listeners for the routine page skills
+    this.addDynamicEventListeners('routine-page');
   }
 
   // Event Listeners
@@ -149,6 +252,18 @@ class GymnasticsTracker {
     // Save data when window loses focus
     window.addEventListener('blur', () => {
       this.saveData();
+    });
+
+    // Back to dashboard button
+    document.getElementById('back-to-dashboard').addEventListener('click', () => {
+      this.showMainPage();
+    });
+
+    // Routine page add skill button
+    document.getElementById('routine-add-skill').addEventListener('click', (e) => {
+      const eventType = e.target.dataset.event;
+      const routineId = e.target.dataset.routine;
+      this.showSkillModal(eventType, routineId);
     });
   }
 
@@ -217,7 +332,10 @@ class GymnasticsTracker {
     
     resultsContainer.innerHTML = skills.map(skill => `
       <div class="skill-item" data-skill-name="${skill.name}" data-skill-difficulty="${skill.difficulty}">
-        <span class="skill-name">${skill.name}</span>
+        <div class="skill-info-container">
+          <div class="skill-name">${skill.name}</div>
+          <div class="skill-real-name">${skill.realName}</div>
+        </div>
         <span class="skill-difficulty ${skill.difficulty}">${skill.difficulty}</span>
       </div>
     `).join('');
@@ -235,7 +353,10 @@ class GymnasticsTracker {
 
   selectSkillFromDatabase(skillName, difficulty) {
     // Populate the form with selected skill
-    document.getElementById('skill-name').value = skillName;
+    const nameField = document.getElementById('skill-name');
+    nameField.value = skillName;
+    nameField.removeAttribute('readonly');
+    
     document.getElementById('skill-difficulty').value = difficulty;
     
     // Highlight selected item
@@ -281,6 +402,11 @@ class GymnasticsTracker {
       document.querySelectorAll('.skill-item').forEach(item => {
         item.classList.remove('selected');
       });
+      
+      // Reset skill name field to readonly
+      const nameField = document.getElementById('skill-name');
+      nameField.setAttribute('readonly', 'true');
+      nameField.placeholder = 'Select a skill from the database above';
     }
   }
 
@@ -309,9 +435,30 @@ class GymnasticsTracker {
   // Skill Management
   handleSkillSubmit() {
     const name = document.getElementById('skill-name').value;
-    const difficulty = document.getElementById('skill-difficulty').value;
     const targetDate = document.getElementById('skill-target-date').value;
     const notes = document.getElementById('skill-notes').value;
+    
+    // Check if a difficulty was set from database selection
+    const difficultyField = document.getElementById('skill-difficulty');
+    let difficulty = difficultyField ? difficultyField.value : null;
+    
+    // If no difficulty was set (manual entry), show error message
+    if (!difficulty) {
+      this.showNotification('Please select a skill from the database to ensure accurate difficulty rating.', 'warning');
+      return;
+    }
+
+    const routine = this.data[this.currentEvent].find(r => r.id === this.currentRoutineId);
+    if (!routine) {
+      this.showNotification('Routine not found', 'error');
+      return;
+    }
+
+    // For vault, only allow one skill per routine
+    if (this.currentEvent === 'vault' && routine.skills.length > 0) {
+      this.showNotification('Vault routines can only have one skill. Please delete the existing skill first.', 'warning');
+      return;
+    }
 
     const skill = {
       id: Date.now().toString(),
@@ -325,14 +472,20 @@ class GymnasticsTracker {
       createdAt: new Date().toISOString()
     };
 
-    const routine = this.data[this.currentEvent].find(r => r.id === this.currentRoutineId);
-    if (routine) {
-      routine.skills.push(skill);
-      this.saveData();
+    routine.skills.push(skill);
+    this.saveData();
+    
+    // Re-render appropriate view
+    if (this.currentPage === 'routine' && this.currentRoutineView) {
+      // Update the routine reference in currentRoutineView
+      this.currentRoutineView.routine = routine;
+      this.renderRoutinePage(this.currentRoutineView.eventType, routine);
+    } else {
       this.renderRoutines(this.currentEvent);
-      this.closeModal(document.getElementById('skill-modal'));
-      this.showNotification('Skill added successfully', 'success');
     }
+    
+    this.closeModal(document.getElementById('skill-modal'));
+    this.showNotification('Skill added successfully', 'success');
   }
 
   // Progression Management
@@ -370,15 +523,21 @@ class GymnasticsTracker {
 
   toggleSkill(eventType, routineId, skillId) {
     const routine = this.data[eventType].find(r => r.id === routineId);
-    if (routine) {
-      const skill = routine.skills.find(s => s.id === skillId);
-      if (skill) {
-        skill.completed = !skill.completed;
-        skill.completedAt = skill.completed ? new Date().toISOString() : null;
-        this.saveData();
-        this.renderRoutines(eventType);
-      }
+    const skill = routine.skills.find(s => s.id === skillId);
+    
+    skill.completed = !skill.completed;
+    this.saveData();
+    
+    // Re-render appropriate view
+    if (this.currentPage === 'routine' && this.currentRoutineView) {
+      // Update the routine reference in currentRoutineView
+      this.currentRoutineView.routine = routine;
+      this.renderRoutinePage(this.currentRoutineView.eventType, routine);
+    } else {
+      this.renderRoutines(eventType);
     }
+    
+    this.showNotification(`Skill ${skill.completed ? 'completed' : 'marked incomplete'}`, 'success');
   }
 
   toggleProgression(eventType, routineId, skillId, progressionId) {
@@ -399,7 +558,16 @@ class GymnasticsTracker {
     if (routine) {
       routine.skills = routine.skills.filter(s => s.id !== skillId);
       this.saveData();
-      this.renderRoutines(eventType);
+      
+      // Re-render appropriate view
+      if (this.currentPage === 'routine' && this.currentRoutineView) {
+        // Update the routine reference in currentRoutineView
+        this.currentRoutineView.routine = routine;
+        this.renderRoutinePage(this.currentRoutineView.eventType, routine);
+      } else {
+        this.renderRoutines(eventType);
+      }
+      
       this.showNotification('Skill deleted', 'info');
     }
   }
@@ -479,48 +647,15 @@ class GymnasticsTracker {
   }
 
   renderRoutine(eventType, routine) {
-    const progress = this.calculateProgress(routine);
-    const startValue = this.calculateStartValue(routine);
-    const isOverdue = this.isOverdue(routine.date);
-    
     return `
       <div class="routine-card fade-in">
         <div class="routine-header">
-          <h3 class="routine-title">${routine.name}</h3>
-          <span class="routine-date ${isOverdue ? 'overdue' : ''}">${this.formatDate(routine.date)}</span>
-        </div>
-        
-        <div class="start-value-display">
-          <div class="start-value-number">${startValue.total}</div>
-          <div class="start-value-label">Start Value</div>
-          <div class="start-value-breakdown">
-            Base: ${startValue.baseValue} + Skills: ${startValue.skillsValue} (${startValue.skillCount} skills)
+          <div class="routine-title-container">
+            <h3 class="routine-title">${routine.name}</h3>
+            <button class="view-routine-btn" data-event="${eventType}" data-routine="${routine.id}">
+              View Routine →
+            </button>
           </div>
-        </div>
-
-        <div class="routine-progress">
-          <div class="progress-bar">
-            <div class="progress-fill" style="width: ${progress.percentage}%"></div>
-          </div>
-          <div class="progress-text">
-            <span>${progress.completed}/${progress.total} skills completed</span>
-            <span>${progress.percentage}%</span>
-          </div>
-        </div>
-
-        <button class="add-skill-btn" data-event="${eventType}" data-routine="${routine.id}">
-          + Add Skill
-        </button>
-
-        <ul class="skills-list">
-          ${routine.skills.map(skill => this.renderSkill(eventType, routine.id, skill, routine.skills.indexOf(skill))).join('')}
-        </ul>
-
-        <div style="margin-top: 1rem; text-align: right;">
-          <button class="delete-routine-btn" data-event="${eventType}" data-routine="${routine.id}" 
-                  style="background: var(--danger-color); color: white; border: none; padding: 0.5rem 1rem; border-radius: var(--radius); cursor: pointer; font-size: 0.875rem;">
-            Delete Routine
-          </button>
         </div>
       </div>
     `;
@@ -528,7 +663,9 @@ class GymnasticsTracker {
 
   renderSkill(eventType, routineId, skill, index) {
     const isOverdue = skill.targetDate && this.isOverdue(skill.targetDate) && !skill.completed;
-    const difficultyValue = this.difficultyValues[skill.difficulty] || 0;
+    const difficultyValue = eventType === 'vault' 
+      ? parseFloat(skill.difficulty) || 0 
+      : this.difficultyValues[skill.difficulty] || 0;
     const hasProgressions = skill.progressions && skill.progressions.length > 0;
     const progressionProgress = this.calculateProgressionProgress(skill);
     
@@ -551,7 +688,10 @@ class GymnasticsTracker {
             </button>
           </div>
           <div class="skill-meta">
-            <span class="skill-difficulty">${skill.difficulty} (${difficultyValue})</span>
+            <span class="skill-difficulty">${eventType === 'vault' 
+              ? `D-score: ${skill.difficulty}` 
+              : `${skill.difficulty} (${difficultyValue})`
+            }</span>
             ${skill.targetDate ? `<span class="skill-date ${isOverdue ? 'overdue' : ''}">${this.formatDate(skill.targetDate)}</span>` : ''}
             ${skill.notes ? `<span class="skill-notes">${skill.notes}</span>` : ''}
           </div>
@@ -796,18 +936,36 @@ class GymnasticsTracker {
   }
 
   addDynamicEventListeners(eventType) {
-    const container = document.getElementById(`${eventType}-routines`);
+    let container;
+    
+    if (eventType === 'routine-page') {
+      // Handle routine page container
+      container = document.getElementById('routine-skills-list');
+    } else {
+      // Handle main page event containers
+      container = document.getElementById(`${eventType}-routines`);
+    }
+    
+    if (!container) return;
     
     // Remove any existing event listeners to prevent duplicates
     const newContainer = container.cloneNode(true);
     container.parentNode.replaceChild(newContainer, container);
-    const cleanContainer = document.getElementById(`${eventType}-routines`);
     
-    // Set up drag and drop
-    this.setupDragAndDrop(cleanContainer);
+    // Get the updated container reference
+    if (eventType === 'routine-page') {
+      container = document.getElementById('routine-skills-list');
+    } else {
+      container = document.getElementById(`${eventType}-routines`);
+    }
+    
+    // Set up drag and drop only if not on routine page
+    if (eventType !== 'routine-page') {
+      this.setupDragAndDrop(container);
+    }
     
     // Use event delegation for all dynamic content
-    cleanContainer.addEventListener('click', (e) => {
+    container.addEventListener('click', (e) => {
       console.log('Click event detected on:', e.target.tagName, e.target.className, e.target.textContent);
       
       e.stopPropagation();
@@ -822,7 +980,7 @@ class GymnasticsTracker {
       let target = e.target;
       
       // Look up the DOM tree to find the actual button if we clicked inside it
-      while (target && target !== cleanContainer) {
+      while (target && target !== container) {
         console.log('Checking element:', target.tagName, target.className);
         
         if (target.classList.contains('delete-progression-btn')) {
@@ -895,13 +1053,21 @@ class GymnasticsTracker {
           }
           return;
         }
+
+        // View routine button
+        if (target.classList.contains('view-routine-btn')) {
+          const eventType = target.dataset.event;
+          const routineId = target.dataset.routine;
+          this.showRoutinePage(eventType, routineId);
+          return;
+        }
         
         target = target.parentElement;
       }
     });
     
     // Use event delegation for checkboxes (change event)
-    cleanContainer.addEventListener('change', (e) => {
+    container.addEventListener('change', (e) => {
       // Skill checkboxes
       if (e.target.classList.contains('skill-checkbox')) {
         const eventType = e.target.dataset.event;

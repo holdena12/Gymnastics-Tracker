@@ -9,68 +9,106 @@
   </head>
 
   <body>
-    <header class="header">
-      <h1>Gymnastics Skills Tracker</h1>
-      <p>Track your progress across all men's gymnastics events</p>
-    </header>
+    <!-- Main Dashboard Page -->
+    <div id="main-page">
+      <header class="header">
+        <h1>Gymnastics Skills Tracker</h1>
+        <p>Track your progress across all men's gymnastics events</p>
+      </header>
 
-    <main class="container">
-      <div class="events-grid">
-        <!-- Floor Exercise -->
-        <div class="event-card" data-event="floor">
-          <div class="event-header">
-            <h2>Floor Exercise</h2>
-            <button class="add-routine-btn" data-event="floor">+ Add Routine</button>
+      <main class="container">
+        <div class="events-grid">
+          <!-- Floor Exercise -->
+          <div class="event-card" data-event="floor">
+            <div class="event-header">
+              <h2>Floor Exercise</h2>
+              <button class="add-routine-btn" data-event="floor">+ Add Routine</button>
+            </div>
+            <div class="routines-container" id="floor-routines"></div>
           </div>
-          <div class="routines-container" id="floor-routines"></div>
+
+          <!-- Pommel Horse -->
+          <div class="event-card" data-event="pommel">
+            <div class="event-header">
+              <h2>Pommel Horse</h2>
+              <button class="add-routine-btn" data-event="pommel">+ Add Routine</button>
+            </div>
+            <div class="routines-container" id="pommel-routines"></div>
+          </div>
+
+          <!-- Still Rings -->
+          <div class="event-card" data-event="rings">
+            <div class="event-header">
+              <h2>Still Rings</h2>
+              <button class="add-routine-btn" data-event="rings">+ Add Routine</button>
+            </div>
+            <div class="routines-container" id="rings-routines"></div>
+          </div>
+
+          <!-- Vault -->
+          <div class="event-card" data-event="vault">
+            <div class="event-header">
+              <h2>Vault</h2>
+              <button class="add-routine-btn" data-event="vault">+ Add Routine</button>
+            </div>
+            <div class="routines-container" id="vault-routines"></div>
+          </div>
+
+          <!-- Parallel Bars -->
+          <div class="event-card" data-event="pbars">
+            <div class="event-header">
+              <h2>Parallel Bars</h2>
+              <button class="add-routine-btn" data-event="pbars">+ Add Routine</button>
+            </div>
+            <div class="routines-container" id="pbars-routines"></div>
+          </div>
+
+          <!-- High Bar -->
+          <div class="event-card" data-event="hbar">
+            <div class="event-header">
+              <h2>High Bar</h2>
+              <button class="add-routine-btn" data-event="hbar">+ Add Routine</button>
+            </div>
+            <div class="routines-container" id="hbar-routines"></div>
+          </div>
         </div>
+      </main>
+    </div>
 
-        <!-- Pommel Horse -->
-        <div class="event-card" data-event="pommel">
-          <div class="event-header">
-            <h2>Pommel Horse</h2>
-            <button class="add-routine-btn" data-event="pommel">+ Add Routine</button>
+    <!-- Routine Detail Page -->
+    <div id="routine-page" style="display: none;">
+      <header class="routine-header-page">
+        <div class="routine-nav">
+          <button id="back-to-dashboard" class="back-btn">
+            <span class="back-icon">←</span>
+            Back to Dashboard
+          </button>
+          <div class="routine-title-section">
+            <h1 id="routine-page-title">Routine Name</h1>
+            <span id="routine-page-event" class="routine-event-badge">Event</span>
           </div>
-          <div class="routines-container" id="pommel-routines"></div>
         </div>
+      </header>
 
-        <!-- Still Rings -->
-        <div class="event-card" data-event="rings">
-          <div class="event-header">
-            <h2>Still Rings</h2>
-            <button class="add-routine-btn" data-event="rings">+ Add Routine</button>
-          </div>
-          <div class="routines-container" id="rings-routines"></div>
+      <!-- Skills Section - Full Screen -->
+      <div class="routine-skills-section">
+        <div class="section-header">
+          <h2>Skills</h2>
+          <button class="add-skill-btn" id="routine-add-skill" data-event="" data-routine="">+ Add Skill</button>
         </div>
-
-        <!-- Vault -->
-        <div class="event-card" data-event="vault">
-          <div class="event-header">
-            <h2>Vault</h2>
-            <button class="add-routine-btn" data-event="vault">+ Add Routine</button>
-          </div>
-          <div class="routines-container" id="vault-routines"></div>
-        </div>
-
-        <!-- Parallel Bars -->
-        <div class="event-card" data-event="pbars">
-          <div class="event-header">
-            <h2>Parallel Bars</h2>
-            <button class="add-routine-btn" data-event="pbars">+ Add Routine</button>
-          </div>
-          <div class="routines-container" id="pbars-routines"></div>
-        </div>
-
-        <!-- High Bar -->
-        <div class="event-card" data-event="hbar">
-          <div class="event-header">
-            <h2>High Bar</h2>
-            <button class="add-routine-btn" data-event="hbar">+ Add Routine</button>
-          </div>
-          <div class="routines-container" id="hbar-routines"></div>
+        <div class="skills-container" id="routine-skills-list">
+          <!-- Skills will be rendered here -->
         </div>
       </div>
-    </main>
+
+      <!-- Notes Section - Bottom -->
+      <footer class="routine-notes-section">
+        <h3>Notes</h3>
+        <div class="notes-content" id="routine-notes-content">
+          <!-- Notes will be displayed here -->
+        </div>
+      </footer>
+    </div>
 
     <!-- Modal for adding routines -->
     <div id="routine-modal" class="modal">
@@ -104,37 +142,26 @@
         <!-- Skills Search Section -->
         <div class="skills-search-section">
           <div class="form-group">
-            <label for="skill-search">Search Skills Database:</label>
+            <label for="skill-search">Search Official FIG Code of Points:</label>
             <input type="text" id="skill-search" placeholder="Search by skill name or difficulty...">
+            <small class="form-help">Search and select from 676 official skills with accurate difficulty ratings</small>
           </div>
           <div id="skills-search-results" class="skills-list"></div>
         </div>
         
         <div class="modal-divider">
-          <span>OR</span>
+          <span>Selected Skill Details</span>
         </div>
         
         <!-- Manual Entry Form -->
         <form id="skill-form">
           <div class="form-group">
             <label for="skill-name">Skill Name:</label>
-            <input type="text" id="skill-name" required placeholder="e.g., Double Back Tuck">
+            <input type="text" id="skill-name" required placeholder="Select a skill from the database above" readonly>
+            <small class="form-help">This field will be populated when you select a skill from the database</small>
           </div>
-          <div class="form-group">
-            <label for="skill-difficulty">Difficulty:</label>
-            <select id="skill-difficulty" required>
-              <option value="">Select difficulty</option>
-              <option value="A">A - 0.1</option>
-              <option value="B">B - 0.2</option>
-              <option value="C">C - 0.3</option>
-              <option value="D">D - 0.4</option>
-              <option value="E">E - 0.5</option>
-              <option value="F">F - 0.6</option>
-              <option value="G">G - 0.7</option>
-              <option value="H">H - 0.8</option>
-              <option value="I">I - 0.9</option>
-            </select>
-          </div>
+          <!-- Hidden field to store difficulty from database selection -->
+          <input type="hidden" id="skill-difficulty" value="">
           <div class="form-group">
             <label for="skill-target-date">Target Date:</label>
             <input type="date" id="skill-target-date">
