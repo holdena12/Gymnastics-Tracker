@@ -29,6 +29,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "6.",
+      "realName": "6.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From stand, Swiss press to hdst. (2 s.).",
       "realName": "From stand, Swiss press to hdst. (2 s.).",
       "difficulty": "A",
@@ -57,6 +64,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "12.",
+      "realName": "12.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Rock to hdst. from prone position (2 s.).",
       "realName": "Rock to hdst. from prone position (2 s.).",
       "difficulty": "A",
@@ -75,6 +89,13 @@ export const skills = {
       "realName": "From Manna (2 s.), turn over (dislocation) to handstand (2 s.).",
       "difficulty": "D",
       "value": 0.4,
+      "isHeader": false
+    },
+    {
+      "name": "18.",
+      "realName": "18.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -99,6 +120,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "24.",
+      "realName": "24.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG I: Non-acrobatic Elements",
       "realName": "EG I: Non-acrobatic Elements",
       "difficulty": "A",
@@ -110,6 +138,13 @@ export const skills = {
       "realName": "Planche, legs straddle (2 s.).",
       "difficulty": "A",
       "value": 0.1,
+      "isHeader": false
+    },
+    {
+      "name": "30.",
+      "realName": "30.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -127,6 +162,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "36.",
+      "realName": "36.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From L-sit, etc., turn over bwd. to stand.",
       "realName": "From L-sit, etc., turn over bwd. to stand.",
       "difficulty": "A",
@@ -141,10 +183,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "42.",
+      "realName": "42.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Endo roll to handstand (2 s.). * **",
       "realName": "Endo roll to handstand (2 s.). * **",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "48.",
+      "realName": "48.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -162,10 +218,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "54.",
+      "realName": "54.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Cross or side split (stop required).",
       "realName": "Cross or side split (stop required).",
       "difficulty": "A",
       "value": 0.1,
+      "isHeader": false
+    },
+    {
+      "name": "60.",
+      "realName": "60.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -183,6 +253,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "66.",
+      "realName": "66.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Jump bwd. to front support.",
       "realName": "Jump bwd. to front support.",
       "difficulty": "A",
@@ -194,6 +271,13 @@ export const skills = {
       "realName": "Jump bwd. with pike-stretch or with 1/1 turn to front support (Endo)",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "72.",
+      "realName": "72.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -225,6 +309,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "78.",
+      "realName": "78.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "1 circle or flair.",
       "realName": "1 circle or flair.",
       "difficulty": "A",
@@ -253,10 +344,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "84.",
+      "realName": "84.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Lower from hdst. to flair or circle.",
       "realName": "Lower from hdst. to flair or circle.",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "90.",
+      "realName": "90.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -281,6 +386,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "96.",
+      "realName": "96.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG I: Non-acrobatic Elements",
       "realName": "EG I: Non-acrobatic Elements",
       "difficulty": "A",
@@ -299,6 +411,13 @@ export const skills = {
       "realName": "Flair with > 270º spindle (in 2 circles) directly to handstand and continue to circle or flair.",
       "difficulty": "D",
       "value": 0.4,
+      "isHeader": false
+    },
+    {
+      "name": "102.",
+      "realName": "102.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -323,6 +442,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "108",
+      "realName": "108",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Roll bwd. through hdst. with ½ t.",
       "realName": "Roll bwd. through hdst. with ½ t.",
       "difficulty": "A",
@@ -341,6 +467,20 @@ export const skills = {
       "realName": ".",
       "difficulty": "D",
       "value": 0.4,
+      "isHeader": false
+    },
+    {
+      "name": "114.",
+      "realName": "114.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "120.",
+      "realName": "120.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -430,8 +570,15 @@ export const skills = {
     {
       "name": "42. Double salto fwd. tucked with 3/2 turn.",
       "realName": "42. Double salto fwd. tucked with 3/2 turn.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "42. Double salto fwd. tucked with 3/2 turn. (Zapata)",
+      "realName": "42. Double salto fwd. tucked with 3/2 turn. (Zapata)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -444,8 +591,15 @@ export const skills = {
     {
       "name": "48. Double salto fwd. piked or straight with 3/2 turn.",
       "realName": "48. Double salto fwd. piked or straight with 3/2 turn.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "48. Double salto fwd. piked or straight with 3/2 turn. (Zapata 2)",
+      "realName": "48. Double salto fwd. piked or straight with 3/2 turn. (Zapata 2)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -493,6 +647,13 @@ export const skills = {
     {
       "name": "6. Double salto bwd. tucked with 3/1 t.",
       "realName": "6. Double salto bwd. tucked with 3/1 t.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "6. Double salto bwd. tucked with 3/1 t. (Ri Jong Song)",
+      "realName": "6. Double salto bwd. tucked with 3/1 t. (Ri Jong Song)",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false
@@ -549,13 +710,13 @@ export const skills = {
     {
       "name": "18. Triple salto bwd. tucked.",
       "realName": "18. Triple salto bwd. tucked.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
-      "name": "(Liukin)",
-      "realName": "(Liukin)",
+      "name": "18. Triple salto bwd. tucked. (Liukin)",
+      "realName": "18. Triple salto bwd. tucked. (Liukin)",
       "difficulty": "I",
       "value": 0.9,
       "isHeader": false
@@ -563,13 +724,13 @@ export const skills = {
     {
       "name": "24. Triple salto bwd. piked.",
       "realName": "24. Triple salto bwd. piked.",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
-      "name": "(Nagornyy)",
-      "realName": "(Nagornyy)",
+      "name": "24. Triple salto bwd. piked. (Nagornyy)",
+      "realName": "24. Triple salto bwd. piked. (Nagornyy)",
       "difficulty": "J",
       "value": 1,
       "isHeader": false
@@ -596,6 +757,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "30. Double salto tucked bwd. tucked with 7/2 t. (Minami)",
+      "realName": "30. Double salto tucked bwd. tucked with 7/2 t. (Minami)",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false
+    },
+    {
       "name": "Jump bwd. with ½ t. to roll fwd.",
       "realName": "Jump bwd. with ½ t. to roll fwd.",
       "difficulty": "A",
@@ -617,6 +785,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "36. Salto bwd. str. with 2/1 t and salto bwd piked. (Kolyvanov)",
+      "realName": "36. Salto bwd. str. with 2/1 t and salto bwd piked. (Kolyvanov)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Double salto bwd. straight or Double salto bwd. straight and with ½ t., or Arabian Jump bwd. to dbl. salto fwd. str. (Tamayo)",
       "realName": "Double salto bwd. straight or Double salto bwd. straight and with ½ t., or Arabian Jump bwd. to dbl. salto fwd. str. (Tamayo)",
       "difficulty": "E",
@@ -626,8 +801,15 @@ export const skills = {
     {
       "name": "42. Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t. G Also Hypolito",
       "realName": "42. Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t. G Also Hypolito",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "42. Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t. Also Hypolito",
+      "realName": "42. Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t. Also Hypolito",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -661,13 +843,13 @@ export const skills = {
     {
       "name": "66. Double salto bwd. str. with 3/1 t.",
       "realName": "66. Double salto bwd. str. with 3/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
-      "name": "(Shirai 3)",
-      "realName": "(Shirai 3)",
+      "name": "66. Double salto bwd. str. with 3/1 t. (Shirai 3)",
+      "realName": "66. Double salto bwd. str. with 3/1 t. (Shirai 3)",
       "difficulty": "I",
       "value": 0.9,
       "isHeader": false
@@ -680,8 +862,8 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "(Jarman)",
-      "realName": "(Jarman)",
+      "name": "72. Double salto bwd. str. with 7/2 t. (Jarman)",
+      "realName": "72. Double salto bwd. str. with 7/2 t. (Jarman)",
       "difficulty": "J",
       "value": 1,
       "isHeader": false
@@ -729,8 +911,8 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "(Shirai 2)",
-      "realName": "(Shirai 2)",
+      "name": "6.. Salto fwd. str. with 3/1 t. (Shirai 2)",
+      "realName": "6.. Salto fwd. str. with 3/1 t. (Shirai 2)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
@@ -771,6 +953,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "12. Salto fwd. str. with 7/2 t. (Goshima)",
+      "realName": "12. Salto fwd. str. with 7/2 t. (Goshima)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false
+    },
+    {
       "name": "Salto backwards tucked w. 3/2 t.",
       "realName": "Salto backwards tucked w. 3/2 t.",
       "difficulty": "B",
@@ -792,8 +981,8 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "(Shirai / Nguyen)",
-      "realName": "(Shirai / Nguyen)",
+      "name": "24. Salto bwd. str. with 4/1 t. (Shirai / Nguyen)",
+      "realName": "24. Salto bwd. str. with 4/1 t. (Shirai / Nguyen)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
@@ -829,6 +1018,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "6.",
+      "realName": "6.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Scissor forward with ½ t.",
       "realName": "Scissor forward with ½ t.",
       "difficulty": "A",
@@ -857,10 +1053,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "12.",
+      "realName": "12.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Double Scissor fwd. with travel sideways through handstand. (Stepanyan)",
       "realName": "Double Scissor fwd. with travel sideways through handstand. (Stepanyan)",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "18.",
+      "realName": "18.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -875,6 +1085,13 @@ export const skills = {
       "realName": "Scissor fwd. with ¼ t. through handstand on 1 pommel, lower to support with straddle legs on the other arm (with legs changing) (Li Ning) (Bryan)",
       "difficulty": "D",
       "value": 0.4,
+      "isHeader": false
+    },
+    {
+      "name": "24.",
+      "realName": "24.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -906,6 +1123,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "30.",
+      "realName": "30.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Scissor backward with ½ turn.",
       "realName": "Scissor backward with ½ turn.",
       "difficulty": "A",
@@ -920,10 +1144,31 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "36.",
+      "realName": "36.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Swing bwd. w. ¼ t. through handstand on 1 pommel (also with ¼ t. after), lower to support with straddle legs (with legs changing)",
       "realName": "Swing bwd. w. ¼ t. through handstand on 1 pommel (also with ¼ t. after), lower to support with straddle legs (with legs changing)",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "42.",
+      "realName": "42.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "48.",
+      "realName": "48.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1011,6 +1256,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "30. Any 1/1 spindle with both pommels between the hands (flair or circle). (Keikha 1) (Keikha 5)",
+      "realName": "30. Any 1/1 spindle with both pommels between the hands (flair or circle). (Keikha 1) (Keikha 5)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Any 1/1 spindle within max. 2 circles on the end. (Magyar)",
       "realName": "Any 1/1 spindle within max. 2 circles on the end. (Magyar)",
       "difficulty": "D",
@@ -1022,6 +1274,13 @@ export const skills = {
       "realName": "1/1 spindle w. legs straddle or together on the pommels inside max. 2 circles. (Berki)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "36. Cross support, 1/1 spindle with hands between the pommels max. 2 circles. (Mousichidis)",
+      "realName": "36. Cross support, 1/1 spindle with hands between the pommels max. 2 circles. (Mousichidis)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1067,6 +1326,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "54. Reverse Stöckli, DSA or pommel circle straddle through handstand, 3/3 travel (fwd.- bwd), 360° turn to flairs. (Busnari)",
+      "realName": "54. Reverse Stöckli, DSA or pommel circle straddle through handstand, 3/3 travel (fwd.- bwd), 360° turn to flairs. (Busnari)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Double rear (kehr).",
       "realName": "Double rear (kehr).",
       "difficulty": "A",
@@ -1095,10 +1361,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "60.",
+      "realName": "60.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Direct Tramlot.",
       "realName": "Direct Tramlot.",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "66.",
+      "realName": "66.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1120,6 +1400,13 @@ export const skills = {
       "realName": "Reverse Stöckli with 360° t. on 1 pommel. (Bezugo)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "72.",
+      "realName": "72.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1151,6 +1438,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "78.",
+      "realName": "78.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Wendeswing fwd. with ½ t. to support fwd. on the end, from side support using 1 or 2 pommels.",
       "realName": "Wendeswing fwd. with ½ t. to support fwd. on the end, from side support using 1 or 2 pommels.",
       "difficulty": "A",
@@ -1158,10 +1452,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "84.",
+      "realName": "84.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Russian wendeswing with 180° or 270°.",
       "realName": "Russian wendeswing with 180° or 270°.",
       "difficulty": "A",
       "value": 0.1,
+      "isHeader": false
+    },
+    {
+      "name": "90.",
+      "realName": "90.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1186,6 +1494,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "96.",
+      "realName": "96.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
       "realName": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
       "difficulty": "A",
@@ -1197,6 +1512,13 @@ export const skills = {
       "realName": "On the leather, Russian wendeswing with 180°, or 270° also with travel.",
       "difficulty": "A",
       "value": 0.1,
+      "isHeader": false
+    },
+    {
+      "name": "102.",
+      "realName": "102.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1218,6 +1540,13 @@ export const skills = {
       "realName": "On the leather, Russian wendeswing with 1080° or more.",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "108.",
+      "realName": "108.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1246,6 +1575,20 @@ export const skills = {
       "realName": "1080° Russian wendeswing or more on 1 pommel or between the pommels.",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "114.",
+      "realName": "114.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "120.",
+      "realName": "120.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1438,6 +1781,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "54.",
+      "realName": "54.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From support on 1 pommel, Russian wendeswing fwd. to other end without support on or between the pommels (side to side support, side to cross support).",
       "realName": "From support on 1 pommel, Russian wendeswing fwd. to other end without support on or between the pommels (side to side support, side to cross support).",
       "difficulty": "C",
@@ -1622,6 +1972,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "6.",
+      "realName": "6.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From any support scale, swallow or swing bwd in support, roll forward to bwd swing in hang.",
       "realName": "From any support scale, swallow or swing bwd in support, roll forward to bwd swing in hang.",
       "difficulty": "A",
@@ -1633,6 +1990,20 @@ export const skills = {
       "realName": "Uprise fwd and counter salto fwd. to bwd swing in hang. (Chechi)",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "12.",
+      "realName": "12.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "18.",
+      "realName": "18.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1664,6 +2035,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "24.",
+      "realName": "24.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG I: Kip and swing elements & swings through or to handstand",
       "realName": "EG I: Kip and swing elements & swings through or to handstand",
       "difficulty": "A",
@@ -1678,6 +2056,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "30.",
+      "realName": "30.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Uprise bwd. to support.",
       "realName": "Uprise bwd. to support.",
       "difficulty": "A",
@@ -1689,6 +2074,13 @@ export const skills = {
       "realName": "Uprise bwd. str. through handstand.",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "36.",
+      "realName": "36.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1713,6 +2105,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "42.",
+      "realName": "42.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Slow inlocate from hang.",
       "realName": "Slow inlocate from hang.",
       "difficulty": "A",
@@ -1734,6 +2133,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "48.",
+      "realName": "48.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG I: Kip and swing elements & swings through or to handstand",
       "realName": "EG I: Kip and swing elements & swings through or to handstand",
       "difficulty": "A",
@@ -1748,6 +2154,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "54.",
+      "realName": "54.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Back kip with bent arms to support.",
       "realName": "Back kip with bent arms to support.",
       "difficulty": "A",
@@ -1759,6 +2172,13 @@ export const skills = {
       "realName": "Back kip to support.",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "60.",
+      "realName": "60.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1783,10 +2203,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "66.",
+      "realName": "66.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From support or cross, felge bwd. piked or straight with bent arms to support.",
       "realName": "From support or cross, felge bwd. piked or straight with bent arms to support.",
       "difficulty": "A",
       "value": 0.1,
+      "isHeader": false
+    },
+    {
+      "name": "72.",
+      "realName": "72.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1811,10 +2245,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "78.",
+      "realName": "78.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Uprise bwd. to handstand or giant swing fwd to handstand (2 s.).",
       "realName": "Uprise bwd. to handstand or giant swing fwd to handstand (2 s.).",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "84.",
+      "realName": "84.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -1836,6 +2284,20 @@ export const skills = {
       "realName": "Honma str. and swing bwd. to handstand (2 s.).",
       "difficulty": "D",
       "value": 0.4,
+      "isHeader": false
+    },
+    {
+      "name": "90.",
+      "realName": "90.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "96.",
+      "realName": "96.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2000,6 +2462,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "42",
+      "realName": "42",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG II: Strength elements and hold elements (2 sec.)",
       "realName": "EG II: Strength elements and hold elements (2 sec.)",
       "difficulty": "A",
@@ -2049,6 +2518,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "60. Through hanging scale rearways pull with str. body through cross to inv. swallow (2 s.). (Zahran)",
+      "realName": "60. Through hanging scale rearways pull with str. body through cross to inv. swallow (2 s.). (Zahran)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From hdst., lower horiz. through swallow to back lever (2 s.).",
       "realName": "From hdst., lower horiz. through swallow to back lever (2 s.).",
       "difficulty": "B",
@@ -2077,6 +2553,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "66. From hang vertical pull up, slowly with straight arms through cross to inverted swallow (2 s.). (Tulloch 2)",
+      "realName": "66. From hang vertical pull up, slowly with straight arms through cross to inverted swallow (2 s.). (Tulloch 2)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false
+    },
+    {
       "name": "From handstand, lower slowly through inverted cross to inverted hang.",
       "realName": "From handstand, lower slowly through inverted cross to inverted hang.",
       "difficulty": "B",
@@ -2095,6 +2578,13 @@ export const skills = {
       "realName": "From swallow, lower slowly to hanging scale rw, press to swallow (2 s.).",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "72. From hanging scale rw. press to swallow (also to Support Scale) (2 s.).",
+      "realName": "72. From hanging scale rw. press to swallow (also to Support Scale) (2 s.).",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2119,6 +2609,20 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "78. From cross, press with straight body to inverted cross (2 s.).",
+      "realName": "78. From cross, press with straight body to inverted cross (2 s.).",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "84. From swallow, press w. str. body to inverted cross (2 s.).",
+      "realName": "84. From swallow, press w. str. body to inverted cross (2 s.).",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From cross, press to planche without first going to support (2 s.).",
       "realName": "From cross, press to planche without first going to support (2 s.).",
       "difficulty": "D",
@@ -2130,6 +2634,13 @@ export const skills = {
       "realName": "From cross, press to swallow (2 s.).",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "90. Through hang rearways press and straight body to inverted cross (2 s.) (Carmona)",
+      "realName": "90. Through hang rearways press and straight body to inverted cross (2 s.) (Carmona)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -2161,10 +2672,31 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "102.",
+      "realName": "102.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Slow Roll bwd. with str. body to swallow (2 s.).",
       "realName": "Slow Roll bwd. with str. body to swallow (2 s.).",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "108.Roll backward slowly with straight arms and body to inverted cross through swallow. (Simonov)",
+      "realName": "108.Roll backward slowly with straight arms and body to inverted cross through swallow. (Simonov)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "114.",
+      "realName": "114.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2179,6 +2711,13 @@ export const skills = {
       "realName": "Slow roll fwd. with straight body through cross to inverted cross (2 s.). (Wynn)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "120. Azarian to inverted Swallow (2 s.). (Tulloch)",
+      "realName": "120. Azarian to inverted Swallow (2 s.). (Tulloch)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2203,6 +2742,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "126.",
+      "realName": "126.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From hang vertical pull up support and press to hdst. with straight body and straight arms.",
       "realName": "From hang vertical pull up support and press to hdst. with straight body and straight arms.",
       "difficulty": "D",
@@ -2210,10 +2756,31 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "132. From hang vertical pull up to swallow (2 s.). (Balandin 1)",
+      "realName": "132. From hang vertical pull up to swallow (2 s.). (Balandin 1)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "From hang vertical pull up thr. swallow to sup. scale (2 s.). (Balandin 3)",
       "realName": "From hang vertical pull up thr. swallow to sup. scale (2 s.). (Balandin 3)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "138. From hang vertical pull up to inv. cross (2 s.). (Balandin 2)",
+      "realName": "138. From hang vertical pull up to inv. cross (2 s.). (Balandin 2)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false
+    },
+    {
+      "name": "144.",
+      "realName": "144.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2329,6 +2896,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "42. Kip to inverted swallow (2 s.).",
+      "realName": "42. Kip to inverted swallow (2 s.).",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Back kip to cross or L-cross (2 s.).",
       "realName": "Back kip to cross or L-cross (2 s.).",
       "difficulty": "C",
@@ -2396,6 +2970,13 @@ export const skills = {
       "realName": "Felge upward to Swallow (2 s.).",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "60. Uprise forward to inverted swallow (2 s.). (Rodrigues)",
+      "realName": "60. Uprise forward to inverted swallow (2 s.). (Rodrigues)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2562,22 +3143,22 @@ export const skills = {
     {
       "name": "36. Triple salto bwd. tucked.",
       "realName": "36. Triple salto bwd. tucked.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
       "name": "42. Triple salto bwd. piked.",
       "realName": "42. Triple salto bwd. piked.",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false
     },
     {
-      "name": "(Whittenburg)",
-      "realName": "(Whittenburg)",
-      "difficulty": "F",
-      "value": 0.6,
+      "name": "42. Triple salto bwd. piked. (Whittenburg)",
+      "realName": "42. Triple salto bwd. piked. (Whittenburg)",
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false
     },
     {
@@ -2597,6 +3178,13 @@ export const skills = {
     {
       "name": "48. Double salto bwd. t. with 5/2 t.",
       "realName": "48. Double salto bwd. t. with 5/2 t.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "48. Double salto bwd. t. with 5/2 t. (Tuuha)",
+      "realName": "48. Double salto bwd. t. with 5/2 t. (Tuuha)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
@@ -2625,8 +3213,8 @@ export const skills = {
     {
       "name": "54. Double salto bwd. straight with 3/2 or 2/1 t.",
       "realName": "54. Double salto bwd. straight with 3/2 or 2/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2675,6 +3263,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "6. Fwd. uprise with Stützkehr 3/4 t. or 1/4 t. to handstand followed by a kip on one rail",
+      "realName": "6. Fwd. uprise with Stützkehr 3/4 t. or 1/4 t. to handstand followed by a kip on one rail",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Fwd. uprise with ¼ t. to hang on 1 rail.",
       "realName": "Fwd. uprise with ¼ t. to hang on 1 rail.",
       "difficulty": "A",
@@ -2693,6 +3288,13 @@ export const skills = {
       "realName": "Fwd. uprise to Makuts to upper arm.",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "12. Fwd. uprise to Makuts to support. (Tsolakidis 1)",
+      "realName": "12. Fwd. uprise to Makuts to support. (Tsolakidis 1)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -2717,10 +3319,10 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "18. Fwd. uprise with 3/2 t. to handstand.",
-      "realName": "18. Fwd. uprise with 3/2 t. to handstand.",
-      "difficulty": "I",
-      "value": 0.9,
+      "name": "18. Fwd. uprise with 3/2 t. to handstand. (Tsolakidis 2)",
+      "realName": "18. Fwd. uprise with 3/2 t. to handstand. (Tsolakidis 2)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2740,6 +3342,13 @@ export const skills = {
     {
       "name": "24. Roll bwd. with salto bwd. tuck to upper arm hang.",
       "realName": "24. Roll bwd. with salto bwd. tuck to upper arm hang.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "24. Roll bwd. with salto bwd. tuck to upper arm hang. (Dimitrenko)",
+      "realName": "24. Roll bwd. with salto bwd. tuck to upper arm hang. (Dimitrenko)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
@@ -2766,6 +3375,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "30. Roll bwd. with salto bwd. pike to upper arm hang (Li Xiaopeng)",
+      "realName": "30. Roll bwd. with salto bwd. pike to upper arm hang (Li Xiaopeng)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false
+    },
+    {
       "name": "Roll bwd. with ½ t. tuck to upper arm hang. (Harada)",
       "realName": "Roll bwd. with ½ t. tuck to upper arm hang. (Harada)",
       "difficulty": "D",
@@ -2777,6 +3393,13 @@ export const skills = {
       "realName": "Roll bwd. with ½ t. tuck to hang. (Dalton)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "36.",
+      "realName": "36.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2801,6 +3424,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "42.",
+      "realName": "42.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Bwd. uprise with ½ t. and straddle cut bwd. to upper arm hang.",
       "realName": "Bwd. uprise with ½ t. and straddle cut bwd. to upper arm hang.",
       "difficulty": "B",
@@ -2812,6 +3442,13 @@ export const skills = {
       "realName": "Bwd. uprise with ½ t. a. straddled cut bwd. to support.",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "48.",
+      "realName": "48.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2864,6 +3501,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "60. Bwd. uprise and 5/4 salto fwd. straddled to hang. (Pakhniuk 2)",
+      "realName": "60. Bwd. uprise and 5/4 salto fwd. straddled to hang. (Pakhniuk 2)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Bwd. uprise and straddled cut or flank over to support. bent arm.",
       "realName": "Bwd. uprise and straddled cut or flank over to support. bent arm.",
       "difficulty": "A",
@@ -2875,6 +3519,13 @@ export const skills = {
       "realName": "Bwd. uprise and straddled cut or flank over to support straight. arm.",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "66.",
+      "realName": "66.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2913,6 +3564,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "6.",
+      "realName": "6.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Any L-sit on 1 or 2 rails (2 s.)",
       "realName": "Any L-sit on 1 or 2 rails (2 s.)",
       "difficulty": "A",
@@ -2941,6 +3599,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "12.",
+      "realName": "12.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Straddle cut bwd. to support.",
       "realName": "Straddle cut bwd. to support.",
       "difficulty": "A",
@@ -2962,10 +3627,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "18.",
+      "realName": "18.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Straddle cut fwd. to support or L-sit (2 s.). .",
       "realName": "Straddle cut fwd. to support or L-sit (2 s.). .",
       "difficulty": "A",
       "value": 0.1,
+      "isHeader": false
+    },
+    {
+      "name": "24.",
+      "realName": "24.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2990,6 +3669,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "30.",
+      "realName": "30.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Swing fwd. with 1/1 t. to upper arm hang. (Carminucci)",
       "realName": "Swing fwd. with 1/1 t. to upper arm hang. (Carminucci)",
       "difficulty": "B",
@@ -3008,6 +3694,13 @@ export const skills = {
       "realName": "¾ Diamidov & ¾ Healy on the other hand to support (Makuts)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "36. Swing forward with 5/4 t. on one arm through handstand. and Healy to support. (Zonderland)",
+      "realName": "36. Swing forward with 5/4 t. on one arm through handstand. and Healy to support. (Zonderland)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3060,6 +3753,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "48. Double salto pike to up. arm hang. (Huang Liping)",
+      "realName": "48. Double salto pike to up. arm hang. (Huang Liping)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG II: Elements in support or through support on 2 bars",
       "realName": "EG II: Elements in support or through support on 2 bars",
       "difficulty": "A",
@@ -3081,6 +3781,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "54. Double salto backwards with half turn to upper arm. (Kuavita)",
+      "realName": "54. Double salto backwards with half turn to upper arm. (Kuavita)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false
+    },
+    {
       "name": "Handstand. with ¼ t. and fall back to support with ¼ t.",
       "realName": "Handstand. with ¼ t. and fall back to support with ¼ t.",
       "difficulty": "B",
@@ -3092,6 +3799,13 @@ export const skills = {
       "realName": "Handstand . with ¾ t. and fall back to support with ¼ t. (Brändström)",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "60.",
+      "realName": "60.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3113,6 +3827,13 @@ export const skills = {
       "realName": "Stützkehr bwd. with straddle cut bwd. to support",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "72.",
+      "realName": "72.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3151,6 +3872,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "78.",
+      "realName": "78.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": ".",
       "realName": ".",
       "difficulty": "B",
@@ -3176,6 +3904,13 @@ export const skills = {
       "realName": "Swing bwd. with 1/1 t. hop to handstand (or",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "84. Gatson 1 with ¼ t to handstand on 1 rail and ¼ t. handstand on 2 rails. (Gatson 2)",
+      "realName": "84. Gatson 1 with ¼ t to handstand on 1 rail and ¼ t. handstand on 2 rails. (Gatson 2)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3207,6 +3942,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "90.",
+      "realName": "90.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Any handstand . with ½ turn. (also with 2 s.)",
       "realName": "Any handstand . with ½ turn. (also with 2 s.)",
       "difficulty": "A",
@@ -3218,6 +3960,13 @@ export const skills = {
       "realName": "Any 1/1 pirouette in handstand on 2 rails.",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "96.",
+      "realName": "96.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3239,6 +3988,13 @@ export const skills = {
       "realName": "5/4 salto fwd. straddle directly to hang. (Lee Chul Hon/Sasaki)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "102.",
+      "realName": "102.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3267,6 +4023,13 @@ export const skills = {
       "realName": "5/4 salto fwd. straddled to bent arm support.",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "108.",
+      "realName": "108.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3302,6 +4065,13 @@ export const skills = {
       "realName": "Salto fwd. with 1/1 t. to upper arm hang. (Urzica)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "120.",
+      "realName": "120.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3403,6 +4173,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "30. Giant swing Diamidov with ¼ or ½ t. to handstand.",
+      "realName": "30. Giant swing Diamidov with ¼ or ½ t. to handstand.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Swing down with salto bwd. straight to hang",
       "realName": "Swing down with salto bwd. straight to hang",
       "difficulty": "B",
@@ -3424,10 +4201,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "42. Giant swing. bwd. with Diamidov to handstand to one rail (connected to Healy type element).",
+      "realName": "42. Giant swing. bwd. with Diamidov to handstand to one rail (connected to Healy type element).",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Giant swing bwd. with Makuts to upper hang. (Dauser)",
       "realName": "Giant swing bwd. with Makuts to upper hang. (Dauser)",
       "difficulty": "D",
       "value": 0.4,
+      "isHeader": false
+    },
+    {
+      "name": "48. Giant swing bwd. with Makuts. (Baumann)",
+      "realName": "48. Giant swing bwd. with Makuts. (Baumann)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3456,6 +4247,13 @@ export const skills = {
       "realName": "Giant swing bwd. with ½ t. and straddled cut bwd. to upper arms. (Sosa)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "54.",
+      "realName": "54.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3503,8 +4301,15 @@ export const skills = {
     {
       "name": "72. Giant swing bwd. with ½ t. and 3/2 salto fwd to upp arm hang.",
       "realName": "72. Giant swing bwd. with ½ t. and 3/2 salto fwd to upp arm hang.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "72. Giant swing bwd. with ½ t. and 3/2 salto fwd to upp arm hang. (Tanaka)",
+      "realName": "72. Giant swing bwd. with ½ t. and 3/2 salto fwd to upp arm hang. (Tanaka)",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3545,8 +4350,15 @@ export const skills = {
     {
       "name": "78. Giant swing backward with ½ t. and 3/2 salto forward piked to upper arm hang.",
       "realName": "78. Giant swing backward with ½ t. and 3/2 salto forward piked to upper arm hang.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "78. Giant swing backward with ½ t. and 3/2 salto forward piked to upper arm hang. (Esparza)",
+      "realName": "78. Giant swing backward with ½ t. and 3/2 salto forward piked to upper arm hang. (Esparza)",
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false
     },
     {
@@ -3568,6 +4380,13 @@ export const skills = {
       "realName": "Giant swing bwd. and salto with ½ str to upper arm hang (Fokin)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "84.",
+      "realName": "84.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3662,10 +4481,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "108. Felge with 1/1 t. to handstand. (Teng Hai Bin)",
+      "realName": "108. Felge with 1/1 t. to handstand. (Teng Hai Bin)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Cast to straddle cut backward to handstand. (Arican)",
       "realName": "Cast to straddle cut backward to handstand. (Arican)",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "114. Felge with 5/4 t. to handstand. (Zhou Shixiong)",
+      "realName": "114. Felge with 5/4 t. to handstand. (Zhou Shixiong)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -3694,6 +4527,13 @@ export const skills = {
       "realName": "Felge to one rail handstand (connected to Healy type element).",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "120. Felge through handstand to Makuts. (Yamamuro)",
+      "realName": "120. Felge through handstand to Makuts. (Yamamuro)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -3732,6 +4572,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "126. Felge with salto bwd p. to up. arm hang. (Juarez 1)",
+      "realName": "126. Felge with salto bwd p. to up. arm hang. (Juarez 1)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Felge forward to support.",
       "realName": "Felge forward to support.",
       "difficulty": "A",
@@ -3760,10 +4607,31 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "132.",
+      "realName": "132.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Shoot up to handstand and fall back to support with ¼ turn. (Malone)",
       "realName": "Shoot up to handstand and fall back to support with ¼ turn. (Malone)",
       "difficulty": "E",
       "value": 0.5,
+      "isHeader": false
+    },
+    {
+      "name": "138.",
+      "realName": "138.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "144.",
+      "realName": "144.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3790,6 +4658,13 @@ export const skills = {
     {
       "name": "6. Double salto fwd. p.",
       "realName": "6. Double salto fwd. p.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "6. Double salto fwd. p. (Belyavskiy)",
+      "realName": "6. Double salto fwd. p. (Belyavskiy)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
@@ -3830,6 +4705,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "12. Double salto fwd. tucked with 1/1 t. (Larduet)",
+      "realName": "12. Double salto fwd. tucked with 1/1 t. (Larduet)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false
+    },
+    {
       "name": "Double salto fwd. tuck from end.",
       "realName": "Double salto fwd. tuck from end.",
       "difficulty": "C",
@@ -3846,6 +4728,13 @@ export const skills = {
     {
       "name": "18. Double salto fwd. piked with ½ t.",
       "realName": "18. Double salto fwd. piked with ½ t.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "18. Double salto fwd. piked with ½ t. (Dalaloyan)",
+      "realName": "18. Double salto fwd. piked with ½ t. (Dalaloyan)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
@@ -3914,6 +4803,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "36. Double salto bwd. t. with 1/1 t. (Hiroyuki Kato)",
+      "realName": "36. Double salto bwd. t. with 1/1 t. (Hiroyuki Kato)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false
+    },
+    {
       "name": "Double salto bwd. tucked with ½ t. or salto bwd. ½ tucked to salto fwd. tucked.",
       "realName": "Double salto bwd. tucked with ½ t. or salto bwd. ½ tucked to salto fwd. tucked.",
       "difficulty": "D",
@@ -3975,6 +4871,13 @@ export const skills = {
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
+    },
+    {
+      "name": "79.",
+      "realName": "79.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
     }
   ],
   "High Bar": [
@@ -4000,6 +4903,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "6.",
+      "realName": "6.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Back uprise to handstand with ½ turn.",
       "realName": "Back uprise to handstand with ½ turn.",
       "difficulty": "A",
@@ -4018,6 +4928,13 @@ export const skills = {
       "realName": "Swing bwd. and pirouette to support.",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "12.",
+      "realName": "12.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4042,6 +4959,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "18.",
+      "realName": "18.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "½ t. thr. hdst.",
       "realName": "½ t. thr. hdst.",
       "difficulty": "A",
@@ -4060,6 +4984,13 @@ export const skills = {
       "realName": "Flying giant swing fwd. with 1/1 t.",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "24.",
+      "realName": "24.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4084,6 +5015,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "30.",
+      "realName": "30.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Giant swing bwd.",
       "realName": "Giant swing bwd.",
       "difficulty": "A",
@@ -4098,10 +5036,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "36.",
+      "realName": "36.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "½ t.bwd. thr. hdst.",
       "realName": "½ t.bwd. thr. hdst.",
       "difficulty": "A",
       "value": 0.1,
+      "isHeader": false
+    },
+    {
+      "name": "42.",
+      "realName": "42.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4123,6 +5075,13 @@ export const skills = {
       "realName": "Flying giant swing bwd. with 1/1 t. (Quast)",
       "difficulty": "C",
       "value": 0.3,
+      "isHeader": false
+    },
+    {
+      "name": "48.",
+      "realName": "48.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4154,6 +5113,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "54.",
+      "realName": "54.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "1/2t t. bwd. thr. hdst. to el-grip",
       "realName": "1/2t t. bwd. thr. hdst. to el-grip",
       "difficulty": "B",
@@ -4161,10 +5127,24 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "60.",
+      "realName": "60.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Long swing fwd. with hop to el-grip.",
       "realName": "Long swing fwd. with hop to el-grip.",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false
+    },
+    {
+      "name": "66.",
+      "realName": "66.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4186,6 +5166,13 @@ export const skills = {
       "realName": "Giant swing rw. bwd. (Czech giant swing).",
       "difficulty": "D",
       "value": 0.4,
+      "isHeader": false
+    },
+    {
+      "name": "72.",
+      "realName": "72.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4217,6 +5204,34 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "78.",
+      "realName": "78.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "84.",
+      "realName": "84.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "90.",
+      "realName": "90.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "96.",
+      "realName": "96.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG II: Flight elements",
       "realName": "EG II: Flight elements",
       "difficulty": "A",
@@ -4238,10 +5253,10 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "6. Back uprise and hecht straight with 3/2 t. to hang.",
-      "realName": "6. Back uprise and hecht straight with 3/2 t. to hang.",
-      "difficulty": "I",
-      "value": 0.9,
+      "name": "6. Back uprise and hecht straight with 3/2 t. to hang. (Wals trom)",
+      "realName": "6. Back uprise and hecht straight with 3/2 t. to hang. (Wals trom)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -4266,8 +5281,8 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "(Liukin)",
-      "realName": "(Liukin)",
+      "name": "18. Tkatchev straight with 1/1 t. (Liukin)",
+      "realName": "18. Tkatchev straight with 1/1 t. (Liukin)",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false
@@ -4329,10 +5344,10 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "36. Piatti straight with 1/1 turn.",
-      "realName": "36. Piatti straight with 1/1 turn.",
-      "difficulty": "F",
-      "value": 0.6,
+      "name": "36. Piatti straight with 1/1 turn. (Suarez)",
+      "realName": "36. Piatti straight with 1/1 turn. (Suarez)",
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false
     },
     {
@@ -4361,6 +5376,13 @@ export const skills = {
       "realName": "42. Salto fwd. straight with 1/1 t. also from el grip",
       "difficulty": "F",
       "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "42. Salto fwd. straight with 1/1 t. also from el grip (Winkler - Pogorelev)",
+      "realName": "42. Salto fwd. straight with 1/1 t. also from el grip (Winkler - Pogorelev)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -4415,8 +5437,15 @@ export const skills = {
     {
       "name": "60. Swing fwd. and salto bwd. w. 3/2 t. to hang.",
       "realName": "60. Swing fwd. and salto bwd. w. 3/2 t. to hang.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "60. Swing fwd. and salto bwd. w. 3/2 t. to hang. (Deff)",
+      "realName": "60. Swing fwd. and salto bwd. w. 3/2 t. to hang. (Deff)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -4427,17 +5456,17 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "66. Gaylord with ½ t.",
-      "realName": "66. Gaylord with ½ t.",
-      "difficulty": "F",
-      "value": 0.6,
+      "name": "66. Gaylord with ½ t. (Pegan)",
+      "realName": "66. Gaylord with ½ t. (Pegan)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
-      "name": "72. Gaylord with 1/1 t.",
-      "realName": "72. Gaylord with 1/1 t.",
-      "difficulty": "F",
-      "value": 0.6,
+      "name": "72. Gaylord with 1/1 t. (Koudinov)",
+      "realName": "72. Gaylord with 1/1 t. (Koudinov)",
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false
     },
     {
@@ -4476,6 +5505,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "84. Pegan piked. (Maras)",
+      "realName": "84. Pegan piked. (Maras)",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false
+    },
+    {
       "name": "Double salto bwd. t. over the bar. (Kovacs)",
       "realName": "Double salto bwd. t. over the bar. (Kovacs)",
       "difficulty": "D",
@@ -4490,10 +5526,10 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "90. Kovacs with 2/1 t.",
-      "realName": "90. Kovacs with 2/1 t.",
-      "difficulty": "F",
-      "value": 0.6,
+      "name": "90. Kovacs with 2/1 t. (Bretschneider)",
+      "realName": "90. Kovacs with 2/1 t. (Bretschneider)",
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false
     },
     {
@@ -4504,10 +5540,10 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "96. Kovacs straight or piked with 1/1 turn.",
-      "realName": "96. Kovacs straight or piked with 1/1 turn.",
-      "difficulty": "F",
-      "value": 0.6,
+      "name": "96. Kovacs straight or piked with 1/1 turn. (Cassina) (Pineda - piked)",
+      "realName": "96. Kovacs straight or piked with 1/1 turn. (Cassina) (Pineda - piked)",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
@@ -4518,17 +5554,31 @@ export const skills = {
       "isHeader": true
     },
     {
-      "name": "102. Kovacs straight with 2/1 turn.",
-      "realName": "102. Kovacs straight with 2/1 turn.",
+      "name": "102. Kovacs straight with 2/1 turn. (Miyachi)",
+      "realName": "102. Kovacs straight with 2/1 turn. (Miyachi)",
+      "difficulty": "I",
+      "value": 0.9,
+      "isHeader": false
+    },
+    {
+      "name": "108. Kovacs with 3/2 t. to mix grip. (Shaham)",
+      "realName": "108. Kovacs with 3/2 t. to mix grip. (Shaham)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false
+    },
+    {
+      "name": "114.",
+      "realName": "114.",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
     },
     {
-      "name": "108. Kovacs with 3/2 t. to mix grip.",
-      "realName": "108. Kovacs with 3/2 t. to mix grip.",
-      "difficulty": "I",
-      "value": 0.9,
+      "name": "120.",
+      "realName": "120.",
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4742,6 +5792,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "102.",
+      "realName": "102.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "Stoop circle fwd. to straddle cut to hang or sup.",
       "realName": "Stoop circle fwd. to straddle cut to hang or sup.",
       "difficulty": "A",
@@ -4777,6 +5834,13 @@ export const skills = {
       "isHeader": false
     },
     {
+      "name": "108.",
+      "realName": "108.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
       "name": "EG IV: Dismounts",
       "realName": "EG IV: Dismounts",
       "difficulty": "A",
@@ -4807,13 +5871,13 @@ export const skills = {
     {
       "name": "6. Triple salto fwd. t. or with ½ t.",
       "realName": "6. Triple salto fwd. t. or with ½ t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
-      "name": "(Rumbutis)",
-      "realName": "(Rumbutis)",
+      "name": "6. Triple salto fwd. t. or with ½ t. (Rumbutis)",
+      "realName": "6. Triple salto fwd. t. or with ½ t. (Rumbutis)",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false
@@ -4940,27 +6004,27 @@ export const skills = {
     {
       "name": "42. Double salto bwd. str. with 3/1 t.",
       "realName": "42. Double salto bwd. str. with 3/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
-      "isHeader": false
-    },
-    {
-      "name": "48. Triple salto bwd. t. or over the bar.",
-      "realName": "48. Triple salto bwd. t. or over the bar.",
-      "difficulty": "I",
-      "value": 0.9,
-      "isHeader": false
-    },
-    {
-      "name": "(Andrianov)",
-      "realName": "(Andrianov)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
     },
     {
-      "name": "(Hoffmann)",
-      "realName": "(Hoffmann)",
+      "name": "42. Double salto bwd. str. with 3/1 t. (Fedorchenko)",
+      "realName": "42. Double salto bwd. str. with 3/1 t. (Fedorchenko)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "48. Triple salto bwd. t. or over the bar.",
+      "realName": "48. Triple salto bwd. t. or over the bar.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "48. Triple salto bwd. t. or over the bar. (Andrianov) (Hoffmann)",
+      "realName": "48. Triple salto bwd. t. or over the bar. (Andrianov) (Hoffmann)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false
@@ -4996,13 +6060,13 @@ export const skills = {
     {
       "name": "54. Triple salto bwd. p.",
       "realName": "54. Triple salto bwd. p.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
-      "name": "(Fardan)",
-      "realName": "(Fardan)",
+      "name": "54. Triple salto bwd. p. (Fardan)",
+      "realName": "54. Triple salto bwd. p. (Fardan)",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false
@@ -5031,13 +6095,13 @@ export const skills = {
     {
       "name": "60. Triple salto bwd. t. with 1/1 t.",
       "realName": "60. Triple salto bwd. t. with 1/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
-      "name": "(Belle)",
-      "realName": "(Belle)",
+      "name": "60. Triple salto bwd. t. with 1/1 t. (Belle)",
+      "realName": "60. Triple salto bwd. t. with 1/1 t. (Belle)",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false
@@ -5064,4 +6128,4 @@ export const skills = {
       "isHeader": false
     }
   ]
-};
+};export default skills;

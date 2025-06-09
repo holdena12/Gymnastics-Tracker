@@ -1408,6 +1408,12 @@ class GymnasticsTracker {
         document.getElementById('import-data-input').click();
       } else if (e.target.matches('#delete-profile-btn')) {
         this.showDeleteConfirmation();
+      } else if (e.target.matches('#create-new-profile-btn')) {
+        // Close the switch profile modal and go to registration
+        this.closeModal(document.getElementById('switch-profile-modal'));
+        this.showLoginPage();
+        // Switch to the Create Profile tab
+        document.querySelector('.login-tab[data-tab="register"]').click();
       }
     });
 

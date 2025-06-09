@@ -493,8 +493,8 @@ export const skills = {
     {
       "name": "6. Double salto bwd. tucked with 3/1 t.",
       "realName": "6. Double salto bwd. tucked with 3/1 t.",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false
     },
     {
@@ -724,8 +724,8 @@ export const skills = {
     {
       "name": "6.. Salto fwd. str. with 3/1 t.",
       "realName": "6.. Salto fwd. str. with 3/1 t.",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false
     },
     {
@@ -796,6 +796,13 @@ export const skills = {
       "realName": "(Shirai / Nguyen)",
       "difficulty": "F",
       "value": 0.6,
+      "isHeader": false
+    },
+    {
+      "name": "Swing bwd. and salto fwd t. or strd. to hang, also from el-grip. (Jäger)",
+      "realName": "Swing bwd. and salto fwd t. or strd. to hang, also from el-grip. (Jäger)",
+      "difficulty": "C",
+      "value": 0.3,
       "isHeader": false
     }
   ],
@@ -2635,6 +2642,13 @@ export const skills = {
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false
+    },
+    {
+      "name": "Swing bwd. and salto fwd t. or strd. to hang, also from el-grip. (Jäger)",
+      "realName": "Swing bwd. and salto fwd t. or strd. to hang, also from el-grip. (Jäger)",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false
     }
   ],
   "Vault": [],
@@ -4336,8 +4350,8 @@ export const skills = {
       "isHeader": false
     },
     {
-      "name": "Swing bwd. and salto fwd t. or strad. to hang, also from el-grip”. (Jäger)",
-      "realName": "Swing bwd. and salto fwd t. or strad. to hang, also from el-grip”. (Jäger)",
+      "name": "Swing bwd. and salto fwd t. or strad. to hang, also from el-grip". (Jäger)",
+      "realName": "Swing bwd. and salto fwd t. or strad. to hang, also from el-grip". (Jäger)",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false
@@ -5065,3 +5079,5 @@ export const skills = {
     }
   ]
 };
+
+export default skills;

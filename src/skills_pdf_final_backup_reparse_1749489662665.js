@@ -493,8 +493,8 @@ export const skills = {
     {
       "name": "6. Double salto bwd. tucked with 3/1 t.",
       "realName": "6. Double salto bwd. tucked with 3/1 t.",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false
     },
     {
@@ -724,8 +724,8 @@ export const skills = {
     {
       "name": "6.. Salto fwd. str. with 3/1 t.",
       "realName": "6.. Salto fwd. str. with 3/1 t.",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false
     },
     {
@@ -5064,4 +5064,4 @@ export const skills = {
       "isHeader": false
     }
   ]
-};
+};export default skills;

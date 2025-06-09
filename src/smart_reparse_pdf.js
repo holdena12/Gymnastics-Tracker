@@ -28,35 +28,22 @@ const DIFFICULTY_MAP = {
 
 function parseHighDifficultySkill(skillText) {
   if (!skillText || skillText.trim() === '') return null;
-  
-  // Extract specific difficulty indicator from skill text
-  const lines = skillText.split('\n');
-  let difficulty = 'F'; // Default for high-difficulty column
+  // Split by lines and filter out empty lines
+  const lines = skillText.split('\n').map(l => l.trim()).filter(Boolean);
+  // Try to find a line with a single difficulty letter
+  let difficulty = 'F';
   let value = 0.6;
-  
-  // Look for explicit difficulty markers
   for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed === 'G') {
-      difficulty = 'G';
-      value = 0.7;
-      break;
-    } else if (trimmed === 'H') {
-      difficulty = 'H';
-      value = 0.8;
-      break;
-    } else if (trimmed === 'I') {
-      difficulty = 'I';
-      value = 0.9;
-      break;
-    } else if (trimmed === 'J') {
-      difficulty = 'J';
-      value = 1.0;
-      break;
-    }
+    if (/^G$/.test(line)) { difficulty = 'G'; value = 0.7; }
+    else if (/^H$/.test(line)) { difficulty = 'H'; value = 0.8; }
+    else if (/^I$/.test(line)) { difficulty = 'I'; value = 0.9; }
+    else if (/^J$/.test(line)) { difficulty = 'J'; value = 1.0; }
   }
-  
-  return { difficulty, value };
+  // Try to extract the skill name (all lines except pure difficulty letters)
+  const nameLines = lines.filter(l => !/^[FGHIJ]$/.test(l));
+  const skillName = nameLines.join(' ').replace(/\s+/g, ' ').trim();
+  if (!skillName) return { difficulty, value };
+  return { difficulty, value, skillName };
 }
 
 function cleanSkillName(rawText) {
@@ -77,24 +64,70 @@ function parseEvent(eventName, eventData) {
   let skillCount = 0;
   for (const row of eventData) {
     for (const [columnKey, skillText] of Object.entries(row)) {
-      if (!skillText || skillText.trim() === '') {
+      if (!skillText || skillText.trim() === '') continue;
+      // For high-difficulty column, split by lines and extract each skill
+      if (columnKey.startsWith('F = 0,6')) {
+        const lines = skillText.split(/\n(?=\d+\.|triple|Triple|Double|Salto|salto|EG|\()/i).map(l => l.trim()).filter(Boolean);
+        for (const line of lines) {
+          if (!line) continue;
+          
+          // If line contains a high-value skill keyword, extract difficulty
+          if (/triple|salto|shirai|arabian|tsukahara|kovacs|gaylord|piatti|hypolito|jarman|nagornyy|liukin|whittenburg|fardan|belle|andrianov|hoffmann|rumbutis|3\/1|3\/2/i.test(line)) {
+            let match = line.match(/([FGHIJ])$/);
+            let difficulty = 'F';
+            let value = 0.6;
+            let name = line.replace(/([FGHIJ])$/, '').replace(/\s+/g, ' ').trim();
+            
+            // Specific handling for triple salto skills
+            if (/triple.*salto.*tucked/i.test(name)) {
+              difficulty = 'I';
+              value = 0.9;
+            } else if (/triple.*salto.*piked/i.test(name)) {
+              difficulty = 'J';
+              value = 1.0;
+            } else if (/double.*salto.*tucked.*3\/1/i.test(name) || /double.*salto.*bwd.*tucked.*3\/1/i.test(name)) {
+              // Double salto backward tucked with 3/1 turn is G difficulty
+              difficulty = 'G';
+              value = 0.7;
+            } else if (/double.*salto.*str.*3\/1/i.test(name) || /double.*salto.*straight.*3\/1/i.test(name)) {
+              // Double salto backward straight with 3/1 turn is I difficulty  
+              difficulty = 'I';
+              value = 0.9;
+            } else if (/salto.*fwd.*str.*3\/1/i.test(name) || /salto.*forward.*str.*3\/1/i.test(name)) {
+              // Forward salto straight with 3/1 turn is F difficulty
+              difficulty = 'F';
+              value = 0.6;
+            } else if (match) {
+              // Use explicit difficulty from text if available
+              difficulty = match[1];
+              let valueMap = { F: 0.6, G: 0.7, H: 0.8, I: 0.9, J: 1.0 };
+              value = valueMap[difficulty] || 0.6;
+            } else if (/3\/1|3\/2|triple/i.test(line)) {
+              // Default to 'I' for other triple skills without explicit difficulty 
+              difficulty = 'I';
+              value = 0.9;
+            }
+            
+            // Avoid adding duplicates from this improved logic
+            if (!skills.some(s => s.name === name)) {
+              skills.push({
+                name,
+                realName: name,
+                difficulty,
+                value,
+                isHeader: false
+              });
+              skillCount++;
+            }
+          }
+        }
         continue;
       }
+      // Normal columns
       const cleanName = cleanSkillName(skillText);
       if (!cleanName) continue;
-      let difficultyInfo;
-      let isHeader = false;
-      // If the cell looks like an element group header, mark it
-      if (/^EG\s/i.test(cleanName) || /element group/i.test(cleanName)) {
-        isHeader = true;
-      }
-      if (columnKey === 'F = 0,6 G = 0,7 H = 0,8\nI = 0.9, J = 1.0') {
-        difficultyInfo = parseHighDifficultySkill(skillText);
-      } else if (DIFFICULTY_MAP[columnKey]) {
-        difficultyInfo = DIFFICULTY_MAP[columnKey];
-      } else {
-        continue;
-      }
+      let isHeader = /^EG\s/i.test(cleanName) || /element group/i.test(cleanName);
+      let difficultyInfo = DIFFICULTY_MAP[columnKey];
       if (difficultyInfo) {
         skills.push({
           name: cleanName,
@@ -108,7 +141,11 @@ function parseEvent(eventName, eventData) {
     }
   }
   console.log(`   ✅ Parsed ${skillCount} skills`);
-  return skills;
+  // Remove F duplicates: if a skill name appears with non-F difficulty, drop the F entry
+  const finalSkills = skills.filter(skill =>
+    skill.difficulty !== 'F' || !skills.some(other => other.name === skill.name && other.difficulty !== 'F')
+  );
+  return finalSkills;
 }
 
 async function smartReparse() {

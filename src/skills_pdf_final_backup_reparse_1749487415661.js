@@ -430,8 +430,8 @@ export const skills = {
     {
       "name": "42. Double salto fwd. tucked with 3/2 turn.",
       "realName": "42. Double salto fwd. tucked with 3/2 turn.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -444,8 +444,8 @@ export const skills = {
     {
       "name": "48. Double salto fwd. piked or straight with 3/2 turn.",
       "realName": "48. Double salto fwd. piked or straight with 3/2 turn.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -493,8 +493,8 @@ export const skills = {
     {
       "name": "6. Double salto bwd. tucked with 3/1 t.",
       "realName": "6. Double salto bwd. tucked with 3/1 t.",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -549,8 +549,8 @@ export const skills = {
     {
       "name": "18. Triple salto bwd. tucked.",
       "realName": "18. Triple salto bwd. tucked.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -563,8 +563,8 @@ export const skills = {
     {
       "name": "24. Triple salto bwd. piked.",
       "realName": "24. Triple salto bwd. piked.",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -626,8 +626,8 @@ export const skills = {
     {
       "name": "42. Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t. G Also Hypolito",
       "realName": "42. Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t. G Also Hypolito",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -661,8 +661,8 @@ export const skills = {
     {
       "name": "66. Double salto bwd. str. with 3/1 t.",
       "realName": "66. Double salto bwd. str. with 3/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2562,15 +2562,15 @@ export const skills = {
     {
       "name": "36. Triple salto bwd. tucked.",
       "realName": "36. Triple salto bwd. tucked.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false
     },
     {
       "name": "42. Triple salto bwd. piked.",
       "realName": "42. Triple salto bwd. piked.",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false
     },
     {
@@ -2625,8 +2625,8 @@ export const skills = {
     {
       "name": "54. Double salto bwd. straight with 3/2 or 2/1 t.",
       "realName": "54. Double salto bwd. straight with 3/2 or 2/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -2719,8 +2719,8 @@ export const skills = {
     {
       "name": "18. Fwd. uprise with 3/2 t. to handstand.",
       "realName": "18. Fwd. uprise with 3/2 t. to handstand.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3503,8 +3503,8 @@ export const skills = {
     {
       "name": "72. Giant swing bwd. with ½ t. and 3/2 salto fwd to upp arm hang.",
       "realName": "72. Giant swing bwd. with ½ t. and 3/2 salto fwd to upp arm hang.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -3545,8 +3545,8 @@ export const skills = {
     {
       "name": "78. Giant swing backward with ½ t. and 3/2 salto forward piked to upper arm hang.",
       "realName": "78. Giant swing backward with ½ t. and 3/2 salto forward piked to upper arm hang.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4240,8 +4240,8 @@ export const skills = {
     {
       "name": "6. Back uprise and hecht straight with 3/2 t. to hang.",
       "realName": "6. Back uprise and hecht straight with 3/2 t. to hang.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4415,8 +4415,8 @@ export const skills = {
     {
       "name": "60. Swing fwd. and salto bwd. w. 3/2 t. to hang.",
       "realName": "60. Swing fwd. and salto bwd. w. 3/2 t. to hang.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4527,8 +4527,8 @@ export const skills = {
     {
       "name": "108. Kovacs with 3/2 t. to mix grip.",
       "realName": "108. Kovacs with 3/2 t. to mix grip.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4807,8 +4807,8 @@ export const skills = {
     {
       "name": "6. Triple salto fwd. t. or with ½ t.",
       "realName": "6. Triple salto fwd. t. or with ½ t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4940,15 +4940,15 @@ export const skills = {
     {
       "name": "42. Double salto bwd. str. with 3/1 t.",
       "realName": "42. Double salto bwd. str. with 3/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
       "name": "48. Triple salto bwd. t. or over the bar.",
       "realName": "48. Triple salto bwd. t. or over the bar.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -4996,8 +4996,8 @@ export const skills = {
     {
       "name": "54. Triple salto bwd. p.",
       "realName": "54. Triple salto bwd. p.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
@@ -5031,8 +5031,8 @@ export const skills = {
     {
       "name": "60. Triple salto bwd. t. with 1/1 t.",
       "realName": "60. Triple salto bwd. t. with 1/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false
     },
     {
