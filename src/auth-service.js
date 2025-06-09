@@ -10,6 +10,8 @@ class AuthService {
     this.isOnline = navigator.onLine;
     this.localStorageBackup = true; // Keep localStorage as backup for offline use
     this.isFirebaseReady = false;
+    this.currentGroups = []; // User's groups
+    this.groupListeners = new Map(); // Group data listeners
     
     // Wait for Firebase to be loaded
     this.waitForFirebase();
@@ -24,7 +26,9 @@ class AuthService {
       if (typeof firebase !== 'undefined' && window.initializeFirebase) {
         this.isFirebaseReady = window.initializeFirebase();
         if (this.isFirebaseReady) {
-          this.setupFirebaseListeners();
+          this.auth = firebase.auth();
+          this.db = firebase.firestore();
+          this.setupAuthStateListener();
           break;
         }
       }
@@ -33,101 +37,93 @@ class AuthService {
     }
     
     if (!this.isFirebaseReady) {
-      console.error('Firebase failed to load. Using localStorage fallback.');
+      console.warn('Firebase failed to initialize. Using localStorage only.');
     }
   }
-  
-  setupFirebaseListeners() {
-    // Listen for online/offline status
-    window.addEventListener('online', () => {
-      this.isOnline = true;
-      this.syncOfflineData();
-    });
-    window.addEventListener('offline', () => {
-      this.isOnline = false;
-    });
+
+  setupAuthStateListener() {
+    if (!this.auth) return;
     
-    // Listen for auth state changes
-    firebase.auth().onAuthStateChanged((user) => {
+    this.auth.onAuthStateChanged(async (user) => {
       this.currentUser = user;
       if (user) {
-        this.syncUserData();
+        console.log('User authenticated:', user.email);
+        await this.loadUserGroups();
+        this.notifyAuthStateChange(true);
+      } else {
+        console.log('User signed out');
+        this.currentGroups = [];
+        this.clearGroupListeners();
+        this.notifyAuthStateChange(false);
       }
     });
   }
 
-  // Create new user account
-  async createAccount(email, password, fullName = '', gymnasticsLevel = '') {
+  notifyAuthStateChange(isSignedIn) {
+    // Dispatch custom event for main app to listen to
+    window.dispatchEvent(new CustomEvent('authStateChanged', { 
+      detail: { isSignedIn, user: this.currentUser, groups: this.currentGroups } 
+    }));
+  }
+
+  // ========================================
+  // AUTHENTICATION METHODS
+  // ========================================
+
+  async signUp(email, password, fullName = '', gymnasticsLevel = '') {
     if (!this.isFirebaseReady) {
-      throw new Error('Firebase not ready. Please try again.');
+      return { success: false, error: 'Firebase not available' };
     }
-    
+
     try {
-      // Create Firebase user
-      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
+      const userCredential = await this.auth.createUserWithEmailAndPassword(email, password);
       const user = userCredential.user;
-      
-      // Update user profile
+
+      // Update profile with display name
       await user.updateProfile({
-        displayName: fullName
+        displayName: fullName || email.split('@')[0]
       });
-      
-      // Create user document in Firestore
-      await firebase.firestore().collection('users').doc(user.uid).set({
-        uid: user.uid,
+
+      // Create user profile document
+      await this.db.collection('users').doc(user.uid).set({
+        fullName: fullName || email.split('@')[0],
         email: email,
-        fullName: fullName,
         gymnasticsLevel: gymnasticsLevel,
-        createdAt: new Date().toISOString(),
-        lastLoginAt: new Date().toISOString()
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        groups: [], // User's groups
+        groupInvites: [] // Pending group invites
       });
-      
-      // Initialize empty data document
-      await firebase.firestore().collection('userData').doc(user.uid).set({
-        routines: {},
-        skills: {},
-        lastUpdated: new Date().toISOString()
-      });
-      
+
+      console.log('User created successfully:', email);
       return { success: true, user };
     } catch (error) {
-      console.error('Account creation error:', error);
+      console.error('Sign up error:', error);
       return { success: false, error: error.message };
     }
   }
 
-  // Sign in existing user
   async signIn(email, password) {
     if (!this.isFirebaseReady) {
-      throw new Error('Firebase not ready. Please try again.');
+      return { success: false, error: 'Firebase not available' };
     }
-    
+
     try {
-      const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
-      const user = userCredential.user;
-      
-      // Update last login time
-      await firebase.firestore().collection('users').doc(user.uid).update({
-        lastLoginAt: new Date().toISOString()
-      });
-      
-      return { success: true, user };
+      const userCredential = await this.auth.signInWithEmailAndPassword(email, password);
+      console.log('User signed in successfully:', email);
+      return { success: true, user: userCredential.user };
     } catch (error) {
       console.error('Sign in error:', error);
-      return { success: false, error: this.getErrorMessage(error.code) };
+      return { success: false, error: error.message };
     }
   }
 
-  // Sign out user
-  async signOutUser() {
-    if (!this.isFirebaseReady) {
-      this.currentUser = null;
-      return { success: true };
-    }
-    
+  async signOut() {
+    if (!this.isFirebaseReady) return { success: true };
+
     try {
-      await firebase.auth().signOut();
-      this.currentUser = null;
+      this.clearGroupListeners();
+      await this.auth.signOut();
+      console.log('User signed out successfully');
       return { success: true };
     } catch (error) {
       console.error('Sign out error:', error);
@@ -135,100 +131,38 @@ class AuthService {
     }
   }
 
-  // Load user data from Firestore
-  async loadUserData() {
-    if (!this.currentUser || !this.isFirebaseReady) return null;
-    
-    try {
-      const userDataDoc = await firebase.firestore().collection('userData').doc(this.currentUser.uid).get();
-      if (userDataDoc.exists) {
-        const data = userDataDoc.data();
-        
-        // Merge with local data if offline backup is enabled
-        if (this.localStorageBackup) {
-          this.mergeWithLocalData(data);
-        }
-        
-        return data;
-      }
-      return { routines: {}, skills: {}, lastUpdated: new Date().toISOString() };
-    } catch (error) {
-      console.error('Error loading user data:', error);
-      
-      // Fallback to localStorage if Firebase fails
-      if (this.localStorageBackup) {
-        return this.loadLocalData();
-      }
-      
-      return null;
-    }
+  isSignedIn() {
+    return this.currentUser !== null;
   }
 
-  // Save user data to Firestore
-  async saveUserData(data) {
-    if (!this.currentUser) return false;
-    
-    const dataWithTimestamp = {
-      ...data,
-      lastUpdated: new Date().toISOString()
-    };
-    
-    try {
-      if (this.isFirebaseReady) {
-        await firebase.firestore().collection('userData').doc(this.currentUser.uid).update(dataWithTimestamp);
-      }
-      
-      // Also save to localStorage as backup
-      if (this.localStorageBackup) {
-        localStorage.setItem(`gymnastics-data-${this.currentUser.email}`, JSON.stringify(dataWithTimestamp));
-      }
-      
-      return true;
-    } catch (error) {
-      console.error('Error saving user data:', error);
-      
-      // Fallback to localStorage if Firebase fails
-      if (this.localStorageBackup) {
-        localStorage.setItem(`gymnastics-data-${this.currentUser.email}`, JSON.stringify(dataWithTimestamp));
-        return true;
-      }
-      
-      return false;
-    }
+  getCurrentUser() {
+    return this.currentUser;
   }
 
-  // Get user profile information
+  // ========================================
+  // USER DATA MANAGEMENT
+  // ========================================
+
   async getUserProfile() {
-    if (!this.currentUser || !this.isFirebaseReady) return null;
-    
+    if (!this.isFirebaseReady || !this.currentUser) return null;
+
     try {
-      const userDoc = await firebase.firestore().collection('users').doc(this.currentUser.uid).get();
-      if (userDoc.exists) {
-        return userDoc.data();
-      }
-      return null;
+      const doc = await this.db.collection('users').doc(this.currentUser.uid).get();
+      return doc.exists ? doc.data() : null;
     } catch (error) {
-      console.error('Error loading user profile:', error);
+      console.error('Error getting user profile:', error);
       return null;
     }
   }
 
-  // Update user profile
   async updateUserProfile(profileData) {
-    if (!this.currentUser || !this.isFirebaseReady) return false;
-    
+    if (!this.isFirebaseReady || !this.currentUser) return false;
+
     try {
-      await firebase.firestore().collection('users').doc(this.currentUser.uid).update({
+      await this.db.collection('users').doc(this.currentUser.uid).update({
         ...profileData,
-        lastUpdated: new Date().toISOString()
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
       });
-      
-      if (profileData.fullName) {
-        await this.currentUser.updateProfile({
-          displayName: profileData.fullName
-        });
-      }
-      
       return true;
     } catch (error) {
       console.error('Error updating user profile:', error);
@@ -236,101 +170,336 @@ class AuthService {
     }
   }
 
-  // Check if username is available (for backward compatibility)
-  async isUsernameAvailable(username) {
-    if (!this.isFirebaseReady) return false;
-    
+  async loadUserData() {
+    if (!this.isFirebaseReady || !this.currentUser) {
+      return this.loadLocalData();
+    }
+
     try {
-      const querySnapshot = await firebase.firestore().collection('users').where('username', '==', username).get();
-      return querySnapshot.empty;
+      const doc = await this.db.collection('userData').doc(this.currentUser.uid).get();
+      const data = doc.exists ? doc.data() : this.getDefaultUserData();
+      
+      // Backup to localStorage
+      if (this.localStorageBackup) {
+        localStorage.setItem(`userData_${this.currentUser.uid}`, JSON.stringify(data));
+      }
+      
+      return data;
     } catch (error) {
-      console.error('Error checking username availability:', error);
+      console.error('Error loading user data:', error);
+      return this.loadLocalData();
+    }
+  }
+
+  async saveUserData(data) {
+    if (!this.isFirebaseReady || !this.currentUser) {
+      return this.saveLocalData(data);
+    }
+
+    try {
+      await this.db.collection('userData').doc(this.currentUser.uid).set({
+        ...data,
+        lastModified: firebase.firestore.FieldValue.serverTimestamp(),
+        userId: this.currentUser.uid
+      });
+      
+      // Backup to localStorage
+      if (this.localStorageBackup) {
+        localStorage.setItem(`userData_${this.currentUser.uid}`, JSON.stringify(data));
+      }
+      
+      return true;
+    } catch (error) {
+      console.error('Error saving user data:', error);
+      return this.saveLocalData(data);
+    }
+  }
+
+  // ========================================
+  // GROUP/TEAM MANAGEMENT METHODS
+  // ========================================
+
+  async createGroup(groupName, description = '', isPrivate = false) {
+    if (!this.isFirebaseReady || !this.currentUser) {
+      return { success: false, error: 'Authentication required' };
+    }
+
+    try {
+      const groupData = {
+        name: groupName,
+        description: description,
+        isPrivate: isPrivate,
+        createdBy: this.currentUser.uid,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        members: [{
+          userId: this.currentUser.uid,
+          email: this.currentUser.email,
+          displayName: this.currentUser.displayName || this.currentUser.email,
+          role: 'admin',
+          joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }],
+        inviteCode: this.generateInviteCode(),
+        memberCount: 1
+      };
+
+      const groupRef = await this.db.collection('groups').add(groupData);
+      const groupId = groupRef.id;
+
+      // Add group to user's groups
+      await this.db.collection('users').doc(this.currentUser.uid).update({
+        groups: firebase.firestore.FieldValue.arrayUnion({
+          groupId: groupId,
+          groupName: groupName,
+          role: 'admin',
+          joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
+      });
+
+      await this.loadUserGroups();
+      
+      return { success: true, groupId, inviteCode: groupData.inviteCode };
+    } catch (error) {
+      console.error('Error creating group:', error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async joinGroupByCode(inviteCode) {
+    if (!this.isFirebaseReady || !this.currentUser) {
+      return { success: false, error: 'Authentication required' };
+    }
+
+    try {
+      // Find group by invite code
+      const groupQuery = await this.db.collection('groups')
+        .where('inviteCode', '==', inviteCode.toUpperCase())
+        .limit(1)
+        .get();
+
+      if (groupQuery.empty) {
+        return { success: false, error: 'Invalid invite code' };
+      }
+
+      const groupDoc = groupQuery.docs[0];
+      const groupData = groupDoc.data();
+      const groupId = groupDoc.id;
+
+      // Check if user is already a member
+      const isMember = groupData.members.some(member => member.userId === this.currentUser.uid);
+      if (isMember) {
+        return { success: false, error: 'You are already a member of this group' };
+      }
+
+      // Add user to group
+      const newMember = {
+        userId: this.currentUser.uid,
+        email: this.currentUser.email,
+        displayName: this.currentUser.displayName || this.currentUser.email,
+        role: 'member',
+        joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+
+      await this.db.collection('groups').doc(groupId).update({
+        members: firebase.firestore.FieldValue.arrayUnion(newMember),
+        memberCount: firebase.firestore.FieldValue.increment(1)
+      });
+
+      // Add group to user's groups
+      await this.db.collection('users').doc(this.currentUser.uid).update({
+        groups: firebase.firestore.FieldValue.arrayUnion({
+          groupId: groupId,
+          groupName: groupData.name,
+          role: 'member',
+          joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
+      });
+
+      await this.loadUserGroups();
+      
+      return { success: true, groupName: groupData.name };
+    } catch (error) {
+      console.error('Error joining group:', error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async leaveGroup(groupId) {
+    if (!this.isFirebaseReady || !this.currentUser) {
+      return { success: false, error: 'Authentication required' };
+    }
+
+    try {
+      const groupDoc = await this.db.collection('groups').doc(groupId).get();
+      if (!groupDoc.exists) {
+        return { success: false, error: 'Group not found' };
+      }
+
+      const groupData = groupDoc.data();
+      
+      // Remove user from group members
+      const updatedMembers = groupData.members.filter(member => member.userId !== this.currentUser.uid);
+      
+      if (updatedMembers.length === 0) {
+        // Delete group if no members left
+        await this.db.collection('groups').doc(groupId).delete();
+      } else {
+        // Update group
+        await this.db.collection('groups').doc(groupId).update({
+          members: updatedMembers,
+          memberCount: firebase.firestore.FieldValue.increment(-1)
+        });
+      }
+
+      // Remove group from user's groups
+      const userGroups = (await this.getUserProfile()).groups || [];
+      const updatedUserGroups = userGroups.filter(group => group.groupId !== groupId);
+      
+      await this.db.collection('users').doc(this.currentUser.uid).update({
+        groups: updatedUserGroups
+      });
+
+      await this.loadUserGroups();
+      
+      return { success: true };
+    } catch (error) {
+      console.error('Error leaving group:', error);
+      return { success: false, error: error.message };
+    }
+  }
+
+  async loadUserGroups() {
+    if (!this.isFirebaseReady || !this.currentUser) {
+      this.currentGroups = [];
+      return [];
+    }
+
+    try {
+      const userProfile = await this.getUserProfile();
+      const userGroups = userProfile?.groups || [];
+      
+      // Load detailed group information
+      const groupPromises = userGroups.map(async (userGroup) => {
+        const groupDoc = await this.db.collection('groups').doc(userGroup.groupId).get();
+        if (groupDoc.exists) {
+          return {
+            id: userGroup.groupId,
+            ...groupDoc.data(),
+            userRole: userGroup.role
+          };
+        }
+        return null;
+      });
+
+      const groups = (await Promise.all(groupPromises)).filter(group => group !== null);
+      this.currentGroups = groups;
+      
+      return groups;
+    } catch (error) {
+      console.error('Error loading user groups:', error);
+      this.currentGroups = [];
+      return [];
+    }
+  }
+
+  async getGroupMembers(groupId) {
+    if (!this.isFirebaseReady) return [];
+
+    try {
+      const groupDoc = await this.db.collection('groups').doc(groupId).get();
+      if (groupDoc.exists) {
+        return groupDoc.data().members || [];
+      }
+      return [];
+    } catch (error) {
+      console.error('Error getting group members:', error);
+      return [];
+    }
+  }
+
+  async getGroupRoutines(groupId) {
+    if (!this.isFirebaseReady) return [];
+
+    try {
+      // Get all group members
+      const members = await this.getGroupMembers(groupId);
+      const memberIds = members.map(member => member.userId);
+
+      // Get routines from all group members
+      const routinePromises = memberIds.map(async (userId) => {
+        const userDataDoc = await this.db.collection('userData').doc(userId).get();
+        if (userDataDoc.exists) {
+          const userData = userDataDoc.data();
+          const member = members.find(m => m.userId === userId);
+          
+          return {
+            userId: userId,
+            userName: member.displayName,
+            userEmail: member.email,
+            routines: userData.routines || {}
+          };
+        }
+        return null;
+      });
+
+      const allRoutines = (await Promise.all(routinePromises)).filter(data => data !== null);
+      return allRoutines;
+    } catch (error) {
+      console.error('Error getting group routines:', error);
+      return [];
+    }
+  }
+
+  generateInviteCode() {
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let result = '';
+    for (let i = 0; i < 6; i++) {
+      result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return result;
+  }
+
+  clearGroupListeners() {
+    this.groupListeners.forEach(unsubscribe => unsubscribe());
+    this.groupListeners.clear();
+  }
+
+  // ========================================
+  // LOCAL STORAGE FALLBACK METHODS
+  // ========================================
+
+  loadLocalData() {
+    try {
+      const key = this.currentUser ? `userData_${this.currentUser.uid}` : 'userData_guest';
+      const data = localStorage.getItem(key);
+      return data ? JSON.parse(data) : this.getDefaultUserData();
+    } catch (error) {
+      console.error('Error loading local data:', error);
+      return this.getDefaultUserData();
+    }
+  }
+
+  saveLocalData(data) {
+    try {
+      const key = this.currentUser ? `userData_${this.currentUser.uid}` : 'userData_guest';
+      localStorage.setItem(key, JSON.stringify(data));
+      return true;
+    } catch (error) {
+      console.error('Error saving local data:', error);
       return false;
     }
   }
 
-  // Sync offline data when coming back online
-  async syncOfflineData() {
-    if (!this.currentUser || !this.localStorageBackup || !this.isFirebaseReady) return;
-    
-    try {
-      const localData = this.loadLocalData();
-      const cloudData = await this.loadUserData();
-      
-      if (localData && cloudData) {
-        // Simple merge strategy - use most recent timestamp
-        const localTimestamp = new Date(localData.lastUpdated || 0);
-        const cloudTimestamp = new Date(cloudData.lastUpdated || 0);
-        
-        if (localTimestamp > cloudTimestamp) {
-          // Local data is newer, upload to cloud
-          await this.saveUserData(localData);
-        }
+  getDefaultUserData() {
+    return {
+      routines: {
+        floor: [],
+        pommel: [],
+        rings: [],
+        vault: [],
+        pbars: [],
+        hbar: []
       }
-    } catch (error) {
-      console.error('Error syncing offline data:', error);
-    }
-  }
-
-  // Sync user data between devices
-  async syncUserData() {
-    if (!this.currentUser || !this.isFirebaseReady) return;
-    
-    try {
-      const cloudData = await this.loadUserData();
-      if (cloudData) {
-        // Update local storage with cloud data
-        localStorage.setItem(`gymnastics-data-${this.currentUser.email}`, JSON.stringify(cloudData));
-        
-        // Trigger data reload in the main app
-        window.dispatchEvent(new CustomEvent('userDataSynced', { detail: cloudData }));
-      }
-    } catch (error) {
-      console.error('Error syncing user data:', error);
-    }
-  }
-
-  // Helper methods
-  loadLocalData() {
-    if (!this.currentUser) return null;
-    
-    const localData = localStorage.getItem(`gymnastics-data-${this.currentUser.email}`);
-    return localData ? JSON.parse(localData) : null;
-  }
-
-  mergeWithLocalData(cloudData) {
-    const localData = this.loadLocalData();
-    if (!localData) return cloudData;
-    
-    // Simple merge - prefer cloud data but keep local changes if newer
-    const localTimestamp = new Date(localData.lastUpdated || 0);
-    const cloudTimestamp = new Date(cloudData.lastUpdated || 0);
-    
-    return localTimestamp > cloudTimestamp ? localData : cloudData;
-  }
-
-  getErrorMessage(errorCode) {
-    const errorMessages = {
-      'auth/user-not-found': 'No account found with this email address.',
-      'auth/wrong-password': 'Incorrect password. Please try again.',
-      'auth/email-already-in-use': 'An account with this email already exists.',
-      'auth/weak-password': 'Password should be at least 6 characters long.',
-      'auth/invalid-email': 'Please enter a valid email address.',
-      'auth/too-many-requests': 'Too many failed attempts. Please try again later.',
-      'auth/network-request-failed': 'Network error. Please check your connection.',
     };
-    
-    return errorMessages[errorCode] || 'An unexpected error occurred. Please try again.';
-  }
-
-  // Get current user
-  getCurrentUser() {
-    return this.currentUser;
-  }
-
-  // Check if user is signed in
-  isSignedIn() {
-    return !!this.currentUser;
   }
 }
 

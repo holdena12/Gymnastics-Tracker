@@ -78,15 +78,24 @@ class GymnasticsTracker {
     if (this.authService) {
       this.authService.getCurrentUser();
       if (this.authService.isSignedIn()) {
-        await this.loadUserData();
-        this.showMainPage();
+        this.showMainApp();
       }
     }
     
-    // Listen for data sync events
-    window.addEventListener('userDataSynced', (event) => {
-      this.userData = event.detail;
-      this.refreshUI();
+    // Listen for auth state changes from Firebase
+    window.addEventListener('authStateChanged', (event) => {
+      const { isSignedIn, user, groups } = event.detail;
+      if (isSignedIn) {
+        this.currentUser = user;
+        this.currentGroups = groups || [];
+        this.loadUserData();
+        this.showMainApp();
+      } else {
+        this.currentUser = null;
+        this.currentGroups = [];
+        this.showLoginPage();
+      }
+      this.updateGroupUI();
     });
   }
   
@@ -95,9 +104,8 @@ class GymnasticsTracker {
     const maxAttempts = 50; // 5 seconds max
     
     while (attempts < maxAttempts) {
-      if (window.authService) {
+      if (typeof AuthService !== 'undefined' && window.authService) {
         this.authService = window.authService;
-        console.log('Auth service ready');
         break;
       }
       await new Promise(resolve => setTimeout(resolve, 100));
@@ -105,7 +113,7 @@ class GymnasticsTracker {
     }
     
     if (!this.authService) {
-      console.error('Auth service failed to load. Some features may not work.');
+      console.warn('AuthService not available. Some features may not work.');
     }
   }
 
@@ -1086,312 +1094,184 @@ class GymnasticsTracker {
 
   // Event Listeners
   setupEventListeners() {
-    console.log('Setting up event listeners...');
+    // ========================================
+    // AUTHENTICATION EVENT LISTENERS
+    // ========================================
     
-    // Profile System Event Listeners
-    
-    // Login/Register Tab Switching with debugging
-    console.log('Setting up login tab listeners...');
+    // Login tabs
     const loginTabs = document.querySelectorAll('.login-tab');
-    console.log('Found login tabs:', loginTabs.length);
-    
-    if (loginTabs.length === 0) {
-      console.error('No login tabs found! Check HTML structure.');
-      return;
-    }
-    
-    loginTabs.forEach((tab, index) => {
-      console.log(`Setting up tab ${index}:`, tab.dataset.tab);
-      
-      // Create a more robust event handler
-      const handleTabSwitch = (e) => {
-        console.log('Tab switch triggered:', e.type, e.target.dataset.tab);
-        e.preventDefault();
-        e.stopPropagation();
-        
-        const targetTab = e.target.dataset.tab;
-        
-        if (!targetTab) {
-          console.error('No data-tab attribute found on clicked element');
-          return;
-        }
-        
-        console.log('Switching to tab:', targetTab);
-        
-        // Update tab active states
-        document.querySelectorAll('.login-tab').forEach(t => {
-          t.classList.remove('active');
-          console.log('Removed active from tab:', t.dataset.tab);
-        });
-        e.target.classList.add('active');
-        console.log('Added active to tab:', targetTab);
-        
-        // Update form active states
-        document.querySelectorAll('.auth-form').forEach(form => {
-          form.classList.remove('active');
-          console.log('Removed active from form:', form.id);
-        });
-        
-        if (targetTab === 'login') {
-          const loginForm = document.getElementById('login-form');
-          if (loginForm) {
-            loginForm.classList.add('active');
-            console.log('Activated login form');
-          } else {
-            console.error('Login form not found!');
-          }
-        } else if (targetTab === 'register') {
-          const registerForm = document.getElementById('register-form');
-          if (registerForm) {
-            registerForm.classList.add('active');
-            console.log('Activated register form');
-          } else {
-            console.error('Register form not found!');
-          }
-        }
-      };
-      
-      // Remove any existing event listeners first
-      tab.removeEventListener('click', handleTabSwitch);
-      tab.removeEventListener('touchend', handleTabSwitch);
-      tab.removeEventListener('touchstart', handleTabSwitch);
-      
-      // Add comprehensive event listeners for all interaction types
-      tab.addEventListener('click', handleTabSwitch, { passive: false });
-      tab.addEventListener('touchend', handleTabSwitch, { passive: false });
-      
-      // For mobile, also add touchstart for immediate feedback
-      tab.addEventListener('touchstart', (e) => {
-        console.log('Touch start on tab:', e.target.dataset.tab);
-        // Add visual feedback
-        e.target.style.transform = 'scale(0.95)';
-        setTimeout(() => {
-          e.target.style.transform = '';
-        }, 100);
-      }, { passive: true });
-      
-      console.log('Event listeners added to tab:', tab.dataset.tab);
+    loginTabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        const targetForm = e.target.dataset.form;
+        this.switchLoginForm(targetForm);
+      });
     });
 
-    // Add a backup click handler to the tab container
-    const tabContainer = document.querySelector('.login-tabs');
-    if (tabContainer) {
-      tabContainer.addEventListener('click', (e) => {
-        console.log('Container click detected:', e.target.tagName, e.target.className);
-        if (e.target.classList.contains('login-tab')) {
-          console.log('Login tab clicked via container handler');
-          // The individual tab handlers should have already fired, but this is a backup
-        }
-      });
-    }
+    // Auth forms
+    document.getElementById('register-form').addEventListener('submit', (e) => this.handleRegister(e));
+    document.getElementById('login-form').addEventListener('submit', (e) => this.handleLogin(e));
 
-    // Authentication Forms
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
+    // Profile management
+    document.getElementById('logout-btn').addEventListener('click', () => this.handleLogout());
+    document.getElementById('manage-profile-btn').addEventListener('click', () => this.showManageProfileModal());
+    document.getElementById('groups-btn').addEventListener('click', () => this.showGroupsModal());
+
+    // ========================================
+    // GROUP MANAGEMENT EVENT LISTENERS
+    // ========================================
     
-    if (loginForm) {
-      loginForm.addEventListener('submit', (e) => {
-        console.log('Login form submitted');
-        e.preventDefault();
-        this.handleLogin(e);
-      });
-    } else {
-      console.error('Login form not found!');
-    }
-
-    if (registerForm) {
-      registerForm.addEventListener('submit', (e) => {
-        console.log('Register form submitted');
-        e.preventDefault();
-        this.handleRegister(e);
-      });
-    } else {
-      console.error('Register form not found!');
-    }
-
-    // Recent Profiles Quick Selection
-    document.addEventListener('click', (e) => {
-      if (e.target.closest('.recent-profile-item')) {
-        const username = e.target.closest('.recent-profile-item').dataset.username;
-        this.showQuickLogin(username);
-      }
+    // Groups modal event listeners
+    document.getElementById('create-group-btn').addEventListener('click', () => this.showCreateGroupModal());
+    document.getElementById('join-group-btn').addEventListener('click', () => this.showJoinGroupModal());
+    
+    // Create group form
+    document.getElementById('create-group-form').addEventListener('submit', (e) => this.handleCreateGroup(e));
+    
+    // Join group form
+    document.getElementById('join-group-form').addEventListener('submit', (e) => this.handleJoinGroup(e));
+    
+    // Invite code handling
+    document.getElementById('copy-invite-code').addEventListener('click', () => this.copyInviteCode());
+    
+    // Auto-uppercase invite code input
+    const inviteCodeInput = document.getElementById('invite-code');
+    inviteCodeInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
     });
 
-    // Additional Event Listeners for Main App
+    // ========================================
+    // MODAL CLOSE EVENT LISTENERS
+    // ========================================
     
-    // Profile Management Buttons
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('#logout-btn')) {
-        this.logout();
-      } else if (e.target.matches('#switch-profile-btn')) {
-        this.showSwitchProfileModal();
-      } else if (e.target.matches('#manage-profile-btn')) {
-        this.showManageProfileModal();
-      }
-    });
-
-    // Import Data File Input
-    const importInput = document.getElementById('import-data-input');
-    if (importInput) {
-      importInput.addEventListener('change', (e) => this.handleDataImport(e));
-    }
-
-    // Event Buttons (Add Routine buttons)
-    document.querySelectorAll('.add-routine-btn').forEach(btn => {
+    // Close buttons for all modals
+    const closeButtons = document.querySelectorAll('.close, .modal-close');
+    closeButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
-        this.currentEvent = e.target.dataset.event;
-        this.showRoutineModal();
-      });
-    });
-
-    // Modal Form Submissions
-    const routineForm = document.getElementById('routine-form');
-    if (routineForm) {
-      routineForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        this.handleRoutineSubmit();
-      });
-    }
-
-    const skillForm = document.getElementById('skill-form');
-    if (skillForm) {
-      skillForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        this.handleSkillSubmit();
-      });
-    }
-
-    const progressionForm = document.getElementById('progression-form');
-    if (progressionForm) {
-      progressionForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        this.handleProgressionSubmit();
-      });
-    }
-
-    const notesForm = document.getElementById('notes-form');
-    if (notesForm) {
-      notesForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        this.handleNotesSubmit();
-      });
-    }
-
-    // Profile management form submissions
-    const editProfileForm = document.getElementById('edit-profile-form');
-    if (editProfileForm) {
-      editProfileForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        this.handleProfileUpdate();
-      });
-    }
-
-    const changePasswordForm = document.getElementById('change-password-form');
-    if (changePasswordForm) {
-      changePasswordForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        this.handlePasswordChange();
-      });
-    }
-
-    // Modal Close Buttons
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('close') || e.target.classList.contains('modal-overlay')) {
         const modal = e.target.closest('.modal');
         if (modal) {
           this.closeModal(modal);
         }
+      });
+    });
+
+    // Click outside modal to close
+    window.addEventListener('click', (e) => {
+      if (e.target.classList.contains('modal')) {
+        this.closeModal(e.target);
       }
     });
 
-    // Confirmation Modal Buttons
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('#confirm-proceed')) {
-        if (this.pendingConfirmAction) {
-          this.pendingConfirmAction();
-          this.pendingConfirmAction = null;
-        }
-        this.closeModal(document.getElementById('confirm-modal'));
-      } else if (e.target.matches('#confirm-cancel')) {
-        this.pendingConfirmAction = null;
-        this.closeModal(document.getElementById('confirm-modal'));
-      }
-    });
-
-    // Routine Page Navigation
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('#back-to-dashboard')) {
-        this.showMainPage();
-      } else if (e.target.matches('#routine-add-skill')) {
+    // ========================================
+    // ROUTINE MANAGEMENT EVENT LISTENERS
+    // ========================================
+    
+    // Add routine buttons
+    const addRoutineBtns = document.querySelectorAll('.add-routine-btn');
+    addRoutineBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
         const eventType = e.target.dataset.event;
-        const routineId = e.target.dataset.routine;
-        this.showSkillModal(eventType, routineId);
-      } else if (e.target.matches('#edit-routine-notes')) {
-        const eventType = this.currentRoutineView.eventType;
-        const routineId = this.currentRoutineView.routineId;
-        this.showNotesModal(eventType, routineId);
+        this.showAddRoutineModal(eventType);
+      });
+    });
+
+    // Routine form submission
+    document.getElementById('routine-form').addEventListener('submit', (e) => this.handleRoutineSubmit(e));
+
+    // Back to main button
+    document.getElementById('back-to-main').addEventListener('click', () => this.showMainPage());
+
+    // ========================================
+    // SKILL MANAGEMENT EVENT LISTENERS
+    // ========================================
+    
+    // Add skill button in routine page
+    document.getElementById('add-skill-btn').addEventListener('click', () => {
+      const eventType = this.currentRoutineView?.eventType;
+      if (eventType) {
+        this.showAddSkillModal(eventType);
       }
     });
 
-    // Data management buttons
-    document.addEventListener('click', (e) => {
-      if (e.target.matches('#export-data-btn')) {
-        this.handleDataExport();
-      } else if (e.target.matches('#import-data-btn')) {
-        document.getElementById('import-data-input').click();
-      } else if (e.target.matches('#delete-profile-btn')) {
-        this.showDeleteConfirmation();
-      } else if (e.target.matches('#create-new-profile-btn')) {
-        // Close the switch profile modal and go to registration
-        this.closeModal(document.getElementById('switch-profile-modal'));
-        this.showLoginPage();
-        // Switch to the Create Profile tab
-        document.querySelector('.login-tab[data-tab="register"]').click();
+    // Skill form submission
+    document.getElementById('skill-form').addEventListener('submit', (e) => this.handleSkillSubmit(e));
+
+    // Skills search
+    document.getElementById('skills-search').addEventListener('input', (e) => this.handleSkillsSearch(e));
+
+    // Event selection for skills
+    document.getElementById('skill-event').addEventListener('change', (e) => {
+      const eventType = e.target.value;
+      if (eventType) {
+        this.loadEventSkills(eventType);
       }
     });
 
-    // Profile tab switching
-    document.addEventListener('click', (e) => {
-      if (e.target.classList.contains('profile-tab')) {
+    // Custom skill toggle
+    document.getElementById('custom-skill-toggle').addEventListener('change', (e) => {
+      this.toggleCustomSkillForm(e.target.checked);
+    });
+
+    // ========================================
+    // PROFILE MANAGEMENT EVENT LISTENERS
+    // ========================================
+    
+    // Profile tabs
+    const profileTabs = document.querySelectorAll('.profile-tab');
+    profileTabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
         const targetTab = e.target.dataset.tab;
-        
-        // Update tab active states
-        document.querySelectorAll('.profile-tab').forEach(tab => {
-          tab.classList.remove('active');
-        });
-        e.target.classList.add('active');
-        
-        // Update tab content active states
-        document.querySelectorAll('.profile-tab-content').forEach(content => {
-          content.classList.remove('active');
-        });
-        
-        // Show the correct tab content
-        if (targetTab === 'edit') {
-          document.getElementById('edit-profile-tab').classList.add('active');
-        } else if (targetTab === 'security') {
-          document.getElementById('security-profile-tab').classList.add('active');
-        } else if (targetTab === 'data') {
-          document.getElementById('data-profile-tab').classList.add('active');
+        this.switchProfileTab(targetTab);
+      });
+    });
+
+    // Profile update form
+    document.getElementById('profile-update-form').addEventListener('submit', (e) => this.handleProfileUpdate(e));
+
+    // Password change form
+    document.getElementById('password-change-form').addEventListener('submit', (e) => this.handlePasswordChange(e));
+
+    // ========================================
+    // KEYBOARD SHORTCUTS
+    // ========================================
+    
+    document.addEventListener('keydown', (e) => {
+      // ESC to close modals
+      if (e.key === 'Escape') {
+        const openModal = document.querySelector('.modal[style*="block"]');
+        if (openModal) {
+          this.closeModal(openModal);
+        }
+      }
+      
+      // Ctrl/Cmd + Enter to submit forms
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+        const activeForm = document.activeElement.closest('form');
+        if (activeForm) {
+          activeForm.dispatchEvent(new Event('submit', { cancelable: true }));
         }
       }
     });
 
-    // Test the login tabs after setup
-    setTimeout(() => {
-      console.log('Testing login tabs after setup...');
-      const tabs = document.querySelectorAll('.login-tab');
-      tabs.forEach(tab => {
-        console.log('Tab:', tab.dataset.tab, 'Active:', tab.classList.contains('active'));
+    // ========================================
+    // RESPONSIVE AND MOBILE OPTIMIZATIONS
+    // ========================================
+    
+    // Touch events for mobile
+    if ('ontouchstart' in window) {
+      document.addEventListener('touchstart', (e) => {
+        // Add touch feedback
+        if (e.target.closest('button, .btn, .tab')) {
+          e.target.closest('button, .btn, .tab').classList.add('touching');
+        }
       });
       
-      const forms = document.querySelectorAll('.auth-form');
-      forms.forEach(form => {
-        console.log('Form:', form.id, 'Active:', form.classList.contains('active'));
+      document.addEventListener('touchend', (e) => {
+        // Remove touch feedback
+        document.querySelectorAll('.touching').forEach(el => {
+          el.classList.remove('touching');
+        });
       });
-    }, 1000);
-
-    console.log('Event listeners setup completed');
+    }
   }
 
   // Utility Functions

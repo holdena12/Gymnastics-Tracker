@@ -113,6 +113,7 @@
             <div class="profile-actions">
               <button class="profile-btn" id="switch-profile-btn">Switch Profile</button>
               <button class="profile-btn" id="manage-profile-btn">Manage</button>
+              <button class="profile-btn" id="groups-btn">Teams</button>
               <button class="profile-btn logout-btn" id="logout-btn">Logout</button>
             </div>
           </div>
@@ -435,13 +436,158 @@
     </div>
 
     <!-- Confirmation Modal -->
-    <div id="confirm-modal" class="modal">
+    <div id="confirmation-modal" class="modal">
       <div class="modal-content small">
-        <h2 id="confirm-title">Confirm Action</h2>
-        <p id="confirm-message">Are you sure you want to proceed?</p>
+        <span class="close" id="confirmation-close">&times;</span>
+        <h2 id="confirmation-title">Confirm Action</h2>
+        <p id="confirmation-message">Are you sure you want to proceed?</p>
         <div class="modal-actions">
-          <button type="button" class="secondary-btn" id="confirm-cancel">Cancel</button>
-          <button type="button" class="danger-btn" id="confirm-proceed">Confirm</button>
+          <button id="confirmation-cancel" class="secondary-btn">Cancel</button>
+          <button id="confirmation-proceed" class="danger-btn">Proceed</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================
+         GROUP/TEAM MANAGEMENT MODALS
+    ======================================== -->
+
+    <!-- Groups Overview Modal -->
+    <div id="groups-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="groups-close">&times;</span>
+        <h2>Your Teams</h2>
+        <p class="modal-subtitle">Create teams, join groups, and collaborate on routines</p>
+
+        <!-- Groups Actions -->
+        <div class="groups-actions">
+          <button id="create-group-btn" class="auth-btn">Create New Team</button>
+          <button id="join-group-btn" class="secondary-btn">Join Team with Code</button>
+        </div>
+
+        <!-- User's Groups List -->
+        <div class="groups-section">
+          <h3>Your Teams</h3>
+          <div id="user-groups-list">
+            <!-- Populated by JavaScript -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create Group Modal -->
+    <div id="create-group-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="create-group-close">&times;</span>
+        <h2>Create New Team</h2>
+        <p class="modal-subtitle">Set up a team to share routines with teammates and coaches</p>
+
+        <form id="create-group-form">
+          <div class="form-group">
+            <label for="group-name">Team Name</label>
+            <input type="text" id="group-name" placeholder="e.g., Elite Gymnastics Team" required>
+          </div>
+          <div class="form-group">
+            <label for="group-description">Description (Optional)</label>
+            <textarea id="group-description" placeholder="Brief description of your team or training group"></textarea>
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" id="group-private"> Private Team
+            </label>
+            <small class="form-help">Private teams can only be joined with an invite code</small>
+          </div>
+          <button type="submit" class="auth-btn">Create Team</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Join Group Modal -->
+    <div id="join-group-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="join-group-close">&times;</span>
+        <h2>Join Team</h2>
+        <p class="modal-subtitle">Enter the invite code shared by your coach or teammate</p>
+
+        <form id="join-group-form">
+          <div class="form-group">
+            <label for="invite-code">Invite Code</label>
+            <input type="text" id="invite-code" placeholder="e.g., ABC123" maxlength="6" required 
+                   style="text-transform: uppercase; letter-spacing: 2px; text-align: center; font-size: 1.2rem;">
+            <small class="form-help">Enter the 6-character code provided by your team</small>
+          </div>
+          <button type="submit" class="auth-btn">Join Team</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Group Details Modal -->
+    <div id="group-details-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="group-details-close">&times;</span>
+        <div id="group-details-content">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Group Routines Modal -->
+    <div id="group-routines-modal" class="modal">
+      <div class="modal-content">
+        <span class="close" id="group-routines-close">&times;</span>
+        <h2 id="group-routines-title">Team Routines</h2>
+        <p class="modal-subtitle">View all routines shared by team members</p>
+
+        <!-- Filter Options -->
+        <div class="group-filters">
+          <select id="member-filter">
+            <option value="">All Members</option>
+            <!-- Populated by JavaScript -->
+          </select>
+          <select id="event-filter">
+            <option value="">All Events</option>
+            <option value="floor">Floor Exercise</option>
+            <option value="pommel">Pommel Horse</option>
+            <option value="rings">Still Rings</option>
+            <option value="vault">Vault</option>
+            <option value="pbars">Parallel Bars</option>
+            <option value="hbar">High Bar</option>
+          </select>
+        </div>
+
+        <!-- Routines Display -->
+        <div id="group-routines-content">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Group Invite Share Modal -->
+    <div id="group-invite-modal" class="modal">
+      <div class="modal-content small">
+        <span class="close" id="group-invite-close">&times;</span>
+        <h2>Share Team Invite</h2>
+        <p class="modal-subtitle">Share this code with teammates to join your team</p>
+
+        <div class="invite-code-display">
+          <div class="invite-code-box">
+            <span id="invite-code-text">ABC123</span>
+          </div>
+          <button id="copy-invite-code" class="secondary-btn">Copy Code</button>
+        </div>
+
+        <div class="invite-instructions">
+          <h4>How to share:</h4>
+          <ul>
+            <li>Send the invite code to your teammates</li>
+            <li>They can join by clicking "Join Team" in their Teams section</li>
+            <li>Code is case-insensitive and doesn't expire</li>
+          </ul>
+        </div>
+
+        <div class="modal-actions">
+          <button id="generate-new-code" class="secondary-btn">Generate New Code</button>
+          <button class="auth-btn" onclick="this.closest('.modal').style.display='none'">Done</button>
         </div>
       </div>
     </div>
