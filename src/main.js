@@ -815,17 +815,17 @@ class GymnasticsTracker {
     document.getElementById('login-page').style.display = 'flex';
     document.getElementById('main-page').style.display = 'none';
     document.getElementById('routine-page').style.display = 'none';
-    this.renderRecentProfiles();
+    // Note: Recent profiles removed since we use Firebase authentication now
   }
 
   showMainApp() {
     document.getElementById('login-page').style.display = 'none';
     document.getElementById('main-page').style.display = 'block';
     document.getElementById('routine-page').style.display = 'none';
-    this.updateProfileDisplay();
+    this.updateCurrentProfileDisplay();
     this.renderAll();
     // Auto-save every 30 seconds as backup
-    setInterval(() => this.saveData(), 30000);
+    setInterval(() => this.saveUserData(), 30000);
   }
 
   updateProfileDisplay() {
@@ -869,41 +869,15 @@ class GymnasticsTracker {
     }).join('');
   }
 
-  // Data Management (Per User)
+  // Data Management (Per User) - Legacy methods for backward compatibility
   loadData() {
-    if (!this.currentUser) return;
-    
-    try {
-      const stored = localStorage.getItem(`gymnastics-data-${this.currentUser}`);
-      if (stored) {
-        this.data = JSON.parse(stored);
-        console.log('User data loaded successfully');
-        return;
-      }
-    } catch (error) {
-      console.error('Error loading user data:', error);
-    }
-    
-    // Initialize with empty data structure
-    this.data = {
-      floor: [],
-      pommel: [],
-      rings: [],
-      vault: [],
-      pbars: [],
-      hbar: []
-    };
+    // This method is kept for any legacy references but data loading now happens via Firebase
+    console.log('Legacy loadData called - using Firebase loadUserData instead');
   }
 
   saveData() {
-    if (!this.currentUser) return;
-    
-    try {
-      localStorage.setItem(`gymnastics-data-${this.currentUser}`, JSON.stringify(this.data));
-    } catch (error) {
-      console.error('Error saving user data:', error);
-      this.showNotification('Warning: Failed to save data', 'warning');
-    }
+    // This method is kept for any legacy references but data saving now happens via Firebase
+    this.saveUserData();
   }
 
   // Calculate start value for a routine
@@ -1647,54 +1621,16 @@ class GymnasticsTracker {
   }
 
   showQuickLogin(username) {
-    // Auto-fill login form with username
-    document.getElementById('login-username').value = username;
-    document.getElementById('login-password').focus();
-    // Switch to login tab
-    document.querySelector('.login-tab[data-tab="login"]').click();
+    // This method is kept for legacy compatibility but not used with Firebase auth
+    console.log('Legacy showQuickLogin called - not applicable with Firebase authentication');
   }
 
   showSwitchProfileModal() {
     const modal = document.getElementById('switch-profile-modal');
     const profilesList = document.getElementById('profiles-list');
     
-    const profiles = Object.values(this.profiles)
-      .filter(profile => profile.username !== this.currentUser)
-      .sort((a, b) => new Date(b.lastAccess) - new Date(a.lastAccess));
-
-    if (profiles.length === 0) {
-      profilesList.innerHTML = '<p class="no-profiles">No other profiles found. Create a new profile to switch between multiple users.</p>';
-    } else {
-      profilesList.innerHTML = profiles.map(profile => {
-        const initial = profile.fullName ? profile.fullName.charAt(0).toUpperCase() : profile.username.charAt(0).toUpperCase();
-        const lastAccess = new Date(profile.lastAccess).toLocaleDateString();
-        
-        return `
-          <div class="profile-card" data-username="${profile.username}">
-            <div class="profile-card-avatar">${initial}</div>
-            <div class="profile-card-info">
-              <h4>${profile.fullName || profile.username}</h4>
-              <p class="profile-card-level">${profile.level || 'No level set'}</p>
-              <p class="profile-card-access">Last access: ${lastAccess}</p>
-            </div>
-          </div>
-        `;
-      }).join('');
-
-      // Add click handlers for profile cards
-      profilesList.querySelectorAll('.profile-card').forEach(card => {
-        card.addEventListener('click', () => {
-          const username = card.dataset.username;
-          try {
-            this.switchProfile(username);
-            this.closeModal(modal);
-            this.showNotification(`Switched to ${username}'s profile`, 'success');
-          } catch (error) {
-            this.showNotification(error.message, 'warning');
-          }
-        });
-      });
-    }
+    // With Firebase authentication, users need to sign out and sign in with different accounts
+    profilesList.innerHTML = '<p class="no-profiles">To switch accounts, please sign out and sign in with a different email address.</p>';
 
     modal.style.display = 'block';
   }
@@ -1702,14 +1638,22 @@ class GymnasticsTracker {
   showManageProfileModal() {
     const modal = document.getElementById('manage-profile-modal');
     
-    if (!this.currentUser) return;
+    if (!this.authService || !this.authService.isSignedIn()) return;
     
-    const profile = this.profiles[this.currentUser];
+    const user = this.authService.getCurrentUser();
     
-    // Pre-fill edit profile form
-    document.getElementById('edit-username').value = profile.username;
-    document.getElementById('edit-fullname').value = profile.fullName || '';
-    document.getElementById('edit-level').value = profile.level || '';
+    // Pre-fill edit profile form with Firebase user data
+    document.getElementById('edit-username').value = user.email; // Use email as username
+    
+    // Load profile data from Firebase
+    this.authService.getUserProfile().then(profile => {
+      if (profile) {
+        document.getElementById('edit-fullname').value = profile.fullName || user.displayName || '';
+        document.getElementById('edit-level').value = profile.gymnasticsLevel || '';
+      }
+    }).catch(error => {
+      console.log('Profile data not yet available:', error);
+    });
     
     // Update data stats
     this.updateDataStats();
@@ -1719,15 +1663,15 @@ class GymnasticsTracker {
 
   updateDataStats() {
     const statsContainer = document.getElementById('profile-data-stats');
-    if (!this.currentUser) return;
+    if (!this.authService || !this.authService.isSignedIn()) return;
 
-    const totalRoutines = Object.values(this.data).reduce((sum, eventRoutines) => sum + eventRoutines.length, 0);
-    const totalSkills = Object.values(this.data).reduce((sum, eventRoutines) => {
+    const totalRoutines = Object.values(this.userData.routines || {}).reduce((sum, eventRoutines) => sum + eventRoutines.length, 0);
+    const totalSkills = Object.values(this.userData.routines || {}).reduce((sum, eventRoutines) => {
       return sum + eventRoutines.reduce((skillSum, routine) => skillSum + (routine.skills ? routine.skills.length : 0), 0);
     }, 0);
 
-    const profile = this.profiles[this.currentUser];
-    const memberSince = new Date(profile.createdAt).toLocaleDateString();
+    const user = this.authService.getCurrentUser();
+    const memberSince = user ? new Date(user.metadata.creationTime).toLocaleDateString() : 'Unknown';
 
     statsContainer.innerHTML = `
       <div class="stats-grid">
@@ -1751,12 +1695,18 @@ class GymnasticsTracker {
     const fullName = document.getElementById('edit-fullname').value.trim();
     const level = document.getElementById('edit-level').value;
 
-    try {
-      this.updateProfile({ fullName, level });
-      this.showNotification('Profile updated successfully!', 'success');
-    } catch (error) {
-      this.showNotification('Failed to update profile', 'warning');
-    }
+    this.updateUserProfile({ fullName, gymnasticsLevel: level })
+      .then(success => {
+        if (success) {
+          this.showNotification('Profile updated successfully!', 'success');
+        } else {
+          this.showNotification('Failed to update profile', 'warning');
+        }
+      })
+      .catch(error => {
+        console.error('Profile update error:', error);
+        this.showNotification('Failed to update profile', 'warning');
+      });
   }
 
   handlePasswordChange() {
