@@ -168,9 +168,17 @@
    MOBILE LOGIN INTERFACE
 ======================================== */
 .mobile-device #login-page {
+  /* Ensure adequate padding and scrolling */
   padding: var(--mobile-spacing-sm);
-  padding-top: calc(var(--mobile-spacing-xl) + env(safe-area-inset-top));
-  padding-bottom: calc(var(--mobile-spacing-xl) + env(safe-area-inset-bottom));
+  padding-top: calc(var(--mobile-spacing-lg) + env(safe-area-inset-top));
+  padding-bottom: calc(var(--mobile-spacing-xxl) + env(safe-area-inset-bottom));
+  
+  /* Ensure scrolling is enabled */
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  
+  /* Align content to top for scrolling */
+  align-items: flex-start !important;
 }
 
 .mobile-device .login-container {
@@ -179,6 +187,12 @@
   width: 100%;
   max-width: none;
   border-radius: var(--radius-lg);
+  
+  /* Add some margin at the bottom for safety */
+  margin-bottom: var(--mobile-spacing-lg);
+  
+  /* Ensure container can grow */
+  min-height: auto;
 }
 
 .mobile-device .login-header h1 {
@@ -263,16 +277,32 @@
   font-size: var(--mobile-font-md);
   border-radius: var(--radius-md);
   margin-top: var(--mobile-spacing-md);
-  margin-bottom: var(--mobile-spacing-lg);
+  margin-bottom: var(--mobile-spacing-xl);
   
-  /* Ensure button is always visible */
+  /* Ensure button is always visible and accessible */
   position: relative;
   z-index: 10;
+  width: 100%;
+  display: block;
+  
+  /* Add extra bottom spacing for mobile safety */
+  padding-bottom: var(--mobile-spacing-md);
 }
 
 .mobile-device .auth-btn:active,
 .mobile-device button[type="submit"]:active {
   transform: translateY(1px) scale(0.98);
+}
+
+/* Ensure auth forms have proper spacing */
+.mobile-device .auth-form {
+  /* Add bottom padding to ensure submit button visibility */
+  padding-bottom: var(--mobile-spacing-lg);
+}
+
+.mobile-device .auth-form .form-group:last-of-type {
+  /* Extra spacing before submit button */
+  margin-bottom: var(--mobile-spacing-lg);
 }
 
 /* ========================================
@@ -1564,9 +1594,4 @@
 
 .mobile-device .auth-form .form-group {
   margin-bottom: var(--mobile-spacing-md);
-}
-
-/* Ensure modal content has enough bottom padding for buttons */
-.mobile-device .modal-content {
-  padding-bottom: calc(var(--mobile-spacing-xl) + env(safe-area-inset-bottom));
 } 

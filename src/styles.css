@@ -2148,9 +2148,17 @@ select:focus-visible {
   height: 100%;
   background: linear-gradient(135deg, #1e1b4b 0%, #0f0f23 50%, #1a1a2e 100%);
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   z-index: 10000;
+  /* Enable vertical scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* iOS smooth scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Ensure content can be scrolled */
+  padding: 2rem 0;
+  box-sizing: border-box;
 }
 
 .login-container {
@@ -2161,7 +2169,11 @@ select:focus-visible {
   border: 1px solid var(--border-primary);
   width: 100%;
   max-width: 450px;
-  margin: 2rem;
+  margin: 0 2rem;
+  /* Allow container to grow if needed */
+  min-height: min-content;
+  /* Ensure it's properly positioned when scrolling */
+  flex-shrink: 0;
 }
 
 .login-header {
