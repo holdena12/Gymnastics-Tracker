@@ -1147,4 +1147,414 @@
   font-size: 10px;
   z-index: 10001;
   font-family: monospace;
+}
+
+/* ========================================
+   COMPREHENSIVE MOBILE SKILL STYLING
+======================================== */
+
+/* Skills in routine page - mobile optimized layout */
+.mobile-device #routine-skills-list .skill-item {
+  display: flex;
+  flex-direction: column;
+  padding: var(--mobile-spacing-md);
+  background: var(--mobile-surface-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--mobile-spacing-md);
+  gap: var(--mobile-spacing-sm);
+  
+  /* Touch optimizations */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  min-height: var(--mobile-touch-target-min);
+}
+
+.mobile-device #routine-skills-list .skill-item.completed {
+  background: var(--mobile-surface-secondary);
+  border-color: var(--mobile-accent-primary);
+  opacity: 0.8;
+}
+
+.mobile-device #routine-skills-list .skill-item.overdue {
+  border-color: #ef4444;
+  border-width: 2px;
+}
+
+/* Skill content container */
+.mobile-device .skill-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mobile-spacing-sm);
+  width: 100%;
+}
+
+/* Skill header with order number and main info */
+.mobile-device .skill-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--mobile-spacing-sm);
+  width: 100%;
+}
+
+.mobile-device .skill-order-number {
+  /* Large, tappable order number */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--mobile-touch-target-min);
+  min-height: var(--mobile-touch-target-min);
+  background: var(--mobile-accent-primary);
+  color: var(--bg-primary);
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: var(--mobile-font-md);
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: all var(--mobile-transition-fast);
+}
+
+.mobile-device .skill-order-number:active {
+  transform: scale(0.9);
+}
+
+.mobile-device .skill-main-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--mobile-spacing-xs);
+}
+
+/* Skill name row with checkbox and difficulty */
+.mobile-device .skill-name-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mobile-spacing-sm);
+  width: 100%;
+}
+
+.mobile-device .skill-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: var(--mobile-spacing-sm);
+  flex: 1;
+  cursor: pointer;
+  
+  /* Large touch target */
+  min-height: var(--mobile-touch-target-min);
+  padding: var(--mobile-spacing-xs) 0;
+}
+
+.mobile-device .skill-checkbox {
+  /* Large, easy-to-tap checkbox */
+  width: 24px;
+  height: 24px;
+  accent-color: var(--mobile-accent-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mobile-device .skill-name {
+  color: var(--mobile-text-primary);
+  font-size: var(--mobile-font-md);
+  font-weight: 500;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.mobile-device .skill-completed .skill-name {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.mobile-device .skill-difficulty {
+  /* Prominent difficulty badge */
+  color: var(--bg-primary);
+  font-weight: 700;
+  font-size: var(--mobile-font-sm);
+  background: var(--mobile-accent-primary);
+  padding: var(--mobile-spacing-xs) var(--mobile-spacing-sm);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  min-width: 40px;
+  flex-shrink: 0;
+}
+
+/* Skill metadata */
+.mobile-device .skill-target-date {
+  font-size: var(--mobile-font-xs);
+  color: var(--mobile-text-secondary);
+  padding: var(--mobile-spacing-xs) 0;
+}
+
+.mobile-device .skill-target-date.overdue {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.mobile-device .skill-notes {
+  font-size: var(--mobile-font-sm);
+  color: var(--mobile-text-secondary);
+  line-height: 1.4;
+  padding: var(--mobile-spacing-xs);
+  background: var(--mobile-surface-secondary);
+  border-radius: var(--radius-sm);
+  margin-top: var(--mobile-spacing-xs);
+}
+
+/* Progressions section */
+.mobile-device .progressions-section {
+  margin-top: var(--mobile-spacing-md);
+  padding: var(--mobile-spacing-sm);
+  background: var(--mobile-surface-secondary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-primary);
+}
+
+.mobile-device .progressions-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mobile-spacing-xs);
+  margin-bottom: var(--mobile-spacing-sm);
+}
+
+.mobile-device .progressions-title {
+  font-size: var(--mobile-font-sm);
+  font-weight: 600;
+  color: var(--mobile-text-primary);
+}
+
+.mobile-device .progressions-progress {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mobile-spacing-xs);
+}
+
+.mobile-device .progress-text {
+  font-size: var(--mobile-font-xs);
+  color: var(--mobile-text-secondary);
+}
+
+.mobile-device .progress-bar {
+  height: 8px;
+  background: var(--bg-primary);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mobile-device .progress-fill {
+  height: 100%;
+  background: var(--mobile-accent-primary);
+  transition: width var(--mobile-transition-normal);
+}
+
+.mobile-device .progressions-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mobile-spacing-xs);
+}
+
+/* Individual progression items */
+.mobile-device .progression-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--mobile-spacing-xs);
+  padding: var(--mobile-spacing-sm);
+  background: var(--mobile-surface-primary);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-primary);
+}
+
+.mobile-device .progression-item.completed {
+  opacity: 0.7;
+  background: var(--bg-secondary);
+}
+
+.mobile-device .progression-item.overdue {
+  border-color: #ef4444;
+}
+
+.mobile-device .progression-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--mobile-spacing-sm);
+}
+
+.mobile-device .progression-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: var(--mobile-spacing-sm);
+  flex: 1;
+  cursor: pointer;
+  min-height: var(--mobile-touch-target-min);
+  padding: var(--mobile-spacing-xs) 0;
+}
+
+.mobile-device .progression-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--mobile-accent-primary);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.mobile-device .progression-name {
+  color: var(--mobile-text-primary);
+  font-size: var(--mobile-font-sm);
+  line-height: 1.3;
+  flex: 1;
+}
+
+.mobile-device .progression-completed .progression-name {
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+.mobile-device .progression-difficulty {
+  color: var(--bg-primary);
+  font-weight: 600;
+  font-size: var(--mobile-font-xs);
+  background: var(--mobile-accent-secondary);
+  padding: 2px var(--mobile-spacing-xs);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  min-width: 30px;
+  flex-shrink: 0;
+}
+
+.mobile-device .progression-target-date {
+  font-size: var(--mobile-font-xs);
+  color: var(--mobile-text-secondary);
+  padding-left: 32px; /* Align with checkbox + gap */
+}
+
+.mobile-device .progression-target-date.overdue {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.mobile-device .progression-notes {
+  font-size: var(--mobile-font-xs);
+  color: var(--mobile-text-secondary);
+  line-height: 1.3;
+  padding-left: 32px; /* Align with checkbox + gap */
+  padding-top: var(--mobile-spacing-xs);
+}
+
+.mobile-device .progression-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--mobile-spacing-xs);
+}
+
+.mobile-device .delete-progression-btn {
+  /* Large, easy-to-tap delete button */
+  min-width: var(--mobile-touch-target-min);
+  min-height: var(--mobile-touch-target-min);
+  padding: var(--mobile-spacing-sm);
+  background: transparent;
+  border: 1px solid #ef4444;
+  border-radius: var(--radius-sm);
+  color: #ef4444;
+  font-size: var(--mobile-font-md);
+  cursor: pointer;
+  transition: all var(--mobile-transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-device .delete-progression-btn:active {
+  background: #ef4444;
+  color: white;
+  transform: scale(0.95);
+}
+
+/* Skill actions */
+.mobile-device .skill-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--mobile-spacing-xs);
+  margin-top: var(--mobile-spacing-md);
+  padding-top: var(--mobile-spacing-sm);
+  border-top: 1px solid var(--border-primary);
+}
+
+.mobile-device .skill-action-btn {
+  /* Touch-optimized action buttons */
+  min-height: var(--mobile-touch-target-min);
+  padding: var(--mobile-spacing-sm) var(--mobile-spacing-md);
+  background: var(--mobile-surface-secondary);
+  color: var(--mobile-text-primary);
+  border: 1px solid var(--border-primary);
+  border-radius: var(--radius-sm);
+  font-size: var(--mobile-font-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--mobile-transition-fast);
+  
+  /* Flex to allow text wrapping on very small screens */
+  flex: 0 1 auto;
+  min-width: 0;
+  text-align: center;
+  
+  /* Touch optimization */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-device .skill-action-btn:active {
+  background: var(--mobile-accent-primary);
+  color: var(--bg-primary);
+  transform: scale(0.95);
+}
+
+.mobile-device .skill-action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: var(--bg-secondary);
+}
+
+.mobile-device .skill-action-btn.edit-skill-btn {
+  background: var(--mobile-accent-primary);
+  color: var(--bg-primary);
+  border-color: var(--mobile-accent-primary);
+}
+
+.mobile-device .skill-action-btn.delete-btn {
+  background: transparent;
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.mobile-device .skill-action-btn.delete-btn:active {
+  background: #ef4444;
+  color: white;
+}
+
+/* Responsive action buttons for very small screens */
+@media (max-width: 360px) {
+  .mobile-device .skill-actions {
+    flex-direction: column;
+  }
+  
+  .mobile-device .skill-action-btn {
+    width: 100%;
+    flex: none;
+  }
+}
+
+/* Dark mode and color scheme adjustments */
+@media (prefers-color-scheme: dark) {
+  .mobile-device .skill-difficulty {
+    background: var(--mobile-accent-secondary);
+    color: var(--bg-primary);
+  }
+  
+  .mobile-device .progression-difficulty {
+    background: var(--mobile-accent-primary);
+    color: var(--bg-primary);
+  }
 } 
