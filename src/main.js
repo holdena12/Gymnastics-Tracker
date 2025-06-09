@@ -1,45 +1,279 @@
 // Import skills database
 import { searchSkills, getSkillsForEvent } from './skills-database.js';
 
-// Gymnastics Skills Tracker
+// Gymnastics Skills Tracker with Profile Management
 class GymnasticsTracker {
   constructor() {
-    this.data = this.loadData();
+    // Profile management properties
+    this.currentUser = null;
+    this.profiles = this.loadProfiles();
+    
+    // App properties
+    this.data = {};
     this.currentEvent = null;
     this.currentRoutineId = null;
     this.currentSkillId = null;
-    this.currentPage = 'main'; // Track current page
-    this.currentRoutineView = null; // Track routine being viewed
+    this.currentPage = 'login'; // Start with login page
+    this.currentRoutineView = null;
     this.difficultyValues = {
       'A': 0.1, 'B': 0.2, 'C': 0.3, 'D': 0.4, 'E': 0.5, 
       'F': 0.6, 'G': 0.7, 'H': 0.8, 'I': 0.9, 'J': 1.0
     };
+    
     this.init();
   }
 
   init() {
+    // Check if user is already logged in
+    this.checkAuthStatus();
     this.setupEventListeners();
+    
+    if (this.currentUser) {
+      this.showMainApp();
+    } else {
+      this.showLoginPage();
+    }
+  }
+
+  // Profile Management Methods
+  loadProfiles() {
+    try {
+      const stored = localStorage.getItem('gymnastics-profiles');
+      if (stored) {
+        return JSON.parse(stored);
+      }
+    } catch (error) {
+      console.error('Error loading profiles:', error);
+    }
+    return {};
+  }
+
+  saveProfiles() {
+    try {
+      localStorage.setItem('gymnastics-profiles', JSON.stringify(this.profiles));
+    } catch (error) {
+      console.error('Error saving profiles:', error);
+    }
+  }
+
+  checkAuthStatus() {
+    const currentUser = localStorage.getItem('gymnastics-current-user');
+    if (currentUser && this.profiles[currentUser]) {
+      this.currentUser = currentUser;
+      this.loadData();
+      return true;
+    }
+    return false;
+  }
+
+  createProfile(username, password, fullName = '', level = '') {
+    if (this.profiles[username]) {
+      throw new Error('Username already exists');
+    }
+
+    // Simple password hashing (in production, use proper bcrypt)
+    const hashedPassword = btoa(password + 'salt123');
+    
+    this.profiles[username] = {
+      username,
+      password: hashedPassword,
+      fullName,
+      level,
+      createdAt: new Date().toISOString(),
+      lastAccess: new Date().toISOString()
+    };
+
+    this.saveProfiles();
+    return true;
+  }
+
+  authenticateUser(username, password) {
+    const profile = this.profiles[username];
+    if (!profile) {
+      throw new Error('Username not found');
+    }
+
+    const hashedPassword = btoa(password + 'salt123');
+    if (profile.password !== hashedPassword) {
+      throw new Error('Invalid password');
+    }
+
+    // Update last access
+    profile.lastAccess = new Date().toISOString();
+    this.saveProfiles();
+
+    this.currentUser = username;
+    localStorage.setItem('gymnastics-current-user', username);
+    this.loadData();
+    return true;
+  }
+
+  switchProfile(username) {
+    if (!this.profiles[username]) {
+      throw new Error('Profile not found');
+    }
+
+    this.currentUser = username;
+    localStorage.setItem('gymnastics-current-user', username);
+    this.profiles[username].lastAccess = new Date().toISOString();
+    this.saveProfiles();
+    this.loadData();
+    this.updateProfileDisplay();
+    this.renderAll();
+  }
+
+  logout() {
+    this.currentUser = null;
+    localStorage.removeItem('gymnastics-current-user');
+    this.data = {};
+    this.showLoginPage();
+  }
+
+  updateProfile(updates) {
+    if (!this.currentUser) return false;
+    
+    Object.assign(this.profiles[this.currentUser], updates);
+    this.saveProfiles();
+    this.updateProfileDisplay();
+    return true;
+  }
+
+  changePassword(currentPassword, newPassword) {
+    if (!this.currentUser) throw new Error('No user logged in');
+    
+    const profile = this.profiles[this.currentUser];
+    const currentHashed = btoa(currentPassword + 'salt123');
+    
+    if (profile.password !== currentHashed) {
+      throw new Error('Current password is incorrect');
+    }
+
+    profile.password = btoa(newPassword + 'salt123');
+    this.saveProfiles();
+    return true;
+  }
+
+  deleteProfile(username) {
+    if (!this.profiles[username]) return false;
+    
+    // Delete profile data
+    localStorage.removeItem(`gymnastics-data-${username}`);
+    delete this.profiles[username];
+    this.saveProfiles();
+
+    // If deleting current user, logout
+    if (this.currentUser === username) {
+      this.logout();
+    }
+    
+    return true;
+  }
+
+  exportUserData() {
+    if (!this.currentUser) return null;
+    
+    const userData = {
+      profile: this.profiles[this.currentUser],
+      routines: this.data,
+      exportDate: new Date().toISOString(),
+      version: '1.0'
+    };
+    
+    return JSON.stringify(userData, null, 2);
+  }
+
+  importUserData(jsonData) {
+    try {
+      const userData = JSON.parse(jsonData);
+      if (userData.routines) {
+        this.data = userData.routines;
+        this.saveData();
+        this.renderAll();
+        return true;
+      }
+    } catch (error) {
+      console.error('Import error:', error);
+      throw new Error('Invalid data format');
+    }
+    return false;
+  }
+
+  // UI Management Methods
+  showLoginPage() {
+    document.getElementById('login-page').style.display = 'flex';
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('routine-page').style.display = 'none';
+    this.renderRecentProfiles();
+  }
+
+  showMainApp() {
+    document.getElementById('login-page').style.display = 'none';
+    document.getElementById('main-page').style.display = 'block';
+    document.getElementById('routine-page').style.display = 'none';
+    this.updateProfileDisplay();
     this.renderAll();
     // Auto-save every 30 seconds as backup
     setInterval(() => this.saveData(), 30000);
   }
 
-  // Data Management
+  updateProfileDisplay() {
+    if (!this.currentUser) return;
+    
+    const profile = this.profiles[this.currentUser];
+    const initial = profile.fullName ? profile.fullName.charAt(0).toUpperCase() : profile.username.charAt(0).toUpperCase();
+    
+    document.getElementById('current-profile-name').textContent = profile.fullName || profile.username;
+    document.getElementById('current-profile-level').textContent = profile.level || 'No level set';
+    document.querySelector('.profile-avatar').textContent = initial;
+  }
+
+  renderRecentProfiles() {
+    const recentProfilesList = document.getElementById('recent-profiles-list');
+    if (!recentProfilesList) return;
+
+    const recentProfiles = Object.values(this.profiles)
+      .sort((a, b) => new Date(b.lastAccess) - new Date(a.lastAccess))
+      .slice(0, 3);
+
+    if (recentProfiles.length === 0) {
+      document.getElementById('quick-profiles-section').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('quick-profiles-section').style.display = 'block';
+    recentProfilesList.innerHTML = recentProfiles.map(profile => {
+      const initial = profile.fullName ? profile.fullName.charAt(0).toUpperCase() : profile.username.charAt(0).toUpperCase();
+      const lastAccess = new Date(profile.lastAccess).toLocaleDateString();
+      
+      return `
+        <div class="recent-profile-item" data-username="${profile.username}">
+          <div class="recent-profile-avatar">${initial}</div>
+          <div class="recent-profile-info">
+            <p class="recent-profile-name">${profile.fullName || profile.username}</p>
+            <p class="recent-profile-meta">${profile.level || 'No level'} • Last access: ${lastAccess}</p>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
+  // Data Management (Per User)
   loadData() {
+    if (!this.currentUser) return;
+    
     try {
-      const stored = localStorage.getItem('gymnastics-tracker-data');
+      const stored = localStorage.getItem(`gymnastics-data-${this.currentUser}`);
       if (stored) {
-        const data = JSON.parse(stored);
-        console.log('Data loaded successfully from storage');
-        return data;
+        this.data = JSON.parse(stored);
+        console.log('User data loaded successfully');
+        return;
       }
     } catch (error) {
-      console.error('Error loading data from storage:', error);
+      console.error('Error loading user data:', error);
     }
     
     // Initialize with empty data structure
-    console.log('Initializing with empty data structure');
-    return {
+    this.data = {
       floor: [],
       pommel: [],
       rings: [],
@@ -50,12 +284,12 @@ class GymnasticsTracker {
   }
 
   saveData() {
+    if (!this.currentUser) return;
+    
     try {
-      localStorage.setItem('gymnastics-tracker-data', JSON.stringify(this.data));
-      console.log('Data saved successfully to storage');
+      localStorage.setItem(`gymnastics-data-${this.currentUser}`, JSON.stringify(this.data));
     } catch (error) {
-      console.error('Error saving data to storage:', error);
-      // Optionally show user notification about save failure
+      console.error('Error saving user data:', error);
       this.showNotification('Warning: Failed to save data', 'warning');
     }
   }
@@ -120,7 +354,34 @@ class GymnasticsTracker {
   }
 
   showNotification(message, type = 'info') {
-    // Simple notification system (you could enhance this with a toast library)
+    // Create a toast notification element
+    const notification = document.createElement('div');
+    notification.className = `notification toast ${type}`;
+    notification.innerHTML = `
+      <div class="notification-content">
+        <span class="notification-icon">${type === 'success' ? '✅' : type === 'warning' ? '⚠️' : 'ℹ️'}</span>
+        <span class="notification-message">${message}</span>
+      </div>
+    `;
+    
+    // Add to page
+    document.body.appendChild(notification);
+    
+    // Show with animation
+    requestAnimationFrame(() => {
+      notification.classList.add('show');
+    });
+    
+    // Auto-remove after 3 seconds
+    setTimeout(() => {
+      notification.classList.remove('show');
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 300);
+    }, 3000);
+    
     console.log(`${type.toUpperCase()}: ${message}`);
   }
 
@@ -168,12 +429,43 @@ class GymnasticsTracker {
     addSkillBtn.dataset.event = eventType;
     addSkillBtn.dataset.routine = routine.id;
 
+    // Render routine progress
+    const progressContainer = document.getElementById('routine-progress-container');
+    const { total, completed, percentage } = this.calculateProgress(routine);
+    progressContainer.innerHTML = `
+      <div class="progress-info">
+        <span class="progress-title">Routine Progress</span>
+        <span class="progress-percentage">${percentage}%</span>
+      </div>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" style="width: ${percentage}%;"></div>
+      </div>
+      <div class="progress-summary">${completed} of ${total} skills completed</div>
+    `;
+
+    // Calculate and render start value
+    const startValueContainer = document.getElementById('start-value-container');
+    const startValue = this.calculateStartValue(routine, eventType);
+    startValueContainer.innerHTML = `
+      <div class="start-value-info">
+        <span class="start-value-title">Start Value</span>
+        <span class="start-value-total">${startValue.total.toFixed(1)}</span>
+      </div>
+      <div class="start-value-breakdown">
+        (Skills: ${startValue.skillsValue.toFixed(1)})
+      </div>
+    `;
+
     // Render skills in the routine page
     this.renderRoutineSkills(eventType, routine);
 
     // Update notes
     const notesContent = document.getElementById('routine-notes-content');
-    notesContent.textContent = routine.notes || 'No notes added yet.';
+    if (routine.notes && routine.notes.trim()) {
+      notesContent.innerHTML = `<p class="notes-text">${routine.notes.replace(/\n/g, '<br>')}</p>`;
+    } else {
+      notesContent.innerHTML = `<p class="notes-empty">No notes added yet. Click "Edit" to add some notes about this routine.</p>`;
+    }
   }
 
   renderRoutineSkills(eventType, routine) {
@@ -196,14 +488,137 @@ class GymnasticsTracker {
       this.renderSkill(eventType, routine.id, skill, index)
     ).join('');
     
-    container.innerHTML = `<ul class="skills-list" id="routine-page-skills-list">${skillsHtml}</ul>`;
+    container.innerHTML = skillsHtml;
 
-    // Set up event listeners for the routine page skills
+    // Set up drag and drop functionality
+    this.setupDragAndDrop(container);
+
+    // Set up event listeners for the routine page skills (for checkboxes and delete buttons)
     this.addDynamicEventListeners('routine-page');
   }
 
   // Event Listeners
   setupEventListeners() {
+    // Profile System Event Listeners
+    
+    // Login/Register Tab Switching
+    document.querySelectorAll('.login-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        const targetTab = e.target.dataset.tab;
+        
+        // Update tab active states
+        document.querySelectorAll('.login-tab').forEach(t => t.classList.remove('active'));
+        e.target.classList.add('active');
+        
+        // Update form active states
+        document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+        if (targetTab === 'login') {
+          document.getElementById('login-form').classList.add('active');
+        } else if (targetTab === 'register') {
+          document.getElementById('register-form').classList.add('active');
+        }
+      });
+    });
+
+    // Authentication Forms
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.handleLogin();
+    });
+
+    document.getElementById('register-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.handleRegister();
+    });
+
+    // Recent Profiles Quick Selection
+    document.addEventListener('click', (e) => {
+      if (e.target.closest('.recent-profile-item')) {
+        const username = e.target.closest('.recent-profile-item').dataset.username;
+        this.showQuickLogin(username);
+      }
+    });
+
+    // Profile Actions
+    document.getElementById('switch-profile-btn').addEventListener('click', () => {
+      this.showSwitchProfileModal();
+    });
+
+    document.getElementById('manage-profile-btn').addEventListener('click', () => {
+      this.showManageProfileModal();
+    });
+
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      this.logout();
+    });
+
+    // Profile Modal Tabs
+    document.querySelectorAll('.profile-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        const targetTab = e.target.dataset.tab;
+        
+        // Update tab active states
+        document.querySelectorAll('.profile-tab').forEach(t => t.classList.remove('active'));
+        e.target.classList.add('active');
+        
+        // Update content active states
+        document.querySelectorAll('.profile-tab-content').forEach(content => content.classList.remove('active'));
+        document.getElementById(`${targetTab}-profile-tab`).classList.add('active');
+      });
+    });
+
+    // Profile Management Forms
+    document.getElementById('edit-profile-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.handleProfileUpdate();
+    });
+
+    document.getElementById('change-password-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.handlePasswordChange();
+    });
+
+    // Data Management
+    document.getElementById('export-data-btn').addEventListener('click', () => {
+      this.handleDataExport();
+    });
+
+    document.getElementById('import-data-btn').addEventListener('click', () => {
+      document.getElementById('import-data-input').click();
+    });
+
+    document.getElementById('import-data-input').addEventListener('change', (e) => {
+      this.handleDataImport(e);
+    });
+
+    document.getElementById('delete-profile-btn').addEventListener('click', () => {
+      this.showDeleteConfirmation();
+    });
+
+    // Create New Profile from Switch Modal
+    document.getElementById('create-new-profile-btn').addEventListener('click', () => {
+      this.closeModal(document.getElementById('switch-profile-modal'));
+      // Switch to register tab
+      document.querySelector('.login-tab[data-tab="register"]').click();
+      this.showLoginPage();
+    });
+
+    // Confirmation Modal
+    document.getElementById('confirm-proceed').addEventListener('click', () => {
+      if (this.pendingConfirmAction) {
+        this.pendingConfirmAction();
+        this.pendingConfirmAction = null;
+      }
+      this.closeModal(document.getElementById('confirm-modal'));
+    });
+
+    document.getElementById('confirm-cancel').addEventListener('click', () => {
+      this.pendingConfirmAction = null;
+      this.closeModal(document.getElementById('confirm-modal'));
+    });
+
+    // Existing App Event Listeners
+    
     // Add routine buttons
     document.querySelectorAll('.add-routine-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -240,7 +655,7 @@ class GymnasticsTracker {
     });
 
     document.getElementById('progression-form').addEventListener('submit', (e) => {
-    e.preventDefault();
+      e.preventDefault();
       this.handleProgressionSubmit();
     });
 
@@ -265,6 +680,277 @@ class GymnasticsTracker {
       const routineId = e.target.dataset.routine;
       this.showSkillModal(eventType, routineId);
     });
+
+    // Edit routine notes button
+    document.getElementById('edit-routine-notes').addEventListener('click', () => {
+      if (this.currentRoutineView) {
+        this.showNotesModal(this.currentRoutineView.eventType, this.currentRoutineView.routineId);
+      }
+    });
+
+    // Notes form submission
+    document.getElementById('notes-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      this.handleNotesSubmit();
+    });
+
+    // Escape key to close modals
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const activeModal = document.querySelector('.modal[style*="block"]');
+        if (activeModal) {
+          this.closeModal(activeModal);
+        }
+      }
+    });
+  }
+
+  // Profile Management Handlers
+  handleLogin() {
+    const username = document.getElementById('login-username').value.trim();
+    const password = document.getElementById('login-password').value;
+
+    if (!username || !password) {
+      this.showNotification('Please enter both username and password', 'warning');
+      return;
+    }
+
+    try {
+      this.authenticateUser(username, password);
+      this.showNotification('Login successful!', 'success');
+      this.showMainApp();
+    } catch (error) {
+      this.showNotification(error.message, 'warning');
+    }
+  }
+
+  handleRegister() {
+    const username = document.getElementById('register-username').value.trim();
+    const password = document.getElementById('register-password').value;
+    const confirmPassword = document.getElementById('register-confirm-password').value;
+    const fullName = document.getElementById('register-fullname').value.trim();
+    const level = document.getElementById('register-level').value;
+
+    // Validation
+    if (!username || !password) {
+      this.showNotification('Username and password are required', 'warning');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      this.showNotification('Passwords do not match', 'warning');
+      return;
+    }
+
+    if (password.length < 4) {
+      this.showNotification('Password must be at least 4 characters long', 'warning');
+      return;
+    }
+
+    try {
+      this.createProfile(username, password, fullName, level);
+      this.authenticateUser(username, password);
+      this.showNotification('Profile created successfully!', 'success');
+      this.showMainApp();
+    } catch (error) {
+      this.showNotification(error.message, 'warning');
+    }
+  }
+
+  showQuickLogin(username) {
+    // Auto-fill login form with username
+    document.getElementById('login-username').value = username;
+    document.getElementById('login-password').focus();
+    // Switch to login tab
+    document.querySelector('.login-tab[data-tab="login"]').click();
+  }
+
+  showSwitchProfileModal() {
+    const modal = document.getElementById('switch-profile-modal');
+    const profilesList = document.getElementById('profiles-list');
+    
+    const profiles = Object.values(this.profiles)
+      .filter(profile => profile.username !== this.currentUser)
+      .sort((a, b) => new Date(b.lastAccess) - new Date(a.lastAccess));
+
+    if (profiles.length === 0) {
+      profilesList.innerHTML = '<p class="no-profiles">No other profiles found. Create a new profile to switch between multiple users.</p>';
+    } else {
+      profilesList.innerHTML = profiles.map(profile => {
+        const initial = profile.fullName ? profile.fullName.charAt(0).toUpperCase() : profile.username.charAt(0).toUpperCase();
+        const lastAccess = new Date(profile.lastAccess).toLocaleDateString();
+        
+        return `
+          <div class="profile-card" data-username="${profile.username}">
+            <div class="profile-card-avatar">${initial}</div>
+            <div class="profile-card-info">
+              <h4>${profile.fullName || profile.username}</h4>
+              <p class="profile-card-level">${profile.level || 'No level set'}</p>
+              <p class="profile-card-access">Last access: ${lastAccess}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Add click handlers for profile cards
+      profilesList.querySelectorAll('.profile-card').forEach(card => {
+        card.addEventListener('click', () => {
+          const username = card.dataset.username;
+          try {
+            this.switchProfile(username);
+            this.closeModal(modal);
+            this.showNotification(`Switched to ${username}'s profile`, 'success');
+          } catch (error) {
+            this.showNotification(error.message, 'warning');
+          }
+        });
+      });
+    }
+
+    modal.style.display = 'block';
+  }
+
+  showManageProfileModal() {
+    const modal = document.getElementById('manage-profile-modal');
+    
+    if (!this.currentUser) return;
+    
+    const profile = this.profiles[this.currentUser];
+    
+    // Pre-fill edit profile form
+    document.getElementById('edit-username').value = profile.username;
+    document.getElementById('edit-fullname').value = profile.fullName || '';
+    document.getElementById('edit-level').value = profile.level || '';
+    
+    // Update data stats
+    this.updateDataStats();
+    
+    modal.style.display = 'block';
+  }
+
+  updateDataStats() {
+    const statsContainer = document.getElementById('profile-data-stats');
+    if (!this.currentUser) return;
+
+    const totalRoutines = Object.values(this.data).reduce((sum, eventRoutines) => sum + eventRoutines.length, 0);
+    const totalSkills = Object.values(this.data).reduce((sum, eventRoutines) => {
+      return sum + eventRoutines.reduce((skillSum, routine) => skillSum + (routine.skills ? routine.skills.length : 0), 0);
+    }, 0);
+
+    const profile = this.profiles[this.currentUser];
+    const memberSince = new Date(profile.createdAt).toLocaleDateString();
+
+    statsContainer.innerHTML = `
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">${totalRoutines}</span>
+          <span class="stat-label">Routines</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">${totalSkills}</span>
+          <span class="stat-label">Skills</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">${memberSince}</span>
+          <span class="stat-label">Member Since</span>
+        </div>
+      </div>
+    `;
+  }
+
+  handleProfileUpdate() {
+    const fullName = document.getElementById('edit-fullname').value.trim();
+    const level = document.getElementById('edit-level').value;
+
+    try {
+      this.updateProfile({ fullName, level });
+      this.showNotification('Profile updated successfully!', 'success');
+    } catch (error) {
+      this.showNotification('Failed to update profile', 'warning');
+    }
+  }
+
+  handlePasswordChange() {
+    const currentPassword = document.getElementById('current-password').value;
+    const newPassword = document.getElementById('new-password').value;
+    const confirmNewPassword = document.getElementById('confirm-new-password').value;
+
+    if (newPassword !== confirmNewPassword) {
+      this.showNotification('New passwords do not match', 'warning');
+      return;
+    }
+
+    if (newPassword.length < 4) {
+      this.showNotification('Password must be at least 4 characters long', 'warning');
+      return;
+    }
+
+    try {
+      this.changePassword(currentPassword, newPassword);
+      this.showNotification('Password changed successfully!', 'success');
+      
+      // Clear form
+      document.getElementById('change-password-form').reset();
+    } catch (error) {
+      this.showNotification(error.message, 'warning');
+    }
+  }
+
+  handleDataExport() {
+    try {
+      const data = this.exportUserData();
+      if (!data) {
+        this.showNotification('No data to export', 'warning');
+        return;
+      }
+
+      const blob = new Blob([data], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `gymnastics-data-${this.currentUser}-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+
+      this.showNotification('Data exported successfully!', 'success');
+    } catch (error) {
+      this.showNotification('Failed to export data', 'warning');
+    }
+  }
+
+  handleDataImport(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        this.importUserData(e.target.result);
+        this.showNotification('Data imported successfully!', 'success');
+      } catch (error) {
+        this.showNotification('Failed to import data: ' + error.message, 'warning');
+      }
+    };
+    reader.readAsText(file);
+  }
+
+  showDeleteConfirmation() {
+    document.getElementById('confirm-title').textContent = 'Delete Profile';
+    document.getElementById('confirm-message').textContent = 
+      `Are you sure you want to delete the profile "${this.currentUser}"? This action cannot be undone and will permanently delete all your routines and skills.`;
+    
+    this.pendingConfirmAction = () => {
+      try {
+        this.deleteProfile(this.currentUser);
+        this.showNotification('Profile deleted successfully', 'success');
+      } catch (error) {
+        this.showNotification('Failed to delete profile', 'warning');
+      }
+    };
+
+    document.getElementById('confirm-modal').style.display = 'block';
   }
 
   // Modal Management
@@ -273,9 +959,34 @@ class GymnasticsTracker {
     document.getElementById('routine-name').focus();
   }
 
-  showSkillModal(eventType, routineId) {
+  showSkillModal(eventType, routineId, skillId = null) {
     this.currentEvent = eventType;
     this.currentRoutineId = routineId;
+    this.currentSkillId = skillId;
+
+    const modalTitle = document.querySelector('#skill-modal h2');
+    const submitButton = document.querySelector('#skill-modal button[type="submit"]');
+
+    if (skillId) {
+      modalTitle.textContent = 'Edit Skill';
+      submitButton.textContent = 'Save Changes';
+      const routine = this.data[eventType].find(r => r.id === routineId);
+      const skill = routine?.skills.find(s => s.id === skillId);
+      if (skill) {
+        document.getElementById('skill-name').value = skill.name;
+        document.getElementById('skill-difficulty').value = skill.difficulty;
+        document.getElementById('skill-target-date').value = skill.targetDate;
+        document.getElementById('skill-notes').value = skill.notes;
+        document.getElementById('skill-name').removeAttribute('readonly');
+      }
+    } else {
+      modalTitle.textContent = 'Add Skill';
+      submitButton.textContent = 'Add Skill';
+      document.getElementById('skill-form').reset();
+      const nameField = document.getElementById('skill-name');
+      nameField.setAttribute('readonly', 'true');
+      nameField.placeholder = 'Select a skill from the database above';
+    }
     
     // Map event types to database names
     const eventNameMap = {
@@ -397,6 +1108,22 @@ class GymnasticsTracker {
     document.getElementById('progression-name').focus();
   }
 
+  showNotesModal(eventType, routineId) {
+    this.currentEvent = eventType;
+    this.currentRoutineId = routineId;
+    
+    // Find the routine to get its name and notes
+    const routine = this.data[eventType].find(r => r.id === routineId);
+    
+    if (routine) {
+      document.getElementById('notes-routine-name').textContent = routine.name;
+      document.getElementById('routine-notes-edit').value = routine.notes || '';
+    }
+    
+    document.getElementById('notes-modal').style.display = 'block';
+    document.getElementById('routine-notes-edit').focus();
+  }
+
   closeModal(modal) {
     modal.style.display = 'none';
     // Reset forms
@@ -461,25 +1188,37 @@ class GymnasticsTracker {
       return;
     }
 
-    // For vault, only allow one skill per routine
-    if (this.currentEvent === 'vault' && routine.skills.length > 0) {
-      this.showNotification('Vault routines can only have one skill. Please delete the existing skill first.', 'warning');
-      return;
+    if (this.currentSkillId) {
+      // Editing existing skill
+      const skill = routine.skills.find(s => s.id === this.currentSkillId);
+      if (skill) {
+        skill.name = name;
+        skill.targetDate = targetDate;
+        skill.notes = notes;
+        skill.difficulty = difficulty;
+      }
+    } else {
+      // Adding new skill
+      // For vault, only allow one skill per routine
+      if (this.currentEvent === 'vault' && routine.skills.length > 0) {
+        this.showNotification('Vault routines can only have one skill. Please delete the existing skill first.', 'warning');
+        return;
+      }
+
+      const skill = {
+        id: Date.now().toString(),
+        name,
+        difficulty,
+        targetDate,
+        notes,
+        completed: false,
+        completedAt: null,
+        progressions: [],
+        createdAt: new Date().toISOString()
+      };
+      routine.skills.push(skill);
     }
 
-    const skill = {
-      id: Date.now().toString(),
-      name,
-      difficulty,
-      targetDate,
-      notes,
-      completed: false,
-      completedAt: null,
-      progressions: [],
-      createdAt: new Date().toISOString()
-    };
-
-    routine.skills.push(skill);
     this.saveData();
     
     // Re-render appropriate view
@@ -492,7 +1231,7 @@ class GymnasticsTracker {
     }
     
     this.closeModal(document.getElementById('skill-modal'));
-    this.showNotification('Skill added successfully', 'success');
+    this.showNotification(`Skill ${this.currentSkillId ? 'updated' : 'added'} successfully`, 'success');
   }
 
   // Progression Management
@@ -525,6 +1264,28 @@ class GymnasticsTracker {
       this.renderRoutines(this.currentEvent);
       this.closeModal(document.getElementById('progression-modal'));
       this.showNotification('Progression step added successfully', 'success');
+    }
+  }
+
+  // Notes Management
+  handleNotesSubmit() {
+    const notes = document.getElementById('routine-notes-edit').value;
+    
+    const routine = this.data[this.currentEvent].find(r => r.id === this.currentRoutineId);
+    if (routine) {
+      routine.notes = notes;
+      this.saveData();
+      
+      // Update the routine page view if we're currently viewing it
+      if (this.currentRoutineView && 
+          this.currentRoutineView.eventType === this.currentEvent && 
+          this.currentRoutineView.routineId === this.currentRoutineId) {
+        this.currentRoutineView.routine = routine;
+        this.renderRoutinePage(this.currentEvent, routine);
+      }
+      
+      this.closeModal(document.getElementById('notes-modal'));
+      this.showNotification('Notes updated successfully', 'success');
     }
   }
 
@@ -669,63 +1430,34 @@ class GymnasticsTracker {
   }
 
   renderSkill(eventType, routineId, skill, index) {
-    const isOverdue = skill.targetDate && this.isOverdue(skill.targetDate) && !skill.completed;
-    const difficultyValue = eventType === 'vault' 
-      ? parseFloat(skill.difficulty) || 0 
-      : this.difficultyValues[skill.difficulty] || 0;
-    const hasProgressions = skill.progressions && skill.progressions.length > 0;
-    const progressionProgress = this.calculateProgressionProgress(skill);
+    const isVault = eventType === 'vault';
+    const difficulty = isVault ? `D-score: ${skill.difficulty}` : `(${skill.difficulty})`;
     
+    // Get the routine to check if this is the last skill
+    const routine = this.data[eventType].find(r => r.id === routineId);
+    const isLastSkill = routine && index === routine.skills.length - 1;
+
     return `
-      <li class="skill-item ${skill.completed ? 'skill-completed' : ''} ${hasProgressions ? 'skill-with-progressions' : ''}"
-          draggable="true"
-          data-event="${eventType}"
-          data-routine="${routineId}"
-          data-skill="${skill.id}"
-          data-index="${index}">
-        <div class="skill-order-number">${index + 1}</div>
-        <div class="drag-handle" title="Drag to reorder">⋮⋮</div>
-        <input type="checkbox" class="skill-checkbox" ${skill.completed ? 'checked' : ''} 
-               data-event="${eventType}" data-routine="${routineId}" data-skill="${skill.id}">
-        <div class="skill-info">
-          <div class="skill-name">
-            ${skill.name}
-            <button class="add-progression-btn" data-event="${eventType}" data-routine="${routineId}" data-skill="${skill.id}">
-              + Add Progression
-            </button>
-          </div>
-          <div class="skill-meta">
-            <span class="skill-difficulty">${eventType === 'vault' 
-              ? `D-score: ${skill.difficulty}` 
-              : `${skill.difficulty} (${difficultyValue})`
-            }</span>
-            ${skill.targetDate ? `<span class="skill-date ${isOverdue ? 'overdue' : ''}">${this.formatDate(skill.targetDate)}</span>` : ''}
-            ${skill.notes ? `<span class="skill-notes">${skill.notes}</span>` : ''}
-          </div>
-          
-          ${hasProgressions ? `
-            <div class="progressions-section">
-              <div class="progressions-header">
-                <span class="progressions-title">Progression Steps</span>
-              </div>
-              <div class="progression-progress">
-                <div class="progression-progress-bar">
-                  <div class="progression-progress-fill" style="width: ${progressionProgress.percentage}%"></div>
-                </div>
-                <div class="progression-progress-text">
-                  ${progressionProgress.completed}/${progressionProgress.total} steps completed
-                </div>
-              </div>
-              <ul class="progressions-list">
-                ${skill.progressions.map(progression => this.renderProgression(eventType, routineId, skill.id, progression)).join('')}
-              </ul>
-            </div>
-          ` : ''}
+      <li class="skill-item" 
+          data-skill-id="${skill.id}" 
+          data-event="${eventType}" 
+          data-routine="${routineId}" 
+          data-skill="${skill.id}" 
+          data-index="${index}"
+          draggable="true">
+        <div class="drag-handle">⋮⋮</div>
+        <div class="skill-order-number" onclick="window.gymnasticsTracker.editSkillOrder('${eventType}', '${routineId}', '${skill.id}', ${index + 1})">
+          ${index + 1}
         </div>
-        <button class="delete-skill-btn" data-event="${eventType}" data-routine="${routineId}" data-skill="${skill.id}"
-                style="background: transparent; border: none; color: var(--danger-color); cursor: pointer; padding: 0.5rem; font-size: 1.2rem;">
-          ×
-        </button>
+        <div class="skill-details">
+          <span class="skill-name">${skill.name}</span>
+          <span class="skill-difficulty">${difficulty}</span>
+        </div>
+        <div class="skill-actions">
+          <button class="reorder-btn up-btn" ${index === 0 ? 'disabled' : ''} onclick="window.gymnasticsTracker.moveSkillUp('${eventType}', '${routineId}', ${index})">↑</button>
+          <button class="reorder-btn down-btn" ${isLastSkill ? 'disabled' : ''} onclick="window.gymnasticsTracker.moveSkillDown('${eventType}', '${routineId}', ${index})">↓</button>
+          <button class="edit-skill-btn" onclick="window.gymnasticsTracker.showSkillModal('${eventType}', '${routineId}', '${skill.id}')">Edit</button>
+        </div>
       </li>
     `;
   }
@@ -776,7 +1508,6 @@ class GymnasticsTracker {
     
     console.log('Skills reordered successfully');
     this.saveData();
-    this.renderRoutines(eventType);
     this.showNotification('Skills reordered successfully', 'success');
   }
 
@@ -829,8 +1560,16 @@ class GymnasticsTracker {
       const newPosition = parseInt(input.value);
       if (newPosition && newPosition !== currentPosition) {
         this.moveSkillToPosition(eventType, routineId, skillId, newPosition);
+      }
+      
+      // Refresh the routine page view
+      if (this.currentRoutineView && 
+          this.currentRoutineView.eventType === eventType && 
+          this.currentRoutineView.routineId === routineId) {
+        const updatedRoutine = this.data[eventType].find(r => r.id === routineId);
+        this.renderRoutinePage(eventType, updatedRoutine);
       } else {
-        // Just re-render to restore the original order number
+        // Fallback to render routines if not on routine page
         this.renderRoutines(eventType);
       }
     };
@@ -840,8 +1579,15 @@ class GymnasticsTracker {
       if (e.key === 'Enter') {
         finishEditing();
       } else if (e.key === 'Escape') {
-        // Cancel editing
-        this.renderRoutines(eventType);
+        // Cancel editing - just refresh the view
+        if (this.currentRoutineView && 
+            this.currentRoutineView.eventType === eventType && 
+            this.currentRoutineView.routineId === routineId) {
+          const currentRoutine = this.data[eventType].find(r => r.id === routineId);
+          this.renderRoutinePage(eventType, currentRoutine);
+        } else {
+          this.renderRoutines(eventType);
+        }
       }
     });
     
@@ -912,6 +1658,14 @@ class GymnasticsTracker {
             sourceIndex,
             targetIndex
           );
+          
+          // Refresh the routine page view if we're currently viewing it
+          if (this.currentRoutineView && 
+              this.currentRoutineView.eventType === draggedData.eventType && 
+              this.currentRoutineView.routineId === draggedData.routineId) {
+            const updatedRoutine = this.data[draggedData.eventType].find(r => r.id === draggedData.routineId);
+            this.renderRoutinePage(draggedData.eventType, updatedRoutine);
+          }
         }
       }
       
@@ -919,9 +1673,7 @@ class GymnasticsTracker {
       container.querySelectorAll('.skill-item').forEach(item => {
         item.classList.remove('drag-over', 'dragging');
       });
-      container.querySelectorAll('.skills-list').forEach(list => {
-        list.classList.remove('drag-active');
-      });
+      container.classList.remove('drag-active');
       
       draggedElement = null;
       draggedData = null;
@@ -933,9 +1685,7 @@ class GymnasticsTracker {
       container.querySelectorAll('.skill-item').forEach(item => {
         item.classList.remove('drag-over', 'dragging');
       });
-      container.querySelectorAll('.skills-list').forEach(list => {
-        list.classList.remove('drag-active');
-      });
+      container.classList.remove('drag-active');
       
       draggedElement = null;
       draggedData = null;
@@ -954,22 +1704,6 @@ class GymnasticsTracker {
     }
     
     if (!container) return;
-    
-    // Remove any existing event listeners to prevent duplicates
-    const newContainer = container.cloneNode(true);
-    container.parentNode.replaceChild(newContainer, container);
-    
-    // Get the updated container reference
-    if (eventType === 'routine-page') {
-      container = document.getElementById('routine-skills-list');
-    } else {
-      container = document.getElementById(`${eventType}-routines`);
-    }
-    
-    // Set up drag and drop only if not on routine page
-    if (eventType !== 'routine-page') {
-      this.setupDragAndDrop(container);
-    }
     
     // Use event delegation for all dynamic content
     container.addEventListener('click', (e) => {
@@ -990,6 +1724,17 @@ class GymnasticsTracker {
       while (target && target !== container) {
         console.log('Checking element:', target.tagName, target.className);
         
+        if (target.classList.contains('edit-skill-btn')) {
+          const skillItem = target.closest('.skill-item');
+          if (skillItem) {
+            const eventType = this.currentRoutineView.eventType;
+            const routineId = this.currentRoutineView.routineId;
+            const skillId = skillItem.dataset.skillId;
+            this.showSkillModal(eventType, routineId, skillId);
+          }
+          return;
+        }
+
         if (target.classList.contains('delete-progression-btn')) {
           console.log('Found delete progression button!', target.dataset);
           
@@ -1009,58 +1754,6 @@ class GymnasticsTracker {
           return;
         }
         
-        // Add skill button
-        if (target.classList.contains('add-skill-btn')) {
-          const eventType = target.dataset.event;
-          const routineId = target.dataset.routine;
-          this.showSkillModal(eventType, routineId);
-          return;
-        }
-        
-        // Add progression button
-        if (target.classList.contains('add-progression-btn')) {
-          const eventType = target.dataset.event;
-          const routineId = target.dataset.routine;
-          const skillId = target.dataset.skill;
-          this.showProgressionModal(eventType, routineId, skillId);
-          return;
-        }
-        
-        // Order number click - make editable
-        if (target.classList.contains('skill-order-number')) {
-          const skillItem = target.closest('.skill-item');
-          if (skillItem) {
-            const eventType = skillItem.dataset.event;
-            const routineId = skillItem.dataset.routine;
-            const skillId = skillItem.dataset.skill;
-            const currentPosition = parseInt(target.textContent);
-            
-            this.makeOrderNumberEditable(target, eventType, routineId, skillId, currentPosition);
-          }
-          return;
-        }
-        
-        // Delete skill button
-        if (target.classList.contains('delete-skill-btn')) {
-          if (confirm('Are you sure you want to delete this skill and all its progressions?')) {
-            const eventType = target.dataset.event;
-            const routineId = target.dataset.routine;
-            const skillId = target.dataset.skill;
-            this.deleteSkill(eventType, routineId, skillId);
-          }
-          return;
-        }
-        
-        // Delete routine button
-        if (target.classList.contains('delete-routine-btn')) {
-          if (confirm('Are you sure you want to delete this entire routine and all its skills?')) {
-            const eventType = target.dataset.event;
-            const routineId = target.dataset.routine;
-            this.deleteRoutine(eventType, routineId);
-          }
-          return;
-        }
-
         // View routine button
         if (target.classList.contains('view-routine-btn')) {
           const eventType = target.dataset.event;
@@ -1070,28 +1763,6 @@ class GymnasticsTracker {
         }
         
         target = target.parentElement;
-      }
-    });
-    
-    // Use event delegation for checkboxes (change event)
-    container.addEventListener('change', (e) => {
-      // Skill checkboxes
-      if (e.target.classList.contains('skill-checkbox')) {
-        const eventType = e.target.dataset.event;
-        const routineId = e.target.dataset.routine;
-        const skillId = e.target.dataset.skill;
-        this.toggleSkill(eventType, routineId, skillId);
-        return;
-      }
-      
-      // Progression checkboxes
-      if (e.target.classList.contains('progression-checkbox')) {
-        const eventType = e.target.dataset.event;
-        const routineId = e.target.dataset.routine;
-        const skillId = e.target.dataset.skill;
-        const progressionId = e.target.dataset.progression;
-        this.toggleProgression(eventType, routineId, skillId, progressionId);
-        return;
       }
     });
   }
@@ -1121,6 +1792,49 @@ class GymnasticsTracker {
       month: 'short', 
       day: 'numeric' 
     });
+  }
+
+  // Helper methods for skill reordering
+  moveSkillUp(eventType, routineId, currentIndex) {
+    console.log('Moving skill up:', { eventType, routineId, currentIndex });
+    
+    if (currentIndex > 0) {
+      const newIndex = currentIndex - 1;
+      this.reorderSkills(eventType, routineId, currentIndex, newIndex);
+      
+      // Refresh the routine page
+      if (this.currentRoutineView && this.currentRoutineView.eventType === eventType && this.currentRoutineView.routineId === routineId) {
+        const updatedRoutine = this.data[eventType].find(r => r.id === routineId);
+        this.renderRoutinePage(eventType, updatedRoutine);
+      }
+    }
+  }
+
+  moveSkillDown(eventType, routineId, currentIndex) {
+    console.log('Moving skill down:', { eventType, routineId, currentIndex });
+    
+    const routine = this.data[eventType].find(r => r.id === routineId);
+    if (routine && currentIndex < routine.skills.length - 1) {
+      const newIndex = currentIndex + 1;
+      this.reorderSkills(eventType, routineId, currentIndex, newIndex);
+      
+      // Refresh the routine page
+      if (this.currentRoutineView && this.currentRoutineView.eventType === eventType && this.currentRoutineView.routineId === routineId) {
+        const updatedRoutine = this.data[eventType].find(r => r.id === routineId);
+        this.renderRoutinePage(eventType, updatedRoutine);
+      }
+    }
+  }
+
+  editSkillOrder(eventType, routineId, skillId, currentPosition) {
+    console.log('Editing skill order:', { eventType, routineId, skillId, currentPosition });
+    
+    // Find the skill order element
+    const skillItem = document.querySelector(`[data-skill-id="${skillId}"]`);
+    if (skillItem) {
+      const orderElement = skillItem.querySelector('.skill-order-number');
+      this.makeOrderNumberEditable(orderElement, eventType, routineId, skillId, currentPosition);
+    }
   }
 }
 

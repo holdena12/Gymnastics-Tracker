@@ -9,11 +9,102 @@
   </head>
 
   <body>
+    <!-- Login Page -->
+    <div id="login-page">
+      <div class="login-container">
+        <div class="login-header">
+          <h1>Gymnastics Skills Tracker</h1>
+          <p>Track your progress across all men's gymnastics events</p>
+        </div>
+        
+        <div class="login-form-container">
+          <div class="login-tabs">
+            <button class="login-tab active" data-tab="login">Sign In</button>
+            <button class="login-tab" data-tab="register">Create Profile</button>
+          </div>
+          
+          <!-- Sign In Form -->
+          <form id="login-form" class="auth-form active">
+            <h2>Welcome Back</h2>
+            <div class="form-group">
+              <label for="login-username">Username:</label>
+              <input type="text" id="login-username" required placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+              <label for="login-password">Password:</label>
+              <input type="password" id="login-password" required placeholder="Enter your password">
+            </div>
+            <button type="submit" class="auth-btn">Sign In</button>
+          </form>
+          
+          <!-- Create Profile Form -->
+          <form id="register-form" class="auth-form">
+            <h2>Create New Profile</h2>
+            <div class="form-group">
+              <label for="register-username">Username:</label>
+              <input type="text" id="register-username" required placeholder="Choose a username">
+            </div>
+            <div class="form-group">
+              <label for="register-password">Password:</label>
+              <input type="password" id="register-password" required placeholder="Choose a password">
+            </div>
+            <div class="form-group">
+              <label for="register-confirm-password">Confirm Password:</label>
+              <input type="password" id="register-confirm-password" required placeholder="Confirm your password">
+            </div>
+            <div class="form-group">
+              <label for="register-fullname">Full Name (optional):</label>
+              <input type="text" id="register-fullname" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="register-level">Gymnastics Level (optional):</label>
+              <select id="register-level">
+                <option value="">Select level...</option>
+                <option value="7">Level 7</option>
+                <option value="8">Level 8</option>
+                <option value="8 JE">Level 8 JE</option>
+                <option value="9">Level 9</option>
+                <option value="9 JE">Level 9 JE</option>
+                <option value="10">Level 10</option>
+                <option value="10 JE">Level 10 JE</option>
+                <option value="coach">Coach</option>
+              </select>
+            </div>
+            <button type="submit" class="auth-btn">Create Profile</button>
+          </form>
+          
+          <!-- Quick Profile Selection -->
+          <div class="quick-profiles" id="quick-profiles-section" style="display: none;">
+            <h3>Recent Profiles</h3>
+            <div id="recent-profiles-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Main Dashboard Page -->
-    <div id="main-page">
+    <div id="main-page" style="display: none;">
       <header class="header">
-        <h1>Gymnastics Skills Tracker</h1>
-        <p>Track your progress across all men's gymnastics events</p>
+        <div class="header-left">
+          <h1>Gymnastics Skills Tracker</h1>
+          <p>Track your progress across all men's gymnastics events</p>
+        </div>
+        <div class="header-right">
+          <div class="profile-section">
+            <div class="current-profile" id="current-profile-display">
+              <span class="profile-avatar">U</span>
+              <div class="profile-info">
+                <span class="profile-name" id="current-profile-name">User</span>
+                <span class="profile-level" id="current-profile-level">Level</span>
+              </div>
+            </div>
+            <div class="profile-actions">
+              <button class="profile-btn" id="switch-profile-btn">Switch Profile</button>
+              <button class="profile-btn" id="manage-profile-btn">Manage</button>
+              <button class="profile-btn logout-btn" id="logout-btn">Logout</button>
+            </div>
+          </div>
+        </div>
       </header>
 
       <main class="container">
@@ -90,20 +181,30 @@
         </div>
       </header>
 
+      <div class="routine-meta-container">
+        <!-- Routine Progress Display -->
+        <div id="routine-progress-container" class="progress-display"></div>
+        <!-- Start Value Display -->
+        <div id="start-value-container"></div>
+      </div>
+
       <!-- Skills Section - Full Screen -->
       <div class="routine-skills-section">
         <div class="section-header">
           <h2>Skills</h2>
           <button class="add-skill-btn" id="routine-add-skill" data-event="" data-routine="">+ Add Skill</button>
         </div>
-        <div class="skills-container" id="routine-skills-list">
+        <ol class="skills-container" id="routine-skills-list">
           <!-- Skills will be rendered here -->
-        </div>
+        </ol>
       </div>
 
       <!-- Notes Section - Bottom -->
       <footer class="routine-notes-section">
-        <h3>Notes</h3>
+        <div class="notes-header">
+          <h3>Notes</h3>
+          <button class="edit-notes-btn" id="edit-routine-notes">Edit</button>
+        </div>
         <div class="notes-content" id="routine-notes-content">
           <!-- Notes will be displayed here -->
         </div>
@@ -211,6 +312,125 @@
           </div>
           <button type="submit">Add Progression Step</button>
         </form>
+      </div>
+    </div>
+
+    <!-- Modal for editing routine notes -->
+    <div id="notes-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Routine Notes</h2>
+        <p class="modal-subtitle">Update notes for <span id="notes-routine-name"></span></p>
+        <form id="notes-form">
+          <div class="form-group">
+            <label for="routine-notes-edit">Notes:</label>
+            <textarea id="routine-notes-edit" rows="8" placeholder="Add notes about this routine, training tips, goals, etc..."></textarea>
+          </div>
+          <button type="submit">Save Notes</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal for switching profiles -->
+    <div id="switch-profile-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Switch Profile</h2>
+        <p class="modal-subtitle">Select a profile to switch to</p>
+        <div id="profiles-list" class="profiles-grid">
+          <!-- Profiles will be rendered here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="secondary-btn" id="create-new-profile-btn">+ Create New Profile</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for managing profile -->
+    <div id="manage-profile-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Manage Profile</h2>
+        
+        <div class="profile-tabs">
+          <button class="profile-tab active" data-tab="edit">Edit Profile</button>
+          <button class="profile-tab" data-tab="security">Change Password</button>
+          <button class="profile-tab" data-tab="data">Data Management</button>
+        </div>
+        
+        <!-- Edit Profile Tab -->
+        <div id="edit-profile-tab" class="profile-tab-content active">
+          <form id="edit-profile-form">
+            <div class="form-group">
+              <label for="edit-username">Username:</label>
+              <input type="text" id="edit-username" required readonly>
+              <small class="form-help">Username cannot be changed</small>
+            </div>
+            <div class="form-group">
+              <label for="edit-fullname">Full Name:</label>
+              <input type="text" id="edit-fullname" placeholder="Your full name">
+            </div>
+            <div class="form-group">
+              <label for="edit-level">Gymnastics Level:</label>
+              <select id="edit-level">
+                <option value="">Select level...</option>
+                <option value="7">Level 7</option>
+                <option value="8">Level 8</option>
+                <option value="8 JE">Level 8 JE</option>
+                <option value="9">Level 9</option>
+                <option value="9 JE">Level 9 JE</option>
+                <option value="10">Level 10</option>
+                <option value="10 JE">Level 10 JE</option>
+                <option value="coach">Coach</option>
+              </select>
+            </div>
+            <button type="submit">Update Profile</button>
+          </form>
+        </div>
+        
+        <!-- Change Password Tab -->
+        <div id="security-profile-tab" class="profile-tab-content">
+          <form id="change-password-form">
+            <div class="form-group">
+              <label for="current-password">Current Password:</label>
+              <input type="password" id="current-password" required placeholder="Enter current password">
+            </div>
+            <div class="form-group">
+              <label for="new-password">New Password:</label>
+              <input type="password" id="new-password" required placeholder="Enter new password">
+            </div>
+            <div class="form-group">
+              <label for="confirm-new-password">Confirm New Password:</label>
+              <input type="password" id="confirm-new-password" required placeholder="Confirm new password">
+            </div>
+            <button type="submit">Change Password</button>
+          </form>
+        </div>
+        
+        <!-- Data Management Tab -->
+        <div id="data-profile-tab" class="profile-tab-content">
+          <div class="data-stats" id="profile-data-stats">
+            <!-- Data statistics will be shown here -->
+          </div>
+          <div class="data-actions">
+            <button type="button" class="secondary-btn" id="export-data-btn">Export All Data</button>
+            <button type="button" class="secondary-btn" id="import-data-btn">Import Data</button>
+            <input type="file" id="import-data-input" accept=".json" style="display: none;">
+            <button type="button" class="danger-btn" id="delete-profile-btn">Delete Profile</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirm-modal" class="modal">
+      <div class="modal-content small">
+        <h2 id="confirm-title">Confirm Action</h2>
+        <p id="confirm-message">Are you sure you want to proceed?</p>
+        <div class="modal-actions">
+          <button type="button" class="secondary-btn" id="confirm-cancel">Cancel</button>
+          <button type="button" class="danger-btn" id="confirm-proceed">Confirm</button>
+        </div>
       </div>
     </div>
   </body>
