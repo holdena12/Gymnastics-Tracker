@@ -1,6 +1,6 @@
 // Import skills database
 import { searchSkills, getSkillsForEvent } from './skills-database.js';
-import authService from './auth-service.js';
+// Firebase auth service will be available globally via CDN scripts
 
 // Mobile Detection and CSS Loading
 class MobileDetector {
@@ -50,8 +50,8 @@ class GymnasticsTracker {
     // Initialize mobile detector first
     this.mobileDetector = new MobileDetector();
     
-    // Initialize Firebase auth service
-    this.authService = authService;
+    // Initialize Firebase auth service (will be available globally)
+    this.authService = null;
     
     // Core app properties
     this.currentUser = null;
@@ -67,15 +67,20 @@ class GymnasticsTracker {
   }
 
   async init() {
+    // Wait for auth service to be available
+    await this.waitForAuthService();
+    
     this.showLoginPage();
     this.setupEventListeners();
     this.setupMobileFeatures();
     
     // Listen for auth state changes
-    this.authService.getCurrentUser();
-    if (this.authService.isSignedIn()) {
-      await this.loadUserData();
-      this.showMainPage();
+    if (this.authService) {
+      this.authService.getCurrentUser();
+      if (this.authService.isSignedIn()) {
+        await this.loadUserData();
+        this.showMainPage();
+      }
     }
     
     // Listen for data sync events
@@ -83,6 +88,25 @@ class GymnasticsTracker {
       this.userData = event.detail;
       this.refreshUI();
     });
+  }
+  
+  async waitForAuthService() {
+    let attempts = 0;
+    const maxAttempts = 50; // 5 seconds max
+    
+    while (attempts < maxAttempts) {
+      if (window.authService) {
+        this.authService = window.authService;
+        console.log('Auth service ready');
+        break;
+      }
+      await new Promise(resolve => setTimeout(resolve, 100));
+      attempts++;
+    }
+    
+    if (!this.authService) {
+      console.error('Auth service failed to load. Some features may not work.');
+    }
   }
 
   setupMobileFeatures() {
@@ -975,7 +999,7 @@ class GymnasticsTracker {
 
   // Navigation methods
   showRoutinePage(eventType, routineId) {
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     if (!routine) return;
 
     this.currentPage = 'routine';
@@ -990,12 +1014,13 @@ class GymnasticsTracker {
   }
 
   showMainPage() {
-    this.currentPage = 'main';
-    this.currentRoutineView = null;
-
-    // Hide routine page, show main page
-    document.getElementById('routine-page').style.display = 'none';
+    document.getElementById('login-page').style.display = 'none';
     document.getElementById('main-page').style.display = 'block';
+    document.getElementById('routine-page').style.display = 'none';
+    this.updateCurrentProfileDisplay();
+    this.renderAll();
+    // Auto-save every 30 seconds as backup
+    setInterval(() => this.saveUserData(), 30000);
   }
 
   renderRoutinePage(eventType, routine) {
@@ -1194,7 +1219,7 @@ class GymnasticsTracker {
       loginForm.addEventListener('submit', (e) => {
         console.log('Login form submitted');
         e.preventDefault();
-        this.handleLogin();
+        this.handleLogin(e);
       });
     } else {
       console.error('Login form not found!');
@@ -1204,7 +1229,7 @@ class GymnasticsTracker {
       registerForm.addEventListener('submit', (e) => {
         console.log('Register form submitted');
         e.preventDefault();
-        this.handleRegister();
+        this.handleRegister(e);
       });
     } else {
       console.error('Register form not found!');
@@ -1554,7 +1579,7 @@ class GymnasticsTracker {
 
   // Data Management Methods
   async loadUserData() {
-    if (!this.authService.isSignedIn()) {
+    if (!this.authService || !this.authService.isSignedIn()) {
       return;
     }
 
@@ -1562,6 +1587,17 @@ class GymnasticsTracker {
       const data = await this.authService.loadUserData();
       if (data) {
         this.userData = data;
+        // Ensure userData has the correct structure
+        if (!this.userData.routines) {
+          this.userData.routines = {
+            floor: [],
+            pommel: [],
+            rings: [],
+            vault: [],
+            pbars: [],
+            hbar: []
+          };
+        }
         this.refreshUI();
       }
     } catch (error) {
@@ -1571,7 +1607,7 @@ class GymnasticsTracker {
   }
 
   async saveUserData() {
-    if (!this.authService.isSignedIn()) {
+    if (!this.authService || !this.authService.isSignedIn()) {
       return false;
     }
 
@@ -2012,8 +2048,8 @@ class GymnasticsTracker {
       createdAt: new Date().toISOString()
     };
 
-    this.data[this.currentEvent].push(routine);
-    this.saveData();
+    this.userData.routines[this.currentEvent].push(routine);
+    this.saveUserData();
     this.renderRoutines(this.currentEvent);
     this.closeModal(document.getElementById('routine-modal'));
     this.showNotification('Routine created successfully', 'success');
@@ -2237,14 +2273,14 @@ class GymnasticsTracker {
 
   // Rendering
   renderAll() {
-    Object.keys(this.data).forEach(eventType => {
+    Object.keys(this.userData.routines).forEach(eventType => {
       this.renderRoutines(eventType);
     });
   }
 
   renderRoutines(eventType) {
     const container = document.getElementById(`${eventType}-routines`);
-    const routines = this.data[eventType];
+    const routines = this.userData.routines[eventType];
 
     if (routines.length === 0) {
       container.innerHTML = this.renderEmptyState();
@@ -2625,6 +2661,35 @@ class GymnasticsTracker {
         this.toggleProgression(eventType, routineId, skillId, progressionId);
       }
     });
+  }
+
+  // Refresh the UI after data changes
+  refreshUI() {
+    if (this.authService && this.authService.isSignedIn()) {
+      this.updateCurrentProfileDisplay();
+      this.renderAll();
+    }
+  }
+
+  // Update current profile display
+  async updateCurrentProfileDisplay() {
+    if (!this.authService || !this.authService.isSignedIn()) return;
+    
+    const user = this.authService.getCurrentUser();
+    if (user) {
+      const profile = await this.authService.getUserProfile();
+      const displayName = user.displayName || profile?.fullName || user.email;
+      const level = profile?.gymnasticsLevel || 'No level set';
+      const initial = displayName.charAt(0).toUpperCase();
+      
+      const nameElement = document.getElementById('current-profile-name');
+      const levelElement = document.getElementById('current-profile-level');
+      const avatarElement = document.querySelector('.profile-avatar');
+      
+      if (nameElement) nameElement.textContent = displayName;
+      if (levelElement) levelElement.textContent = level;
+      if (avatarElement) avatarElement.textContent = initial;
+    }
   }
 }
 

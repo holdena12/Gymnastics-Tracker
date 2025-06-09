@@ -1,9 +1,8 @@
 // Firebase Configuration for Gymnastics Skills Tracker
 // This enables cross-device user authentication and data synchronization
 
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+// Firebase will be loaded via CDN script tags in HTML
+// No ES6 imports needed for static hosting
 
 // Firebase configuration
 const firebaseConfig = {
@@ -16,13 +15,30 @@ const firebaseConfig = {
   appId: "your-app-id-here"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firebase (will be called after scripts load)
+let app, auth, db;
 
-// Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);
+function initializeFirebase() {
+  if (typeof firebase === 'undefined') {
+    console.error('Firebase not loaded. Make sure Firebase scripts are included.');
+    return false;
+  }
+  
+  // Initialize Firebase
+  app = firebase.initializeApp(firebaseConfig);
+  
+  // Initialize Firebase Authentication and get a reference to the service
+  auth = firebase.auth();
+  
+  // Initialize Cloud Firestore and get a reference to the service
+  db = firebase.firestore();
+  
+  console.log('Firebase initialized successfully');
+  return true;
+}
 
-// Initialize Cloud Firestore and get a reference to the service
-export const db = getFirestore(app);
-
-export default app; 
+// Export for use in other modules
+window.firebaseApp = app;
+window.firebaseAuth = auth;
+window.firebaseDb = db;
+window.initializeFirebase = initializeFirebase; 

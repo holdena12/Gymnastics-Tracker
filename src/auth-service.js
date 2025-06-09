@@ -1,31 +1,43 @@
 // Authentication Service for Cross-Device User Management
 // Handles Firebase Authentication and Firestore data sync
 
-import { 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut, 
-  onAuthStateChanged,
-  updateProfile
-} from 'firebase/auth';
-import { 
-  doc, 
-  setDoc, 
-  getDoc, 
-  updateDoc, 
-  collection, 
-  query, 
-  where, 
-  getDocs 
-} from 'firebase/firestore';
-import { auth, db } from './firebase-config.js';
+// Firebase will be available via CDN scripts
+// No ES6 imports needed for static hosting
 
 class AuthService {
   constructor() {
     this.currentUser = null;
     this.isOnline = navigator.onLine;
     this.localStorageBackup = true; // Keep localStorage as backup for offline use
+    this.isFirebaseReady = false;
     
+    // Wait for Firebase to be loaded
+    this.waitForFirebase();
+  }
+  
+  async waitForFirebase() {
+    // Wait for Firebase scripts to load
+    let attempts = 0;
+    const maxAttempts = 50; // 5 seconds max
+    
+    while (attempts < maxAttempts) {
+      if (typeof firebase !== 'undefined' && window.initializeFirebase) {
+        this.isFirebaseReady = window.initializeFirebase();
+        if (this.isFirebaseReady) {
+          this.setupFirebaseListeners();
+          break;
+        }
+      }
+      await new Promise(resolve => setTimeout(resolve, 100));
+      attempts++;
+    }
+    
+    if (!this.isFirebaseReady) {
+      console.error('Firebase failed to load. Using localStorage fallback.');
+    }
+  }
+  
+  setupFirebaseListeners() {
     // Listen for online/offline status
     window.addEventListener('online', () => {
       this.isOnline = true;
@@ -36,7 +48,7 @@ class AuthService {
     });
     
     // Listen for auth state changes
-    onAuthStateChanged(auth, (user) => {
+    firebase.auth().onAuthStateChanged((user) => {
       this.currentUser = user;
       if (user) {
         this.syncUserData();
@@ -46,18 +58,22 @@ class AuthService {
 
   // Create new user account
   async createAccount(email, password, fullName = '', gymnasticsLevel = '') {
+    if (!this.isFirebaseReady) {
+      throw new Error('Firebase not ready. Please try again.');
+    }
+    
     try {
       // Create Firebase user
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
       const user = userCredential.user;
       
       // Update user profile
-      await updateProfile(user, {
+      await user.updateProfile({
         displayName: fullName
       });
       
       // Create user document in Firestore
-      await setDoc(doc(db, 'users', user.uid), {
+      await firebase.firestore().collection('users').doc(user.uid).set({
         uid: user.uid,
         email: email,
         fullName: fullName,
@@ -67,7 +83,7 @@ class AuthService {
       });
       
       // Initialize empty data document
-      await setDoc(doc(db, 'userData', user.uid), {
+      await firebase.firestore().collection('userData').doc(user.uid).set({
         routines: {},
         skills: {},
         lastUpdated: new Date().toISOString()
@@ -82,12 +98,16 @@ class AuthService {
 
   // Sign in existing user
   async signIn(email, password) {
+    if (!this.isFirebaseReady) {
+      throw new Error('Firebase not ready. Please try again.');
+    }
+    
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await firebase.auth().signInWithEmailAndPassword(email, password);
       const user = userCredential.user;
       
       // Update last login time
-      await updateDoc(doc(db, 'users', user.uid), {
+      await firebase.firestore().collection('users').doc(user.uid).update({
         lastLoginAt: new Date().toISOString()
       });
       
@@ -100,8 +120,13 @@ class AuthService {
 
   // Sign out user
   async signOutUser() {
+    if (!this.isFirebaseReady) {
+      this.currentUser = null;
+      return { success: true };
+    }
+    
     try {
-      await signOut(auth);
+      await firebase.auth().signOut();
       this.currentUser = null;
       return { success: true };
     } catch (error) {
@@ -112,11 +137,11 @@ class AuthService {
 
   // Load user data from Firestore
   async loadUserData() {
-    if (!this.currentUser) return null;
+    if (!this.currentUser || !this.isFirebaseReady) return null;
     
     try {
-      const userDataDoc = await getDoc(doc(db, 'userData', this.currentUser.uid));
-      if (userDataDoc.exists()) {
+      const userDataDoc = await firebase.firestore().collection('userData').doc(this.currentUser.uid).get();
+      if (userDataDoc.exists) {
         const data = userDataDoc.data();
         
         // Merge with local data if offline backup is enabled
@@ -143,13 +168,15 @@ class AuthService {
   async saveUserData(data) {
     if (!this.currentUser) return false;
     
+    const dataWithTimestamp = {
+      ...data,
+      lastUpdated: new Date().toISOString()
+    };
+    
     try {
-      const dataWithTimestamp = {
-        ...data,
-        lastUpdated: new Date().toISOString()
-      };
-      
-      await updateDoc(doc(db, 'userData', this.currentUser.uid), dataWithTimestamp);
+      if (this.isFirebaseReady) {
+        await firebase.firestore().collection('userData').doc(this.currentUser.uid).update(dataWithTimestamp);
+      }
       
       // Also save to localStorage as backup
       if (this.localStorageBackup) {
@@ -162,7 +189,7 @@ class AuthService {
       
       // Fallback to localStorage if Firebase fails
       if (this.localStorageBackup) {
-        localStorage.setItem(`gymnastics-data-${this.currentUser.email}`, JSON.stringify(data));
+        localStorage.setItem(`gymnastics-data-${this.currentUser.email}`, JSON.stringify(dataWithTimestamp));
         return true;
       }
       
@@ -172,11 +199,11 @@ class AuthService {
 
   // Get user profile information
   async getUserProfile() {
-    if (!this.currentUser) return null;
+    if (!this.currentUser || !this.isFirebaseReady) return null;
     
     try {
-      const userDoc = await getDoc(doc(db, 'users', this.currentUser.uid));
-      if (userDoc.exists()) {
+      const userDoc = await firebase.firestore().collection('users').doc(this.currentUser.uid).get();
+      if (userDoc.exists) {
         return userDoc.data();
       }
       return null;
@@ -188,16 +215,16 @@ class AuthService {
 
   // Update user profile
   async updateUserProfile(profileData) {
-    if (!this.currentUser) return false;
+    if (!this.currentUser || !this.isFirebaseReady) return false;
     
     try {
-      await updateDoc(doc(db, 'users', this.currentUser.uid), {
+      await firebase.firestore().collection('users').doc(this.currentUser.uid).update({
         ...profileData,
         lastUpdated: new Date().toISOString()
       });
       
       if (profileData.fullName) {
-        await updateProfile(this.currentUser, {
+        await this.currentUser.updateProfile({
           displayName: profileData.fullName
         });
       }
@@ -211,9 +238,10 @@ class AuthService {
 
   // Check if username is available (for backward compatibility)
   async isUsernameAvailable(username) {
+    if (!this.isFirebaseReady) return false;
+    
     try {
-      const q = query(collection(db, 'users'), where('username', '==', username));
-      const querySnapshot = await getDocs(q);
+      const querySnapshot = await firebase.firestore().collection('users').where('username', '==', username).get();
       return querySnapshot.empty;
     } catch (error) {
       console.error('Error checking username availability:', error);
@@ -223,7 +251,7 @@ class AuthService {
 
   // Sync offline data when coming back online
   async syncOfflineData() {
-    if (!this.currentUser || !this.localStorageBackup) return;
+    if (!this.currentUser || !this.localStorageBackup || !this.isFirebaseReady) return;
     
     try {
       const localData = this.loadLocalData();
@@ -246,7 +274,7 @@ class AuthService {
 
   // Sync user data between devices
   async syncUserData() {
-    if (!this.currentUser) return;
+    if (!this.currentUser || !this.isFirebaseReady) return;
     
     try {
       const cloudData = await this.loadUserData();
@@ -307,5 +335,5 @@ class AuthService {
 }
 
 // Export singleton instance
-export const authService = new AuthService();
-export default authService; 
+const authService = new AuthService();
+window.authService = authService; 
