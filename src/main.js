@@ -1,9 +1,120 @@
 // Import skills database
 import { searchSkills, getSkillsForEvent } from './skills-database.js';
 
+// Mobile Detection and CSS Loading
+class MobileDetector {
+  static isMobile() {
+    // Multiple detection methods for comprehensive mobile detection
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    
+    // Check user agent strings for mobile devices
+    const mobileRegex = /android|blackberry|iemobile|ipad|iphone|ipod|opera mini|mobile/i;
+    const isUserAgentMobile = mobileRegex.test(userAgent);
+    
+    // Check for touch capability
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    // Check screen dimensions (mobile-like screen size)
+    const isSmallScreen = window.innerWidth <= 768 || window.innerHeight <= 768;
+    
+    // Check device pixel ratio (often higher on mobile)
+    const isHighDPI = window.devicePixelRatio > 1;
+    
+    // Comprehensive mobile detection
+    return isUserAgentMobile || (isTouchDevice && isSmallScreen);
+  }
+  
+  static isTablet() {
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const tabletRegex = /ipad|tablet|playbook|silk/i;
+    const isTabletUserAgent = tabletRegex.test(userAgent);
+    
+    // Screen size between mobile and desktop
+    const isTabletScreen = window.innerWidth > 768 && window.innerWidth <= 1024;
+    
+    return isTabletUserAgent || isTabletScreen;
+  }
+  
+  static loadMobileCSS() {
+    // Remove existing mobile CSS if any
+    const existingMobileCSS = document.getElementById('mobile-styles');
+    if (existingMobileCSS) {
+      existingMobileCSS.remove();
+    }
+    
+    // Create and inject mobile-specific CSS
+    const mobileCSS = document.createElement('link');
+    mobileCSS.id = 'mobile-styles';
+    mobileCSS.rel = 'stylesheet';
+    mobileCSS.href = './mobile-styles.css';
+    mobileCSS.media = 'screen';
+    
+    // Add CSS to head
+    document.head.appendChild(mobileCSS);
+    
+    // Add mobile class to body for additional styling hooks
+    document.body.classList.add('mobile-device');
+    
+    console.log('Mobile-optimized CSS loaded');
+  }
+  
+  static loadTabletCSS() {
+    // Add tablet-specific optimizations
+    document.body.classList.add('tablet-device');
+    console.log('Tablet optimizations applied');
+  }
+  
+  static applyMobileOptimizations() {
+    // Viewport meta tag optimization for mobile
+    let viewport = document.querySelector('meta[name="viewport"]');
+    if (!viewport) {
+      viewport = document.createElement('meta');
+      viewport.name = 'viewport';
+      document.head.appendChild(viewport);
+    }
+    
+    // Optimized viewport settings for mobile
+    viewport.content = 'width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover';
+    
+    // Prevent zoom on inputs (iOS Safari fix)
+    document.addEventListener('touchstart', function() {}, { passive: true });
+    
+    // Enhanced touch feedback
+    document.body.style.webkitTapHighlightColor = 'transparent';
+    document.body.style.webkitTouchCallout = 'none';
+    document.body.style.webkitUserSelect = 'none';
+    document.body.style.userSelect = 'none';
+    
+    console.log('Mobile optimizations applied');
+  }
+  
+  static init() {
+    if (this.isMobile()) {
+      this.loadMobileCSS();
+      this.applyMobileOptimizations();
+    } else if (this.isTablet()) {
+      this.loadTabletCSS();
+    }
+    
+    // Log device information for debugging
+    console.log('Device Detection:', {
+      isMobile: this.isMobile(),
+      isTablet: this.isTablet(),
+      screenWidth: window.innerWidth,
+      screenHeight: window.innerHeight,
+      devicePixelRatio: window.devicePixelRatio,
+      touchSupport: 'ontouchstart' in window,
+      userAgent: navigator.userAgent
+    });
+  }
+}
+
 // Gymnastics Skills Tracker with Profile Management
 class GymnasticsTracker {
   constructor() {
+    // Initialize mobile detection first
+    MobileDetector.init();
+    
     // Profile management properties
     this.currentUser = null;
     this.profiles = this.loadProfiles();
@@ -28,6 +139,11 @@ class GymnasticsTracker {
     this.checkAuthStatus();
     this.setupEventListeners();
     
+    // Initialize mobile-specific features
+    if (MobileDetector.isMobile()) {
+      this.setupMobileFeatures();
+    }
+    
     if (this.currentUser) {
       this.showMainApp();
     } else {
@@ -35,6 +151,544 @@ class GymnasticsTracker {
     }
   }
 
+  setupMobileFeatures() {
+    // Add mobile-specific enhancements
+    this.setupTouchGestures();
+    this.setupMobileNavigation();
+    this.setupMobileKeyboard();
+    this.enablePullToRefresh();
+    this.optimizeMobilePerformance();
+    
+    console.log('Mobile features initialized');
+  }
+  
+  setupTouchGestures() {
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    
+    // Add swipe gesture support
+    document.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+    
+    document.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      touchEndY = e.changedTouches[0].screenY;
+      this.handleSwipeGesture(touchStartX, touchStartY, touchEndX, touchEndY);
+    }, { passive: true });
+    
+    // Add long press support for context menus
+    this.setupLongPress();
+  }
+  
+  handleSwipeGesture(startX, startY, endX, endY) {
+    const deltaX = endX - startX;
+    const deltaY = endY - startY;
+    const minSwipeDistance = 50;
+    
+    // Horizontal swipes
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+      if (deltaX > 0) {
+        // Swipe right - go back or open side menu
+        this.handleSwipeRight();
+      } else {
+        // Swipe left - next or close menu
+        this.handleSwipeLeft();
+      }
+    }
+    
+    // Vertical swipes  
+    if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > minSwipeDistance) {
+      if (deltaY > 0) {
+        // Swipe down - refresh or expand
+        this.handleSwipeDown();
+      } else {
+        // Swipe up - minimize or scroll to top
+        this.handleSwipeUp();
+      }
+    }
+  }
+  
+  handleSwipeRight() {
+    // Navigate back in mobile context
+    if (this.currentPage === 'routine') {
+      this.showMainPage();
+      this.showNotification('Swiped back to dashboard', 'info');
+    }
+  }
+  
+  handleSwipeLeft() {
+    // Close modals or navigate forward
+    const activeModal = document.querySelector('.modal[style*="block"]');
+    if (activeModal) {
+      this.closeModal(activeModal);
+      this.showNotification('Modal closed', 'info');
+    }
+  }
+  
+  handleSwipeDown() {
+    // Pull to refresh functionality
+    if (window.scrollY === 0) {
+      this.triggerRefresh();
+    }
+  }
+  
+  handleSwipeUp() {
+    // Quick scroll to top or minimize action
+    if (window.scrollY > 200) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.showNotification('Scrolled to top', 'info');
+    }
+  }
+  
+  setupLongPress() {
+    let longPressTimer;
+    let isLongPress = false;
+    
+    document.addEventListener('touchstart', (e) => {
+      isLongPress = false;
+      longPressTimer = setTimeout(() => {
+        isLongPress = true;
+        this.handleLongPress(e);
+      }, 800); // 800ms for long press
+    });
+    
+    document.addEventListener('touchend', () => {
+      clearTimeout(longPressTimer);
+    });
+    
+    document.addEventListener('touchmove', () => {
+      clearTimeout(longPressTimer);
+    });
+  }
+  
+  handleLongPress(e) {
+    // Add haptic feedback if available
+    if (navigator.vibrate) {
+      navigator.vibrate(50);
+    }
+    
+    // Handle long press on different elements
+    const target = e.target.closest('.skill-item, .routine-card, .profile-card');
+    if (target) {
+      if (target.classList.contains('skill-item')) {
+        this.showSkillContextMenu(target, e);
+      } else if (target.classList.contains('routine-card')) {
+        this.showRoutineContextMenu(target, e);
+      }
+    }
+  }
+  
+  showSkillContextMenu(skillElement, event) {
+    // Create mobile context menu for skills
+    const contextMenu = document.createElement('div');
+    contextMenu.className = 'mobile-context-menu';
+    contextMenu.innerHTML = `
+      <div class="context-menu-item" data-action="edit">Edit Skill</div>
+      <div class="context-menu-item" data-action="delete">Delete Skill</div>
+      <div class="context-menu-item" data-action="move">Move to Position</div>
+      <div class="context-menu-item" data-action="cancel">Cancel</div>
+    `;
+    
+    // Position and show context menu
+    document.body.appendChild(contextMenu);
+    this.positionContextMenu(contextMenu, event);
+    
+    // Add event listeners
+    contextMenu.addEventListener('click', (e) => {
+      const action = e.target.dataset.action;
+      if (action) {
+        this.handleSkillContextAction(skillElement, action);
+        document.body.removeChild(contextMenu);
+      }
+    });
+    
+    // Auto-remove after 5 seconds
+    setTimeout(() => {
+      if (contextMenu.parentNode) {
+        document.body.removeChild(contextMenu);
+      }
+    }, 5000);
+  }
+  
+  setupMobileNavigation() {
+    // Add mobile-specific navigation enhancements
+    
+    // Back button handling for Android
+    if (window.history && window.history.pushState) {
+      window.addEventListener('popstate', (e) => {
+        if (this.currentPage === 'routine') {
+          e.preventDefault();
+          this.showMainPage();
+        }
+      });
+    }
+    
+    // Prevent default zoom on double tap
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', (e) => {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        e.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
+  }
+  
+  setupMobileKeyboard() {
+    // Handle virtual keyboard showing/hiding
+    const viewport = window.visualViewport;
+    if (viewport) {
+      viewport.addEventListener('resize', () => {
+        this.handleKeyboardToggle(viewport.height < window.innerHeight);
+      });
+    }
+    
+    // Alternative method for older browsers
+    let initialHeight = window.innerHeight;
+    window.addEventListener('resize', () => {
+      const currentHeight = window.innerHeight;
+      const heightDiff = initialHeight - currentHeight;
+      
+      if (heightDiff > 150) {
+        // Keyboard is likely open
+        this.handleKeyboardToggle(true);
+      } else {
+        // Keyboard is likely closed
+        this.handleKeyboardToggle(false);
+      }
+    });
+  }
+  
+  handleKeyboardToggle(isKeyboardOpen) {
+    const body = document.body;
+    
+    if (isKeyboardOpen) {
+      body.classList.add('keyboard-open');
+      // Adjust modal positions when keyboard is open
+      const modals = document.querySelectorAll('.modal[style*="block"] .modal-content');
+      modals.forEach(modal => {
+        modal.style.marginTop = '10px';
+        modal.style.maxHeight = 'calc(100vh - 20px)';
+      });
+    } else {
+      body.classList.remove('keyboard-open');
+      // Reset modal positions
+      const modals = document.querySelectorAll('.modal-content');
+      modals.forEach(modal => {
+        modal.style.marginTop = '';
+        modal.style.maxHeight = '';
+      });
+    }
+  }
+  
+  enablePullToRefresh() {
+    let startY = 0;
+    let currentY = 0;
+    let isPulling = false;
+    let refreshTriggered = false;
+    
+    document.addEventListener('touchstart', (e) => {
+      if (window.scrollY === 0) {
+        startY = e.touches[0].clientY;
+        isPulling = false;
+        refreshTriggered = false;
+      }
+    }, { passive: true });
+    
+    document.addEventListener('touchmove', (e) => {
+      if (window.scrollY === 0 && startY > 0) {
+        currentY = e.touches[0].clientY;
+        const pullDistance = currentY - startY;
+        
+        if (pullDistance > 0) {
+          isPulling = true;
+          
+          // Visual feedback for pull to refresh
+          if (pullDistance > 80 && !refreshTriggered) {
+            this.showPullToRefreshIndicator(true);
+          } else if (pullDistance <= 80) {
+            this.showPullToRefreshIndicator(false);
+          }
+        }
+      }
+    }, { passive: true });
+    
+    document.addEventListener('touchend', () => {
+      if (isPulling && currentY - startY > 80 && !refreshTriggered) {
+        refreshTriggered = true;
+        this.triggerRefresh();
+      }
+      
+      isPulling = false;
+      startY = 0;
+      this.hidePullToRefreshIndicator();
+    }, { passive: true });
+  }
+  
+  showPullToRefreshIndicator(isReady) {
+    let indicator = document.getElementById('pull-refresh-indicator');
+    if (!indicator) {
+      indicator = document.createElement('div');
+      indicator.id = 'pull-refresh-indicator';
+      indicator.className = 'pull-to-refresh';
+      document.body.insertBefore(indicator, document.body.firstChild);
+    }
+    
+    indicator.textContent = isReady ? 'Release to refresh' : 'Pull to refresh';
+    indicator.style.display = 'block';
+    indicator.style.backgroundColor = isReady ? 'var(--mobile-accent-primary)' : 'var(--mobile-surface-secondary)';
+  }
+  
+  hidePullToRefreshIndicator() {
+    const indicator = document.getElementById('pull-refresh-indicator');
+    if (indicator) {
+      indicator.style.display = 'none';
+    }
+  }
+  
+  triggerRefresh() {
+    this.showNotification('Refreshing data...', 'info');
+    
+    // Add haptic feedback
+    if (navigator.vibrate) {
+      navigator.vibrate(100);
+    }
+    
+    // Simulate refresh action
+    setTimeout(() => {
+      this.renderAll();
+      this.showNotification('Data refreshed!', 'success');
+      this.hidePullToRefreshIndicator();
+    }, 1000);
+  }
+  
+  optimizeMobilePerformance() {
+    // Disable animations on low-end devices
+    if (this.isLowEndDevice()) {
+      document.body.classList.add('reduced-motion');
+    }
+    
+    // Optimize scroll performance
+    document.addEventListener('scroll', this.throttle(() => {
+      this.handleScroll();
+    }, 16), { passive: true }); // 60fps throttling
+    
+    // Optimize touch events
+    this.optimizeTouchEvents();
+  }
+  
+  isLowEndDevice() {
+    // Detect low-end devices based on various factors
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const slowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
+    const lowMemory = navigator.deviceMemory && navigator.deviceMemory < 2;
+    const lowConcurrency = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4;
+    
+    return slowConnection || lowMemory || lowConcurrency;
+  }
+  
+  throttle(func, delay) {
+    let timeoutId;
+    let lastExecTime = 0;
+    return function (...args) {
+      const currentTime = Date.now();
+      
+      if (currentTime - lastExecTime > delay) {
+        func.apply(this, args);
+        lastExecTime = currentTime;
+      } else {
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+          func.apply(this, args);
+          lastExecTime = Date.now();
+        }, delay - (currentTime - lastExecTime));
+      }
+    };
+  }
+  
+  handleScroll() {
+    // Implement scroll-based optimizations
+    const scrollY = window.scrollY;
+    
+    // Hide/show header on scroll for more screen space
+    if (scrollY > 100) {
+      document.body.classList.add('scrolled');
+    } else {
+      document.body.classList.remove('scrolled');
+    }
+  }
+  
+  optimizeTouchEvents() {
+    // Improve touch responsiveness
+    const touchElements = document.querySelectorAll('button, .login-tab, .profile-btn, .skill-item');
+    
+    touchElements.forEach(element => {
+      element.addEventListener('touchstart', function() {
+        this.classList.add('touching');
+      }, { passive: true });
+      
+      element.addEventListener('touchend', function() {
+        setTimeout(() => {
+          this.classList.remove('touching');
+        }, 150);
+      }, { passive: true });
+      
+      element.addEventListener('touchcancel', function() {
+        this.classList.remove('touching');
+      }, { passive: true });
+    });
+  }
+  
+  // Mobile Context Menu Helper Methods
+  positionContextMenu(contextMenu, event) {
+    const touch = event.touches ? event.touches[0] : event.changedTouches[0];
+    const x = touch.clientX;
+    const y = touch.clientY;
+    
+    // Position the context menu
+    contextMenu.style.position = 'fixed';
+    contextMenu.style.left = Math.min(x, window.innerWidth - 200) + 'px';
+    contextMenu.style.top = Math.min(y, window.innerHeight - 200) + 'px';
+    contextMenu.style.zIndex = '10000';
+    
+    // Style the context menu
+    contextMenu.style.backgroundColor = 'var(--mobile-surface-primary)';
+    contextMenu.style.border = '1px solid var(--border-primary)';
+    contextMenu.style.borderRadius = 'var(--radius-md)';
+    contextMenu.style.boxShadow = 'var(--mobile-shadow-md)';
+    contextMenu.style.padding = '8px';
+    contextMenu.style.minWidth = '180px';
+    
+    // Style menu items
+    const items = contextMenu.querySelectorAll('.context-menu-item');
+    items.forEach(item => {
+      item.style.padding = '12px 16px';
+      item.style.cursor = 'pointer';
+      item.style.borderRadius = 'var(--radius-sm)';
+      item.style.marginBottom = '4px';
+      item.style.fontSize = 'var(--mobile-font-sm)';
+      item.style.color = 'var(--mobile-text-primary)';
+      item.style.touchAction = 'manipulation';
+      
+      item.addEventListener('touchstart', function() {
+        this.style.backgroundColor = 'var(--mobile-accent-primary)';
+        this.style.color = 'black';
+      });
+      
+      item.addEventListener('touchend', function() {
+        setTimeout(() => {
+          this.style.backgroundColor = '';
+          this.style.color = 'var(--mobile-text-primary)';
+        }, 150);
+      });
+    });
+    
+    // Add backdrop
+    const backdrop = document.createElement('div');
+    backdrop.className = 'context-menu-backdrop';
+    backdrop.style.position = 'fixed';
+    backdrop.style.top = '0';
+    backdrop.style.left = '0';
+    backdrop.style.width = '100%';
+    backdrop.style.height = '100%';
+    backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.3)';
+    backdrop.style.zIndex = '9999';
+    
+    backdrop.addEventListener('click', () => {
+      if (contextMenu.parentNode) {
+        document.body.removeChild(contextMenu);
+      }
+      if (backdrop.parentNode) {
+        document.body.removeChild(backdrop);
+      }
+    });
+    
+    document.body.appendChild(backdrop);
+  }
+  
+  handleSkillContextAction(skillElement, action) {
+    const skillId = skillElement.dataset.skillId;
+    const eventType = this.currentRoutineView?.eventType;
+    const routineId = this.currentRoutineView?.routineId;
+    
+    if (!skillId || !eventType || !routineId) return;
+    
+    switch (action) {
+      case 'edit':
+        this.showSkillModal(eventType, routineId, skillId);
+        break;
+      case 'delete':
+        if (confirm('Delete this skill?')) {
+          this.deleteSkill(eventType, routineId, skillId);
+        }
+        break;
+      case 'move':
+        const newPosition = prompt('Enter new position (1-based):');
+        if (newPosition && !isNaN(newPosition)) {
+          this.moveSkillToPosition(eventType, routineId, skillId, parseInt(newPosition));
+        }
+        break;
+      case 'cancel':
+        // Do nothing, menu will close
+        break;
+    }
+  }
+  
+  showRoutineContextMenu(routineElement, event) {
+    // Similar to skill context menu but for routines
+    const contextMenu = document.createElement('div');
+    contextMenu.className = 'mobile-context-menu';
+    contextMenu.innerHTML = `
+      <div class="context-menu-item" data-action="view">View Routine</div>
+      <div class="context-menu-item" data-action="edit">Edit Routine</div>
+      <div class="context-menu-item" data-action="delete">Delete Routine</div>
+      <div class="context-menu-item" data-action="cancel">Cancel</div>
+    `;
+    
+    document.body.appendChild(contextMenu);
+    this.positionContextMenu(contextMenu, event);
+    
+    contextMenu.addEventListener('click', (e) => {
+      const action = e.target.dataset.action;
+      if (action) {
+        this.handleRoutineContextAction(routineElement, action);
+        document.body.removeChild(contextMenu);
+        // Remove backdrop
+        const backdrop = document.querySelector('.context-menu-backdrop');
+        if (backdrop) document.body.removeChild(backdrop);
+      }
+    });
+  }
+  
+  handleRoutineContextAction(routineElement, action) {
+    const routineId = routineElement.querySelector('.view-routine-btn')?.dataset.routine;
+    const eventType = routineElement.querySelector('.view-routine-btn')?.dataset.event;
+    
+    if (!routineId || !eventType) return;
+    
+    switch (action) {
+      case 'view':
+        this.showRoutinePage(eventType, routineId);
+        break;
+      case 'edit':
+        // Show edit routine modal (you'd need to implement this)
+        this.showNotification('Edit routine feature coming soon!', 'info');
+        break;
+      case 'delete':
+        if (confirm('Delete this routine and all its skills?')) {
+          this.deleteRoutine(eventType, routineId);
+        }
+        break;
+      case 'cancel':
+        // Do nothing, menu will close
+        break;
+    }
+  }
+  
   // Profile Management Methods
   loadProfiles() {
     try {
