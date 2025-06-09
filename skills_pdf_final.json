@@ -1,0 +1,3901 @@
+{
+  "Floor Exercise": [
+    {
+      "element": 1,
+      "description": "From hdst. lower to L-sit or strad. L-sit (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "V-sit (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "V-sit with legs horizontal. (2 s.). (Manna)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 7,
+      "description": "From stand, Swiss press to hdst. (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "Piked body, str. arm or str. body, bent arm press to hdst. with legs together (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "V-sit (2 s) and press to hdst. (2 s.). Also final phase with straddle.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "Manna (2 s.) and press to hdst. (2 s.). Also final phase with straddle.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 13,
+      "description": "Rock to hdst. from prone position (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 14,
+      "description": "Press from split, L-sit strad. or front sup. (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 16,
+      "description": "From Manna (2 s.), turn over (dislocation) to handstand (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 19,
+      "description": "Handstand (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 20,
+      "description": "Press or lower or swing to Japanese hdst. (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 21,
+      "description": "From split press to Japanese handstand (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 25,
+      "description": "Planche, legs straddle (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 31,
+      "description": "\u00bd or 1/1 turn in handstand or to handstand.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 32,
+      "description": "From straddled planche (2 s.) press hdst. (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 37,
+      "description": "From L-sit, etc., turn over bwd. to stand.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 44,
+      "description": "Endo roll to handstand (2 s.). * **",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 49,
+      "description": "Forward walkover.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 55,
+      "description": "Cross or side split (stop required).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 61,
+      "description": "Any standing scale (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 62,
+      "description": "Any standing scale with 180\u00b0 straddle, no hand hold (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 67,
+      "description": "Jump bwd. to front support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 68,
+      "description": "Jump bwd. with pike-stretch or with 1/1 turn to front support (Endo)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 73,
+      "description": "Butterfly.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 74,
+      "description": "Butterfly with 1/1 twist fwd. or bwd. (Tong Fei)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 75,
+      "description": "Butterfly with 2/1 twist.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 79,
+      "description": "1 circle or flair.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 80,
+      "description": "Circles or flair to handstand.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 81,
+      "description": "Flair or circle to hdst. continue to flair or circle. (Gogoladze)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 82,
+      "description": "Flair hopping with 360\u00b0 t. bwd. thr. hdst and back to flair (2 hops).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 86,
+      "description": "Lower from hdst. to flair or circle.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 91,
+      "description": "Flair with \u00bd spindle.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 92,
+      "description": "Flair with 1/1 spindle (in 2 circles).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 93,
+      "description": "Flair with >270 spindle (in 2 circles) directly to handstand.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 98,
+      "description": "Flair with \u00bd spindle to handstand.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 100,
+      "description": "Flair with > 270\u00ba spindle (in 2 circles) directly to handstand and continue to circle or flair.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 103,
+      "description": "Russian wendeswing with 360\u00b0 or 540\u00b0.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 104,
+      "description": "Russian wendeswing with 720\u00b0 or 900\u00b0.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 105,
+      "description": "Russian wendeswing with 1080\u00b0 or more. (Fedorchenko)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 109,
+      "description": "Roll bwd. through hdst. with \u00bd t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 110,
+      "description": "Roll bwd. with hop 1/1 t. through hdst.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 112,
+      "description": ".",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 1,
+      "description": "Forward handspring or flyspring.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 4,
+      "description": "Handspring salto fwd. tuck. (Morandi)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 7,
+      "description": "Dive roll.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 13,
+      "description": "Salto fwd. tucked or piked, also with \u00bd t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 14,
+      "description": "Salto fwd. straight, also with \u00bd t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 16,
+      "description": "Double salto fwd. tucked, also with \u00bd t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 17,
+      "description": "Double salto fwd. piked, also with \u00bd t.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 32,
+      "description": "\u00b2",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 36,
+      "description": "Double salto fwd. tucked with 1/1 turn.",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 38,
+      "description": "Salto fwd. t. or p. to front support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 42,
+      "description": "Double salto fwd. tucked with 3/2 turn. (Zapata)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 46,
+      "description": "Jump fwd. with \u00bd t. to dbl. salto bwd. Tuck (Deferr)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 48,
+      "description": "Double salto fwd. piked or straight with 3/2 turn. (Zapata 2) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 1,
+      "description": "Salto backwards tucked or piked.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Salto backwards str. or Tempo salto bwd.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Double salto bwd. tucked.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 4,
+      "description": "Salto bwd. with 1/1 t. and salto bwd. (Tsukahara) Arabian jump bwd. to double salto fwd tucked, also with \u00bd t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 5,
+      "description": "Double salto bwd. tucked with 2/1 t. or double salto bwd t. with 3/2 t..or salto bwd. str. 3/2 to fwd. salto tucked. Also (Korosteljev)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 7,
+      "description": "Salto backwards tucked or piked w. \u00bd t. or Arabian tucked or piked.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "Salto backwards str. w. \u00bd t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 11,
+      "description": "Arabian jump bwd. to double salto fwd piked, also with \u00bd turn",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 13,
+      "description": "Back handspring.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 16,
+      "description": "Double salto bwd. piked.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 29,
+      "description": "Double salto bwd. straddled with 1/1 t. (Lou Yun)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 30,
+      "description": "Double salto tucked bwd. tucked with 7/2 t. (Minami) H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 31,
+      "description": "Jump bwd. with \u00bd t. to roll fwd.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 35,
+      "description": "Salto bwd. str. with 1/1 t and salto bwd piked.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 36,
+      "description": "Salto bwd. str. with 2/1 t and salto bwd piked. (Kolyvanov)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 41,
+      "description": "Double salto bwd. straight or Double salto bwd. straight and with \u00bd t., or Arabian Jump bwd. to dbl. salto fwd. str. (Tamayo)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 42,
+      "description": "Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t. G Also Hypolito",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 48,
+      "description": "Double salto bwd. straight with 1/1 t. or Arabian jump bwd. to dbl. salto fwd. str. with \u00bd t. Also Penev",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 54,
+      "description": "Double salto bwd. str. with 2/1 t. G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 60,
+      "description": "Double salto str. bwd. str w 5/2 t. H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 66,
+      "description": "Double salto bwd. str. with 3/1 t. (Shirai 3) I",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 72,
+      "description": "Double salto bwd. str. with 7/2 t. (Jarman) J",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 2,
+      "description": "Salto fwd. tucked with 1/1 t., also with 3/2 t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Salto fwd. str. with 1/1 t., also with 3/2 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 4,
+      "description": "Salto fwd. str. with 2/1 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 5,
+      "description": "Salto fwd. str. with 5/2 t.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 6,
+      "description": ". Salto fwd. str. with 3/1 t. (Shirai 2)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 8,
+      "description": "Salto backwards str. w. 1/1 t",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "Salto bwd. str. with 3/2 t. or 2/1 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "Salto bwd. str. with 5/2 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 11,
+      "description": "Salto bwd. str. with 7/2 t (Gonz\u00e1lez)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 12,
+      "description": "Salto fwd. str. with 7/2 t. (Goshima) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 14,
+      "description": "Salto backwards tucked w. 3/2 t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 22,
+      "description": "Salto bwd. str. with 3/1 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 24,
+      "description": "Salto bwd. str. with 4/1 t. (Shirai / Nguyen)",
+      "difficulty": "F",
+      "value": 0.6
+    }
+  ],
+  "Pommel Horse": [
+    {
+      "element": 1,
+      "description": "Scissor forward.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Scissor forward with travel sideways (also with 1/2 t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Scissor fwd. with hop sideways from one end to the other (3/3).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 7,
+      "description": "Scissor forward with \u00bd t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "Double scissor fwd. (\u00bc t. fwd. a. \u00bc t. bwd.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "Double scissor fwd. (\u00bc t. fwd. a. \u00bc t. bwd.) with travel sideways.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "Double scissor forward sideways from one end to the other (3/3). (Mikulak)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 15,
+      "description": "Double Scissor fwd. with travel sideways through handstand. (Stepanyan)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 20,
+      "description": "Leg cut or undercut bwd. through handstand and lower to support with straddle legs.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 22,
+      "description": "Scissor fwd. with \u00bc t. through handstand on 1 pommel, lower to support with straddle legs on the other arm (with legs changing) (Li Ning) (Bryan)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 25,
+      "description": "Scissor backward.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 26,
+      "description": "Scissor bwd. with travel sideways (also with \u00bd t.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 27,
+      "description": "Scissor bwd. with hop sideways from one end to the other (1-2 to 4-5).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 31,
+      "description": "Scissor backward with \u00bd turn.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 32,
+      "description": "Double scissor bwd. (\u00bc t. fwd. a. \u00bc t. bwd).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 39,
+      "description": "Swing bwd. w. \u00bc t. through handstand on 1 pommel (also with \u00bc t. after), lower to support with straddle legs (with legs changing)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 1,
+      "description": "Any circle or flair in side support. (Thomas)",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Circle in side support outside pommels or between the pommels.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 7,
+      "description": "Circles in cross support frontways on end.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "Circles in cross support on 1 pommel (from or to \u00bc t. fwd.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 13,
+      "description": "Circles in cross support rearways on end.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 14,
+      "description": "Circles in cross support between the pommels.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 25,
+      "description": "Any \u00bc spindle",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 26,
+      "description": "Any \u00bd spindle (Keikha 2)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 28,
+      "description": "Any side support pommel between hands 1/1 spindle w. legs straddle inside max. 2 circles.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 29,
+      "description": "Any side support 1/1 spindle with hand support to the other side and return (max. 2 flairs or circles) (Eichorn)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 30,
+      "description": "Any 1/1 spindle with both pommels between the hands (flair or circle). (Keikha 1) (Keikha 5)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 34,
+      "description": "Any 1/1 spindle within max. 2 circles on the end. (Magyar)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 35,
+      "description": "1/1 spindle w. legs straddle or together on the pommels inside max. 2 circles. (Berki)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 36,
+      "description": "Cross support, 1/1 spindle with hands between the pommels max. 2 circles. (Mousichidis)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 38,
+      "description": "Direct St\u00f6ckli A (DSA) on the pommels or pommel between hands.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 40,
+      "description": "Direct St\u00f6ckli A (DSA) outside pommels. (Keikha 3) (Keikha 6)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 44,
+      "description": "Direct St\u00f6ckli B (DSB).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 51,
+      "description": "Flair or circle through handstand (with or without \u00bd t.) and lower to flair or circle. (Tippelt)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 52,
+      "description": "Flair with hop travel bwd. through handstand and lower to circles or flairs",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 54,
+      "description": "Reverse St\u00f6ckli, DSA or pommel circle straddle through handstand, 3/3 travel (fwd.- bwd), 360\u00b0 turn to flairs. (Busnari)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 55,
+      "description": "Double rear (kehr).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 56,
+      "description": "Kehr with 270\u00b0 t. on 1 p. (Sohn technique) from cross to side support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 57,
+      "description": "Kehr with 270\u00b0 t. on 1 pommel (Sohn technique) from side to cross support. (Bertoncelj)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 58,
+      "description": "Kehr with 1/1 turn on 1 pommel. (Sohn)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 62,
+      "description": "Direct Tramlot.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 68,
+      "description": "Reverse St\u00f6ckli 180\u00b0 (or 270\u00b0 from one pommel) turn in one circle.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 69,
+      "description": "Reverse St\u00f6ckli with 270\u00b0 t. (Bezugo technique) from 2 pommels to cross support on 1 pommel (Davtyan)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 71,
+      "description": "Reverse St\u00f6ckli with 360\u00b0 t. on 1 pommel. (Bezugo)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 73,
+      "description": "Schwabenflank.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 74,
+      "description": "Czechkehre on the pommels or pommel between hands.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 76,
+      "description": "Czechkehre outside pommels (Pinheiro)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 79,
+      "description": "Wendeswing fwd. with \u00bd t. to support fwd. on the end, from side support using 1 or 2 pommels.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 85,
+      "description": "Russian wendeswing with 180\u00b0 or 270\u00b0.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 91,
+      "description": "Russian wendeswing with 360\u00b0 or 540\u00b0.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 92,
+      "description": "Russian wendeswing with 720\u00b0 or 900\u00b0.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 93,
+      "description": "Russian wendeswing with 1080\u00b0 or more.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 97,
+      "description": "On the leather, Russian wendeswing with 180\u00b0, or 270\u00b0 also with travel.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 103,
+      "description": "On the leather, Russian wendeswing with 360\u00b0 or 540\u00b0.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 104,
+      "description": "On the leather, Russian wendeswing with 720\u00b0 or 900\u00b0.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 105,
+      "description": "On the leather, Russian wendeswing with 1080\u00b0 or more.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 110,
+      "description": "Russian wendeswing with 180\u00b0 or 270\u00b0 on 1 pommel or between the pommels.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 111,
+      "description": "Russian wendeswing with 360\u00b0 or 540\u00b0 on 1 pommel or between the pommels.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 112,
+      "description": "720\u00b0 or 900\u00b0 Russian wendeswing on 1 pommel or between the pommels.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 113,
+      "description": "1080\u00b0 Russian wendeswing or more on 1 pommel or between the pommels.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 1,
+      "description": "Circles with any travel in side support (1/3) (also with \u00bc t.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Circles with any travel in side support (3/3).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Any travel in side support (3/3), hands between pommels.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 8,
+      "description": "Circles with any hop travel in side support (1/3)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "Circles with any hop travel 2x in side support (3/3).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 11,
+      "description": "From side support beside the pommel, travel hop over 2 pommels to support fwd on other end (1-1 to 5-5). (Yamawaki)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 14,
+      "description": "Travel fwd. or bwd. with \u00bc spindle to side support on 2 pommels.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 15,
+      "description": "All travels with \u00bd spindle in side support.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 17,
+      "description": "From an end side travel with 2x \u00bd spindle to other end.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 22,
+      "description": "Any travel fwd. 3/3 with \u00bd Spindle from one pommel over the other pommel. (Nin Reyes) (Titov)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 23,
+      "description": "Travel 3/3 over both pommels with \u00bd Spindle. (Nin Reyes 2) (Keikha 4)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 29,
+      "description": "Any 3/3 travel in flairs with 1/1 Spindle inside 2 circles. (Urzica 2) (Burkhart)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 32,
+      "description": "Travel fwd. in cross support (1/2 or 2/3).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 33,
+      "description": "Travel fwd. in cross support with support on leather, pommel, pommel, leather (3/3) (1-2-4-5).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 34,
+      "description": "Any other travel fwd. in cross support to other end (3/3). (Magyar)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 35,
+      "description": "Travel forward in cross support over both pommels (also with hop). (Driggs)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 37,
+      "description": "Travel bwd. in cross support from one horse part or pommel to another (\u2153).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 38,
+      "description": "Travel bwd. in cross support (1/2 or 2/3).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 39,
+      "description": "Travel bwd. in cross sup with support on leather, pommel, pommel, leather (3/3) (5-4-2-1).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 40,
+      "description": "Any other travel bwd. in cross support to other end (3/3). (Sivado)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 41,
+      "description": "Travel backward in cross support over both pommels (also with hop). (Kurbanov) (Reid)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 46,
+      "description": "Kehre fwd., reverse St\u00f6ckli, kehre fwd. (Moguilny)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 52,
+      "description": "Kehre bwd., kehre fwd., kehre bwd. (Belenki)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 57,
+      "description": "From support on 1 pommel, Russian wendeswing fwd. to other end without support on or between the pommels (side to side support, side to cross support).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 58,
+      "description": "From support on end, Russian wendeswing fwd. to other end without support on or between the pommels (side to side, side to cross, cross to side, cross to cross). (Tong Fei)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 59,
+      "description": "On the leather, from cross support, Russian wendeswing with 360\u00b0 or more over both pommels. (Vammen)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 64,
+      "description": "From support 1-2, 3/3 travel in Russian type wendeswing with 630\u00b0 or more turning.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 65,
+      "description": "Any 3/3 travel in Russian type wendeswing with 720\u00b0 or more turning w. two hands between pommels (Wu Guonian)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 70,
+      "description": "Any Russian wendeswing with 360\u00b0 t. and 3/3 travel. (Roth)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 75,
+      "description": "Reverse St\u00f6ckli from cross support on end to the far pommel (Romero)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 76,
+      "description": "Reverse St\u00f6ckli from cross support on one end to the other. (Abu Alsoud)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 1,
+      "description": "On the end Wende from circle (also Russian 180\u00b0 or 270\u00b0 to Wende)",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Chaguinian to wende.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 4,
+      "description": "From side support on end, circle or flair to handstand and travel 3/3 with 450\u00b0 or more turn. (Kolyvanov)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 5,
+      "description": "DSA to handstand 3/3 with 450\u00b0 or more turn.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 7,
+      "description": "On the end, Russian wendeswing with 360\u00b0 or 540\u00b0",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "On the end, Russian wendeswing with 720\u00b0 or 900\u00b0.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "On the end, Russian wendeswing with 1080\u00b0 or more.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "From pommels, circle with 1/4 turn to Russian wendeswing 270\u00b0 on one pommel to handstand. (Dolidze)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 13,
+      "description": "From side support wendeswing fwd. with \u00bd t. to support followed by wende.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 15,
+      "description": "DSA, reverse St\u00f6ckli or circle on one pommel through handstand.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 16,
+      "description": "DSA with hop bwd. through handstand on other end. (Jessen) (Loos)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 20,
+      "description": "Circle or flair through handstand (also with \u00be t. with or without travel).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 21,
+      "description": "Circle or flair with hop travel bwd. through handstand.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 22,
+      "description": "180\u00b0 Russian from one end of the horse to the other end through handstand to dismount Bertoncelj through handstand to dismount. (Targhetta)",
+      "difficulty": "D",
+      "value": 0.4
+    }
+  ],
+  "Still Rings": [
+    {
+      "element": 1,
+      "description": "Uprise fwd. to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 7,
+      "description": "From any support scale, swallow or swing bwd in support, roll forward to bwd swing in hang.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "Uprise fwd and counter salto fwd. to bwd swing in hang. (Chechi)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 19,
+      "description": "From hang, felge upward to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 20,
+      "description": "Swing fwd. through hdst.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 21,
+      "description": "Tucked double salto bwd. to hang (Guczoghy)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 22,
+      "description": "Piked or straight double salto bwd. to hang.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 25,
+      "description": "Dislocate bwd. piked or straight.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 31,
+      "description": "Uprise bwd. to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 32,
+      "description": "Uprise bwd. str. through handstand.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 37,
+      "description": "Inlocate piked or straight.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 38,
+      "description": "Backward swing to salto fwd. piked to support (Honma)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 39,
+      "description": "Honma straight.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 43,
+      "description": "Slow inlocate from hang.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 44,
+      "description": "Double salto fwd. tucked to hang. (Yamawaki)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 45,
+      "description": "Double salto fwd. piked or straight to hang. (Jonasson)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 49,
+      "description": "Kip to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 55,
+      "description": "Back kip with bent arms to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 56,
+      "description": "Back kip to support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 61,
+      "description": "Fwd. swing to swing bwd. in hang.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 63,
+      "description": "Bwd. swing, salto piked to support.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 67,
+      "description": "From support or cross, felge bwd. piked or straight with bent arms to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 74,
+      "description": "Back kip or roll bwd str. with bent arms to handstand (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 75,
+      "description": "Swing fwd. to handstand or giant swing bwd to handstand (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 81,
+      "description": "Uprise bwd. to handstand or giant swing fwd to handstand (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 86,
+      "description": "From support swing bwd. to handstand (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 87,
+      "description": "Honma and swing bwd. to handstand (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 88,
+      "description": "Honma str. and swing bwd. to handstand (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 1,
+      "description": "L-sit (2 s.) or straddled L-sit (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "V-sit (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 4,
+      "description": "Inverted cross (2 s.)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 7,
+      "description": "Hanging scale rearways (back lever) (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 9,
+      "description": "Support scale (planche)(2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "Support scale at ring height (swallow or maltese cross) (2 s.). (Hirondelle)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 11,
+      "description": "Inverted swallow (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 13,
+      "description": "Hanging scale frontways (front lever) (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 14,
+      "description": ".",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 15,
+      "description": "Any cross (2 s.)or V cross (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 19,
+      "description": "Support scale straddled (2 s.).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 22,
+      "description": "V Cross, press to V-sit (2 sec.). (Tsukahara 3)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 23,
+      "description": "Vertical pull up with str. arms to V-cross (2 s.). (Colak)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 25,
+      "description": "Press to hdst. with bent body and bent arms (2 s) - Also straddle legs.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 26,
+      "description": "Press to hdst. with str. body a. bent arms or b. body. a. str. arms, or fr. strad. sup. lever (2 s.). - Also straddle legs.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 27,
+      "description": "Press to hdst. with str. body and str. arms from support or support scale (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 31,
+      "description": "Slow roll fwd. piked with bent arms, to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 32,
+      "description": "Slow roll fwd. straight with bent arms, to support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 38,
+      "description": "Slow roll bwd. w. str. body and str. arms and straight. body to L sit (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 39,
+      "description": "Slow roll fwd. straight to cross or L-cross (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 50,
+      "description": "Vertical pull up with bent arms to hanging scale rearways (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 51,
+      "description": "Vertical pull up with straight arms to hanging scale rearways (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 52,
+      "description": "Slow Roll bwd. with straight body to cross, L- cross or V cross (2 s.). (Azarian) (Tay)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 56,
+      "description": "Fr. cross or L-cr., move fwd. to back lever (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 57,
+      "description": "Vertical pull up to L-sit (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 58,
+      "description": "From or through hanging scale rearways pull to cross, L-cross, or V cross (2 s.). (Nakayama) (NG Kiu Chung)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 60,
+      "description": "Through hanging scale rearways pull with str. body through cross to inv. swallow (2 s.). (Zahran)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 62,
+      "description": "From hdst., lower horiz. through swallow to back lever (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 63,
+      "description": "From sup. or cross, lower slowly to hang, and pull with str. arms to cross (2 s.). (Li Xiaoshuang)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 64,
+      "description": "Vertical pull up to cross or L-cross (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 65,
+      "description": "From planche, lower horiz. and slowly to hanging scale rw. and press to swallow (2 s.) or from swallow same to planche or planche to planche. (Van Gelder)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 66,
+      "description": "From hang vertical pull up, slowly with straight arms through cross to inverted swallow (2 s.). (Tulloch 2) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 68,
+      "description": "From handstand, lower slowly through inverted cross to inverted hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 70,
+      "description": "From swallow, press to support scale (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 71,
+      "description": "From swallow, lower slowly to hanging scale rw, press to swallow (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 72,
+      "description": "From hanging scale rw. press to swallow (also to Support Scale) (2 s.).",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 75,
+      "description": "From cross or L-cross, press to L-sit (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 77,
+      "description": "From L-cross, press with bent body to inverted cross (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 78,
+      "description": "From cross, press with straight body to inverted cross (2 s.).",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 84,
+      "description": "From swallow, press w. str. body to inverted cross (2 s.).",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 88,
+      "description": "From cross, press to planche without first going to support (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 89,
+      "description": "From cross, press to swallow (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 90,
+      "description": "Through hang rearways press and straight body to inverted cross (2 s.) (Carmona) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 94,
+      "description": "From inverted cross lower slowly to inverted hang and felge bwd. slowly to cross or V-cross (2 s.) (Vorobiov/Zou)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 95,
+      "description": "From inverted cross lower slowly to inverted hang and felge bwd. slowly to swallow (2 s.) or to support scale (2 s.) (Jotchev) (Zou 2)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 101,
+      "description": "Roll bwd. slowly with str. arms and body to free sup. scale (2 s.). (Yan Mijayoung)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 107,
+      "description": "Slow Roll bwd. with str. body to swallow (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 108,
+      "description": "Roll backward slowly with straight arms and body to inverted cross through swallow. (Simonov)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 118,
+      "description": "Slow roll fwd. with straight body through cross and press to support scale without first going to support (2 s.). (Ng Kiu Chung 2)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 119,
+      "description": "Slow roll fwd. with straight body through cross to inverted cross (2 s.). (Wynn)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 120,
+      "description": "Azarian to inverted Swallow (2 s.). (Tulloch)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 124,
+      "description": "Slow roll fwd. with str. body to Cross or L-Cross (2 s.), also from inverted hang. (Davtyan)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 125,
+      "description": "Slow roll forward with straight body through cross to swallow (2 sec). (Pham 2)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 130,
+      "description": "From hang vertical pull up support and press to hdst. with straight body and straight arms.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 132,
+      "description": "From hang vertical pull up to swallow (2 s.). (Balandin 1)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 137,
+      "description": "From hang vertical pull up thr. swallow to sup. scale (2 s.). (Balandin 3)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 138,
+      "description": "From hang vertical pull up to inv. cross (2 s.). (Balandin 2) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 2,
+      "description": "Uprise fwd. to L-sit, (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Uprise fwd. to V-sit (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 4,
+      "description": "Front uprise fwd. to V cross (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 8,
+      "description": "Kip to L-sit (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "Kip to V-sit (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 14,
+      "description": "Honma to L-sit (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 15,
+      "description": "Homna to V-sit (2 s.). (Gracia)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 16,
+      "description": "Honma to cross / L-cross (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 17,
+      "description": "Honma to V cross (2 s.). (Tanaka)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 22,
+      "description": "Bwd. swing, salto fwd p. to cross or L-cross (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 27,
+      "description": "Uprise fwd. to cross or L-cross (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 33,
+      "description": "Uprise bwd. to cross or L-cross (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 39,
+      "description": "Kip to cross, or L-cross (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 40,
+      "description": "Kip to V cross (2 s.). (Molinari)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 42,
+      "description": "Kip to inverted swallow (2 s.).",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 45,
+      "description": "Back kip to cross or L-cross (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 46,
+      "description": "Back kip to support scale (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 47,
+      "description": "Back kip to swallow (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 50,
+      "description": "Felge upward to support with straddled legs supported above the rings (2 s.). (Deltchev)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 53,
+      "description": "Back kip to inverted cross (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 56,
+      "description": "Felge upward to support scale straddled (2 s.)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 57,
+      "description": "Felge upward to cross or L-cross (2 s.).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 58,
+      "description": "Felge upward to support scale (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 59,
+      "description": "Felge upward to Swallow (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 60,
+      "description": "Uprise forward to inverted swallow (2 s.). (Rodrigues)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 65,
+      "description": "Felge upward to invert. cross (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 68,
+      "description": "Uprise bwd. to support scale straddled (2 s.).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 70,
+      "description": "Uprise bwd. to support scale (2 s.).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 71,
+      "description": "Uprise bwd. to Swallow (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 77,
+      "description": "Uprise bwd. to inverted cross (2 s.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 82,
+      "description": "Felge bwd. straight to free sup. scale. (2 s.)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 1,
+      "description": "Salto fwd. piked or straight, also with \u00bd t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Salto fwd. piked or straight with 1/1 t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Salto fwd. piked or straight with 3/2 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 4,
+      "description": "Salto fwd. piked or straight with 2/1 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 9,
+      "description": "Double salto fwd. tucked or tucked with \u00bd t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "Double salto fwd. tucked with 3/2 t (also 1/1 t.) (Fischer)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 16,
+      "description": "Double salto fwd. piked or piked with \u00bd t. (Balabanov)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 17,
+      "description": "Double salto fwd. piked with 3/2 t. (also 1/1 t.).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 25,
+      "description": "Salto bwd. piked or straight also with \u00bd.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 26,
+      "description": "Salto bwd. straight with 1/1 t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 27,
+      "description": "Salto bwd. straight with 2/1 t. or 3/2 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 29,
+      "description": "Salto bwd. straight with 3/1 t.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 32,
+      "description": "Double salto bwd. tucked or piked.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 33,
+      "description": "Double salto bwd. straight.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 36,
+      "description": "Triple salto bwd. tucked. G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 42,
+      "description": "Triple salto bwd. piked. I (Whittenburg)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 45,
+      "description": "Double salto bwd. t. with \u00bd or 1/1 t. Double salto bwd. t. with 3/2 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 47,
+      "description": "Double salto bwd. t. with 2/1 t.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 48,
+      "description": "Double salto bwd. t. with 5/2 t. (Tuuha)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 51,
+      "description": "Salto bwd. str. with 1/1 t. and salto t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 52,
+      "description": "Double salto bwd. straight with \u00bd or 1/1 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 54,
+      "description": "Double salto bwd. straight with 3/2 or 2/1 t.",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 60,
+      "description": "Double salto bwd. tuck with 3/1 turn G",
+      "difficulty": "F",
+      "value": 0.6
+    }
+  ],
+  "Vault": [],
+  "Parallel Bars": [
+    {
+      "element": 1,
+      "description": "Forward uprise to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Fwd. uprise and straddle cut bwd to handstand.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Fwd. uprise and straddle cut bwd to hang. (Muntean)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 5,
+      "description": "Fwd. uprise with \u00bd t. to handstand.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 6,
+      "description": "Fwd. uprise with St\u00fctzkehr 3/4 t. or 1/4 t. to handstand followed by a kip on one rail",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 7,
+      "description": "Fwd. uprise with \u00bc t. to hang on 1 rail.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "Roll bwd. with \u00bd t. from upper arm hang or Fwd. uprise to Kato hop to support. (Watanabe)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 11,
+      "description": "Fwd. uprise to Makuts to upper arm.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 12,
+      "description": "Fwd. uprise to Makuts to support. (Tsolakidis 1) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 14,
+      "description": "Roll bwd. to handstand with straight arms.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 15,
+      "description": "Back toss from upper arm with 1/4 turn to one rail (Kovtun)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 17,
+      "description": "Fwd. uprise with 1/1 t. to handstand. (Richards)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 18,
+      "description": "Fwd. uprise with 3/2 t. to handstand. (Tsolakidis 2)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 20,
+      "description": "Salto bwd. with straddled. cut to upper arm hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 21,
+      "description": "Roll bwd. with straddled cut to support.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 24,
+      "description": "Roll bwd. with salto bwd. tuck to upper arm hang. (Dimitrenko)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 29,
+      "description": "G",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 30,
+      "description": "Roll bwd. with salto bwd. pike to upper arm hang (Li Xiaopeng) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 34,
+      "description": "Roll bwd. with \u00bd t. tuck to upper arm hang. (Harada)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 35,
+      "description": "Roll bwd. with \u00bd t. tuck to hang. (Dalton)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 38,
+      "description": "Bwd. uprise to handstand (or with \u00bd t).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 40,
+      "description": "Bwd. uprise with \u00bd t. hop to handstand.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 41,
+      "description": "Bwd. uprise with \u00be t. hop to handstand on 1 rail.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 44,
+      "description": "Bwd. uprise with \u00bd t. and straddle cut bwd. to upper arm hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 45,
+      "description": "Bwd. uprise with \u00bd t. a. straddled cut bwd. to support.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 50,
+      "description": "Bwd. uprise with \u00bd t. to support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 51,
+      "description": "Bwd. uprise and 5/4 salto fwd. t. to upper arm hang (Yamawaki)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 52,
+      "description": "Bwd. uprise and salto fwd. pike or straight to support.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 54,
+      "description": "Bwd. uprise and double salto fwd. tuck to upper arm hang.",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 59,
+      "description": "Bwd. uprise and 5/4 salto fwd. straddled to upper arm hang. (Pakhniuk 1)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 60,
+      "description": "Bwd. uprise and 5/4 salto fwd. straddled to hang. (Pakhniuk 2)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 61,
+      "description": "Bwd. uprise and straddled cut or flank over to support. bent arm.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 62,
+      "description": "Bwd. uprise and straddled cut or flank over to support straight. arm.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 1,
+      "description": "Any swing to handstand",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Bent arm swing fwd. to hop \u00bd t. to support. (Kato)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "St\u00fctzkehr fwd. to handstand (to 1 or 2 bars).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 4,
+      "description": "St\u00fctzkehr fwd. to handstand (1 rail (also with additional \u00bc or \u00be turn to handstand) (Bilozerchev - Peters) (Dimic)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 7,
+      "description": "Any L-sit on 1 or 2 rails (2 s.)",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "Any press with bent arm straight. body, or str. arm bent body to handstand., on 1 or 2 rails (2 s.) also straddled",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "\u00be Diamidov and \u00bd turn to upper arms. (Salazar)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "\u00be Diamidov and rear vault to side hang on 1 bar. (De Freitas)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 13,
+      "description": "Straddle cut bwd. to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 14,
+      "description": "Straddle cut bwd. to handstand.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 15,
+      "description": "Straddle cut bwd. directly to hang (Babos)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 19,
+      "description": "Straddle cut fwd. to support or L-sit (2 s.). .",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 27,
+      "description": "Swing fwd. with 1/1 t. on 1 arm to handstand. (Diamidov)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 28,
+      "description": "Diamidov with \u00bc or \u00bd t. to handstand.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 32,
+      "description": "Swing fwd. with 1/1 t. to upper arm hang. (Carminucci)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 34,
+      "description": "Swing forward with 5/4 t. on one arm through handstand. and Healy to upper arm.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 35,
+      "description": "\u00be Diamidov & \u00be Healy on the other hand to support (Makuts)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 36,
+      "description": "Swing forward with 5/4 t. on one arm through handstand. and Healy to support. (Zonderland)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 39,
+      "description": "Salto bwd to handstand. Also to one rail. (Rumbutis)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 40,
+      "description": "Salto backward with straddle cut to support.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 45,
+      "description": "Salto bwd. with \u00bd t. to upper arm hang. (Toumilovich)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 46,
+      "description": "Salto bwd to handstand 1 rail (connected to Healy type element).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 47,
+      "description": "Double salto tuck to upper arm hang. (Morisue)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 48,
+      "description": "Double salto pike to up. arm hang. (Huang Liping)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 52,
+      "description": "3/2 salto bwd. with \u00bd t. to upper arm hang. (Suarez)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 54,
+      "description": "Double salto backwards with half turn to upper arm. (Kuavita) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 56,
+      "description": "Handstand. with \u00bc t. and fall back to support with \u00bc t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 57,
+      "description": "Handstand . with \u00be t. and fall back to support with \u00bc t. (Br\u00e4ndstr\u00f6m)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 62,
+      "description": "St\u00fctzkehr bwd. to support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 63,
+      "description": "St\u00fctzkehr bwd. through handstand. to support. (Novikov)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 69,
+      "description": "St\u00fctzkehr bwd. with straddle cut bwd. to support",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 73,
+      "description": "Healy to upper arm hang (also from handstand .on 1 rail).",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 74,
+      "description": "Following a swing element (min. B) to handstand on 1 rail, Healy to upper arm hang. Min. B7",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 75,
+      "description": "Healy to support (also from handstand on 1 rail). (Healy)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 76,
+      "description": "Following a swing element (min. B) to handstand on 1 rail, Healy (360\u00b0 or more) to support. (Bejenaru) Min. B",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 80,
+      "description": ".",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 81,
+      "description": "Swing bwd. with \u00bd t. hop to handstand.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 82,
+      "description": "Swing bwd. with \u00be t. hop to handstand.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 83,
+      "description": "Swing bwd. with 1/1 t. hop to handstand (or",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 84,
+      "description": "Gatson 1 with \u00bc t to handstand on 1 rail and \u00bc t. handstand on 2 rails. (Gatson 2)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 86,
+      "description": "From handstand on 1 rail, \u00bd or \u00be t. fwd. or bwd. In handstand.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 91,
+      "description": "Any handstand . with \u00bd turn. (also with 2 s.)",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 92,
+      "description": "Any 1/1 pirouette in handstand on 2 rails.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 99,
+      "description": "From handstand, salto fwd to support or from handstand with rotated grip, inlocate to support. (Carballo 2)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 101,
+      "description": "5/4 salto fwd. straddle directly to hang. (Lee Chul Hon/Sasaki)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 104,
+      "description": "5/4 salto fwd. tuck or pike to upper arm hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 105,
+      "description": "Salto fwd to support.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 106,
+      "description": "5/4 salto fwd. straddled to upper arm hang",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 107,
+      "description": "5/4 salto fwd. straddled to bent arm support.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 111,
+      "description": "Salto fwd. piked to hang. (Juarez 2)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 113,
+      "description": "Double salto fwd. tuck to upper arm hang.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 114,
+      "description": "Double salto fwd. pike to upper arm hang.",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 117,
+      "description": "5/4 salto fwd. straight to upper arm hang",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 119,
+      "description": "Salto fwd. with 1/1 t. to upper arm hang. (Urzica)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 3,
+      "description": "Swing forward, straddle cut backward, and regrasp with straight body at horizontal to bent and upper arm. (Alsadi)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 4,
+      "description": "Moy piked with straddle bwd to handstand (Tippelt)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 5,
+      "description": "Swing forward, straddle cut backward, and regrasp with straight body at horizontal. (Bhavsar)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 8,
+      "description": "Moy piked with straddled. cut bwd. and \u00bd t. to upper arm hang (also legs together).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "Moy piked with 1/1 t. to upper arm hang. (Nolet)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "Moy and salto fwd. tuck, pike. or straddled. to upper arm hang. (Giraldo)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 14,
+      "description": "Moy to support bent legs (also without grip release).",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 15,
+      "description": "Moy to support straight legs (also without grip release). (Moy)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 17,
+      "description": ".",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 21,
+      "description": "Giant swing bwd. to handstand or with inlocation fwd. (also with \u00bc or \u00bd turn and to one rail). (Kenmotsu) (Piasecky) (Wells)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 22,
+      "description": "Giant swing bwd. to handstand on one rail (connected to Healy type element).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 29,
+      "description": "Giant swing bwd. with Diamidov to handstand, also to one rail.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 30,
+      "description": "Giant swing Diamidov with \u00bc or \u00bd t. to handstand.",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 38,
+      "description": "Swing down with salto bwd. straight to hang",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 39,
+      "description": "Giant swing bwd. with \u00bd t. to upper arm hang. (Gushiken)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 40,
+      "description": "Giant swing bwd. with \u00bd t. to support. (Marinitch)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 42,
+      "description": "Giant swing. bwd. with Diamidov to handstand to one rail (connected to Healy type element).",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 46,
+      "description": "Giant swing bwd. with Makuts to upper hang. (Dauser)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 48,
+      "description": "Giant swing bwd. with Makuts. (Baumann)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 50,
+      "description": "Giant swing bwd. w. strad. cut to up. arm hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 52,
+      "description": "Giant swing bwd. with straddle cut to support or bent arms support. (Korolev)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 53,
+      "description": "Giant swing bwd. with \u00bd t. and straddled cut bwd. to upper arms. (Sosa)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 59,
+      "description": "From giant. sw. bwd., double salto tuck to upper arm hang. (Belle)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 60,
+      "description": "Belle pike.",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 66,
+      "description": "Belle with 1/1 turn. H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 69,
+      "description": "Giant swing bwd. and salto with \u00bd t. to hang on the end. (Chartrand)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 70,
+      "description": "Giant swing bwd. and salto with \u00bd t. to upper arm hang. (Matsunaga)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 71,
+      "description": "Giant swing bwd. and salto with \u00bd t. to hang. (Solis)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 72,
+      "description": "Giant swing bwd. with \u00bd t. and 3/2 salto fwd to upp arm hang. (Tanaka)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 73,
+      "description": "Glide kip.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 74,
+      "description": "Glide kip with \u00bd t. to support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 75,
+      "description": "Glide kip bwd. to handstand.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 77,
+      "description": "Giant swing bwd. and salto with \u00bd t. to support. (Torres)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 78,
+      "description": "Giant swing backward with \u00bd t. and 3/2 salto forward piked to upper arm hang. (Esparza) H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 80,
+      "description": "Glide kip to straddled cut bwd. handstand on 1 or 2 rail.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 81,
+      "description": "Glide kip to straddled cut bwd. to hand. (Okubo)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 83,
+      "description": "Giant swing bwd. and salto with \u00bd str to upper arm hang (Fokin)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 86,
+      "description": "Glide kip one rail through L-sit straddled to handstand.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 87,
+      "description": "Glide kip through L-sit piked to handstand.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 88,
+      "description": "Glide kip through L-sit piked to handstand and hop with 3/4 t. or more.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 92,
+      "description": "Glide kip through V-sit and hop \u00bd turn to hang on other rail. (Li Donghua)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 97,
+      "description": "Cast to upper arm hang.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 98,
+      "description": "Cast to support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 99,
+      "description": "Felge with \u00bd t. to upper arm hang.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 100,
+      "description": "Felge with \u00bd t. to rear support.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 104,
+      "description": "Cast with \u00bd t. to up. arm hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 105,
+      "description": "Cast with \u00bd t. to support.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 106,
+      "description": "Felge to handstand. Also to one rail or \u00bc t. (Chiarlo) (Cucherat - Celen)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 107,
+      "description": "Felge with \u00bd or \u00be t. to handstand.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 108,
+      "description": "Felge with 1/1 t. to handstand. (Teng Hai Bin)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 111,
+      "description": "Cast to straddle cut backward to handstand. (Arican)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 114,
+      "description": "Felge with 5/4 t. to handstand. (Zhou Shixiong) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 115,
+      "description": "Felge with travel to hang.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 116,
+      "description": "Felge to support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 117,
+      "description": "Felge with immediate straddle cut to support.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 119,
+      "description": "Felge to one rail handstand (connected to Healy type element).",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 120,
+      "description": "Felge through handstand to Makuts. (Yamamuro) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 122,
+      "description": "Felge roll backward with tuck salto \u00bd to upper arm hang. (Gagnon)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 123,
+      "description": "Felge roll backward with straight salto \u00bd to upper arm hang. (Gagnon 2)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 125,
+      "description": "Felge with salto bwd tuck to uppper arm hang. (Tejada)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 126,
+      "description": "Felge with salto bwd p. to up. arm hang. (Juarez 1)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 127,
+      "description": "Felge forward to support.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 128,
+      "description": "Felge forward with \u00bd t. to support.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 130,
+      "description": "Shoot up with \u00bc t. to handstand.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 131,
+      "description": "Shoot up with \u00bd or 3/4 t. to handstand. (Nguyen)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 137,
+      "description": "Shoot up to handstand and fall back to support with \u00bc turn. (Malone)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 1,
+      "description": "Salto fwd. piked or straight also with \u00bd t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 5,
+      "description": "Double salto fwd. tuck.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 6,
+      "description": "Double salto fwd. p. (Belyavskiy)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 8,
+      "description": "Salto fwd. piked or straight with 1/1",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "Salto fwd. piked or straight. 3/2 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "Salto fwd. piked or straight with 2/1 or 5/2 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 11,
+      "description": "Double salto fwd. tuck with \u00bd t. or \u00bd t. double salto bwd.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 12,
+      "description": "Double salto fwd. tucked with 1/1 t. (Larduet) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 15,
+      "description": "Double salto fwd. tuck from end.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 17,
+      "description": ".",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 18,
+      "description": "Double salto fwd. piked with \u00bd t. (Dalaloyan)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 19,
+      "description": "Salto bwd. piked or straight, also with \u00bd t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 21,
+      "description": "Salto bwd. piked or straight with 1/1 or 3/2 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 22,
+      "description": "Salto bwd. straight with 2/1 t. (Kan)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 28,
+      "description": "High wende and salto bwd tuck or pike. (Roethlisberger)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 32,
+      "description": "Double salto bwd. tuck from end.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 33,
+      "description": "Double salto bwd. tuck.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 34,
+      "description": "Double salto bwd. pike.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 36,
+      "description": "Double salto bwd. t. with 1/1 t. (Hiroyuki Kato) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 40,
+      "description": "Double salto bwd. tucked with \u00bd t. or salto bwd. \u00bd tucked to salto fwd. tucked.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 43,
+      "description": "From hang on end, salto bwd. straight.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 45,
+      "description": "From hang on end, double salto bwd. Tuck.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 46,
+      "description": "From hang on end, double salto bwd. pike.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 47,
+      "description": "From hang on end, double salto bwd straight (Alvarez)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 48,
+      "description": "From hang on end, triple salto bwd. Tuck G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 53,
+      "description": "From hang on end, double salto bwd. tuck with 1/1 or \u00bd t.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 54,
+      "description": "From hang on end, double salto bwd. tuck with 2/1 t.",
+      "difficulty": "F",
+      "value": 0.6
+    }
+  ],
+  "High Bar": [
+    {
+      "element": 1,
+      "description": "Back uprise to handstand.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Back uprise to hdst. with 1/1 turn also to mixt.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 7,
+      "description": "Back uprise to handstand with \u00bd turn.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "Swing bwd. and pirouette to hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 9,
+      "description": "Swing bwd. and pirouette to support.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 13,
+      "description": "Giant swing fwd.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 14,
+      "description": "1/1 turn thr. hdst. in mixt grip.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 15,
+      "description": "1/1 turn thr. hdst. in double el-grip.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 19,
+      "description": "\u00bd t. thr. hdst.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 20,
+      "description": "Flying giant swing fwd. or with \u00bd turn.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 21,
+      "description": "Flying giant swing fwd. with 1/1 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 26,
+      "description": "Giant swing fwd. with one arm in undergrip.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 27,
+      "description": "On one arm, giant swing fwd. w. 1/1 t. thr. el-grip and 1/1 t. to undergrip. (Zou Li Min)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 31,
+      "description": "Giant swing bwd.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 37,
+      "description": "\u00bd t.bwd. thr. hdst.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 43,
+      "description": "Giant swing bwd. with hop to undergrip.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 44,
+      "description": "Flying giant swing bwd.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 45,
+      "description": "Flying giant swing bwd. with 1/1 t. (Quast)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 50,
+      "description": "Giant swing bwd. with hop \u00bd t. to el-grip.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 51,
+      "description": "Giant swing bwd. with hop 3/2 t. to undergrip, mixed el-grip.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 52,
+      "description": "Giant swing bwd. with hop 3/2 t. to double el-grip (Rybalko)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 56,
+      "description": "1/2t t. bwd. thr. hdst. to el-grip",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 62,
+      "description": "Long swing fwd. with hop to el-grip.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 68,
+      "description": "El-grip giant swing.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 69,
+      "description": "Giant swing rearways fwd. (Russian giant).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 70,
+      "description": "Giant swing rw. bwd. (Czech giant swing).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 74,
+      "description": "Steineman uprise w. \u00bd t. to support. (Ono)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 75,
+      "description": "El-grip giant swg. with 1/1 t. thr. hdst. in mx. gr.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 76,
+      "description": "Giant swing rw. bwd. (Czech giant swing) with \u00bd turn to fwd giant swing.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 2,
+      "description": "Back uprise and straddle over to hang rw.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Back uprise and strad. hecht with \u00bd t. to hang. also w. \u00bd t. (Markelov) (Principi)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 6,
+      "description": "Back uprise and hecht straight with 3/2 t. to hang. (Wals trom) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 9,
+      "description": "Markelov str. with legs together .also with \u00bd t. (Yamawaki) (Mu\u00f1oz - Pozzo)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 15,
+      "description": "Swing fwd. and vault bwd. strad. to hang, also with \u00bd t. (Tkatchev) (Lynch)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 16,
+      "description": "Tkatchev straight, also with \u00bd t. to mix el-grip into back uprise to hdst. (Moznik)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 18,
+      "description": "Tkatchev straight with 1/1 t. (Liukin) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 21,
+      "description": "Swing fwd. and vault bwd. piked to hang, also with \u00bd t. (Samiloglu)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 23,
+      "description": "Tkatchev straddled \u00bd t. to double el-grip. (Kulesza)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 26,
+      "description": "Back uprise and piked vault with \u00bd t. to hang. (Voronin)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 28,
+      "description": "Stalder or free hip circle bwd to Tkatchev straddle, also with \u00bd t. (Piatti)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 29,
+      "description": "Piatti straight. also with \u00bd t. to mix el-grip into back uprise to hdst. (Kierzkowski)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 32,
+      "description": "Back uprise and rear vault with \u00bc t. to hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 34,
+      "description": "Piatti piked. also with \u00bd t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 36,
+      "description": "Piatti straight with 1/1 turn. (Suarez) H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 39,
+      "description": "Swing bwd. and salto fwd t. or strad. to hang, also from el-grip\u201d. (J\u00e4ger)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 40,
+      "description": "Swing bwd. and salto fwd. p. to hg. also from el-grip.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 41,
+      "description": "Salto fwd. straight, also from el-grip. (Balabanov)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 42,
+      "description": "Salto fwd. straight with 1/1 t. also from el grip (Winkler - Pogorelev) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 45,
+      "description": ".",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 48,
+      "description": "Salto fwd. straight with 2/1 t. also from el grip. H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 51,
+      "description": "Czech giant and vault bwd. strad. to hang.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 52,
+      "description": "Swing fwd. and counter salto fwd. straddled to hang. (Xiao Ruizhi)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 57,
+      "description": "Swing fwd. \u00bd t. to salto fwd. strad. to hang. (Deltchev)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 58,
+      "description": "Swing fwd. and salto bwd. piked w. \u00bd t. to hang, also from Czech giant. (Gienger) (Sapronenko)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 60,
+      "description": "Swing fwd. and salto bwd. w. 3/2 t. to hang. (Deff) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 65,
+      "description": "Salto fwd, tuck over the bar, also from el-grip. (Gaylord)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 66,
+      "description": "Gaylord with \u00bd t. (Pegan) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 72,
+      "description": "Gaylord with 1/1 t. (Koudinov) H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 76,
+      "description": ".).",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 78,
+      "description": "Gaylord piked.",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 82,
+      "description": "Salto bwd. \u00bd t. tucked over the bar.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 83,
+      "description": "Salto bwd. \u00bd t. piked over the bar. (Gaylord 2)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 84,
+      "description": "Pegan piked. (Maras) H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 88,
+      "description": "Double salto bwd. t. over the bar. (Kovacs)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 89,
+      "description": "Kovacs with 1/1 t. (Kolman)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 90,
+      "description": "Kovacs with 2/1 t. (Bretschneider) H",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 95,
+      "description": "Kovacs piked or straight.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 96,
+      "description": "Kovacs straight or piked with 1/1 turn. (Cassina) (Pineda - piked) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 102,
+      "description": "Kovacs straight with 2/1 turn. (Miyachi) I",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 108,
+      "description": "Kovacs with 3/2 t. to mix grip. (Shaham) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 1,
+      "description": "Kip to hdst. or from mixed grip to hdst",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 8,
+      "description": "From hdst., free hip circle fwd. thr. hdst. (Weiler)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 13,
+      "description": "From hang or from support, free hip circle through handstand.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 17,
+      "description": ".",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 25,
+      "description": "From hang or from support, free hip circle hop to handstand.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 32,
+      "description": "Free circle fwd. straddled thr. hdst. (Endo)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 33,
+      "description": "Free circle fwd. legs together thr. hdst.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 38,
+      "description": "Free circle bwd. straddle thr. hdst. (Stalder)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 40,
+      "description": "Stalder with hop 3/2 turn through hdst. in mix el-grip.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 41,
+      "description": "Stalder with hop 3/2 turn through hdst. in el-grip.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 45,
+      "description": "Stalder legs together thr. hdst.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 56,
+      "description": "Stalder with hop through hdst.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 57,
+      "description": "Stalder legs together with hop through hdst.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 63,
+      "description": "Stoop circle rearward fwd. through hdst. (Adler).",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 64,
+      "description": "Adler with \u00bd t. through hdst. in ovgr.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 65,
+      "description": "Adler and 1/1 t. through hdst. in ungr. (Fuentes)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 70,
+      "description": "Adler hop to hdst. in ungr. or ovgr. or mixed grip",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 76,
+      "description": "Adler and 1/1 t. thr. hdst. in mixed grip, also with hop (Baldauf)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 79,
+      "description": "Back toss to dorsal hang.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 80,
+      "description": "From dorsal hang, uprise fwd. to support rw. (Steineman)",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 81,
+      "description": "Stoop in and free back toss to dorsal hang",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 87,
+      "description": "Steineman uprise w. stoop or to hdst. (K\u00f6ste)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 92,
+      "description": "Steineman uprise w. flank bwd. to sup. or hang.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 99,
+      "description": "Endo in el-grip thr. hdst.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 100,
+      "description": "Endo legs together in el-grip thr. hdst.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 103,
+      "description": "Stoop circle fwd. to straddle cut to hang or sup.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 104,
+      "description": "Stoop circle fwd. to straddle cut through hdst.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 105,
+      "description": "Stoop circle fwd. to straddle cut with \u00bd t. (Carballo)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 106,
+      "description": "Carballo with \u00bd turn to mixed el-grip. (Quintero)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 107,
+      "description": "Quintero to el-grip.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 1,
+      "description": "Salto fwd. piked or straight, also with \u00bd t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 2,
+      "description": "Salto fwd. str. with 1/1 or 3/2 t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 3,
+      "description": "Salto fwd. str. with 2/1 or 5/2 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 6,
+      "description": "Triple salto fwd. t. or with \u00bd t. (Rumbutis) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 9,
+      "description": "Double salto fwd. t. or p.or with \u00bd turn.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 10,
+      "description": "Double salto fwd. t. or p. with 1/1 or 3/2 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 11,
+      "description": "Double salto fwd. t. or p. with 2/1 or 5/2 t.",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 16,
+      "description": "Double salto fwd. str. or with \u00bd t. or over the bar (Roethlisberger 2)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 17,
+      "description": ". Double salto fwd. str. with 1/1 or 3/2 t. (Alvarez)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 21,
+      "description": "Double salto fwd. t. or p. or with \u00bd turn over the bar.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 22,
+      "description": "Dbl. salto fwd. t. or p. w. 1/1 or 3/2 t. over the bar. (Roethlisberger 1)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 25,
+      "description": "Salto bwd. piked or str. also with \u00bd or 1/1 t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 26,
+      "description": "Salto bwd. str. with 3/2 or 2/1 t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 27,
+      "description": "Salto bwd. str. with 5/2 or 3/1 t.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 32,
+      "description": "Double salto bwd. tuck or pike.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 33,
+      "description": "Double salto bwd. t. with 1/1 t. (Tsukahara)",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 34,
+      "description": "Double salto bwd. t. with 2/1 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 39,
+      "description": "Double salto bwd. str.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 40,
+      "description": "Double salto bwd. str. with 1/1 t.",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 41,
+      "description": "Double salto bwd. str. with 2/1 t. (Watanabe)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 42,
+      "description": "Double salto bwd. str. with 3/1 t. (Fedorchenko)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 48,
+      "description": "Triple salto bwd. t. or over the bar. (Andrianov) (Hoffmann)",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 50,
+      "description": "Double salto bwd. t. over the bar.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 51,
+      "description": "Doble salto bwd. t. with 1/1 t. over the bar.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 52,
+      "description": "Double salto bwd. t. with 2/1 t. over the bar",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 54,
+      "description": "Triple salto bwd. p. (Fardan) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 57,
+      "description": "Double salto bwd. str over the bar.",
+      "difficulty": "C",
+      "value": 0.3
+    },
+    {
+      "element": 58,
+      "description": "Double salto bwd. str. w. 1/1 t. over the bar. (Hayden)",
+      "difficulty": "D",
+      "value": 0.4
+    },
+    {
+      "element": 59,
+      "description": "Double salto bwd str. w. 3/2 or 2/1 turn over the bar. (Faulk) (Valverde)",
+      "difficulty": "E",
+      "value": 0.5
+    },
+    {
+      "element": 60,
+      "description": "Triple salto bwd. t. with 1/1 t. (Belle) G",
+      "difficulty": "F",
+      "value": 0.6
+    },
+    {
+      "element": 61,
+      "description": "Hecht strad., hecht or hecht w. \u00bd t.",
+      "difficulty": "A",
+      "value": 0.1
+    },
+    {
+      "element": 62,
+      "description": "Hecht w. 1/1 or 3/2 t.",
+      "difficulty": "B",
+      "value": 0.2
+    },
+    {
+      "element": 64,
+      "description": "Hecht w. 2/1 t.",
+      "difficulty": "D",
+      "value": 0.4
+    }
+  ]
+}

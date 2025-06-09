@@ -330,15 +330,22 @@ class GymnasticsTracker {
       return;
     }
     
-    resultsContainer.innerHTML = skills.map(skill => `
-      <div class="skill-item" data-skill-name="${skill.name}" data-skill-difficulty="${skill.difficulty}">
-        <div class="skill-info-container">
-          <div class="skill-name">${skill.name}</div>
-          <div class="skill-real-name">${skill.realName}</div>
+    resultsContainer.innerHTML = skills.map(skill => {
+      // Provide fallback for missing realName or description
+      const skillDescription = skill.realName && skill.realName !== skill.name ? 
+        skill.realName : 
+        (skill.description || `${eventName} skill`);
+      
+      return `
+        <div class="skill-item" data-skill-name="${skill.name}" data-skill-difficulty="${skill.difficulty}">
+          <div class="skill-info-container">
+            <div class="skill-name">${skill.name}</div>
+            <div class="skill-real-name">${skillDescription}</div>
+          </div>
+          <span class="skill-difficulty ${skill.difficulty}">${skill.difficulty}</span>
         </div>
-        <span class="skill-difficulty ${skill.difficulty}">${skill.difficulty}</span>
-      </div>
-    `).join('');
+      `;
+    }).join('');
     
     // Add click listeners to skill items
     resultsContainer.querySelectorAll('.skill-item').forEach(item => {
