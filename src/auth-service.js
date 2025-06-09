@@ -24,11 +24,30 @@ class AuthService {
     
     while (attempts < maxAttempts) {
       if (typeof firebase !== 'undefined' && window.initializeFirebase) {
-        this.isFirebaseReady = window.initializeFirebase();
-        if (this.isFirebaseReady) {
-          this.auth = firebase.auth();
-          this.db = firebase.firestore();
-          this.setupAuthStateListener();
+        try {
+          this.isFirebaseReady = window.initializeFirebase();
+          if (this.isFirebaseReady) {
+            // Check if Firebase config has valid credentials
+            const config = firebase.app().options;
+            if (config.apiKey && 
+                config.apiKey !== 'your-api-key-here' && 
+                config.authDomain && 
+                config.authDomain !== 'your-project-id.firebaseapp.com') {
+              
+              this.auth = firebase.auth();
+              this.db = firebase.firestore();
+              this.setupAuthStateListener();
+              console.log('Firebase initialized successfully with valid credentials');
+              break;
+            } else {
+              console.warn('Firebase has placeholder credentials, falling back to localStorage');
+              this.isFirebaseReady = false;
+              break;
+            }
+          }
+        } catch (error) {
+          console.warn('Firebase initialization failed:', error);
+          this.isFirebaseReady = false;
           break;
         }
       }
@@ -37,7 +56,9 @@ class AuthService {
     }
     
     if (!this.isFirebaseReady) {
-      console.warn('Firebase failed to initialize. Using localStorage only.');
+      console.warn('Firebase not available or has invalid credentials. Using localStorage fallback authentication.');
+      // Check for existing fallback authentication
+      this.checkFallbackAuth();
     }
   }
 
@@ -72,7 +93,8 @@ class AuthService {
 
   async signUp(email, password, fullName = '', gymnasticsLevel = '') {
     if (!this.isFirebaseReady) {
-      return { success: false, error: 'Firebase not available' };
+      // Fallback to localStorage-based authentication for development/testing
+      return this.signUpWithLocalStorage(email, password, fullName, gymnasticsLevel);
     }
 
     try {
@@ -104,7 +126,8 @@ class AuthService {
 
   async signIn(email, password) {
     if (!this.isFirebaseReady) {
-      return { success: false, error: 'Firebase not available' };
+      // Fallback to localStorage-based authentication for development/testing
+      return this.signInWithLocalStorage(email, password);
     }
 
     try {
@@ -118,7 +141,13 @@ class AuthService {
   }
 
   async signOut() {
-    if (!this.isFirebaseReady) return { success: true };
+    if (!this.isFirebaseReady) {
+      // Fallback logout for localStorage
+      this.currentUser = null;
+      localStorage.removeItem('fallback_currentUser');
+      this.notifyAuthStateChange(false);
+      return { success: true };
+    }
 
     try {
       this.clearGroupListeners();
@@ -144,7 +173,17 @@ class AuthService {
   // ========================================
 
   async getUserProfile() {
-    if (!this.isFirebaseReady || !this.currentUser) return null;
+    if (!this.isFirebaseReady || !this.currentUser) {
+      // For fallback authentication, return user data directly
+      if (this.currentUser) {
+        return {
+          fullName: this.currentUser.fullName || this.currentUser.displayName,
+          email: this.currentUser.email,
+          gymnasticsLevel: this.currentUser.gymnasticsLevel || ''
+        };
+      }
+      return null;
+    }
 
     try {
       const doc = await this.db.collection('users').doc(this.currentUser.uid).get();
@@ -220,8 +259,32 @@ class AuthService {
   // ========================================
 
   async createGroup(groupName, description = '', isPrivate = false) {
-    if (!this.isFirebaseReady || !this.currentUser) {
+    if (!this.currentUser) {
       return { success: false, error: 'Authentication required' };
+    }
+    // Fallback local group creation when Firebase not ready
+    if (!this.isFirebaseReady) {
+      const inviteCode = this.generateInviteCode();
+      const group = {
+        id: inviteCode,
+        name: groupName,
+        description,
+        isPrivate,
+        createdBy: this.currentUser.uid,
+        createdAt: new Date().toISOString(),
+        members: [{
+          userId: this.currentUser.uid,
+          email: this.currentUser.email,
+          displayName: this.currentUser.displayName || this.currentUser.email,
+          role: 'admin',
+          joinedAt: new Date().toISOString()
+        }],
+        inviteCode,
+        memberCount: 1,
+        userRole: 'admin'
+      };
+      this.currentGroups.push(group);
+      return { success: true, groupId: inviteCode, inviteCode };
     }
 
     try {
@@ -265,8 +328,29 @@ class AuthService {
   }
 
   async joinGroupByCode(inviteCode) {
-    if (!this.isFirebaseReady || !this.currentUser) {
+    if (!this.currentUser) {
       return { success: false, error: 'Authentication required' };
+    }
+    // Fallback local group join when Firebase not ready
+    if (!this.isFirebaseReady) {
+      const group = this.currentGroups.find(g => g.inviteCode === inviteCode);
+      if (!group) {
+        return { success: false, error: 'Invalid invite code' };
+      }
+      const isMember = group.members.some(m => m.userId === this.currentUser.uid);
+      if (isMember) {
+        return { success: false, error: 'You are already a member of this group' };
+      }
+      const newMember = {
+        userId: this.currentUser.uid,
+        email: this.currentUser.email,
+        displayName: this.currentUser.displayName || this.currentUser.email,
+        role: 'member',
+        joinedAt: new Date().toISOString()
+      };
+      group.members.push(newMember);
+      group.memberCount = group.members.length;
+      return { success: true, groupName: group.name };
     }
 
     try {
@@ -324,8 +408,22 @@ class AuthService {
   }
 
   async leaveGroup(groupId) {
-    if (!this.isFirebaseReady || !this.currentUser) {
+    if (!this.currentUser) {
       return { success: false, error: 'Authentication required' };
+    }
+    // Fallback local group leave when Firebase not ready
+    if (!this.isFirebaseReady) {
+      const idx = this.currentGroups.findIndex(g => g.id === groupId);
+      if (idx === -1) {
+        return { success: false, error: 'Group not found' };
+      }
+      const group = this.currentGroups[idx];
+      group.members = group.members.filter(m => m.userId !== this.currentUser.uid);
+      group.memberCount = group.members.length;
+      if (group.members.length === 0) {
+        this.currentGroups.splice(idx, 1);
+      }
+      return { success: true };
     }
 
     try {
@@ -368,9 +466,13 @@ class AuthService {
   }
 
   async loadUserGroups() {
-    if (!this.isFirebaseReady || !this.currentUser) {
+    if (!this.currentUser) {
       this.currentGroups = [];
       return [];
+    }
+    // Fallback load groups from local when Firebase not ready
+    if (!this.isFirebaseReady) {
+      return this.currentGroups;
     }
 
     try {
@@ -402,7 +504,10 @@ class AuthService {
   }
 
   async getGroupMembers(groupId) {
-    if (!this.isFirebaseReady) return [];
+    if (!this.isFirebaseReady) {
+      const group = this.currentGroups.find(g => g.id === groupId);
+      return group ? group.members : [];
+    }
 
     try {
       const groupDoc = await this.db.collection('groups').doc(groupId).get();
@@ -417,7 +522,9 @@ class AuthService {
   }
 
   async getGroupRoutines(groupId) {
-    if (!this.isFirebaseReady) return [];
+    if (!this.isFirebaseReady) {
+      return [];
+    }
 
     try {
       // Get all group members
@@ -461,6 +568,101 @@ class AuthService {
   clearGroupListeners() {
     this.groupListeners.forEach(unsubscribe => unsubscribe());
     this.groupListeners.clear();
+  }
+
+  // ========================================
+  // FALLBACK LOCALSTORAGE AUTHENTICATION
+  // ========================================
+  
+  async signUpWithLocalStorage(email, password, fullName = '', gymnasticsLevel = '') {
+    try {
+      // Get existing users or create empty object
+      const users = JSON.parse(localStorage.getItem('fallback_users') || '{}');
+      
+      // Check if user already exists
+      if (users[email]) {
+        return { success: false, error: 'An account with this email already exists' };
+      }
+      
+      // Validate inputs
+      if (!email || !password) {
+        return { success: false, error: 'Email and password are required' };
+      }
+      
+      if (password.length < 6) {
+        return { success: false, error: 'Password must be at least 6 characters long' };
+      }
+      
+      // Create new user
+      const userId = 'fallback_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      const user = {
+        uid: userId,
+        email: email,
+        displayName: fullName || email.split('@')[0],
+        fullName: fullName,
+        gymnasticsLevel: gymnasticsLevel,
+        createdAt: new Date().toISOString(),
+        metadata: { creationTime: new Date().toISOString() }
+      };
+      
+      // Store user credentials (in real app, password would be hashed)
+      users[email] = { ...user, password: password };
+      localStorage.setItem('fallback_users', JSON.stringify(users));
+      
+      // Set current user
+      this.currentUser = user;
+      localStorage.setItem('fallback_currentUser', JSON.stringify(user));
+      
+      // Notify auth state change
+      this.notifyAuthStateChange(true);
+      
+      console.log('User created successfully with fallback auth:', email);
+      return { success: true, user };
+    } catch (error) {
+      console.error('Fallback signup error:', error);
+      return { success: false, error: 'Failed to create account' };
+    }
+  }
+  
+  async signInWithLocalStorage(email, password) {
+    try {
+      const users = JSON.parse(localStorage.getItem('fallback_users') || '{}');
+      const user = users[email];
+      
+      if (!user) {
+        return { success: false, error: 'No account found with this email' };
+      }
+      
+      if (user.password !== password) {
+        return { success: false, error: 'Incorrect password' };
+      }
+      
+      // Set current user (remove password from user object)
+      const { password: _, ...userWithoutPassword } = user;
+      this.currentUser = userWithoutPassword;
+      localStorage.setItem('fallback_currentUser', JSON.stringify(userWithoutPassword));
+      
+      // Notify auth state change
+      this.notifyAuthStateChange(true);
+      
+      console.log('User signed in successfully with fallback auth:', email);
+      return { success: true, user: userWithoutPassword };
+    } catch (error) {
+      console.error('Fallback signin error:', error);
+      return { success: false, error: 'Failed to sign in' };
+    }
+  }
+  
+  checkFallbackAuth() {
+    try {
+      const currentUser = localStorage.getItem('fallback_currentUser');
+      if (currentUser) {
+        this.currentUser = JSON.parse(currentUser);
+        console.log('Fallback user restored:', this.currentUser.email);
+      }
+    } catch (error) {
+      console.error('Error checking fallback auth state:', error);
+    }
   }
 
   // ========================================

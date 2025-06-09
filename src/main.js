@@ -61,6 +61,7 @@ class GymnasticsTracker {
     };
     this.currentEvent = '';
     this.currentRoutine = '';
+    this.autoSaveInterval = null; // Track auto-save interval
     
     // Initialize the app
     this.init();
@@ -90,12 +91,12 @@ class GymnasticsTracker {
         this.currentGroups = groups || [];
         this.loadUserData();
         this.showMainApp();
+        this.updateGroupUI(); // Update teams button
       } else {
         this.currentUser = null;
         this.currentGroups = [];
         this.showLoginPage();
       }
-      this.updateGroupUI();
     });
   }
   
@@ -832,8 +833,11 @@ class GymnasticsTracker {
     document.getElementById('routine-page').style.display = 'none';
     this.updateCurrentProfileDisplay();
     this.renderAll();
-    // Auto-save every 30 seconds as backup
-    setInterval(() => this.saveUserData(), 30000);
+    
+    // Only set up auto-save interval once
+    if (!this.autoSaveInterval) {
+      this.autoSaveInterval = setInterval(() => this.saveUserData(), 30000);
+    }
   }
 
   updateProfileDisplay() {
@@ -996,13 +1000,8 @@ class GymnasticsTracker {
   }
 
   showMainPage() {
-    document.getElementById('login-page').style.display = 'none';
-    document.getElementById('main-page').style.display = 'block';
-    document.getElementById('routine-page').style.display = 'none';
-    this.updateCurrentProfileDisplay();
-    this.renderAll();
-    // Auto-save every 30 seconds as backup
-    setInterval(() => this.saveUserData(), 30000);
+    // Redirect to showMainApp to avoid duplication
+    this.showMainApp();
   }
 
   renderRoutinePage(eventType, routine) {
@@ -1102,7 +1101,7 @@ class GymnasticsTracker {
     const loginTabs = document.querySelectorAll('.login-tab');
     loginTabs.forEach(tab => {
       tab.addEventListener('click', (e) => {
-        const targetForm = e.target.dataset.form;
+        const targetForm = e.target.dataset.tab;
         this.switchLoginForm(targetForm);
       });
     });
@@ -1112,32 +1111,52 @@ class GymnasticsTracker {
     document.getElementById('login-form').addEventListener('submit', (e) => this.handleLogin(e));
 
     // Profile management
-    document.getElementById('logout-btn').addEventListener('click', () => this.handleLogout());
+    document.getElementById('logout-btn').addEventListener('click', () => this.logout());
     document.getElementById('manage-profile-btn').addEventListener('click', () => this.showManageProfileModal());
-    document.getElementById('groups-btn').addEventListener('click', () => this.showGroupsModal());
+    
+    // Only add groups button listener if element exists (groups feature is optional)
+    const groupsBtn = document.getElementById('groups-btn');
+    if (groupsBtn) {
+      groupsBtn.addEventListener('click', () => this.showGroupsModal());
+    }
 
     // ========================================
-    // GROUP MANAGEMENT EVENT LISTENERS
+    // GROUP MANAGEMENT EVENT LISTENERS (Optional)
     // ========================================
     
-    // Groups modal event listeners
-    document.getElementById('create-group-btn').addEventListener('click', () => this.showCreateGroupModal());
-    document.getElementById('join-group-btn').addEventListener('click', () => this.showJoinGroupModal());
-    
-    // Create group form
-    document.getElementById('create-group-form').addEventListener('submit', (e) => this.handleCreateGroup(e));
-    
-    // Join group form
-    document.getElementById('join-group-form').addEventListener('submit', (e) => this.handleJoinGroup(e));
-    
-    // Invite code handling
-    document.getElementById('copy-invite-code').addEventListener('click', () => this.copyInviteCode());
-    
-    // Auto-uppercase invite code input
+    // Only add group event listeners if elements exist
+    const createGroupBtn = document.getElementById('create-group-btn');
+    const joinGroupBtn = document.getElementById('join-group-btn');
+    const createGroupForm = document.getElementById('create-group-form');
+    const joinGroupForm = document.getElementById('join-group-form');
+    const copyInviteCodeBtn = document.getElementById('copy-invite-code');
     const inviteCodeInput = document.getElementById('invite-code');
-    inviteCodeInput.addEventListener('input', (e) => {
-      e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
-    });
+    
+    if (createGroupBtn) {
+      createGroupBtn.addEventListener('click', () => this.showCreateGroupModal());
+    }
+    
+    if (joinGroupBtn) {
+      joinGroupBtn.addEventListener('click', () => this.showJoinGroupModal());
+    }
+    
+    if (createGroupForm) {
+      createGroupForm.addEventListener('submit', (e) => this.handleCreateGroup(e));
+    }
+    
+    if (joinGroupForm) {
+      joinGroupForm.addEventListener('submit', (e) => this.handleJoinGroup(e));
+    }
+    
+    if (copyInviteCodeBtn) {
+      copyInviteCodeBtn.addEventListener('click', () => this.copyInviteCode());
+    }
+    
+    if (inviteCodeInput) {
+      inviteCodeInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+      });
+    }
 
     // ========================================
     // MODAL CLOSE EVENT LISTENERS
@@ -1178,38 +1197,65 @@ class GymnasticsTracker {
     document.getElementById('routine-form').addEventListener('submit', (e) => this.handleRoutineSubmit(e));
 
     // Back to main button
-    document.getElementById('back-to-main').addEventListener('click', () => this.showMainPage());
+    document.getElementById('back-to-dashboard').addEventListener('click', () => this.showMainPage());
 
     // ========================================
     // SKILL MANAGEMENT EVENT LISTENERS
     // ========================================
     
-    // Add skill button in routine page
-    document.getElementById('add-skill-btn').addEventListener('click', () => {
-      const eventType = this.currentRoutineView?.eventType;
-      if (eventType) {
-        this.showAddSkillModal(eventType);
-      }
-    });
+    // Add skill button in routine page (use correct ID)
+    const addSkillBtn = document.getElementById('routine-add-skill');
+    if (addSkillBtn) {
+      addSkillBtn.addEventListener('click', () => {
+        const eventType = this.currentRoutineView?.eventType;
+        if (eventType) {
+          this.showAddSkillModal(eventType);
+        }
+      });
+    }
 
     // Skill form submission
-    document.getElementById('skill-form').addEventListener('submit', (e) => this.handleSkillSubmit(e));
+    const skillForm = document.getElementById('skill-form');
+    if (skillForm) {
+      skillForm.addEventListener('submit', (e) => this.handleSkillSubmit(e));
+    }
 
-    // Skills search
-    document.getElementById('skills-search').addEventListener('input', (e) => this.handleSkillsSearch(e));
+    // Progression form submission
+    const progressionForm = document.getElementById('progression-form');
+    if (progressionForm) {
+      progressionForm.addEventListener('submit', (e) => this.handleProgressionSubmit(e));
+    }
 
-    // Event selection for skills
-    document.getElementById('skill-event').addEventListener('change', (e) => {
-      const eventType = e.target.value;
-      if (eventType) {
-        this.loadEventSkills(eventType);
-      }
-    });
+    // Notes form submission
+    const notesForm = document.getElementById('notes-form');
+    if (notesForm) {
+      notesForm.addEventListener('submit', (e) => this.handleNotesSubmit(e));
+    }
 
-    // Custom skill toggle
-    document.getElementById('custom-skill-toggle').addEventListener('change', (e) => {
-      this.toggleCustomSkillForm(e.target.checked);
-    });
+    // Skills search (use correct ID)
+    const skillsSearch = document.getElementById('skill-search');
+    if (skillsSearch) {
+      skillsSearch.addEventListener('input', (e) => this.handleSkillsSearch(e));
+    }
+
+    // Event selection for skills - This element might not exist, adding null check
+    const skillEvent = document.getElementById('skill-event');
+    if (skillEvent) {
+      skillEvent.addEventListener('change', (e) => {
+        const eventType = e.target.value;
+        if (eventType) {
+          this.loadEventSkills(eventType);
+        }
+      });
+    }
+
+    // Custom skill toggle - This element might not exist, adding null check
+    const customSkillToggle = document.getElementById('custom-skill-toggle');
+    if (customSkillToggle) {
+      customSkillToggle.addEventListener('change', (e) => {
+        this.toggleCustomSkillForm(e.target.checked);
+      });
+    }
 
     // ========================================
     // PROFILE MANAGEMENT EVENT LISTENERS
@@ -1224,11 +1270,17 @@ class GymnasticsTracker {
       });
     });
 
-    // Profile update form
-    document.getElementById('profile-update-form').addEventListener('submit', (e) => this.handleProfileUpdate(e));
+    // Profile update form (use correct ID)
+    const profileUpdateForm = document.getElementById('edit-profile-form');
+    if (profileUpdateForm) {
+      profileUpdateForm.addEventListener('submit', (e) => this.handleProfileUpdate(e));
+    }
 
-    // Password change form
-    document.getElementById('password-change-form').addEventListener('submit', (e) => this.handlePasswordChange(e));
+    // Password change form (use correct ID)
+    const passwordChangeForm = document.getElementById('change-password-form');
+    if (passwordChangeForm) {
+      passwordChangeForm.addEventListener('submit', (e) => this.handlePasswordChange(e));
+    }
 
     // ========================================
     // KEYBOARD SHORTCUTS
@@ -1311,7 +1363,7 @@ class GymnasticsTracker {
       
       // Refresh the routine page
       if (this.currentRoutineView && this.currentRoutineView.eventType === eventType && this.currentRoutineView.routineId === routineId) {
-        const updatedRoutine = this.data[eventType].find(r => r.id === routineId);
+        const updatedRoutine = this.userData.routines[eventType].find(r => r.id === routineId);
         this.renderRoutinePage(eventType, updatedRoutine);
       }
     }
@@ -1320,14 +1372,14 @@ class GymnasticsTracker {
   moveSkillDown(eventType, routineId, currentIndex) {
     console.log('Moving skill down:', { eventType, routineId, currentIndex });
     
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     if (routine && currentIndex < routine.skills.length - 1) {
       const newIndex = currentIndex + 1;
       this.reorderSkills(eventType, routineId, currentIndex, newIndex);
       
       // Refresh the routine page
       if (this.currentRoutineView && this.currentRoutineView.eventType === eventType && this.currentRoutineView.routineId === routineId) {
-        const updatedRoutine = this.data[eventType].find(r => r.id === routineId);
+        const updatedRoutine = this.userData.routines[eventType].find(r => r.id === routineId);
         this.renderRoutinePage(eventType, updatedRoutine);
       }
     }
@@ -1345,6 +1397,27 @@ class GymnasticsTracker {
   }
 
   // Profile Management Handlers
+  switchLoginForm(targetForm) {
+    // Remove active class from all tabs and forms
+    document.querySelectorAll('.login-tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    document.querySelectorAll('.auth-form').forEach(form => {
+      form.classList.remove('active');
+    });
+    
+    // Add active class to selected tab and form
+    const targetTab = document.querySelector(`[data-tab="${targetForm}"]`);
+    const targetFormElement = document.getElementById(`${targetForm}-form`);
+    
+    if (targetTab) {
+      targetTab.classList.add('active');
+    }
+    if (targetFormElement) {
+      targetFormElement.classList.add('active');
+    }
+  }
+
   async handleLogin(event) {
     event.preventDefault();
     const email = document.getElementById('login-email').value;
@@ -1361,7 +1434,7 @@ class GymnasticsTracker {
       if (result.success) {
         this.currentUser = result.user;
         await this.loadUserData();
-        this.showMainPage();
+        this.showMainApp();
         this.showNotification(`Welcome back, ${this.currentUser.displayName || 'User'}!`, 'success');
       } else {
         this.showNotification(result.error, 'warning');
@@ -1397,12 +1470,12 @@ class GymnasticsTracker {
     }
 
     try {
-      const result = await this.authService.createAccount(email, password, fullName, level);
+      const result = await this.authService.signUp(email, password, fullName, level);
       
       if (result.success) {
         this.currentUser = result.user;
         await this.loadUserData();
-        this.showMainPage();
+        this.showMainApp();
         this.showNotification('Account created successfully! Your data will sync across all devices.', 'success');
       } else {
         this.showNotification(result.error, 'warning');
@@ -1415,11 +1488,18 @@ class GymnasticsTracker {
 
   async logout() {
     try {
-      const result = await this.authService.signOutUser();
+      const result = await this.authService.signOut();
       
       if (result.success) {
         this.currentUser = null;
         this.userData = { routines: {}, skills: {} };
+        
+        // Clear auto-save interval
+        if (this.autoSaveInterval) {
+          clearInterval(this.autoSaveInterval);
+          this.autoSaveInterval = null;
+        }
+        
         this.showLoginPage();
         this.showNotification('Signed out successfully', 'info');
       } else {
@@ -1816,7 +1896,7 @@ class GymnasticsTracker {
     this.currentSkillId = skillId;
     
     // Find the skill to get its name
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     const skill = routine?.skills.find(s => s.id === skillId);
     
     if (skill) {
@@ -1832,7 +1912,7 @@ class GymnasticsTracker {
     this.currentRoutineId = routineId;
     
     // Find the routine to get its name and notes
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     
     if (routine) {
       document.getElementById('notes-routine-name').textContent = routine.name;
@@ -1864,7 +1944,8 @@ class GymnasticsTracker {
   }
 
   // Routine Management
-  handleRoutineSubmit() {
+  handleRoutineSubmit(event) {
+    event.preventDefault();
     const name = document.getElementById('routine-name').value;
     const date = document.getElementById('routine-date').value;
     const notes = document.getElementById('routine-notes').value;
@@ -1886,7 +1967,8 @@ class GymnasticsTracker {
   }
 
   // Skill Management
-  handleSkillSubmit() {
+  handleSkillSubmit(event) {
+    event.preventDefault();
     const name = document.getElementById('skill-name').value;
     const targetDate = document.getElementById('skill-target-date').value;
     const notes = document.getElementById('skill-notes').value;
@@ -1901,7 +1983,7 @@ class GymnasticsTracker {
       return;
     }
 
-    const routine = this.data[this.currentEvent].find(r => r.id === this.currentRoutineId);
+    const routine = this.userData.routines[this.currentEvent].find(r => r.id === this.currentRoutineId);
     if (!routine) {
       this.showNotification('Routine not found', 'error');
       return;
@@ -1938,7 +2020,7 @@ class GymnasticsTracker {
       routine.skills.push(skill);
     }
 
-    this.saveData();
+    this.saveUserData();
     
     // Re-render appropriate view
     if (this.currentPage === 'routine' && this.currentRoutineView) {
@@ -1954,7 +2036,8 @@ class GymnasticsTracker {
   }
 
   // Progression Management
-  handleProgressionSubmit() {
+  handleProgressionSubmit(event) {
+    event.preventDefault();
     const name = document.getElementById('progression-name').value;
     const difficulty = document.getElementById('progression-difficulty').value;
     const targetDate = document.getElementById('progression-target-date').value;
@@ -1971,7 +2054,7 @@ class GymnasticsTracker {
       createdAt: new Date().toISOString()
     };
 
-    const routine = this.data[this.currentEvent].find(r => r.id === this.currentRoutineId);
+    const routine = this.userData.routines[this.currentEvent].find(r => r.id === this.currentRoutineId);
     const skill = routine?.skills.find(s => s.id === this.currentSkillId);
     
     if (skill) {
@@ -1979,7 +2062,7 @@ class GymnasticsTracker {
         skill.progressions = [];
       }
       skill.progressions.push(progression);
-      this.saveData();
+      this.saveUserData();
       this.renderRoutines(this.currentEvent);
       this.closeModal(document.getElementById('progression-modal'));
       this.showNotification('Progression step added successfully', 'success');
@@ -1987,13 +2070,14 @@ class GymnasticsTracker {
   }
 
   // Notes Management
-  handleNotesSubmit() {
+  handleNotesSubmit(event) {
+    event.preventDefault();
     const notes = document.getElementById('routine-notes-edit').value;
     
-    const routine = this.data[this.currentEvent].find(r => r.id === this.currentRoutineId);
+    const routine = this.userData.routines[this.currentEvent].find(r => r.id === this.currentRoutineId);
     if (routine) {
       routine.notes = notes;
-      this.saveData();
+      this.saveUserData();
       
       // Update the routine page view if we're currently viewing it
       if (this.currentRoutineView && 
@@ -2009,11 +2093,11 @@ class GymnasticsTracker {
   }
 
   toggleSkill(eventType, routineId, skillId) {
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     const skill = routine.skills.find(s => s.id === skillId);
     
     skill.completed = !skill.completed;
-    this.saveData();
+    this.saveUserData();
     
     // Re-render appropriate view
     if (this.currentPage === 'routine' && this.currentRoutineView) {
@@ -2028,23 +2112,23 @@ class GymnasticsTracker {
   }
 
   toggleProgression(eventType, routineId, skillId, progressionId) {
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     const skill = routine?.skills.find(s => s.id === skillId);
     const progression = skill?.progressions?.find(p => p.id === progressionId);
     
     if (progression) {
       progression.completed = !progression.completed;
       progression.completedAt = progression.completed ? new Date().toISOString() : null;
-      this.saveData();
+      this.saveUserData();
       this.renderRoutines(eventType);
     }
   }
 
   deleteSkill(eventType, routineId, skillId) {
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     if (routine) {
       routine.skills = routine.skills.filter(s => s.id !== skillId);
-      this.saveData();
+      this.saveUserData();
       
       // Re-render appropriate view
       if (this.currentPage === 'routine' && this.currentRoutineView) {
@@ -2062,7 +2146,7 @@ class GymnasticsTracker {
   deleteProgression(eventType, routineId, skillId, progressionId) {
     console.log('deleteProgression called with:', { eventType, routineId, skillId, progressionId });
     
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     if (!routine) {
       console.error('Routine not found:', routineId);
       return;
@@ -2089,14 +2173,14 @@ class GymnasticsTracker {
     
     console.log('Progression deleted successfully. Remaining progressions:', skill.progressions.length);
     
-    this.saveData();
+    this.saveUserData();
     this.renderRoutines(eventType);
     this.showNotification('Progression step deleted', 'info');
   }
 
   deleteRoutine(eventType, routineId) {
-    this.data[eventType] = this.data[eventType].filter(r => r.id !== routineId);
-    this.saveData();
+    this.userData.routines[eventType] = this.userData.routines[eventType].filter(r => r.id !== routineId);
+    this.saveUserData();
     this.renderRoutines(eventType);
     this.showNotification('Routine deleted', 'info');
   }
@@ -2308,7 +2392,7 @@ class GymnasticsTracker {
         );
         
         // Refresh the display
-        const updatedRoutine = this.data[this.currentRoutineView.eventType]
+        const updatedRoutine = this.userData.routines[this.currentRoutineView.eventType]
           .find(r => r.id === this.currentRoutineView.routineId);
         this.renderRoutinePage(this.currentRoutineView.eventType, updatedRoutine);
       }
@@ -2316,14 +2400,14 @@ class GymnasticsTracker {
   }
 
   reorderSkills(eventType, routineId, fromIndex, toIndex) {
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     if (!routine || !routine.skills) return;
     
     const skills = routine.skills;
     const [movedSkill] = skills.splice(fromIndex, 1);
     skills.splice(toIndex, 0, movedSkill);
     
-    this.saveData();
+    this.saveUserData();
   }
 
   makeOrderNumberEditable(orderElement, eventType, routineId, skillId, currentPosition) {
@@ -2333,7 +2417,7 @@ class GymnasticsTracker {
     input.value = currentPosition;
     input.className = 'order-input';
     
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     input.max = routine ? routine.skills.length : currentPosition;
     
     input.addEventListener('blur', () => {
@@ -2362,7 +2446,7 @@ class GymnasticsTracker {
       return;
     }
     
-    const routine = this.data[eventType].find(r => r.id === routineId);
+    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
     if (!routine || newPosition > routine.skills.length) {
       orderElement.textContent = currentPosition;
       return;
@@ -2521,6 +2605,572 @@ class GymnasticsTracker {
       if (avatarElement) avatarElement.textContent = initial;
     }
   }
+
+  // ========================================
+  // GROUP MANAGEMENT METHODS
+  // ========================================
+  
+  async showGroupsModal() {
+    if (!this.authService || !this.authService.isSignedIn()) {
+      this.showNotification('Please sign in to use team features', 'warning');
+      return;
+    }
+
+    try {
+      // Load user's groups
+      const groups = await this.authService.loadUserGroups();
+      this.currentGroups = groups;
+      
+      const groupsList = document.getElementById('user-groups-list');
+      
+      if (groups.length === 0) {
+        groupsList.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">👥</div>
+            <div class="empty-state-text">No teams yet</div>
+            <p>Create a team or join one with an invite code to collaborate with others!</p>
+          </div>
+        `;
+      } else {
+        groupsList.innerHTML = groups.map(group => `
+          <div class="group-card" data-group-id="${group.id}">
+            <div class="group-header">
+              <h3 class="group-name">${group.name}</h3>
+              <div class="group-role-badge ${group.userRole}">${group.userRole}</div>
+            </div>
+            <div class="group-description">${group.description || 'No description'}</div>
+            <div class="group-stats">
+              <span class="group-members">👥 ${group.memberCount || 0} members</span>
+              <span class="group-created">📅 ${this.formatDate(group.createdAt?.toDate?.() || group.createdAt)}</span>
+            </div>
+            <div class="group-actions">
+              <button class="view-routines-btn" data-group-id="${group.id}">View Routines</button>
+              <button class="group-details-btn" data-group-id="${group.id}">Details</button>
+              ${group.userRole === 'admin' ? `<button class="share-invite-btn" data-group-id="${group.id}">Share Invite</button>` : ''}
+              <button class="leave-group-btn" data-group-id="${group.id}">Leave</button>
+            </div>
+          </div>
+        `).join('');
+        
+        // Add event listeners for group actions
+        this.setupGroupActionListeners();
+      }
+      
+      document.getElementById('groups-modal').style.display = 'block';
+    } catch (error) {
+      console.error('Error loading groups:', error);
+      this.showNotification('Error loading teams', 'warning');
+    }
+  }
+  
+  setupGroupActionListeners() {
+    const groupsList = document.getElementById('user-groups-list');
+    
+    groupsList.addEventListener('click', (e) => {
+      const groupId = e.target.dataset.groupId;
+      if (!groupId) return;
+      
+      if (e.target.classList.contains('view-routines-btn')) {
+        this.showGroupRoutinesModal(groupId);
+      } else if (e.target.classList.contains('group-details-btn')) {
+        this.showGroupDetailsModal(groupId);
+      } else if (e.target.classList.contains('share-invite-btn')) {
+        this.showInviteModal(groupId);
+      } else if (e.target.classList.contains('leave-group-btn')) {
+        this.confirmLeaveGroup(groupId);
+      }
+    });
+  }
+  
+  showCreateGroupModal() {
+    if (!this.authService || !this.authService.isSignedIn()) {
+      this.showNotification('Please sign in to create a team', 'warning');
+      return;
+    }
+    
+    // Reset form
+    document.getElementById('create-group-form').reset();
+    document.getElementById('create-group-modal').style.display = 'block';
+    document.getElementById('group-name').focus();
+  }
+  
+  showJoinGroupModal() {
+    if (!this.authService || !this.authService.isSignedIn()) {
+      this.showNotification('Please sign in to join a team', 'warning');
+      return;
+    }
+    
+    // Reset form
+    document.getElementById('join-group-form').reset();
+    document.getElementById('join-group-modal').style.display = 'block';
+    document.getElementById('invite-code').focus();
+  }
+  
+  async handleCreateGroup(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('group-name').value.trim();
+    const description = document.getElementById('group-description').value.trim();
+    const isPrivate = document.getElementById('group-private').checked;
+    
+    if (!name) {
+      this.showNotification('Please enter a team name', 'warning');
+      return;
+    }
+    
+    try {
+      const result = await this.authService.createGroup(name, description, isPrivate);
+      
+      if (result.success) {
+        this.showNotification(`Team "${name}" created successfully!`, 'success');
+        this.closeModal(document.getElementById('create-group-modal'));
+        
+        // Show invite code
+        this.showInviteCodeSuccess(result.inviteCode, name);
+        
+        // Refresh groups list if modal is open
+        const groupsModal = document.getElementById('groups-modal');
+        if (groupsModal.style.display === 'block') {
+          this.showGroupsModal();
+        }
+      } else {
+        this.showNotification(result.error, 'warning');
+      }
+    } catch (error) {
+      console.error('Error creating group:', error);
+      this.showNotification('Error creating team', 'warning');
+    }
+  }
+  
+  async handleJoinGroup(event) {
+    event.preventDefault();
+    
+    const inviteCode = document.getElementById('invite-code').value.trim().toUpperCase();
+    
+    if (!inviteCode) {
+      this.showNotification('Please enter an invite code', 'warning');
+      return;
+    }
+    
+    if (inviteCode.length !== 6) {
+      this.showNotification('Invite code must be 6 characters', 'warning');
+      return;
+    }
+    
+    try {
+      const result = await this.authService.joinGroupByCode(inviteCode);
+      
+      if (result.success) {
+        this.showNotification(`Successfully joined "${result.groupName}"!`, 'success');
+        this.closeModal(document.getElementById('join-group-modal'));
+        
+        // Refresh groups list if modal is open
+        const groupsModal = document.getElementById('groups-modal');
+        if (groupsModal.style.display === 'block') {
+          this.showGroupsModal();
+        }
+      } else {
+        this.showNotification(result.error, 'warning');
+      }
+    } catch (error) {
+      console.error('Error joining group:', error);
+      this.showNotification('Error joining team', 'warning');
+    }
+  }
+  
+  showInviteCodeSuccess(inviteCode, groupName) {
+    const modal = document.getElementById('group-invite-modal');
+    const content = modal.querySelector('.modal-content');
+    
+    content.innerHTML = `
+      <span class="close">&times;</span>
+      <h2>🎉 Team Created!</h2>
+      <p>Your team "<strong>${groupName}</strong>" has been created successfully!</p>
+      
+      <div class="invite-code-section">
+        <label>Share this invite code with your team:</label>
+        <div class="invite-code-display">
+          <code id="display-invite-code">${inviteCode}</code>
+          <button id="copy-invite-code" class="copy-btn" title="Copy to clipboard">📋</button>
+        </div>
+        <p class="invite-help">Team members can use this code to join your team.</p>
+      </div>
+      
+      <div class="modal-actions">
+        <button id="invite-done-btn" class="auth-btn">Done</button>
+      </div>
+    `;
+    
+    modal.style.display = 'block';
+    
+    // Add event listeners
+    modal.querySelector('.close').addEventListener('click', () => this.closeModal(modal));
+    modal.querySelector('#invite-done-btn').addEventListener('click', () => this.closeModal(modal));
+    modal.querySelector('#copy-invite-code').addEventListener('click', () => this.copyInviteCode());
+  }
+  
+  async showInviteModal(groupId) {
+    const group = this.currentGroups.find(g => g.id === groupId);
+    if (!group) return;
+    
+    const modal = document.getElementById('group-invite-modal');
+    const content = modal.querySelector('.modal-content');
+    
+    content.innerHTML = `
+      <span class="close">&times;</span>
+      <h2>📤 Share Team Invite</h2>
+      <p>Share this invite code to let others join "<strong>${group.name}</strong>":</p>
+      
+      <div class="invite-code-section">
+        <div class="invite-code-display">
+          <code id="display-invite-code">${group.inviteCode}</code>
+          <button id="copy-invite-code" class="copy-btn" title="Copy to clipboard">📋</button>
+        </div>
+        <p class="invite-help">Anyone with this code can join your team.</p>
+      </div>
+      
+      <div class="modal-actions">
+        <button id="invite-done-btn" class="auth-btn">Done</button>
+      </div>
+    `;
+    
+    modal.style.display = 'block';
+    
+    // Add event listeners
+    modal.querySelector('.close').addEventListener('click', () => this.closeModal(modal));
+    modal.querySelector('#invite-done-btn').addEventListener('click', () => this.closeModal(modal));
+    modal.querySelector('#copy-invite-code').addEventListener('click', () => this.copyInviteCode());
+  }
+  
+  copyInviteCode() {
+    const codeElement = document.getElementById('display-invite-code');
+    if (!codeElement) return;
+    
+    const code = codeElement.textContent;
+    
+    // Copy to clipboard
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(code).then(() => {
+        this.showNotification('Invite code copied to clipboard!', 'success');
+        
+        // Visual feedback
+        const copyBtn = document.getElementById('copy-invite-code');
+        const originalText = copyBtn.textContent;
+        copyBtn.textContent = '✅';
+        setTimeout(() => {
+          copyBtn.textContent = originalText;
+        }, 2000);
+      }).catch(() => {
+        this.fallbackCopyInviteCode(code);
+      });
+    } else {
+      this.fallbackCopyInviteCode(code);
+    }
+  }
+  
+  fallbackCopyInviteCode(code) {
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = code;
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+      this.showNotification('Invite code copied to clipboard!', 'success');
+    } catch (err) {
+      this.showNotification(`Invite code: ${code}`, 'info');
+    }
+    document.body.removeChild(textArea);
+  }
+  
+  async showGroupDetailsModal(groupId) {
+    const group = this.currentGroups.find(g => g.id === groupId);
+    if (!group) return;
+    
+    try {
+      const members = await this.authService.getGroupMembers(groupId);
+      
+      const modal = document.getElementById('group-details-modal');
+      const content = modal.querySelector('.modal-content');
+      
+      content.innerHTML = `
+        <span class="close">&times;</span>
+        <h2>👥 ${group.name}</h2>
+        <div class="group-info">
+          <p><strong>Description:</strong> ${group.description || 'No description'}</p>
+          <p><strong>Created:</strong> ${this.formatDate(group.createdAt?.toDate?.() || group.createdAt)}</p>
+          <p><strong>Members:</strong> ${members.length}</p>
+          <p><strong>Your Role:</strong> <span class="role-badge ${group.userRole}">${group.userRole}</span></p>
+        </div>
+        
+        <div class="members-section">
+          <h3>Team Members</h3>
+          <div class="members-list">
+            ${members.map(member => `
+              <div class="member-item">
+                <div class="member-avatar">${member.displayName.charAt(0).toUpperCase()}</div>
+                <div class="member-info">
+                  <div class="member-name">${member.displayName}</div>
+                  <div class="member-email">${member.email}</div>
+                </div>
+                <div class="member-role role-badge ${member.role}">${member.role}</div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <div class="modal-actions">
+          <button id="close-details-btn" class="secondary-btn">Close</button>
+        </div>
+      `;
+      
+      modal.style.display = 'block';
+      
+      // Add event listeners
+      modal.querySelector('.close').addEventListener('click', () => this.closeModal(modal));
+      modal.querySelector('#close-details-btn').addEventListener('click', () => this.closeModal(modal));
+    } catch (error) {
+      console.error('Error loading group details:', error);
+      this.showNotification('Error loading team details', 'warning');
+    }
+  }
+  
+  async showGroupRoutinesModal(groupId) {
+    const group = this.currentGroups.find(g => g.id === groupId);
+    if (!group) return;
+    
+    try {
+      const groupRoutines = await this.authService.getGroupRoutines(groupId);
+      
+      const modal = document.getElementById('group-routines-modal');
+      const content = modal.querySelector('.modal-content');
+      
+      content.innerHTML = `
+        <span class="close">&times;</span>
+        <h2>🏃‍♂️ ${group.name} - Team Routines</h2>
+        
+        <div class="routines-filters">
+          <select id="member-filter">
+            <option value="">All Members</option>
+            ${groupRoutines.map(member => `
+              <option value="${member.userId}">${member.userName}</option>
+            `).join('')}
+          </select>
+          <select id="event-filter">
+            <option value="">All Events</option>
+            <option value="floor">Floor Exercise</option>
+            <option value="pommel">Pommel Horse</option>
+            <option value="rings">Still Rings</option>
+            <option value="vault">Vault</option>
+            <option value="pbars">Parallel Bars</option>
+            <option value="hbar">High Bar</option>
+          </select>
+        </div>
+        
+        <div id="group-routines-list" class="group-routines-container">
+          ${this.renderGroupRoutines(groupRoutines)}
+        </div>
+        
+        <div class="modal-actions">
+          <button id="close-routines-btn" class="secondary-btn">Close</button>
+        </div>
+      `;
+      
+      modal.style.display = 'block';
+      
+      // Add event listeners
+      modal.querySelector('.close').addEventListener('click', () => this.closeModal(modal));
+      modal.querySelector('#close-routines-btn').addEventListener('click', () => this.closeModal(modal));
+      
+      // Add filter listeners
+      modal.querySelector('#member-filter').addEventListener('change', () => {
+        this.filterGroupRoutines(groupRoutines);
+      });
+      modal.querySelector('#event-filter').addEventListener('change', () => {
+        this.filterGroupRoutines(groupRoutines);
+      });
+    } catch (error) {
+      console.error('Error loading group routines:', error);
+      this.showNotification('Error loading team routines', 'warning');
+    }
+  }
+  
+  renderGroupRoutines(groupRoutines, memberFilter = '', eventFilter = '') {
+    if (groupRoutines.length === 0) {
+      return `
+        <div class="empty-state">
+          <div class="empty-state-icon">📝</div>
+          <div class="empty-state-text">No routines yet</div>
+          <p>Team members haven't created any routines yet.</p>
+        </div>
+      `;
+    }
+    
+    let html = '';
+    
+    groupRoutines.forEach(member => {
+      if (memberFilter && member.userId !== memberFilter) return;
+      
+      Object.entries(member.routines).forEach(([eventType, routines]) => {
+        if (eventFilter && eventType !== eventFilter) return;
+        if (!routines || routines.length === 0) return;
+        
+        const eventNames = {
+          'floor': 'Floor Exercise',
+          'pommel': 'Pommel Horse', 
+          'rings': 'Still Rings',
+          'vault': 'Vault',
+          'pbars': 'Parallel Bars',
+          'hbar': 'High Bar'
+        };
+        
+        html += `
+          <div class="member-routines-section">
+            <h4 class="member-section-header">
+              <span class="member-name">${member.userName}</span> - ${eventNames[eventType]}
+            </h4>
+            <div class="routines-grid">
+              ${routines.map(routine => {
+                const progress = this.calculateProgress(routine);
+                const startValue = this.calculateStartValue(routine, eventType);
+                
+                return `
+                  <div class="group-routine-card">
+                    <div class="routine-header">
+                      <h5 class="routine-name">${routine.name}</h5>
+                      <div class="routine-stats">
+                        <span class="start-value">SV: ${startValue.total}</span>
+                        <span class="progress">${progress.percentage}%</span>
+                      </div>
+                    </div>
+                    <div class="routine-skills-summary">
+                      ${routine.skills.length} skills (${progress.completed}/${progress.total} completed)
+                    </div>
+                    ${routine.date ? `<div class="routine-date">📅 ${this.formatDate(routine.date)}</div>` : ''}
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        `;
+      });
+    });
+    
+    return html || `
+      <div class="empty-state">
+        <div class="empty-state-icon">🔍</div>
+        <div class="empty-state-text">No routines match your filters</div>
+        <p>Try adjusting your member or event filters.</p>
+      </div>
+    `;
+  }
+  
+  filterGroupRoutines(groupRoutines) {
+    const memberFilter = document.getElementById('member-filter').value;
+    const eventFilter = document.getElementById('event-filter').value;
+    
+    const container = document.getElementById('group-routines-list');
+    container.innerHTML = this.renderGroupRoutines(groupRoutines, memberFilter, eventFilter);
+  }
+  
+  async confirmLeaveGroup(groupId) {
+    const group = this.currentGroups.find(g => g.id === groupId);
+    if (!group) return;
+    
+    const confirmed = confirm(`Are you sure you want to leave "${group.name}"?\n\nYou will no longer be able to view team routines or participate in team activities.`);
+    
+    if (!confirmed) return;
+    
+    try {
+      const result = await this.authService.leaveGroup(groupId);
+      
+      if (result.success) {
+        this.showNotification(`Left "${group.name}" successfully`, 'info');
+        
+        // Refresh groups list
+        this.showGroupsModal();
+      } else {
+        this.showNotification(result.error, 'warning');
+      }
+    } catch (error) {
+      console.error('Error leaving group:', error);
+      this.showNotification('Error leaving team', 'warning');
+    }
+  }
+  
+  updateGroupUI() {
+    // Update the Teams button with group count
+    if (this.authService && this.authService.isSignedIn()) {
+      this.updateTeamsButtonCount();
+    }
+  }
+  
+  async updateTeamsButtonCount() {
+    try {
+      const groups = await this.authService.loadUserGroups();
+      const teamsButton = document.getElementById('groups-btn');
+      
+      if (teamsButton && groups.length > 0) {
+        teamsButton.textContent = `Teams (${groups.length})`;
+      } else if (teamsButton) {
+        teamsButton.textContent = 'Teams';
+      }
+    } catch (error) {
+      console.error('Error updating teams count:', error);
+    }
+  }
+
+  // ========================================
+  // ADDITIONAL MISSING METHODS (Stubs)
+  // ========================================
+  
+  toggleCustomSkillForm(isEnabled) {
+    // Stub for custom skill form toggle
+    console.log('Custom skill form toggle:', isEnabled);
+  }
+  
+  loadEventSkills(eventType) {
+    // Stub for loading event-specific skills
+    console.log('Loading skills for event:', eventType);
+  }
+  
+  showAddRoutineModal(eventType) {
+    this.currentEvent = eventType;
+    this.showRoutineModal();
+  }
+  
+  showAddSkillModal(eventType) {
+    const routineId = this.currentRoutineView?.routine?.id;
+    if (routineId) {
+      this.showSkillModal(eventType, routineId);
+    }
+  }
+  
+  handleSkillsSearch(event) {
+    const query = event.target.value;
+    // This would normally search skills - stub for now
+    console.log('Skills search:', query);
+  }
+  
+  switchProfileTab(targetTab) {
+    // Remove active class from all tabs
+    document.querySelectorAll('.profile-tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    
+    // Add active class to target tab
+    document.querySelector(`[data-tab="${targetTab}"]`).classList.add('active');
+    
+    // Hide all tab content
+    document.querySelectorAll('.profile-tab-content').forEach(content => {
+      content.classList.remove('active');
+    });
+    
+    // Show target tab content
+    document.getElementById(`${targetTab}-profile-tab`).classList.add('active');
+  }
+
+  // Data Management Methods
 }
 
 // Initialize the app when DOM is loaded
