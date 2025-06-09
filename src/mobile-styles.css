@@ -259,19 +259,15 @@
 /* Mobile-optimized buttons */
 .mobile-device .auth-btn,
 .mobile-device button[type="submit"] {
-  /* Large touch targets */
   min-height: var(--mobile-touch-target-comfortable);
-  padding: var(--mobile-spacing-md) var(--mobile-spacing-lg);
   font-size: var(--mobile-font-md);
-  font-weight: 600;
+  border-radius: var(--radius-md);
+  margin-top: var(--mobile-spacing-md);
+  margin-bottom: var(--mobile-spacing-lg);
   
-  /* Full width for easy tapping */
-  width: 100%;
-  
-  /* Enhanced touch feedback */
-  touch-action: manipulation;
-  transition: transform var(--mobile-transition-fast),
-              box-shadow var(--mobile-transition-fast);
+  /* Ensure button is always visible */
+  position: relative;
+  z-index: 10;
 }
 
 .mobile-device .auth-btn:active,
@@ -418,7 +414,7 @@
   
   /* Account for safe areas */
   margin-top: calc(var(--mobile-spacing-lg) + env(safe-area-inset-top));
-  margin-bottom: calc(var(--mobile-spacing-lg) + env(safe-area-inset-bottom));
+  margin-bottom: calc(var(--mobile-spacing-xl) + env(safe-area-inset-bottom));
   
   /* Maximum height with scrolling */
   max-height: calc(100vh - var(--mobile-spacing-xl) - env(safe-area-inset-top) - env(safe-area-inset-bottom));
@@ -779,18 +775,19 @@
    MOBILE KEYBOARD HANDLING
 ======================================== */
 
-.mobile-device.keyboard-open {
-  /* Adjust layout when virtual keyboard is open */
-}
-
 .mobile-device.keyboard-open .header {
-  transform: translateY(-20px);
-  transition: transform var(--mobile-transition-normal);
+  transform: translateY(-100%);
 }
 
 .mobile-device.keyboard-open .modal-content {
-  max-height: calc(50vh - 40px) !important;
-  margin-top: 10px !important;
+  /* Fix: Ensure adequate height for forms even with keyboard open */
+  max-height: calc(100vh - 200px) !important;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+  
+  /* Ensure scrolling works properly */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ========================================
@@ -1557,4 +1554,19 @@
     background: var(--mobile-accent-primary);
     color: var(--bg-primary);
   }
+}
+
+/* Enhanced auth form layout for mobile */
+.mobile-device .auth-form {
+  padding-bottom: var(--mobile-spacing-xl);
+  min-height: auto;
+}
+
+.mobile-device .auth-form .form-group {
+  margin-bottom: var(--mobile-spacing-md);
+}
+
+/* Ensure modal content has enough bottom padding for buttons */
+.mobile-device .modal-content {
+  padding-bottom: calc(var(--mobile-spacing-xl) + env(safe-area-inset-bottom));
 } 
