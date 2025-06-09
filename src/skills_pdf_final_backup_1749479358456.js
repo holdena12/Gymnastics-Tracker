@@ -615,8 +615,8 @@ export default {
     {
       "name": "Triple salto bwd. tucked.",
       "realName": "Triple salto bwd. tucked.",
-      "difficulty": "I",
-      "value": 0.9
+      "difficulty": "G",
+      "value": 0.7
     },
     {
       "name": "(Liukin)",
@@ -627,8 +627,8 @@ export default {
     {
       "name": "Triple salto bwd. piked.",
       "realName": "Triple salto bwd. piked.",
-      "difficulty": "J",
-      "value": 1.0
+      "difficulty": "G",
+      "value": 0.7
     },
     {
       "name": "(Nagornyy)",
@@ -7255,8 +7255,8 @@ export default {
     {
       "name": "Triple salto bwd. t. or over the bar.",
       "realName": "Triple salto bwd. t. or over the bar.",
-      "difficulty": "I",
-      "value": 0.9
+      "difficulty": "G",
+      "value": 0.7
     },
     {
       "name": "(Andrianov)",
@@ -7297,8 +7297,8 @@ export default {
     {
       "name": "Triple salto bwd. p.",
       "realName": "Triple salto bwd. p.",
-      "difficulty": "J",
-      "value": 1.0
+      "difficulty": "G",
+      "value": 0.7
     },
     {
       "name": "(Fardan)",
@@ -7345,8 +7345,8 @@ export default {
     {
       "name": "Triple salto bwd. t. with 1/1 t.",
       "realName": "Triple salto bwd. t. with 1/1 t.",
-      "difficulty": "I",
-      "value": 0.9
+      "difficulty": "G",
+      "value": 0.7
     },
     {
       "name": "(Belle)",
