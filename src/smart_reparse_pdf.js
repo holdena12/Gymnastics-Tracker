@@ -61,19 +61,13 @@ function parseHighDifficultySkill(skillText) {
 
 function cleanSkillName(rawText) {
   if (!rawText) return null;
-  
-  // Remove skill numbers and clean up
+  // Remove leading numbers, but do NOT skip short or numeric entries
   let cleaned = rawText
-    .replace(/^\d+\.\s*/, '') // Remove leading numbers
-    .replace(/\n[GHIJ]$/, '') // Remove trailing difficulty indicators
-    .replace(/\n+/g, ' ') // Replace newlines with spaces
+    .replace(/^\d+\.\s*/, '')
+    .replace(/\n+[GHIJ]$/, '')
+    .replace(/\n+/g, ' ')
     .trim();
-  
-  // Skip empty or purely numeric entries
-  if (!cleaned || /^\d+\.$/.test(cleaned) || cleaned.length < 2) {
-    return null;
-  }
-  
+  // Do NOT skip short or numeric entries anymore
   return cleaned;
 }
 
@@ -81,41 +75,38 @@ function parseEvent(eventName, eventData) {
   console.log(`\n📋 Parsing ${eventName}...`);
   const skills = [];
   let skillCount = 0;
-  
   for (const row of eventData) {
-    // Parse each difficulty column
     for (const [columnKey, skillText] of Object.entries(row)) {
-      if (!skillText || skillText.trim() === '' || skillText.startsWith('EG ')) {
-        continue; // Skip empty cells and element group headers
+      if (!skillText || skillText.trim() === '') {
+        continue;
       }
-      
       const cleanName = cleanSkillName(skillText);
       if (!cleanName) continue;
-      
       let difficultyInfo;
-      
+      let isHeader = false;
+      // If the cell looks like an element group header, mark it
+      if (/^EG\s/i.test(cleanName) || /element group/i.test(cleanName)) {
+        isHeader = true;
+      }
       if (columnKey === 'F = 0,6 G = 0,7 H = 0,8\nI = 0.9, J = 1.0') {
-        // High difficulty column - parse specific indicator
         difficultyInfo = parseHighDifficultySkill(skillText);
       } else if (DIFFICULTY_MAP[columnKey]) {
-        // Standard difficulty columns
         difficultyInfo = DIFFICULTY_MAP[columnKey];
       } else {
-        continue; // Skip unknown columns
+        continue;
       }
-      
       if (difficultyInfo) {
         skills.push({
           name: cleanName,
           realName: cleanName,
           difficulty: difficultyInfo.difficulty,
-          value: difficultyInfo.value
+          value: difficultyInfo.value,
+          isHeader
         });
         skillCount++;
       }
     }
   }
-  
   console.log(`   ✅ Parsed ${skillCount} skills`);
   return skills;
 }
