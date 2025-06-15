@@ -1,6 +1,6 @@
 // FIG Code of Points 2025-2028 Skills Database
 // This database contains ALL skills from the official FIG Code of Points
-// Generated: 2025-06-15T20:47:57.702Z
+// Generated: 2025-06-15T20:41:20.634Z
 
 export const skills = {
   "Floor Exercise": [
@@ -14,8 +14,8 @@ export const skills = {
     {
       "name": "EG I: Non-acrobatic Elements",
       "realName": "EG I: Non-acrobatic Elements",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
@@ -799,8 +799,8 @@ export const skills = {
     {
       "name": "Arabian jump bwd. to double salto fwd piked, also with",
       "realName": "Arabian jump bwd. to double salto fwd piked, also with",
-      "difficulty": "E",
-      "value": 0.5,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
@@ -1237,8 +1237,8 @@ export const skills = {
     {
       "name": "EG I: Single leg swings and scissors",
       "realName": "EG I: Single leg swings and scissors",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
     },
@@ -3123,8 +3123,8 @@ export const skills = {
     {
       "name": "EG I: Kip and swing elements & swings through or to handstand",
       "realName": "EG I: Kip and swing elements & swings through or to handstand",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
@@ -5454,8 +5454,8 @@ export const skills = {
     {
       "name": "EG I: Elements starting in upper arm position",
       "realName": "EG I: Elements starting in upper arm position",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Elements starting in upper arm position"
     },
@@ -8135,8 +8135,8 @@ export const skills = {
     {
       "name": "EG I: Long hang swings and turns",
       "realName": "EG I: Long hang swings and turns",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Long hang swings and turns"
     },
@@ -8778,8 +8778,8 @@ export const skills = {
     {
       "name": "(Jäger)",
       "realName": "(Jäger)",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "C",
+      "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },

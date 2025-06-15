@@ -1,4 +1,16 @@
-{
+// MAG Code of Points 2025-2028 Comprehensive Skills Database
+// Complete skills database embedded directly in JavaScript to ensure 100% reliability
+// This contains ALL skills from the official FIG Code of Points 2025-2028
+// Generated automatically from JSON database
+
+// Difficulty value mapping
+const difficultyValues = {
+  'A': 0.1, 'B': 0.2, 'C': 0.3, 'D': 0.4, 'E': 0.5,
+  'F': 0.6, 'G': 0.7, 'H': 0.8, 'I': 0.9, 'J': 1.0
+};
+
+// Raw skills data from FIG Code of Points
+const rawSkillsData = {
   "Floor Exercise": [
     {
       "element": 1,
@@ -86,7 +98,7 @@
     },
     {
       "element": 31,
-      "description": "\u00bd or 1/1 turn in handstand or to handstand.",
+      "description": "½ or 1/1 turn in handstand or to handstand.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -128,7 +140,7 @@
     },
     {
       "element": 62,
-      "description": "Any standing scale with 180\u00b0 straddle, no hand hold (2 s.).",
+      "description": "Any standing scale with 180° straddle, no hand hold (2 s.).",
       "difficulty": "B",
       "value": 0.2
     },
@@ -182,7 +194,7 @@
     },
     {
       "element": 82,
-      "description": "Flair hopping with 360\u00b0 t. bwd. thr. hdst and back to flair (2 hops).",
+      "description": "Flair hopping with 360° t. bwd. thr. hdst and back to flair (2 hops).",
       "difficulty": "D",
       "value": 0.4
     },
@@ -194,7 +206,7 @@
     },
     {
       "element": 91,
-      "description": "Flair with \u00bd spindle.",
+      "description": "Flair with ½ spindle.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -212,37 +224,37 @@
     },
     {
       "element": 98,
-      "description": "Flair with \u00bd spindle to handstand.",
+      "description": "Flair with ½ spindle to handstand.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 100,
-      "description": "Flair with > 270\u00ba spindle (in 2 circles) directly to handstand and continue to circle or flair.",
+      "description": "Flair with > 270º spindle (in 2 circles) directly to handstand and continue to circle or flair.",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 103,
-      "description": "Russian wendeswing with 360\u00b0 or 540\u00b0.",
+      "description": "Russian wendeswing with 360° or 540°.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 104,
-      "description": "Russian wendeswing with 720\u00b0 or 900\u00b0.",
+      "description": "Russian wendeswing with 720° or 900°.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 105,
-      "description": "Russian wendeswing with 1080\u00b0 or more. (Fedorchenko)",
+      "description": "Russian wendeswing with 1080° or more. (Fedorchenko)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 109,
-      "description": "Roll bwd. through hdst. with \u00bd t.",
+      "description": "Roll bwd. through hdst. with ½ t.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -278,31 +290,31 @@
     },
     {
       "element": 13,
-      "description": "Salto fwd. tucked or piked, also with \u00bd t.",
+      "description": "Salto fwd. tucked or piked, also with ½ t.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 14,
-      "description": "Salto fwd. straight, also with \u00bd t.",
+      "description": "Salto fwd. straight, also with ½ t.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 16,
-      "description": "Double salto fwd. tucked, also with \u00bd t.",
+      "description": "Double salto fwd. tucked, also with ½ t.",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 17,
-      "description": "Double salto fwd. piked, also with \u00bd t.",
+      "description": "Double salto fwd. piked, also with ½ t.",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 32,
-      "description": "\u00b2",
+      "description": "²",
       "difficulty": "B",
       "value": 0.2
     },
@@ -326,7 +338,7 @@
     },
     {
       "element": 46,
-      "description": "Jump fwd. with \u00bd t. to dbl. salto bwd. Tuck (Deferr)",
+      "description": "Jump fwd. with ½ t. to dbl. salto bwd. Tuck (Deferr)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -356,7 +368,7 @@
     },
     {
       "element": 4,
-      "description": "Salto bwd. with 1/1 t. and salto bwd. (Tsukahara) Arabian jump bwd. to double salto fwd tucked, also with \u00bd t.",
+      "description": "Salto bwd. with 1/1 t. and salto bwd. (Tsukahara) Arabian jump bwd. to double salto fwd tucked, also with ½ t.",
       "difficulty": "D",
       "value": 0.4
     },
@@ -368,19 +380,19 @@
     },
     {
       "element": 7,
-      "description": "Salto backwards tucked or piked w. \u00bd t. or Arabian tucked or piked.",
+      "description": "Salto backwards tucked or piked w. ½ t. or Arabian tucked or piked.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 8,
-      "description": "Salto backwards str. w. \u00bd t.",
+      "description": "Salto backwards str. w. ½ t.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 11,
-      "description": "Arabian jump bwd. to double salto fwd piked, also with \u00bd turn",
+      "description": "Arabian jump bwd. to double salto fwd piked, also with ½ turn",
       "difficulty": "E",
       "value": 0.5
     },
@@ -410,7 +422,7 @@
     },
     {
       "element": 31,
-      "description": "Jump bwd. with \u00bd t. to roll fwd.",
+      "description": "Jump bwd. with ½ t. to roll fwd.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -428,7 +440,7 @@
     },
     {
       "element": 41,
-      "description": "Double salto bwd. straight or Double salto bwd. straight and with \u00bd t., or Arabian Jump bwd. to dbl. salto fwd. str. (Tamayo)",
+      "description": "Double salto bwd. straight or Double salto bwd. straight and with ½ t., or Arabian Jump bwd. to dbl. salto fwd. str. (Tamayo)",
       "difficulty": "E",
       "value": 0.5
     },
@@ -440,7 +452,7 @@
     },
     {
       "element": 48,
-      "description": "Double salto bwd. straight with 1/1 t. or Arabian jump bwd. to dbl. salto fwd. str. with \u00bd t. Also Penev",
+      "description": "Double salto bwd. straight with 1/1 t. or Arabian jump bwd. to dbl. salto fwd. str. with ½ t. Also Penev",
       "difficulty": "F",
       "value": 0.6
     },
@@ -518,7 +530,7 @@
     },
     {
       "element": 11,
-      "description": "Salto bwd. str. with 7/2 t (Gonz\u00e1lez)",
+      "description": "Salto bwd. str. with 7/2 t (González)",
       "difficulty": "E",
       "value": 0.5
     },
@@ -568,19 +580,19 @@
     },
     {
       "element": 7,
-      "description": "Scissor forward with \u00bd t.",
+      "description": "Scissor forward with ½ t.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 8,
-      "description": "Double scissor fwd. (\u00bc t. fwd. a. \u00bc t. bwd.).",
+      "description": "Double scissor fwd. (¼ t. fwd. a. ¼ t. bwd.).",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 9,
-      "description": "Double scissor fwd. (\u00bc t. fwd. a. \u00bc t. bwd.) with travel sideways.",
+      "description": "Double scissor fwd. (¼ t. fwd. a. ¼ t. bwd.) with travel sideways.",
       "difficulty": "C",
       "value": 0.3
     },
@@ -604,7 +616,7 @@
     },
     {
       "element": 22,
-      "description": "Scissor fwd. with \u00bc t. through handstand on 1 pommel, lower to support with straddle legs on the other arm (with legs changing) (Li Ning) (Bryan)",
+      "description": "Scissor fwd. with ¼ t. through handstand on 1 pommel, lower to support with straddle legs on the other arm (with legs changing) (Li Ning) (Bryan)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -616,7 +628,7 @@
     },
     {
       "element": 26,
-      "description": "Scissor bwd. with travel sideways (also with \u00bd t.).",
+      "description": "Scissor bwd. with travel sideways (also with ½ t.).",
       "difficulty": "B",
       "value": 0.2
     },
@@ -628,19 +640,19 @@
     },
     {
       "element": 31,
-      "description": "Scissor backward with \u00bd turn.",
+      "description": "Scissor backward with ½ turn.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 32,
-      "description": "Double scissor bwd. (\u00bc t. fwd. a. \u00bc t. bwd).",
+      "description": "Double scissor bwd. (¼ t. fwd. a. ¼ t. bwd).",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 39,
-      "description": "Swing bwd. w. \u00bc t. through handstand on 1 pommel (also with \u00bc t. after), lower to support with straddle legs (with legs changing)",
+      "description": "Swing bwd. w. ¼ t. through handstand on 1 pommel (also with ¼ t. after), lower to support with straddle legs (with legs changing)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -664,7 +676,7 @@
     },
     {
       "element": 8,
-      "description": "Circles in cross support on 1 pommel (from or to \u00bc t. fwd.).",
+      "description": "Circles in cross support on 1 pommel (from or to ¼ t. fwd.).",
       "difficulty": "B",
       "value": 0.2
     },
@@ -682,13 +694,13 @@
     },
     {
       "element": 25,
-      "description": "Any \u00bc spindle",
+      "description": "Any ¼ spindle",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 26,
-      "description": "Any \u00bd spindle (Keikha 2)",
+      "description": "Any ½ spindle (Keikha 2)",
       "difficulty": "B",
       "value": 0.2
     },
@@ -730,25 +742,25 @@
     },
     {
       "element": 38,
-      "description": "Direct St\u00f6ckli A (DSA) on the pommels or pommel between hands.",
+      "description": "Direct Stöckli A (DSA) on the pommels or pommel between hands.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 40,
-      "description": "Direct St\u00f6ckli A (DSA) outside pommels. (Keikha 3) (Keikha 6)",
+      "description": "Direct Stöckli A (DSA) outside pommels. (Keikha 3) (Keikha 6)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 44,
-      "description": "Direct St\u00f6ckli B (DSB).",
+      "description": "Direct Stöckli B (DSB).",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 51,
-      "description": "Flair or circle through handstand (with or without \u00bd t.) and lower to flair or circle. (Tippelt)",
+      "description": "Flair or circle through handstand (with or without ½ t.) and lower to flair or circle. (Tippelt)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -760,7 +772,7 @@
     },
     {
       "element": 54,
-      "description": "Reverse St\u00f6ckli, DSA or pommel circle straddle through handstand, 3/3 travel (fwd.- bwd), 360\u00b0 turn to flairs. (Busnari)",
+      "description": "Reverse Stöckli, DSA or pommel circle straddle through handstand, 3/3 travel (fwd.- bwd), 360° turn to flairs. (Busnari)",
       "difficulty": "F",
       "value": 0.6
     },
@@ -772,13 +784,13 @@
     },
     {
       "element": 56,
-      "description": "Kehr with 270\u00b0 t. on 1 p. (Sohn technique) from cross to side support.",
+      "description": "Kehr with 270° t. on 1 p. (Sohn technique) from cross to side support.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 57,
-      "description": "Kehr with 270\u00b0 t. on 1 pommel (Sohn technique) from side to cross support. (Bertoncelj)",
+      "description": "Kehr with 270° t. on 1 pommel (Sohn technique) from side to cross support. (Bertoncelj)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -796,19 +808,19 @@
     },
     {
       "element": 68,
-      "description": "Reverse St\u00f6ckli 180\u00b0 (or 270\u00b0 from one pommel) turn in one circle.",
+      "description": "Reverse Stöckli 180° (or 270° from one pommel) turn in one circle.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 69,
-      "description": "Reverse St\u00f6ckli with 270\u00b0 t. (Bezugo technique) from 2 pommels to cross support on 1 pommel (Davtyan)",
+      "description": "Reverse Stöckli with 270° t. (Bezugo technique) from 2 pommels to cross support on 1 pommel (Davtyan)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 71,
-      "description": "Reverse St\u00f6ckli with 360\u00b0 t. on 1 pommel. (Bezugo)",
+      "description": "Reverse Stöckli with 360° t. on 1 pommel. (Bezugo)",
       "difficulty": "E",
       "value": 0.5
     },
@@ -832,85 +844,85 @@
     },
     {
       "element": 79,
-      "description": "Wendeswing fwd. with \u00bd t. to support fwd. on the end, from side support using 1 or 2 pommels.",
+      "description": "Wendeswing fwd. with ½ t. to support fwd. on the end, from side support using 1 or 2 pommels.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 85,
-      "description": "Russian wendeswing with 180\u00b0 or 270\u00b0.",
+      "description": "Russian wendeswing with 180° or 270°.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 91,
-      "description": "Russian wendeswing with 360\u00b0 or 540\u00b0.",
+      "description": "Russian wendeswing with 360° or 540°.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 92,
-      "description": "Russian wendeswing with 720\u00b0 or 900\u00b0.",
+      "description": "Russian wendeswing with 720° or 900°.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 93,
-      "description": "Russian wendeswing with 1080\u00b0 or more.",
+      "description": "Russian wendeswing with 1080° or more.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 97,
-      "description": "On the leather, Russian wendeswing with 180\u00b0, or 270\u00b0 also with travel.",
+      "description": "On the leather, Russian wendeswing with 180°, or 270° also with travel.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 103,
-      "description": "On the leather, Russian wendeswing with 360\u00b0 or 540\u00b0.",
+      "description": "On the leather, Russian wendeswing with 360° or 540°.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 104,
-      "description": "On the leather, Russian wendeswing with 720\u00b0 or 900\u00b0.",
+      "description": "On the leather, Russian wendeswing with 720° or 900°.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 105,
-      "description": "On the leather, Russian wendeswing with 1080\u00b0 or more.",
+      "description": "On the leather, Russian wendeswing with 1080° or more.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 110,
-      "description": "Russian wendeswing with 180\u00b0 or 270\u00b0 on 1 pommel or between the pommels.",
+      "description": "Russian wendeswing with 180° or 270° on 1 pommel or between the pommels.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 111,
-      "description": "Russian wendeswing with 360\u00b0 or 540\u00b0 on 1 pommel or between the pommels.",
+      "description": "Russian wendeswing with 360° or 540° on 1 pommel or between the pommels.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 112,
-      "description": "720\u00b0 or 900\u00b0 Russian wendeswing on 1 pommel or between the pommels.",
+      "description": "720° or 900° Russian wendeswing on 1 pommel or between the pommels.",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 113,
-      "description": "1080\u00b0 Russian wendeswing or more on 1 pommel or between the pommels.",
+      "description": "1080° Russian wendeswing or more on 1 pommel or between the pommels.",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 1,
-      "description": "Circles with any travel in side support (1/3) (also with \u00bc t.).",
+      "description": "Circles with any travel in side support (1/3) (also with ¼ t.).",
       "difficulty": "A",
       "value": 0.1
     },
@@ -946,31 +958,31 @@
     },
     {
       "element": 14,
-      "description": "Travel fwd. or bwd. with \u00bc spindle to side support on 2 pommels.",
+      "description": "Travel fwd. or bwd. with ¼ spindle to side support on 2 pommels.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 15,
-      "description": "All travels with \u00bd spindle in side support.",
+      "description": "All travels with ½ spindle in side support.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 17,
-      "description": "From an end side travel with 2x \u00bd spindle to other end.",
+      "description": "From an end side travel with 2x ½ spindle to other end.",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 22,
-      "description": "Any travel fwd. 3/3 with \u00bd Spindle from one pommel over the other pommel. (Nin Reyes) (Titov)",
+      "description": "Any travel fwd. 3/3 with ½ Spindle from one pommel over the other pommel. (Nin Reyes) (Titov)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 23,
-      "description": "Travel 3/3 over both pommels with \u00bd Spindle. (Nin Reyes 2) (Keikha 4)",
+      "description": "Travel 3/3 over both pommels with ½ Spindle. (Nin Reyes 2) (Keikha 4)",
       "difficulty": "E",
       "value": 0.5
     },
@@ -1006,7 +1018,7 @@
     },
     {
       "element": 37,
-      "description": "Travel bwd. in cross support from one horse part or pommel to another (\u2153).",
+      "description": "Travel bwd. in cross support from one horse part or pommel to another (⅓).",
       "difficulty": "A",
       "value": 0.1
     },
@@ -1036,7 +1048,7 @@
     },
     {
       "element": 46,
-      "description": "Kehre fwd., reverse St\u00f6ckli, kehre fwd. (Moguilny)",
+      "description": "Kehre fwd., reverse Stöckli, kehre fwd. (Moguilny)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -1060,43 +1072,43 @@
     },
     {
       "element": 59,
-      "description": "On the leather, from cross support, Russian wendeswing with 360\u00b0 or more over both pommels. (Vammen)",
+      "description": "On the leather, from cross support, Russian wendeswing with 360° or more over both pommels. (Vammen)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 64,
-      "description": "From support 1-2, 3/3 travel in Russian type wendeswing with 630\u00b0 or more turning.",
+      "description": "From support 1-2, 3/3 travel in Russian type wendeswing with 630° or more turning.",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 65,
-      "description": "Any 3/3 travel in Russian type wendeswing with 720\u00b0 or more turning w. two hands between pommels (Wu Guonian)",
+      "description": "Any 3/3 travel in Russian type wendeswing with 720° or more turning w. two hands between pommels (Wu Guonian)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 70,
-      "description": "Any Russian wendeswing with 360\u00b0 t. and 3/3 travel. (Roth)",
+      "description": "Any Russian wendeswing with 360° t. and 3/3 travel. (Roth)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 75,
-      "description": "Reverse St\u00f6ckli from cross support on end to the far pommel (Romero)",
+      "description": "Reverse Stöckli from cross support on end to the far pommel (Romero)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 76,
-      "description": "Reverse St\u00f6ckli from cross support on one end to the other. (Abu Alsoud)",
+      "description": "Reverse Stöckli from cross support on one end to the other. (Abu Alsoud)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 1,
-      "description": "On the end Wende from circle (also Russian 180\u00b0 or 270\u00b0 to Wende)",
+      "description": "On the end Wende from circle (also Russian 180° or 270° to Wende)",
       "difficulty": "A",
       "value": 0.1
     },
@@ -1108,49 +1120,49 @@
     },
     {
       "element": 4,
-      "description": "From side support on end, circle or flair to handstand and travel 3/3 with 450\u00b0 or more turn. (Kolyvanov)",
+      "description": "From side support on end, circle or flair to handstand and travel 3/3 with 450° or more turn. (Kolyvanov)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 5,
-      "description": "DSA to handstand 3/3 with 450\u00b0 or more turn.",
+      "description": "DSA to handstand 3/3 with 450° or more turn.",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 7,
-      "description": "On the end, Russian wendeswing with 360\u00b0 or 540\u00b0",
+      "description": "On the end, Russian wendeswing with 360° or 540°",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 8,
-      "description": "On the end, Russian wendeswing with 720\u00b0 or 900\u00b0.",
+      "description": "On the end, Russian wendeswing with 720° or 900°.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 9,
-      "description": "On the end, Russian wendeswing with 1080\u00b0 or more.",
+      "description": "On the end, Russian wendeswing with 1080° or more.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 10,
-      "description": "From pommels, circle with 1/4 turn to Russian wendeswing 270\u00b0 on one pommel to handstand. (Dolidze)",
+      "description": "From pommels, circle with 1/4 turn to Russian wendeswing 270° on one pommel to handstand. (Dolidze)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 13,
-      "description": "From side support wendeswing fwd. with \u00bd t. to support followed by wende.",
+      "description": "From side support wendeswing fwd. with ½ t. to support followed by wende.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 15,
-      "description": "DSA, reverse St\u00f6ckli or circle on one pommel through handstand.",
+      "description": "DSA, reverse Stöckli or circle on one pommel through handstand.",
       "difficulty": "C",
       "value": 0.3
     },
@@ -1162,7 +1174,7 @@
     },
     {
       "element": 20,
-      "description": "Circle or flair through handstand (also with \u00be t. with or without travel).",
+      "description": "Circle or flair through handstand (also with ¾ t. with or without travel).",
       "difficulty": "B",
       "value": 0.2
     },
@@ -1174,7 +1186,7 @@
     },
     {
       "element": 22,
-      "description": "180\u00b0 Russian from one end of the horse to the other end through handstand to dismount Bertoncelj through handstand to dismount. (Targhetta)",
+      "description": "180° Russian from one end of the horse to the other end through handstand to dismount Bertoncelj through handstand to dismount. (Targhetta)",
       "difficulty": "D",
       "value": 0.4
     }
@@ -1878,7 +1890,7 @@
     },
     {
       "element": 1,
-      "description": "Salto fwd. piked or straight, also with \u00bd t.",
+      "description": "Salto fwd. piked or straight, also with ½ t.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -1902,7 +1914,7 @@
     },
     {
       "element": 9,
-      "description": "Double salto fwd. tucked or tucked with \u00bd t.",
+      "description": "Double salto fwd. tucked or tucked with ½ t.",
       "difficulty": "C",
       "value": 0.3
     },
@@ -1914,7 +1926,7 @@
     },
     {
       "element": 16,
-      "description": "Double salto fwd. piked or piked with \u00bd t. (Balabanov)",
+      "description": "Double salto fwd. piked or piked with ½ t. (Balabanov)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -1926,7 +1938,7 @@
     },
     {
       "element": 25,
-      "description": "Salto bwd. piked or straight also with \u00bd.",
+      "description": "Salto bwd. piked or straight also with ½.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -1974,7 +1986,7 @@
     },
     {
       "element": 45,
-      "description": "Double salto bwd. t. with \u00bd or 1/1 t. Double salto bwd. t. with 3/2 t.",
+      "description": "Double salto bwd. t. with ½ or 1/1 t. Double salto bwd. t. with 3/2 t.",
       "difficulty": "C",
       "value": 0.3
     },
@@ -1998,7 +2010,7 @@
     },
     {
       "element": 52,
-      "description": "Double salto bwd. straight with \u00bd or 1/1 t.",
+      "description": "Double salto bwd. straight with ½ or 1/1 t.",
       "difficulty": "D",
       "value": 0.4
     },
@@ -2037,25 +2049,25 @@
     },
     {
       "element": 5,
-      "description": "Fwd. uprise with \u00bd t. to handstand.",
+      "description": "Fwd. uprise with ½ t. to handstand.",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 6,
-      "description": "Fwd. uprise with St\u00fctzkehr 3/4 t. or 1/4 t. to handstand followed by a kip on one rail",
+      "description": "Fwd. uprise with Stützkehr 3/4 t. or 1/4 t. to handstand followed by a kip on one rail",
       "difficulty": "F",
       "value": 0.6
     },
     {
       "element": 7,
-      "description": "Fwd. uprise with \u00bc t. to hang on 1 rail.",
+      "description": "Fwd. uprise with ¼ t. to hang on 1 rail.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 8,
-      "description": "Roll bwd. with \u00bd t. from upper arm hang or Fwd. uprise to Kato hop to support. (Watanabe)",
+      "description": "Roll bwd. with ½ t. from upper arm hang or Fwd. uprise to Kato hop to support. (Watanabe)",
       "difficulty": "B",
       "value": 0.2
     },
@@ -2127,49 +2139,49 @@
     },
     {
       "element": 34,
-      "description": "Roll bwd. with \u00bd t. tuck to upper arm hang. (Harada)",
+      "description": "Roll bwd. with ½ t. tuck to upper arm hang. (Harada)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 35,
-      "description": "Roll bwd. with \u00bd t. tuck to hang. (Dalton)",
+      "description": "Roll bwd. with ½ t. tuck to hang. (Dalton)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 38,
-      "description": "Bwd. uprise to handstand (or with \u00bd t).",
+      "description": "Bwd. uprise to handstand (or with ½ t).",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 40,
-      "description": "Bwd. uprise with \u00bd t. hop to handstand.",
+      "description": "Bwd. uprise with ½ t. hop to handstand.",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 41,
-      "description": "Bwd. uprise with \u00be t. hop to handstand on 1 rail.",
+      "description": "Bwd. uprise with ¾ t. hop to handstand on 1 rail.",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 44,
-      "description": "Bwd. uprise with \u00bd t. and straddle cut bwd. to upper arm hang.",
+      "description": "Bwd. uprise with ½ t. and straddle cut bwd. to upper arm hang.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 45,
-      "description": "Bwd. uprise with \u00bd t. a. straddled cut bwd. to support.",
+      "description": "Bwd. uprise with ½ t. a. straddled cut bwd. to support.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 50,
-      "description": "Bwd. uprise with \u00bd t. to support.",
+      "description": "Bwd. uprise with ½ t. to support.",
       "difficulty": "B",
       "value": 0.2
     },
@@ -2223,19 +2235,19 @@
     },
     {
       "element": 2,
-      "description": "Bent arm swing fwd. to hop \u00bd t. to support. (Kato)",
+      "description": "Bent arm swing fwd. to hop ½ t. to support. (Kato)",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 3,
-      "description": "St\u00fctzkehr fwd. to handstand (to 1 or 2 bars).",
+      "description": "Stützkehr fwd. to handstand (to 1 or 2 bars).",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 4,
-      "description": "St\u00fctzkehr fwd. to handstand (1 rail (also with additional \u00bc or \u00be turn to handstand) (Bilozerchev - Peters) (Dimic)",
+      "description": "Stützkehr fwd. to handstand (1 rail (also with additional ¼ or ¾ turn to handstand) (Bilozerchev - Peters) (Dimic)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -2253,13 +2265,13 @@
     },
     {
       "element": 9,
-      "description": "\u00be Diamidov and \u00bd turn to upper arms. (Salazar)",
+      "description": "¾ Diamidov and ½ turn to upper arms. (Salazar)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 10,
-      "description": "\u00be Diamidov and rear vault to side hang on 1 bar. (De Freitas)",
+      "description": "¾ Diamidov and rear vault to side hang on 1 bar. (De Freitas)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -2295,7 +2307,7 @@
     },
     {
       "element": 28,
-      "description": "Diamidov with \u00bc or \u00bd t. to handstand.",
+      "description": "Diamidov with ¼ or ½ t. to handstand.",
       "difficulty": "D",
       "value": 0.4
     },
@@ -2313,7 +2325,7 @@
     },
     {
       "element": 35,
-      "description": "\u00be Diamidov & \u00be Healy on the other hand to support (Makuts)",
+      "description": "¾ Diamidov & ¾ Healy on the other hand to support (Makuts)",
       "difficulty": "E",
       "value": 0.5
     },
@@ -2337,7 +2349,7 @@
     },
     {
       "element": 45,
-      "description": "Salto bwd. with \u00bd t. to upper arm hang. (Toumilovich)",
+      "description": "Salto bwd. with ½ t. to upper arm hang. (Toumilovich)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -2361,7 +2373,7 @@
     },
     {
       "element": 52,
-      "description": "3/2 salto bwd. with \u00bd t. to upper arm hang. (Suarez)",
+      "description": "3/2 salto bwd. with ½ t. to upper arm hang. (Suarez)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -2373,31 +2385,31 @@
     },
     {
       "element": 56,
-      "description": "Handstand. with \u00bc t. and fall back to support with \u00bc t.",
+      "description": "Handstand. with ¼ t. and fall back to support with ¼ t.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 57,
-      "description": "Handstand . with \u00be t. and fall back to support with \u00bc t. (Br\u00e4ndstr\u00f6m)",
+      "description": "Handstand . with ¾ t. and fall back to support with ¼ t. (Brändström)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 62,
-      "description": "St\u00fctzkehr bwd. to support.",
+      "description": "Stützkehr bwd. to support.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 63,
-      "description": "St\u00fctzkehr bwd. through handstand. to support. (Novikov)",
+      "description": "Stützkehr bwd. through handstand. to support. (Novikov)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 69,
-      "description": "St\u00fctzkehr bwd. with straddle cut bwd. to support",
+      "description": "Stützkehr bwd. with straddle cut bwd. to support",
       "difficulty": "C",
       "value": 0.3
     },
@@ -2421,7 +2433,7 @@
     },
     {
       "element": 76,
-      "description": "Following a swing element (min. B) to handstand on 1 rail, Healy (360\u00b0 or more) to support. (Bejenaru) Min. B",
+      "description": "Following a swing element (min. B) to handstand on 1 rail, Healy (360° or more) to support. (Bejenaru) Min. B",
       "difficulty": "D",
       "value": 0.4
     },
@@ -2433,13 +2445,13 @@
     },
     {
       "element": 81,
-      "description": "Swing bwd. with \u00bd t. hop to handstand.",
+      "description": "Swing bwd. with ½ t. hop to handstand.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 82,
-      "description": "Swing bwd. with \u00be t. hop to handstand.",
+      "description": "Swing bwd. with ¾ t. hop to handstand.",
       "difficulty": "D",
       "value": 0.4
     },
@@ -2451,19 +2463,19 @@
     },
     {
       "element": 84,
-      "description": "Gatson 1 with \u00bc t to handstand on 1 rail and \u00bc t. handstand on 2 rails. (Gatson 2)",
+      "description": "Gatson 1 with ¼ t to handstand on 1 rail and ¼ t. handstand on 2 rails. (Gatson 2)",
       "difficulty": "F",
       "value": 0.6
     },
     {
       "element": 86,
-      "description": "From handstand on 1 rail, \u00bd or \u00be t. fwd. or bwd. In handstand.",
+      "description": "From handstand on 1 rail, ½ or ¾ t. fwd. or bwd. In handstand.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 91,
-      "description": "Any handstand . with \u00bd turn. (also with 2 s.)",
+      "description": "Any handstand . with ½ turn. (also with 2 s.)",
       "difficulty": "A",
       "value": 0.1
     },
@@ -2559,7 +2571,7 @@
     },
     {
       "element": 8,
-      "description": "Moy piked with straddled. cut bwd. and \u00bd t. to upper arm hang (also legs together).",
+      "description": "Moy piked with straddled. cut bwd. and ½ t. to upper arm hang (also legs together).",
       "difficulty": "B",
       "value": 0.2
     },
@@ -2595,7 +2607,7 @@
     },
     {
       "element": 21,
-      "description": "Giant swing bwd. to handstand or with inlocation fwd. (also with \u00bc or \u00bd turn and to one rail). (Kenmotsu) (Piasecky) (Wells)",
+      "description": "Giant swing bwd. to handstand or with inlocation fwd. (also with ¼ or ½ turn and to one rail). (Kenmotsu) (Piasecky) (Wells)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -2613,7 +2625,7 @@
     },
     {
       "element": 30,
-      "description": "Giant swing Diamidov with \u00bc or \u00bd t. to handstand.",
+      "description": "Giant swing Diamidov with ¼ or ½ t. to handstand.",
       "difficulty": "F",
       "value": 0.6
     },
@@ -2625,13 +2637,13 @@
     },
     {
       "element": 39,
-      "description": "Giant swing bwd. with \u00bd t. to upper arm hang. (Gushiken)",
+      "description": "Giant swing bwd. with ½ t. to upper arm hang. (Gushiken)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 40,
-      "description": "Giant swing bwd. with \u00bd t. to support. (Marinitch)",
+      "description": "Giant swing bwd. with ½ t. to support. (Marinitch)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -2667,7 +2679,7 @@
     },
     {
       "element": 53,
-      "description": "Giant swing bwd. with \u00bd t. and straddled cut bwd. to upper arms. (Sosa)",
+      "description": "Giant swing bwd. with ½ t. and straddled cut bwd. to upper arms. (Sosa)",
       "difficulty": "E",
       "value": 0.5
     },
@@ -2691,25 +2703,25 @@
     },
     {
       "element": 69,
-      "description": "Giant swing bwd. and salto with \u00bd t. to hang on the end. (Chartrand)",
+      "description": "Giant swing bwd. and salto with ½ t. to hang on the end. (Chartrand)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 70,
-      "description": "Giant swing bwd. and salto with \u00bd t. to upper arm hang. (Matsunaga)",
+      "description": "Giant swing bwd. and salto with ½ t. to upper arm hang. (Matsunaga)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 71,
-      "description": "Giant swing bwd. and salto with \u00bd t. to hang. (Solis)",
+      "description": "Giant swing bwd. and salto with ½ t. to hang. (Solis)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 72,
-      "description": "Giant swing bwd. with \u00bd t. and 3/2 salto fwd to upp arm hang. (Tanaka)",
+      "description": "Giant swing bwd. with ½ t. and 3/2 salto fwd to upp arm hang. (Tanaka)",
       "difficulty": "F",
       "value": 0.6
     },
@@ -2721,7 +2733,7 @@
     },
     {
       "element": 74,
-      "description": "Glide kip with \u00bd t. to support.",
+      "description": "Glide kip with ½ t. to support.",
       "difficulty": "B",
       "value": 0.2
     },
@@ -2733,13 +2745,13 @@
     },
     {
       "element": 77,
-      "description": "Giant swing bwd. and salto with \u00bd t. to support. (Torres)",
+      "description": "Giant swing bwd. and salto with ½ t. to support. (Torres)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 78,
-      "description": "Giant swing backward with \u00bd t. and 3/2 salto forward piked to upper arm hang. (Esparza) H",
+      "description": "Giant swing backward with ½ t. and 3/2 salto forward piked to upper arm hang. (Esparza) H",
       "difficulty": "F",
       "value": 0.6
     },
@@ -2757,7 +2769,7 @@
     },
     {
       "element": 83,
-      "description": "Giant swing bwd. and salto with \u00bd str to upper arm hang (Fokin)",
+      "description": "Giant swing bwd. and salto with ½ str to upper arm hang (Fokin)",
       "difficulty": "E",
       "value": 0.5
     },
@@ -2781,7 +2793,7 @@
     },
     {
       "element": 92,
-      "description": "Glide kip through V-sit and hop \u00bd turn to hang on other rail. (Li Donghua)",
+      "description": "Glide kip through V-sit and hop ½ turn to hang on other rail. (Li Donghua)",
       "difficulty": "B",
       "value": 0.2
     },
@@ -2799,37 +2811,37 @@
     },
     {
       "element": 99,
-      "description": "Felge with \u00bd t. to upper arm hang.",
+      "description": "Felge with ½ t. to upper arm hang.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 100,
-      "description": "Felge with \u00bd t. to rear support.",
+      "description": "Felge with ½ t. to rear support.",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 104,
-      "description": "Cast with \u00bd t. to up. arm hang.",
+      "description": "Cast with ½ t. to up. arm hang.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 105,
-      "description": "Cast with \u00bd t. to support.",
+      "description": "Cast with ½ t. to support.",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 106,
-      "description": "Felge to handstand. Also to one rail or \u00bc t. (Chiarlo) (Cucherat - Celen)",
+      "description": "Felge to handstand. Also to one rail or ¼ t. (Chiarlo) (Cucherat - Celen)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 107,
-      "description": "Felge with \u00bd or \u00be t. to handstand.",
+      "description": "Felge with ½ or ¾ t. to handstand.",
       "difficulty": "E",
       "value": 0.5
     },
@@ -2883,13 +2895,13 @@
     },
     {
       "element": 122,
-      "description": "Felge roll backward with tuck salto \u00bd to upper arm hang. (Gagnon)",
+      "description": "Felge roll backward with tuck salto ½ to upper arm hang. (Gagnon)",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 123,
-      "description": "Felge roll backward with straight salto \u00bd to upper arm hang. (Gagnon 2)",
+      "description": "Felge roll backward with straight salto ½ to upper arm hang. (Gagnon 2)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -2913,31 +2925,31 @@
     },
     {
       "element": 128,
-      "description": "Felge forward with \u00bd t. to support.",
+      "description": "Felge forward with ½ t. to support.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 130,
-      "description": "Shoot up with \u00bc t. to handstand.",
+      "description": "Shoot up with ¼ t. to handstand.",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 131,
-      "description": "Shoot up with \u00bd or 3/4 t. to handstand. (Nguyen)",
+      "description": "Shoot up with ½ or 3/4 t. to handstand. (Nguyen)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 137,
-      "description": "Shoot up to handstand and fall back to support with \u00bc turn. (Malone)",
+      "description": "Shoot up to handstand and fall back to support with ¼ turn. (Malone)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 1,
-      "description": "Salto fwd. piked or straight also with \u00bd t.",
+      "description": "Salto fwd. piked or straight also with ½ t.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -2973,7 +2985,7 @@
     },
     {
       "element": 11,
-      "description": "Double salto fwd. tuck with \u00bd t. or \u00bd t. double salto bwd.",
+      "description": "Double salto fwd. tuck with ½ t. or ½ t. double salto bwd.",
       "difficulty": "E",
       "value": 0.5
     },
@@ -2997,13 +3009,13 @@
     },
     {
       "element": 18,
-      "description": "Double salto fwd. piked with \u00bd t. (Dalaloyan)",
+      "description": "Double salto fwd. piked with ½ t. (Dalaloyan)",
       "difficulty": "F",
       "value": 0.6
     },
     {
       "element": 19,
-      "description": "Salto bwd. piked or straight, also with \u00bd t.",
+      "description": "Salto bwd. piked or straight, also with ½ t.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -3051,7 +3063,7 @@
     },
     {
       "element": 40,
-      "description": "Double salto bwd. tucked with \u00bd t. or salto bwd. \u00bd tucked to salto fwd. tucked.",
+      "description": "Double salto bwd. tucked with ½ t. or salto bwd. ½ tucked to salto fwd. tucked.",
       "difficulty": "D",
       "value": 0.4
     },
@@ -3087,7 +3099,7 @@
     },
     {
       "element": 53,
-      "description": "From hang on end, double salto bwd. tuck with 1/1 or \u00bd t.",
+      "description": "From hang on end, double salto bwd. tuck with 1/1 or ½ t.",
       "difficulty": "E",
       "value": 0.5
     },
@@ -3113,7 +3125,7 @@
     },
     {
       "element": 7,
-      "description": "Back uprise to handstand with \u00bd turn.",
+      "description": "Back uprise to handstand with ½ turn.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -3149,13 +3161,13 @@
     },
     {
       "element": 19,
-      "description": "\u00bd t. thr. hdst.",
+      "description": "½ t. thr. hdst.",
       "difficulty": "A",
       "value": 0.1
     },
     {
       "element": 20,
-      "description": "Flying giant swing fwd. or with \u00bd turn.",
+      "description": "Flying giant swing fwd. or with ½ turn.",
       "difficulty": "B",
       "value": 0.2
     },
@@ -3185,7 +3197,7 @@
     },
     {
       "element": 37,
-      "description": "\u00bd t.bwd. thr. hdst.",
+      "description": "½ t.bwd. thr. hdst.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -3209,7 +3221,7 @@
     },
     {
       "element": 50,
-      "description": "Giant swing bwd. with hop \u00bd t. to el-grip.",
+      "description": "Giant swing bwd. with hop ½ t. to el-grip.",
       "difficulty": "B",
       "value": 0.2
     },
@@ -3257,7 +3269,7 @@
     },
     {
       "element": 74,
-      "description": "Steineman uprise w. \u00bd t. to support. (Ono)",
+      "description": "Steineman uprise w. ½ t. to support. (Ono)",
       "difficulty": "B",
       "value": 0.2
     },
@@ -3269,7 +3281,7 @@
     },
     {
       "element": 76,
-      "description": "Giant swing rw. bwd. (Czech giant swing) with \u00bd turn to fwd giant swing.",
+      "description": "Giant swing rw. bwd. (Czech giant swing) with ½ turn to fwd giant swing.",
       "difficulty": "D",
       "value": 0.4
     },
@@ -3281,7 +3293,7 @@
     },
     {
       "element": 3,
-      "description": "Back uprise and strad. hecht with \u00bd t. to hang. also w. \u00bd t. (Markelov) (Principi)",
+      "description": "Back uprise and strad. hecht with ½ t. to hang. also w. ½ t. (Markelov) (Principi)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -3293,19 +3305,19 @@
     },
     {
       "element": 9,
-      "description": "Markelov str. with legs together .also with \u00bd t. (Yamawaki) (Mu\u00f1oz - Pozzo)",
+      "description": "Markelov str. with legs together .also with ½ t. (Yamawaki) (Muñoz - Pozzo)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 15,
-      "description": "Swing fwd. and vault bwd. strad. to hang, also with \u00bd t. (Tkatchev) (Lynch)",
+      "description": "Swing fwd. and vault bwd. strad. to hang, also with ½ t. (Tkatchev) (Lynch)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 16,
-      "description": "Tkatchev straight, also with \u00bd t. to mix el-grip into back uprise to hdst. (Moznik)",
+      "description": "Tkatchev straight, also with ½ t. to mix el-grip into back uprise to hdst. (Moznik)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -3317,43 +3329,43 @@
     },
     {
       "element": 21,
-      "description": "Swing fwd. and vault bwd. piked to hang, also with \u00bd t. (Samiloglu)",
+      "description": "Swing fwd. and vault bwd. piked to hang, also with ½ t. (Samiloglu)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 23,
-      "description": "Tkatchev straddled \u00bd t. to double el-grip. (Kulesza)",
+      "description": "Tkatchev straddled ½ t. to double el-grip. (Kulesza)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 26,
-      "description": "Back uprise and piked vault with \u00bd t. to hang. (Voronin)",
+      "description": "Back uprise and piked vault with ½ t. to hang. (Voronin)",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 28,
-      "description": "Stalder or free hip circle bwd to Tkatchev straddle, also with \u00bd t. (Piatti)",
+      "description": "Stalder or free hip circle bwd to Tkatchev straddle, also with ½ t. (Piatti)",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 29,
-      "description": "Piatti straight. also with \u00bd t. to mix el-grip into back uprise to hdst. (Kierzkowski)",
+      "description": "Piatti straight. also with ½ t. to mix el-grip into back uprise to hdst. (Kierzkowski)",
       "difficulty": "E",
       "value": 0.5
     },
     {
       "element": 32,
-      "description": "Back uprise and rear vault with \u00bc t. to hang.",
+      "description": "Back uprise and rear vault with ¼ t. to hang.",
       "difficulty": "B",
       "value": 0.2
     },
     {
       "element": 34,
-      "description": "Piatti piked. also with \u00bd t.",
+      "description": "Piatti piked. also with ½ t.",
       "difficulty": "D",
       "value": 0.4
     },
@@ -3365,7 +3377,7 @@
     },
     {
       "element": 39,
-      "description": "Swing bwd. and salto fwd t. or strad. to hang, also from el-grip\u201d. (J\u00e4ger)",
+      "description": "Swing bwd. and salto fwd t. or strad. to hang, also from el-grip”. (Jäger)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -3413,13 +3425,13 @@
     },
     {
       "element": 57,
-      "description": "Swing fwd. \u00bd t. to salto fwd. strad. to hang. (Deltchev)",
+      "description": "Swing fwd. ½ t. to salto fwd. strad. to hang. (Deltchev)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 58,
-      "description": "Swing fwd. and salto bwd. piked w. \u00bd t. to hang, also from Czech giant. (Gienger) (Sapronenko)",
+      "description": "Swing fwd. and salto bwd. piked w. ½ t. to hang, also from Czech giant. (Gienger) (Sapronenko)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -3437,7 +3449,7 @@
     },
     {
       "element": 66,
-      "description": "Gaylord with \u00bd t. (Pegan) G",
+      "description": "Gaylord with ½ t. (Pegan) G",
       "difficulty": "F",
       "value": 0.6
     },
@@ -3461,13 +3473,13 @@
     },
     {
       "element": 82,
-      "description": "Salto bwd. \u00bd t. tucked over the bar.",
+      "description": "Salto bwd. ½ t. tucked over the bar.",
       "difficulty": "D",
       "value": 0.4
     },
     {
       "element": 83,
-      "description": "Salto bwd. \u00bd t. piked over the bar. (Gaylord 2)",
+      "description": "Salto bwd. ½ t. piked over the bar. (Gaylord 2)",
       "difficulty": "E",
       "value": 0.5
     },
@@ -3605,7 +3617,7 @@
     },
     {
       "element": 64,
-      "description": "Adler with \u00bd t. through hdst. in ovgr.",
+      "description": "Adler with ½ t. through hdst. in ovgr.",
       "difficulty": "D",
       "value": 0.4
     },
@@ -3647,7 +3659,7 @@
     },
     {
       "element": 87,
-      "description": "Steineman uprise w. stoop or to hdst. (K\u00f6ste)",
+      "description": "Steineman uprise w. stoop or to hdst. (Köste)",
       "difficulty": "C",
       "value": 0.3
     },
@@ -3683,13 +3695,13 @@
     },
     {
       "element": 105,
-      "description": "Stoop circle fwd. to straddle cut with \u00bd t. (Carballo)",
+      "description": "Stoop circle fwd. to straddle cut with ½ t. (Carballo)",
       "difficulty": "C",
       "value": 0.3
     },
     {
       "element": 106,
-      "description": "Carballo with \u00bd turn to mixed el-grip. (Quintero)",
+      "description": "Carballo with ½ turn to mixed el-grip. (Quintero)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -3701,7 +3713,7 @@
     },
     {
       "element": 1,
-      "description": "Salto fwd. piked or straight, also with \u00bd t.",
+      "description": "Salto fwd. piked or straight, also with ½ t.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -3719,13 +3731,13 @@
     },
     {
       "element": 6,
-      "description": "Triple salto fwd. t. or with \u00bd t. (Rumbutis) G",
+      "description": "Triple salto fwd. t. or with ½ t. (Rumbutis) G",
       "difficulty": "F",
       "value": 0.6
     },
     {
       "element": 9,
-      "description": "Double salto fwd. t. or p.or with \u00bd turn.",
+      "description": "Double salto fwd. t. or p.or with ½ turn.",
       "difficulty": "C",
       "value": 0.3
     },
@@ -3743,7 +3755,7 @@
     },
     {
       "element": 16,
-      "description": "Double salto fwd. str. or with \u00bd t. or over the bar (Roethlisberger 2)",
+      "description": "Double salto fwd. str. or with ½ t. or over the bar (Roethlisberger 2)",
       "difficulty": "D",
       "value": 0.4
     },
@@ -3755,7 +3767,7 @@
     },
     {
       "element": 21,
-      "description": "Double salto fwd. t. or p. or with \u00bd turn over the bar.",
+      "description": "Double salto fwd. t. or p. or with ½ turn over the bar.",
       "difficulty": "C",
       "value": 0.3
     },
@@ -3767,7 +3779,7 @@
     },
     {
       "element": 25,
-      "description": "Salto bwd. piked or str. also with \u00bd or 1/1 t.",
+      "description": "Salto bwd. piked or str. also with ½ or 1/1 t.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -3881,7 +3893,7 @@
     },
     {
       "element": 61,
-      "description": "Hecht strad., hecht or hecht w. \u00bd t.",
+      "description": "Hecht strad., hecht or hecht w. ½ t.",
       "difficulty": "A",
       "value": 0.1
     },
@@ -3898,4 +3910,83 @@
       "value": 0.4
     }
   ]
+};
+
+// Convert to application format and ensure correct values
+function convertToAppFormat(rawData) {
+  const converted = {};
+  
+  for (const [eventName, skills] of Object.entries(rawData)) {
+    converted[eventName] = skills.map(skill => {
+      let skillValue = skill.value;
+      
+      // For non-vault events, ensure value matches difficulty rating
+      if (eventName !== 'Vault' && skill.difficulty && difficultyValues[skill.difficulty]) {
+        skillValue = difficultyValues[skill.difficulty];
+      }
+      
+      return {
+        name: skill.description,
+        realName: skill.description,
+        difficulty: skill.difficulty,
+        value: skillValue,
+        element: skill.element || null,
+        isHeader: false
+      };
+    });
+  }
+  
+  return converted;
+}
+
+// Create the comprehensive skills database
+const skillsDatabase = convertToAppFormat(rawSkillsData);
+
+// Log the database statistics
+console.log('🏆 Comprehensive Skills Database Loaded:');
+Object.entries(skillsDatabase).forEach(([event, skills]) => {
+  console.log(`  ${event}: ${skills.length} skills`);
+  
+  // Show difficulty distribution
+  const diffCounts = {};
+  skills.forEach(skill => {
+    diffCounts[skill.difficulty] = (diffCounts[skill.difficulty] || 0) + 1;
+  });
+  console.log(`    Difficulties: ${Object.entries(diffCounts).map(([d, c]) => `${d}(${c})`).join(', ')}`);
+});
+
+const totalSkills = Object.values(skillsDatabase).reduce((sum, skills) => sum + skills.length, 0);
+console.log(`📊 Total: ${totalSkills} skills across all events`);
+
+// Verify high-difficulty skills have correct values
+console.log('🔍 Verifying high-difficulty skills (F+):');
+Object.entries(skillsDatabase).forEach(([event, skills]) => {
+  const highDiffSkills = skills.filter(s => ['F', 'G', 'H', 'I', 'J'].includes(s.difficulty));
+  if (highDiffSkills.length > 0) {
+    console.log(`  ${event}: ${highDiffSkills.length} high-difficulty skills`);
+    highDiffSkills.slice(0, 3).forEach(skill => {
+      console.log(`    ${skill.difficulty} (${skill.value}): ${skill.name.substring(0, 50)}...`);
+    });
+  }
+});
+
+// Export the skills database
+export { skillsDatabase };
+
+// Helper function to get skills for a specific event
+export function getSkillsForEvent(eventName) {
+    return skillsDatabase[eventName] || [];
+}
+
+// Helper function to search skills within an event
+export function searchSkills(eventName, query) {
+    const skills = getSkillsForEvent(eventName);
+    if (!query) return skills;
+
+    const searchTerm = query.toLowerCase();
+    return skills.filter(skill =>
+        skill.name && skill.name.toLowerCase().includes(searchTerm) ||
+        (skill.realName && skill.realName.toLowerCase().includes(searchTerm)) ||
+        skill.difficulty && skill.difficulty.toLowerCase().includes(searchTerm)
+    );
 }

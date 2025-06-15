@@ -1,6 +1,6 @@
 // FIG Code of Points 2025-2028 Skills Database
 // This database contains ALL skills from the official FIG Code of Points
-// Generated: 2025-06-15T20:47:57.702Z
+// Generated: 2025-06-15T20:28:04.111Z
 
 export const skills = {
   "Floor Exercise": [
@@ -14,8 +14,8 @@ export const skills = {
     {
       "name": "EG I: Non-acrobatic Elements",
       "realName": "EG I: Non-acrobatic Elements",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
@@ -648,8 +648,8 @@ export const skills = {
     {
       "name": "(Zapata 2)",
       "realName": "(Zapata 2)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Acrobatic elements forward"
     },
@@ -799,8 +799,8 @@ export const skills = {
     {
       "name": "Arabian jump bwd. to double salto fwd piked, also with",
       "realName": "Arabian jump bwd. to double salto fwd piked, also with",
-      "difficulty": "E",
-      "value": 0.5,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
@@ -847,8 +847,8 @@ export const skills = {
     {
       "name": "(Liukin)",
       "realName": "(Liukin)",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
@@ -863,8 +863,8 @@ export const skills = {
     {
       "name": "(Nagornyy)",
       "realName": "(Nagornyy)",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
@@ -902,8 +902,8 @@ export const skills = {
     {
       "name": "(Minami)",
       "realName": "(Minami)",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
@@ -990,8 +990,8 @@ export const skills = {
     {
       "name": "Also Hypolito",
       "realName": "Also Hypolito",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
@@ -1029,48 +1029,48 @@ export const skills = {
     {
       "name": "Double salto bwd. str. with 2/1 t.",
       "realName": "Double salto bwd. str. with 2/1 t.",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
       "name": "Double salto str. bwd. str w 5/2 t.",
       "realName": "Double salto str. bwd. str w 5/2 t.",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
       "name": "Double salto bwd. str. with 3/1 t.",
       "realName": "Double salto bwd. str. with 3/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
       "name": "(Shirai 3)",
       "realName": "(Shirai 3)",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
       "name": "Double salto bwd. str. with 7/2 t.",
       "realName": "Double salto bwd. str. with 7/2 t.",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
       "name": "(Jarman)",
       "realName": "(Jarman)",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
@@ -1188,8 +1188,8 @@ export const skills = {
     {
       "name": "(Goshima)",
       "realName": "(Goshima)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
     },
@@ -1237,8 +1237,8 @@ export const skills = {
     {
       "name": "EG I: Single leg swings and scissors",
       "realName": "EG I: Single leg swings and scissors",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
     },
@@ -3123,8 +3123,8 @@ export const skills = {
     {
       "name": "EG I: Kip and swing elements & swings through or to handstand",
       "realName": "EG I: Kip and swing elements & swings through or to handstand",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
@@ -3973,8 +3973,8 @@ export const skills = {
     {
       "name": "(Tulloch 2)",
       "realName": "(Tulloch 2)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -4140,8 +4140,8 @@ export const skills = {
     {
       "name": "(Carmona)",
       "realName": "(Carmona)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -4466,8 +4466,8 @@ export const skills = {
     {
       "name": "(Balandin 2)",
       "realName": "(Balandin 2)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -4956,8 +4956,8 @@ export const skills = {
     {
       "name": "Triple salto bwd. tucked.",
       "realName": "Triple salto bwd. tucked.",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -4972,8 +4972,8 @@ export const skills = {
     {
       "name": "(Whittenburg)",
       "realName": "(Whittenburg)",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -5043,16 +5043,16 @@ export const skills = {
     {
       "name": "Double salto bwd. straight with 3/2 or 2/1 t.",
       "realName": "Double salto bwd. straight with 3/2 or 2/1 t.",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "E",
+      "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
       "name": "Double salto bwd. tuck with 3/1 turn",
       "realName": "Double salto bwd. tuck with 3/1 turn",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     }
@@ -5454,8 +5454,8 @@ export const skills = {
     {
       "name": "EG I: Elements starting in upper arm position",
       "realName": "EG I: Elements starting in upper arm position",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Elements starting in upper arm position"
     },
@@ -5566,8 +5566,8 @@ export const skills = {
     {
       "name": "(Tsolakidis 1)",
       "realName": "(Tsolakidis 1)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG I: Elements starting in upper arm position"
     },
@@ -5662,8 +5662,8 @@ export const skills = {
     {
       "name": "(Dimitrenko)",
       "realName": "(Dimitrenko)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG I: Elements starting in upper arm position"
     },
@@ -6345,8 +6345,8 @@ export const skills = {
     {
       "name": "(Kuavita)",
       "realName": "(Kuavita)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Elements in support or through support on 2 bars"
     },
@@ -7212,8 +7212,8 @@ export const skills = {
     {
       "name": "Belle with 1/1 turn.",
       "realName": "Belle with 1/1 turn.",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Long swings in hang on 1 or 2 bars and Underswings"
     },
@@ -7355,8 +7355,8 @@ export const skills = {
     {
       "name": "(Esparza)",
       "realName": "(Esparza)",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Long swings in hang on 1 or 2 bars and Underswings"
     },
@@ -7666,8 +7666,8 @@ export const skills = {
     {
       "name": "(Yamamuro)",
       "realName": "(Yamamuro)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Long swings in hang on 1 or 2 bars and Underswings"
     },
@@ -7904,8 +7904,8 @@ export const skills = {
     {
       "name": "(Larduet)",
       "realName": "(Larduet)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -8023,8 +8023,8 @@ export const skills = {
     {
       "name": "(Hiroyuki Kato)",
       "realName": "(Hiroyuki Kato)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -8087,8 +8087,8 @@ export const skills = {
     {
       "name": "From hang on end, triple salto bwd. Tuck",
       "realName": "From hang on end, triple salto bwd. Tuck",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -8135,8 +8135,8 @@ export const skills = {
     {
       "name": "EG I: Long hang swings and turns",
       "realName": "EG I: Long hang swings and turns",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Long hang swings and turns"
     },
@@ -8523,8 +8523,8 @@ export const skills = {
     {
       "name": "(Wals trom)",
       "realName": "(Wals trom)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -8619,8 +8619,8 @@ export const skills = {
     {
       "name": "(Liukin)",
       "realName": "(Liukin)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -8754,8 +8754,8 @@ export const skills = {
     {
       "name": "(Suarez)",
       "realName": "(Suarez)",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -8778,8 +8778,8 @@ export const skills = {
     {
       "name": "(Jäger)",
       "realName": "(Jäger)",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "C",
+      "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -8826,16 +8826,16 @@ export const skills = {
     {
       "name": "(Winkler - Pogorelev)",
       "realName": "(Winkler - Pogorelev)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
     {
       "name": "Salto fwd. straight with 2/1 t. also from el grip.",
       "realName": "Salto fwd. straight with 2/1 t. also from el grip.",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -8937,8 +8937,8 @@ export const skills = {
     {
       "name": "(Deff)",
       "realName": "(Deff)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -8969,8 +8969,8 @@ export const skills = {
     {
       "name": "(Pegan)",
       "realName": "(Pegan)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -8985,8 +8985,8 @@ export const skills = {
     {
       "name": "(Koudinov)",
       "realName": "(Koudinov)",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -9040,8 +9040,8 @@ export const skills = {
     {
       "name": "(Maras)",
       "realName": "(Maras)",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -9088,8 +9088,8 @@ export const skills = {
     {
       "name": "(Bretschneider)",
       "realName": "(Bretschneider)",
-      "difficulty": "H",
-      "value": 0.8,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -9120,8 +9120,8 @@ export const skills = {
     {
       "name": "(Pineda - piked)",
       "realName": "(Pineda - piked)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -9159,8 +9159,8 @@ export const skills = {
     {
       "name": "(Shaham)",
       "realName": "(Shaham)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -9593,8 +9593,8 @@ export const skills = {
     {
       "name": "(Rumbutis)",
       "realName": "(Rumbutis)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -9784,8 +9784,8 @@ export const skills = {
     {
       "name": "Double salto bwd. str. with 3/1 t.",
       "realName": "Double salto bwd. str. with 3/1 t.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -9863,8 +9863,8 @@ export const skills = {
     {
       "name": "(Fardan)",
       "realName": "(Fardan)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -9927,8 +9927,8 @@ export const skills = {
     {
       "name": "(Belle)",
       "realName": "(Belle)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "F",
+      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
