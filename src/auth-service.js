@@ -466,48 +466,43 @@ class AuthService {
   }
 
   async loadUserGroups() {
-    if (!this.currentUser) {
+    if (!this.isFirebaseReady || !this.currentUser) {
       this.currentGroups = [];
       return [];
     }
-    // Fallback load groups from local when Firebase not ready
-    if (!this.isFirebaseReady) {
-      return this.currentGroups;
-    }
 
     try {
-      const userProfile = await this.getUserProfile();
-      const userGroups = userProfile?.groups || [];
-      
-      // Load detailed group information
-      const groupPromises = userGroups.map(async (userGroup) => {
-        const groupDoc = await this.db.collection('groups').doc(userGroup.groupId).get();
-        if (groupDoc.exists) {
-          return {
-            id: userGroup.groupId,
-            ...groupDoc.data(),
-            userRole: userGroup.role
-          };
-        }
-        return null;
-      });
+      const userDoc = await this.db.collection('users').doc(this.currentUser.uid).get();
+      if (!userDoc.exists) {
+        console.log('No user document found for group lookup.');
+        this.currentGroups = [];
+        return [];
+      }
 
-      const groups = (await Promise.all(groupPromises)).filter(group => group !== null);
+      const groupIds = userDoc.data().groups || [];
+      if (groupIds.length === 0) {
+        this.currentGroups = [];
+        return [];
+      }
+
+      // Efficiently fetch all groups in a single query
+      const groupsQuery = this.db.collection('groups').where(firebase.firestore.FieldPath.documentId(), 'in', groupIds);
+      const groupSnapshot = await groupsQuery.get();
+      
+      const groups = groupSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
       this.currentGroups = groups;
       
-      return groups;
+      console.log(`Loaded ${this.currentGroups.length} groups.`);
+      return this.currentGroups;
     } catch (error) {
-      console.error('Error loading user groups:', error);
+      console.error('Error loading user groups with "in" query:', error);
       this.currentGroups = [];
       return [];
     }
   }
 
   async getGroupMembers(groupId) {
-    if (!this.isFirebaseReady) {
-      const group = this.currentGroups.find(g => g.id === groupId);
-      return group ? group.members : [];
-    }
+    if (!this.isFirebaseReady) return [];
 
     try {
       const groupDoc = await this.db.collection('groups').doc(groupId).get();
