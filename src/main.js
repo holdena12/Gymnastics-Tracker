@@ -2629,20 +2629,24 @@ class GymnasticsTracker {
   // ========================================
   
   async showGroupsModal() {
+    if (!this.authService || !this.authService.isSignedIn()) {
+      this.showNotification('Please sign in to view your teams.', 'error');
+      return;
+    }
+
     const modal = document.getElementById('groups-modal');
     modal.style.display = 'block';
 
-    if (this.authService) {
-      const groups = await this.authService.getUserGroups();
+    try {
+      const groups = await this.authService.loadUserGroups();
       this.renderGroupsList(groups);
+    } catch (error) {
+      console.error('Error loading groups:', error);
+      const listElement = document.getElementById('groups-list');
+      if (listElement) {
+        listElement.innerHTML = `<p class="error-message">Could not load teams. Please try again later.</p>`;
+      }
     }
-
-    // Add event listeners for the new buttons
-    document.getElementById('create-group-btn').addEventListener('click', () => this.showCreateGroupModal());
-    document.getElementById('join-group-btn').addEventListener('click', () => this.showJoinGroupModal());
-    document.querySelector('.close-groups-modal').addEventListener('click', () => {
-      modal.style.display = 'none';
-    });
   }
 
   renderGroupsList(groups) {
@@ -2655,93 +2659,45 @@ class GymnasticsTracker {
     }
 
     listElement.innerHTML = groups.map(group => `
-      <div class="group-item">
-        <span>${group.name}</span>
-        <button class="view-group-btn" data-group-id="${group.id}">View</button>
+      <div class="group-item" data-group-id="${group.id}">
+        <div class="group-header">
+          <h3 class="group-name">${group.name}</h3>
+          <div class="group-role-badge ${group.userRole || 'member'}">${group.userRole || 'member'}</div>
+        </div>
+        <div class="group-actions">
+          <button class="view-routines-btn" data-group-id="${group.id}">View Routines</button>
+          <button class="group-details-btn" data-group-id="${group.id}">Details</button>
+        </div>
       </div>
     `).join('');
-
-    // Add event listeners for the view buttons
-    listElement.querySelectorAll('.view-group-btn').forEach(button => {
-      button.addEventListener('click', (event) => {
-        const groupId = event.target.dataset.groupId;
-        this.showGroupDetailsModal(groupId);
-      });
-    });
   }
 
-  async showGroupsModal() {
-    if (!this.authService || !this.authService.isSignedIn()) {
-      this.showNotification('Please sign in to use team features', 'warning');
-      return;
-    }
-
-    try {
-      // Load user's groups
-      const groups = await this.authService.loadUserGroups();
-      this.currentGroups = groups;
-      
-      const groupsList = document.getElementById('user-groups-list');
-      
-      if (groups.length === 0) {
-        groupsList.innerHTML = `
-          <div class="empty-state">
-            <div class="empty-state-icon">👥</div>
-            <div class="empty-state-text">No teams yet</div>
-            <p>Create a team or join one with an invite code to collaborate with others!</p>
-          </div>
-        `;
-      } else {
-        groupsList.innerHTML = groups.map(group => `
-          <div class="group-card" data-group-id="${group.id}">
-            <div class="group-header">
-              <h3 class="group-name">${group.name}</h3>
-              <div class="group-role-badge ${group.userRole}">${group.userRole}</div>
-            </div>
-            <div class="group-description">${group.description || 'No description'}</div>
-            <div class="group-stats">
-              <span class="group-members">👥 ${group.memberCount || 0} members</span>
-              <span class="group-created">📅 ${this.formatDate(group.createdAt?.toDate?.() || group.createdAt)}</span>
-            </div>
-            <div class="group-actions">
-              <button class="view-routines-btn" data-group-id="${group.id}">View Routines</button>
-              <button class="group-details-btn" data-group-id="${group.id}">Details</button>
-              ${group.userRole === 'admin' ? `<button class="share-invite-btn" data-group-id="${group.id}">Share Invite</button>` : ''}
-              <button class="leave-group-btn" data-group-id="${group.id}">Leave</button>
-            </div>
-          </div>
-        `).join('');
-        
-        // Add event listeners for group actions
-        this.setupGroupActionListeners();
-      }
-      
-      document.getElementById('groups-modal').style.display = 'block';
-    } catch (error) {
-      console.error('Error loading groups:', error);
-      this.showNotification('Error loading teams', 'warning');
-    }
-  }
-  
   setupGroupActionListeners() {
-    const groupsList = document.getElementById('user-groups-list');
-    
-    groupsList.addEventListener('click', (e) => {
-      const groupId = e.target.dataset.groupId;
-      if (!groupId) return;
-      
-      if (e.target.classList.contains('view-routines-btn')) {
-        this.showGroupRoutinesModal(groupId);
-      } else if (e.target.classList.contains('group-details-btn')) {
-        this.showGroupDetailsModal(groupId);
-      } else if (e.target.classList.contains('share-invite-btn')) {
-        this.showInviteModal(groupId);
-      } else if (e.target.classList.contains('leave-group-btn')) {
-        this.confirmLeaveGroup(groupId);
-      }
+    // Event delegation for group actions
+    const groupsModal = document.getElementById('groups-modal');
+    if (groupsModal) {
+      groupsModal.addEventListener('click', (e) => {
+        const target = e.target;
+        const groupId = target.closest('.group-item')?.dataset.groupId;
+
+        if (!groupId) return;
+
+        if (target.classList.contains('view-routines-btn')) {
+          this.showGroupRoutinesModal(groupId);
+        } else if (target.classList.contains('group-details-btn')) {
+          this.showGroupDetailsModal(groupId);
+        }
+      });
+    }
+
+    // Main action buttons
+    document.getElementById('create-group-btn')?.addEventListener('click', () => this.showCreateGroupModal());
+    document.getElementById('join-group-btn')?.addEventListener('click', () => this.showJoinGroupModal());
+    document.querySelector('.close-groups-modal')?.addEventListener('click', () => {
+      document.getElementById('groups-modal').style.display = 'none';
     });
   }
-  
+
   showCreateGroupModal() {
     if (!this.authService || !this.authService.isSignedIn()) {
       this.showNotification('Please sign in to create a team', 'warning');
