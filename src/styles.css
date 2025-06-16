@@ -3574,3 +3574,58 @@ select:focus-visible {
 .success-animation {
   animation: successPulse 0.6s ease-out;
 }
+
+/* ========================================
+   GROUP/TEAM MANAGEMENT MODALS
+======================================== */
+#groups-list {
+  margin-top: 20px;
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+.group-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--surface-secondary);
+  padding: 15px;
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+  border-left: 4px solid var(--accent-primary);
+}
+
+.group-header {
+  flex-grow: 1;
+}
+
+.group-name {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.group-role-badge {
+  font-size: 0.8rem;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-secondary);
+  color: var(--text-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-left: 10px;
+}
+
+.group-actions button {
+  margin-left: 10px;
+}
+
+#create-group-btn,
+#join-group-btn {
+  margin-top: 15px;
+  width: calc(50% - 10px);
+}
+.groups-actions {
+  display: flex;
+  justify-content: space-between;
+}

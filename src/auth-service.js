@@ -331,50 +331,37 @@ class AuthService {
     if (!this.currentUser) {
       return { success: false, error: 'Authentication required' };
     }
-    // Fallback local group join when Firebase not ready
+
     if (!this.isFirebaseReady) {
-      const group = this.currentGroups.find(g => g.inviteCode === inviteCode.toUpperCase());
-      if (!group) {
-        return { success: false, error: 'Invalid invite code' };
-      }
-      const isMember = group.members.some(m => m.userId === this.currentUser.uid);
-      if (isMember) {
-        return { success: false, error: 'You are already a member of this group' };
-      }
-      const newMember = {
-        userId: this.currentUser.uid,
-        email: this.currentUser.email,
-        displayName: this.currentUser.displayName || this.currentUser.email,
-        role: 'member',
-        joinedAt: new Date().toISOString()
-      };
-      group.members.push(newMember);
-      group.memberCount = group.members.length;
-      return { success: true, groupName: group.name };
+      // Fallback for local development
+      return { success: false, error: 'Online connection is required to join a team.' };
     }
 
     try {
-      // Find group by invite code
       const groupQuery = await this.db.collection('groups')
         .where('inviteCode', '==', inviteCode.toUpperCase())
         .limit(1)
         .get();
 
       if (groupQuery.empty) {
-        return { success: false, error: 'Invalid invite code' };
+        return { success: false, error: 'Invalid or expired invite code.' };
       }
 
       const groupDoc = groupQuery.docs[0];
       const groupData = groupDoc.data();
       const groupId = groupDoc.id;
 
-      // Check if user is already a member
-      const isMember = groupData.members.some(member => member.userId === this.currentUser.uid);
-      if (isMember) {
-        return { success: false, error: 'You are already a member of this group' };
+      if (groupData.members.some(member => member.userId === this.currentUser.uid)) {
+        return { success: false, error: 'You are already a member of this team.' };
       }
+      
+      const userDocRef = this.db.collection('users').doc(this.currentUser.uid);
+      const groupDocRef = this.db.collection('groups').doc(groupId);
 
-      // Add user to group
+      // Use a batched write to perform atomic updates
+      const batch = this.db.batch();
+
+      // 1. Add user to the group's member list
       const newMember = {
         userId: this.currentUser.uid,
         email: this.currentUser.email,
@@ -382,28 +369,31 @@ class AuthService {
         role: 'member',
         joinedAt: firebase.firestore.FieldValue.serverTimestamp()
       };
-
-      await this.db.collection('groups').doc(groupId).update({
+      batch.update(groupDocRef, {
         members: firebase.firestore.FieldValue.arrayUnion(newMember),
         memberCount: firebase.firestore.FieldValue.increment(1)
       });
 
-      // Add group to user's groups
-      await this.db.collection('users').doc(this.currentUser.uid).update({
-        groups: firebase.firestore.FieldValue.arrayUnion({
-          groupId: groupId,
-          groupName: groupData.name,
-          role: 'member',
-          joinedAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
+      // 2. Add group to the user's profile
+      const userGroupData = {
+        groupId: groupId,
+        groupName: groupData.name,
+        role: 'member',
+        joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      batch.update(userDocRef, {
+        groups: firebase.firestore.FieldValue.arrayUnion(userGroupData)
       });
+
+      // Commit the batch
+      await batch.commit();
 
       await this.loadUserGroups();
       
       return { success: true, groupName: groupData.name };
     } catch (error) {
-      console.error('Error joining group:', error);
-      return { success: false, error: error.message };
+      console.error('Error joining group by code:', error);
+      return { success: false, error: 'Failed to join the team. Please try again.' };
     }
   }
 
