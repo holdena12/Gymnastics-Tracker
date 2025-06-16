@@ -259,141 +259,118 @@ class AuthService {
   // ========================================
 
   async createGroup(groupName, description = '', isPrivate = false) {
-    if (!this.currentUser) {
-      return { success: false, error: 'Authentication required' };
+    if (!this.currentUser || !this.isFirebaseReady) {
+      return { success: false, error: 'Authentication required and must be online.' };
     }
-    // Fallback local group creation when Firebase not ready
-    if (!this.isFirebaseReady) {
-      const inviteCode = this.generateInviteCode();
-      const group = {
-        id: inviteCode,
-        name: groupName,
-        description,
-        isPrivate,
-        createdBy: this.currentUser.uid,
-        createdAt: new Date().toISOString(),
-        members: [{
-          userId: this.currentUser.uid,
-          email: this.currentUser.email,
-          displayName: this.currentUser.displayName || this.currentUser.email,
-          role: 'admin',
-          joinedAt: new Date().toISOString()
-        }],
-        inviteCode,
-        memberCount: 1,
-        userRole: 'admin'
-      };
-      this.currentGroups.push(group);
-      return { success: true, groupId: inviteCode, inviteCode };
-    }
+
+    const batch = this.db.batch();
+    const groupRef = this.db.collection('groups').doc(); // Create a new document reference
+    const inviteCode = this.generateInviteCode();
+    
+    // 1. Define Group Data
+    const groupData = {
+      name: groupName,
+      description,
+      isPrivate,
+      createdBy: this.currentUser.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      members: [{
+        userId: this.currentUser.uid,
+        email: this.currentUser.email,
+        displayName: this.currentUser.displayName || this.currentUser.email,
+        role: 'admin',
+        joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }],
+      inviteCode, // For display purposes, not for joining
+      memberCount: 1
+    };
+    batch.set(groupRef, groupData);
+
+    // 2. Create a document in the 'invites' collection
+    const inviteRef = this.db.collection('invites').doc(inviteCode);
+    batch.set(inviteRef, {
+      groupId: groupRef.id,
+      groupName: groupName,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    
+    // 3. Add group to the user's profile
+    const userRef = this.db.collection('users').doc(this.currentUser.uid);
+    batch.update(userRef, {
+      groups: firebase.firestore.FieldValue.arrayUnion({
+        groupId: groupRef.id,
+        groupName: groupName,
+        role: 'admin'
+      })
+    });
 
     try {
-      const groupData = {
-        name: groupName,
-        description: description,
-        isPrivate: isPrivate,
-        createdBy: this.currentUser.uid,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-        members: [{
-          userId: this.currentUser.uid,
-          email: this.currentUser.email,
-          displayName: this.currentUser.displayName || this.currentUser.email,
-          role: 'admin',
-          joinedAt: firebase.firestore.FieldValue.serverTimestamp()
-        }],
-        inviteCode: this.generateInviteCode(),
-        memberCount: 1
-      };
-
-      const groupRef = await this.db.collection('groups').add(groupData);
-      const groupId = groupRef.id;
-
-      // Add group to user's groups
-      await this.db.collection('users').doc(this.currentUser.uid).update({
-        groups: firebase.firestore.FieldValue.arrayUnion({
-          groupId: groupId,
-          groupName: groupName,
-          role: 'admin',
-          joinedAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
-      });
-
+      await batch.commit();
       await this.loadUserGroups();
-      
-      return { success: true, groupId, inviteCode: groupData.inviteCode };
+      return { success: true, groupId: groupRef.id, inviteCode };
     } catch (error) {
-      console.error('Error creating group:', error);
-      return { success: false, error: error.message };
+      console.error('Error creating group with batch:', error);
+      return { success: false, error: 'Failed to create the team. Please try again.' };
     }
   }
 
   async joinGroupByCode(inviteCode) {
-    if (!this.currentUser) {
-      return { success: false, error: 'Authentication required' };
+    if (!this.currentUser || !this.isFirebaseReady) {
+      return { success: false, error: 'Authentication required and must be online.' };
     }
 
-    if (!this.isFirebaseReady) {
-      // Fallback for local development
-      return { success: false, error: 'Online connection is required to join a team.' };
-    }
+    const inviteRef = this.db.collection('invites').doc(inviteCode.toUpperCase());
 
     try {
-      const groupQuery = await this.db.collection('groups')
-        .where('inviteCode', '==', inviteCode.toUpperCase())
-        .limit(1)
-        .get();
-
-      if (groupQuery.empty) {
-        return { success: false, error: 'Invalid or expired invite code.' };
+      const inviteDoc = await inviteRef.get();
+      if (!inviteDoc.exists) {
+        return { success: false, error: 'Invalid invite code.' };
       }
 
-      const groupDoc = groupQuery.docs[0];
-      const groupData = groupDoc.data();
-      const groupId = groupDoc.id;
+      const { groupId, groupName } = inviteDoc.data();
+      const groupRef = this.db.collection('groups').doc(groupId);
+      const userRef = this.db.collection('users').doc(this.currentUser.uid);
 
-      if (groupData.members.some(member => member.userId === this.currentUser.uid)) {
-        return { success: false, error: 'You are already a member of this team.' };
-      }
-      
-      const userDocRef = this.db.collection('users').doc(this.currentUser.uid);
-      const groupDocRef = this.db.collection('groups').doc(groupId);
+      // Use a transaction to safely check membership before joining
+      await this.db.runTransaction(async (transaction) => {
+        const groupDoc = await transaction.get(groupRef);
+        if (!groupDoc.exists) {
+          throw new Error("This team no longer exists.");
+        }
 
-      // Use a batched write to perform atomic updates
-      const batch = this.db.batch();
+        const groupData = groupDoc.data();
+        if (groupData.members.some(member => member.userId === this.currentUser.uid)) {
+          throw new Error("You are already a member of this team.");
+        }
 
-      // 1. Add user to the group's member list
-      const newMember = {
-        userId: this.currentUser.uid,
-        email: this.currentUser.email,
-        displayName: this.currentUser.displayName || this.currentUser.email,
-        role: 'member',
-        joinedAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
-      batch.update(groupDocRef, {
-        members: firebase.firestore.FieldValue.arrayUnion(newMember),
-        memberCount: firebase.firestore.FieldValue.increment(1)
+        // Add user to group and group to user in one transaction
+        const newMember = {
+          userId: this.currentUser.uid,
+          email: this.currentUser.email,
+          displayName: this.currentUser.displayName || this.currentUser.email,
+          role: 'member',
+          joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        transaction.update(groupRef, {
+          members: firebase.firestore.FieldValue.arrayUnion(newMember),
+          memberCount: firebase.firestore.FieldValue.increment(1)
+        });
+
+        transaction.update(userRef, {
+          groups: firebase.firestore.FieldValue.arrayUnion({
+            groupId: groupId,
+            groupName: groupName,
+            role: 'member'
+          })
+        });
       });
-
-      // 2. Add group to the user's profile
-      const userGroupData = {
-        groupId: groupId,
-        groupName: groupData.name,
-        role: 'member',
-        joinedAt: firebase.firestore.FieldValue.serverTimestamp()
-      };
-      batch.update(userDocRef, {
-        groups: firebase.firestore.FieldValue.arrayUnion(userGroupData)
-      });
-
-      // Commit the batch
-      await batch.commit();
 
       await this.loadUserGroups();
-      
-      return { success: true, groupName: groupData.name };
+      return { success: true, groupName: groupName };
+
     } catch (error) {
       console.error('Error joining group by code:', error);
-      return { success: false, error: 'Failed to join the team. Please try again.' };
+      return { success: false, error: error.message || 'Failed to join the team. Please try again.' };
     }
   }
 
