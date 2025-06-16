@@ -283,6 +283,7 @@ class AuthService {
         role: 'admin',
         joinedAt: firebase.firestore.FieldValue.serverTimestamp()
       }],
+      memberIds: [this.currentUser.uid], // For security rules
       inviteCode, // For display purposes, not for joining
       memberCount: 1
     };
@@ -355,6 +356,7 @@ class AuthService {
         };
         transaction.update(groupRef, {
           members: firebase.firestore.FieldValue.arrayUnion(newMember),
+          memberIds: firebase.firestore.FieldValue.arrayUnion(this.currentUser.uid), // For security rules
           memberCount: firebase.firestore.FieldValue.increment(1)
         });
 
@@ -413,6 +415,7 @@ class AuthService {
         // Update group
         await this.db.collection('groups').doc(groupId).update({
           members: updatedMembers,
+          memberIds: firebase.firestore.FieldValue.arrayRemove(this.currentUser.uid), // For security rules
           memberCount: firebase.firestore.FieldValue.increment(-1)
         });
       }
