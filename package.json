@@ -12,9 +12,8 @@
     "setup": "npm run install-firebase && echo 'Setup complete! Configure Firebase settings in firebase-config.js'"
   },
   "dependencies": {
-    "firebase": "^10.7.1"
+    "firebase": "^10.14.1"
   },
-  "devDependencies": {},
   "keywords": [
     "gymnastics",
     "skills-tracker",

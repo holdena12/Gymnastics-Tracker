@@ -7,12 +7,13 @@
 // Firebase configuration
 const firebaseConfig = {
   // These will be public in the frontend - that's normal for Firebase
-  apiKey: "your-api-key-here",
+  apiKey: "AIzaSyBMLRHEddKQVNyPXS85ZTi2WdfswaSZfN0",
   authDomain: "gymnastics-tracker.firebaseapp.com",
   projectId: "gymnastics-tracker",
-  storageBucket: "gymnastics-tracker.appspot.com",
-  messagingSenderId: "123456789",
-  appId: "your-app-id-here"
+  storageBucket: "gymnastics-tracker.firebasestorage.app",
+  messagingSenderId: "276755753225",
+  appId: "1:276755753225:web:08299a5b5d0c2a14b50bd8",
+  measurementId: "G-WXHN7DJ48R"
 };
 
 // Initialize Firebase (will be called after scripts load)
