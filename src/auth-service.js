@@ -11,8 +11,9 @@ class AuthService {
   }
 
   initializeAWS() {
-    if (typeof AWS === 'undefined' || !window.awsConfig) {
-      console.error('AWS SDK or aws-config.js not loaded.');
+    // Ensure required globals are present before continuing
+    if (typeof AWS === 'undefined' || !window.awsConfig || typeof AmazonCognitoIdentity === 'undefined') {
+      console.error('AWS SDK, Amazon Cognito Identity JS, or aws-config.js not loaded.');
       return;
     }
 
@@ -95,6 +96,9 @@ class AuthService {
   async signUp(email, password, fullName, gymnasticsLevel) {
     if (!this.isAwsReady) return { success: false, error: 'AWS service not ready.' };
 
+    // Generate a username that's not in email format (required when email alias is enabled)
+    const username = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+
     const attributeList = [
       new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }),
       new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: fullName }),
@@ -102,7 +106,7 @@ class AuthService {
     ];
 
     return new Promise((resolve) => {
-      this.pool.signUp(email, password, attributeList, null, (err, result) => {
+      this.pool.signUp(username, password, attributeList, null, (err, result) => {
         if (err) {
           console.error('Sign up error:', err);
           resolve({ success: false, error: err.message || JSON.stringify(err) });
@@ -161,6 +165,10 @@ class AuthService {
 
   isSignedIn() {
     return this.currentUser !== null;
+  }
+
+  getCurrentUser() {
+    return this.currentUser;
   }
   
   // ========================================

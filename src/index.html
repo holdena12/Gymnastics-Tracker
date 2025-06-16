@@ -6,12 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gymnastics Skills Tracker</title>
     
-    <!-- AWS SDK for JavaScript -->
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1148.0.min.js"></script>
+    <!-- AWS SDK and Cognito Scripts -->
+    <script src="vendor/aws-sdk.min.js"></script>
+    <script src="vendor/amazon-cognito-identity.min.js"></script>
+    
+    <!-- App Configuration -->
+    <script src="aws-config.js"></script>
+
+    <!-- Authentication Service -->
+    <script src="auth-service.js"></script>
     
     <!-- App Scripts -->
-    <script src="./aws-config.js"></script>
-    <script src="./auth-service.js"></script>
     <script src="./main.js" type="module"></script>
   </head>
 

@@ -25,3 +25,33 @@ console.log('🎯 Total skills:', Object.values(skillsDatabase).reduce((sum, ski
 
 // Export difficulty values for use in other modules
 export { DIFFICULTY_VALUES };
+
+// Search function for skills
+export function searchSkills(query, eventType = null) {
+  if (!query || query.length < 2) return [];
+  
+  const searchTerm = query.toLowerCase();
+  const results = [];
+  
+  const eventsToSearch = eventType ? [eventType] : Object.keys(skillsDatabase);
+  
+  eventsToSearch.forEach(event => {
+    if (skillsDatabase[event]) {
+      skillsDatabase[event].forEach(skill => {
+        if (skill.name && skill.name.toLowerCase().includes(searchTerm)) {
+          results.push({
+            ...skill,
+            event: event
+          });
+        }
+      });
+    }
+  });
+  
+  return results.slice(0, 50); // Limit results
+}
+
+// Get all skills for a specific event
+export function getSkillsForEvent(eventType) {
+  return skillsDatabase[eventType] || [];
+}

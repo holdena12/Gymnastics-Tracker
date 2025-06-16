@@ -1,5 +1,7 @@
 // Import skills database
-import { skillsDatabase, DIFFICULTY_VALUES } from './skills-database.js';
+import { searchSkills, getSkillsForEvent } from './skills-database.js';
+
+
 // Firebase auth service will be available globally via CDN scripts
 
 // Mobile Detection and CSS Loading
@@ -55,21 +57,10 @@ class GymnasticsTracker {
     
     // Core app properties
     this.currentUser = null;
-    this.isFirebaseReady = false; // New flag
-    this.isUserAuthenticated = false; // New flag
     this.userData = {
-      routines: {
-        floor: [],
-        pommel: [],
-        rings: [],
-        vault: [],
-        pbars: [],
-        hbar: []
-      },
+      routines: {},
       skills: {}
     };
-    // Difficulty letter to value mapping (A–J)
-    this.difficultyValues = DIFFICULTY_VALUES;
     this.currentEvent = '';
     this.currentRoutine = '';
     this.autoSaveInterval = null; // Track auto-save interval
@@ -97,24 +88,17 @@ class GymnasticsTracker {
     // Listen for auth state changes from Firebase
     window.addEventListener('authStateChanged', (event) => {
       const { isSignedIn, user, groups } = event.detail;
-      this.isUserAuthenticated = isSignedIn;
       if (isSignedIn) {
         this.currentUser = user;
         this.currentGroups = groups || [];
         this.loadUserData();
         this.showMainApp();
+        this.updateGroupUI(); // Update teams button
       } else {
         this.currentUser = null;
         this.currentGroups = [];
         this.showLoginPage();
       }
-      this.updateUIForAuthState(); // Update UI based on auth state
-    });
-
-    // Listen for Firebase readiness
-    window.addEventListener('firebaseReady', () => {
-      this.isFirebaseReady = true;
-      this.updateUIForAuthState(); // Update UI now that Firebase is ready
     });
   }
   
@@ -134,26 +118,6 @@ class GymnasticsTracker {
     if (!this.authService) {
       console.warn('AuthService not available. Some features may not work.');
     }
-  }
-
-  updateUIForAuthState() {
-    const isReady = this.isFirebaseReady && this.isUserAuthenticated;
-    const teamsButton = document.getElementById('teams-button');
-    const createGroupButton = document.querySelector('.create-group-btn');
-    const joinGroupButton = document.querySelector('.join-group-btn');
-
-    if (teamsButton) {
-      teamsButton.disabled = !isReady;
-      teamsButton.style.cursor = isReady ? 'pointer' : 'not-allowed';
-      teamsButton.title = isReady ? 'Manage your teams' : 'Connecting to server...';
-    }
-
-    // This logic can be expanded for other buttons
-    if (createGroupButton) createGroupButton.disabled = !isReady;
-    if (joinGroupButton) joinGroupButton.disabled = !isReady;
-    
-    // Also, update the group UI in general
-    this.updateGroupUI();
   }
 
   setupMobileFeatures() {
@@ -1362,20 +1326,6 @@ class GymnasticsTracker {
         });
       });
     }
-
-    // Skill Explorer button
-    const skillExplorerBtn = document.getElementById('skill-explorer-btn');
-    if (skillExplorerBtn) {
-      skillExplorerBtn.addEventListener('click', () => this.showSkillExplorer());
-    }
-
-    // Explorer modal close
-    const explorerModal = document.getElementById('skill-explorer-modal');
-    if (explorerModal) {
-      explorerModal.querySelector('.close').addEventListener('click', () => this.closeModal(explorerModal));
-    }
-
-    // Event & search listeners inside explorer modal will be set each time modal opens
   }
 
   // Utility Functions
@@ -1881,22 +1831,9 @@ class GymnasticsTracker {
 
   renderSkillsSearchResults(eventName, query) {
     const resultsContainer = document.getElementById('skills-search-results');
-    const skills = skillsDatabase[eventName] || [];
+    const skills = searchSkills(eventName, query);
     
-    // Filter skills based on search query
-    const filteredSkills = skills.filter(skill => {
-      if (skill.isHeader) return false;
-      if (!query) return true;
-      
-      const searchTerm = query.toLowerCase();
-      return (
-        skill.name.toLowerCase().includes(searchTerm) ||
-        skill.realName.toLowerCase().includes(searchTerm) ||
-        String(skill.difficulty).toLowerCase().includes(searchTerm)
-      );
-    });
-    
-    if (filteredSkills.length === 0) {
+    if (skills.length === 0) {
       resultsContainer.innerHTML = `
         <div class="empty-results">
           ${query ? `No skills found matching "${query}"` : `No skills available for ${eventName}`}
@@ -1905,18 +1842,17 @@ class GymnasticsTracker {
       return;
     }
     
-    resultsContainer.innerHTML = filteredSkills.map(skill => {
-      // Provide fallback for missing realName
+    resultsContainer.innerHTML = skills.map(skill => {
+      // Provide fallback for missing realName or description
       const skillDescription = skill.realName && skill.realName !== skill.name ? 
         skill.realName : 
-        `${eventName} skill`;
+        (skill.description || `${eventName} skill`);
       
       return `
         <div class="skill-item" data-skill-name="${skill.name}" data-skill-difficulty="${skill.difficulty}">
           <div class="skill-info-container">
             <div class="skill-name">${skill.name}</div>
             <div class="skill-real-name">${skillDescription}</div>
-            ${skill.elementGroup ? `<div class="skill-element-group">${skill.elementGroup}</div>` : ''}
           </div>
           <span class="skill-difficulty ${skill.difficulty}">${skill.difficulty}</span>
         </div>
@@ -2025,14 +1961,6 @@ class GymnasticsTracker {
       createdAt: new Date().toISOString()
     };
 
-    // Ensure the routines structure exists for this event
-    if (!this.userData.routines) {
-      this.userData.routines = {};
-    }
-    if (!this.userData.routines[this.currentEvent]) {
-      this.userData.routines[this.currentEvent] = [];
-    }
-
     this.userData.routines[this.currentEvent].push(routine);
     this.saveUserData();
     this.renderRoutines(this.currentEvent);
@@ -2043,69 +1971,70 @@ class GymnasticsTracker {
   // Skill Management
   handleSkillSubmit(event) {
     event.preventDefault();
-    
     const name = document.getElementById('skill-name').value;
-    const difficulty = document.getElementById('skill-difficulty').value;
     const targetDate = document.getElementById('skill-target-date').value;
     const notes = document.getElementById('skill-notes').value;
     
-    // Find the skill in the database to get its full details
-    const eventName = this.currentEvent;
-    const eventNameMap = {
-      'floor': 'Floor Exercise',
-      'pommel': 'Pommel Horse',
-      'rings': 'Still Rings',
-      'vault': 'Vault',
-      'pbars': 'Parallel Bars',
-      'hbar': 'High Bar'
-    };
-    const dbEventName = eventNameMap[eventName];
-    const skills = skillsDatabase[dbEventName] || [];
-    const dbSkill = skills.find(s => s.name === name && s.difficulty === difficulty);
+    // Check if a difficulty was set from database selection
+    const difficultyField = document.getElementById('skill-difficulty');
+    let difficulty = difficultyField ? difficultyField.value : null;
     
-    if (!dbSkill) {
-      this.showNotification('Skill not found in database', 'error');
+    // If no difficulty was set (manual entry), show error message
+    if (!difficulty) {
+      this.showNotification('Please select a skill from the database to ensure accurate difficulty rating.', 'warning');
       return;
     }
-    
-    const skill = {
-      id: this.currentSkillId || Date.now().toString(),
-      name: dbSkill.name,
-      realName: dbSkill.realName,
-      difficulty: dbSkill.difficulty,
-      value: dbSkill.value,
-      elementGroup: dbSkill.elementGroup,
-      targetDate,
-      notes,
-      progressions: [],
-      completed: false,
-      createdAt: new Date().toISOString()
-    };
-    
-    const routine = this.data[eventName].find(r => r.id === this.currentRoutineId);
+
+    const routine = this.userData.routines[this.currentEvent].find(r => r.id === this.currentRoutineId);
     if (!routine) {
       this.showNotification('Routine not found', 'error');
       return;
     }
-    
+
     if (this.currentSkillId) {
-      // Update existing skill
-      const index = routine.skills.findIndex(s => s.id === this.currentSkillId);
-      if (index !== -1) {
-        routine.skills[index] = { ...routine.skills[index], ...skill };
+      // Editing existing skill
+      const skill = routine.skills.find(s => s.id === this.currentSkillId);
+      if (skill) {
+        skill.name = name;
+        skill.targetDate = targetDate;
+        skill.notes = notes;
+        skill.difficulty = difficulty;
       }
     } else {
-      // Add new skill
+      // Adding new skill
+      // For vault, only allow one skill per routine
+      if (this.currentEvent === 'vault' && routine.skills.length > 0) {
+        this.showNotification('Vault routines can only have one skill. Please delete the existing skill first.', 'warning');
+        return;
+      }
+
+      const skill = {
+        id: Date.now().toString(),
+        name,
+        difficulty,
+        targetDate,
+        notes,
+        completed: false,
+        completedAt: null,
+        progressions: [],
+        createdAt: new Date().toISOString()
+      };
       routine.skills.push(skill);
     }
+
+    this.saveUserData();
     
-    this.saveData();
-    this.renderRoutineSkills(eventName, routine);
+    // Re-render appropriate view
+    if (this.currentPage === 'routine' && this.currentRoutineView) {
+      // Update the routine reference in currentRoutineView
+      this.currentRoutineView.routine = routine;
+      this.renderRoutinePage(this.currentRoutineView.eventType, routine);
+    } else {
+      this.renderRoutines(this.currentEvent);
+    }
+    
     this.closeModal(document.getElementById('skill-modal'));
-    this.showNotification(
-      this.currentSkillId ? 'Skill updated successfully' : 'Skill added successfully',
-      'success'
-    );
+    this.showNotification(`Skill ${this.currentSkillId ? 'updated' : 'added'} successfully`, 'success');
   }
 
   // Progression Management
@@ -2306,51 +2235,77 @@ class GymnasticsTracker {
   }
 
   renderSkill(eventType, routineId, skill, index) {
-    const skillElement = document.createElement('div');
-    skillElement.className = `skill-item ${skill.completed ? 'completed' : ''}`;
-    skillElement.dataset.skillId = skill.id;
+    const isCompleted = skill.completed;
+    const hasProgressions = skill.progressions && skill.progressions.length > 0;
+    const progressionProgress = this.calculateProgressionProgress(skill);
+    const isOverdueSkill = this.isOverdue(skill.targetDate);
     
-    // Get the skill's element group if available
-    const elementGroup = skill.elementGroup || '';
-    
-    skillElement.innerHTML = `
-      <div class="skill-order">${index + 1}</div>
-      <div class="skill-info">
-        <div class="skill-name">${skill.name}</div>
-        ${skill.realName && skill.realName !== skill.name ? 
-          `<div class="skill-real-name">${skill.realName}</div>` : ''}
-        ${elementGroup ? `<div class="skill-element-group">${elementGroup}</div>` : ''}
-        ${skill.notes ? `<div class="skill-notes">${skill.notes}</div>` : ''}
-      </div>
-      <div class="skill-difficulty ${skill.difficulty}">${skill.difficulty}</div>
-      <div class="skill-value">${skill.value}</div>
-      <div class="skill-actions">
-        <button class="toggle-skill" title="${skill.completed ? 'Mark as incomplete' : 'Mark as complete'}">
-          <i class="fas fa-${skill.completed ? 'check-circle' : 'circle'}"></i>
-        </button>
-        <button class="edit-skill" title="Edit skill">
-          <i class="fas fa-edit"></i>
-        </button>
-        <button class="delete-skill" title="Delete skill">
-          <i class="fas fa-trash"></i>
-        </button>
+    return `
+      <div class="skill-item ${isCompleted ? 'completed' : ''} ${isOverdueSkill ? 'overdue' : ''}" 
+           data-skill-id="${skill.id}" 
+           draggable="true">
+        <div class="skill-content">
+          <div class="skill-header">
+            <div class="skill-order-number" data-position="${index + 1}">${index + 1}</div>
+            <div class="skill-main-info">
+              <div class="skill-name-row">
+                <label class="skill-checkbox-container">
+                  <input type="checkbox" 
+                         class="skill-checkbox" 
+                         ${isCompleted ? 'checked' : ''}
+                         data-event="${eventType}"
+                         data-routine="${routineId}"
+                         data-skill="${skill.id}">
+                  <span class="skill-name">${skill.name}</span>
+                </label>
+                <span class="skill-difficulty ${skill.difficulty}">${skill.difficulty}</span>
+              </div>
+              ${skill.targetDate ? `
+                <div class="skill-target-date ${isOverdueSkill ? 'overdue' : ''}">
+                  Target: ${this.formatDate(skill.targetDate)}
+                </div>
+              ` : ''}
+              ${skill.notes ? `<div class="skill-notes">${skill.notes}</div>` : ''}
+            </div>
+          </div>
+          
+          ${hasProgressions ? `
+            <div class="progressions-section">
+              <div class="progressions-header">
+                <span class="progressions-title">Progression Steps</span>
+                <div class="progressions-progress">
+                  <span class="progress-text">${progressionProgress.completed}/${progressionProgress.total} completed (${progressionProgress.percentage}%)</span>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: ${progressionProgress.percentage}%"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="progressions-list">
+                ${skill.progressions.map(progression => this.renderProgression(eventType, routineId, skill.id, progression)).join('')}
+              </div>
+            </div>
+          ` : ''}
+          
+          <div class="skill-actions">
+            <button class="skill-action-btn edit-skill-btn" title="Edit skill">
+              ✏️ Edit
+            </button>
+            <button class="skill-action-btn" onclick="gymnasticsTracker.showProgressionModal('${eventType}', '${routineId}', '${skill.id}')" title="Add progression step">
+              ➕ Add Step
+            </button>
+            <button class="skill-action-btn move-up-btn" onclick="gymnasticsTracker.moveSkillUp('${eventType}', '${routineId}', ${index})" title="Move up" ${index === 0 ? 'disabled' : ''}>
+              ⬆️
+            </button>
+            <button class="skill-action-btn move-down-btn" onclick="gymnasticsTracker.moveSkillDown('${eventType}', '${routineId}', ${index})" title="Move down">
+              ⬇️
+            </button>
+            <button class="skill-action-btn delete-btn" onclick="gymnasticsTracker.deleteSkill('${eventType}', '${routineId}', '${skill.id}')" title="Delete skill">
+              🗑️
+            </button>
+          </div>
+        </div>
       </div>
     `;
-    
-    // Add event listeners
-    skillElement.querySelector('.toggle-skill').addEventListener('click', () => {
-      this.toggleSkill(eventType, routineId, skill.id);
-    });
-    
-    skillElement.querySelector('.edit-skill').addEventListener('click', () => {
-      this.showSkillModal(eventType, routineId, skill.id);
-    });
-    
-    skillElement.querySelector('.delete-skill').addEventListener('click', () => {
-      this.deleteSkill(eventType, routineId, skill.id);
-    });
-    
-    return skillElement;
   }
 
   renderProgression(eventType, routineId, skillId, progression) {
@@ -2658,74 +2613,77 @@ class GymnasticsTracker {
   // ========================================
   
   async showGroupsModal() {
-    if (!this.isFirebaseReady || !this.isUserAuthenticated) {
-      this.showNotification('Please wait until connection is established.', 'error');
+    if (!this.authService || !this.authService.isSignedIn()) {
+      this.showNotification('Please sign in to use team features', 'warning');
       return;
     }
-    const groupsModal = document.getElementById('groups-modal');
-    modal.style.display = 'block';
 
     try {
+      // Load user's groups
       const groups = await this.authService.loadUserGroups();
-      this.renderGroupsList(groups);
+      this.currentGroups = groups;
+      
+      const groupsList = document.getElementById('user-groups-list');
+      
+      if (groups.length === 0) {
+        groupsList.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">👥</div>
+            <div class="empty-state-text">No teams yet</div>
+            <p>Create a team or join one with an invite code to collaborate with others!</p>
+          </div>
+        `;
+      } else {
+        groupsList.innerHTML = groups.map(group => `
+          <div class="group-card" data-group-id="${group.id}">
+            <div class="group-header">
+              <h3 class="group-name">${group.name}</h3>
+              <div class="group-role-badge ${group.userRole}">${group.userRole}</div>
+            </div>
+            <div class="group-description">${group.description || 'No description'}</div>
+            <div class="group-stats">
+              <span class="group-members">👥 ${group.memberCount || 0} members</span>
+              <span class="group-created">📅 ${this.formatDate(group.createdAt?.toDate?.() || group.createdAt)}</span>
+            </div>
+            <div class="group-actions">
+              <button class="view-routines-btn" data-group-id="${group.id}">View Routines</button>
+              <button class="group-details-btn" data-group-id="${group.id}">Details</button>
+              ${group.userRole === 'admin' ? `<button class="share-invite-btn" data-group-id="${group.id}">Share Invite</button>` : ''}
+              <button class="leave-group-btn" data-group-id="${group.id}">Leave</button>
+            </div>
+          </div>
+        `).join('');
+        
+        // Add event listeners for group actions
+        this.setupGroupActionListeners();
+      }
+      
+      document.getElementById('groups-modal').style.display = 'block';
     } catch (error) {
       console.error('Error loading groups:', error);
-      const listElement = document.getElementById('groups-list');
-      if (listElement) {
-        listElement.innerHTML = `<p class="error-message">Could not load teams. Please try again later.</p>`;
-      }
+      this.showNotification('Error loading teams', 'warning');
     }
   }
-
-  renderGroupsList(groups) {
-    const listElement = document.getElementById('groups-list');
-    if (!listElement) return;
-
-    if (!groups || groups.length === 0) {
-      listElement.innerHTML = '<p>You are not a member of any teams yet.</p>';
-      return;
-    }
-
-    listElement.innerHTML = groups.map(group => `
-      <div class="group-item" data-group-id="${group.id}">
-        <div class="group-header">
-          <h3 class="group-name">${group.name}</h3>
-          <div class="group-role-badge ${group.userRole || 'member'}">${group.userRole || 'member'}</div>
-        </div>
-        <div class="group-actions">
-          <button class="view-routines-btn" data-group-id="${group.id}">View Routines</button>
-          <button class="group-details-btn" data-group-id="${group.id}">Details</button>
-        </div>
-      </div>
-    `).join('');
-  }
-
+  
   setupGroupActionListeners() {
-    // Event delegation for group actions
-    const groupsModal = document.getElementById('groups-modal');
-    if (groupsModal) {
-      groupsModal.addEventListener('click', (e) => {
-        const target = e.target;
-        const groupId = target.closest('.group-item')?.dataset.groupId;
-
-        if (!groupId) return;
-
-        if (target.classList.contains('view-routines-btn')) {
-          this.showGroupRoutinesModal(groupId);
-        } else if (target.classList.contains('group-details-btn')) {
-          this.showGroupDetailsModal(groupId);
-        }
-      });
-    }
-
-    // Main action buttons
-    document.getElementById('create-group-btn')?.addEventListener('click', () => this.showCreateGroupModal());
-    document.getElementById('join-group-btn')?.addEventListener('click', () => this.showJoinGroupModal());
-    document.querySelector('.close-groups-modal')?.addEventListener('click', () => {
-      document.getElementById('groups-modal').style.display = 'none';
+    const groupsList = document.getElementById('user-groups-list');
+    
+    groupsList.addEventListener('click', (e) => {
+      const groupId = e.target.dataset.groupId;
+      if (!groupId) return;
+      
+      if (e.target.classList.contains('view-routines-btn')) {
+        this.showGroupRoutinesModal(groupId);
+      } else if (e.target.classList.contains('group-details-btn')) {
+        this.showGroupDetailsModal(groupId);
+      } else if (e.target.classList.contains('share-invite-btn')) {
+        this.showInviteModal(groupId);
+      } else if (e.target.classList.contains('leave-group-btn')) {
+        this.confirmLeaveGroup(groupId);
+      }
     });
   }
-
+  
   showCreateGroupModal() {
     if (!this.authService || !this.authService.isSignedIn()) {
       this.showNotification('Please sign in to create a team', 'warning');
@@ -3143,28 +3101,25 @@ class GymnasticsTracker {
   }
   
   updateGroupUI() {
-    const teamsButton = document.getElementById('teams-button');
-    if (!teamsButton) return;
-    
-    const isReady = this.isFirebaseReady && this.isUserAuthenticated;
-
-    if (!isReady) {
-      teamsButton.innerHTML = 'Teams <span class="badge">...</span>';
-      teamsButton.disabled = true;
-      return;
+    // Update the Teams button with group count
+    if (this.authService && this.authService.isSignedIn()) {
+      this.updateTeamsButtonCount();
     }
-
-    if (this.currentGroups && this.currentGroups.length > 0) {
-      teamsButton.innerHTML = `Teams <span class="badge">${this.currentGroups.length}</span>`;
-    } else {
-      teamsButton.innerHTML = 'Teams';
-    }
-    teamsButton.disabled = false;
   }
   
   async updateTeamsButtonCount() {
-    // This function is now mostly handled by updateGroupUI
-    this.updateGroupUI();
+    try {
+      const groups = await this.authService.loadUserGroups();
+      const teamsButton = document.getElementById('groups-btn');
+      
+      if (teamsButton && groups.length > 0) {
+        teamsButton.textContent = `Teams (${groups.length})`;
+      } else if (teamsButton) {
+        teamsButton.textContent = 'Teams';
+      }
+    } catch (error) {
+      console.error('Error updating teams count:', error);
+    }
   }
 
   // ========================================
@@ -3218,63 +3173,6 @@ class GymnasticsTracker {
   }
 
   // Data Management Methods
-  showSkillExplorer() {
-    const modal = document.getElementById('skill-explorer-modal');
-    if (!modal) return;
-
-    // Elements
-    const eventSelect = document.getElementById('explorer-event-select');
-    const searchInput = document.getElementById('explorer-search-input');
-    const resultsContainer = document.getElementById('explorer-results');
-
-    // Helper to render results
-    const renderResults = () => {
-      const eventName = eventSelect.value;
-      const query = searchInput.value.trim().toLowerCase();
-      const skills = (skillsDatabase[eventName] || []).filter(s => !s.isHeader);
-      const filtered = skills.filter(skill => {
-        if (!query) return true;
-        return (
-          skill.name.toLowerCase().includes(query) ||
-          (skill.realName || '').toLowerCase().includes(query) ||
-          String(skill.difficulty).toLowerCase().includes(query)
-        );
-      });
-
-      if (filtered.length === 0) {
-        resultsContainer.innerHTML = `<div class="empty-results">${query ? `No skills found for "${query}"` : 'No skills to display'}</div>`;
-        return;
-      }
-
-      resultsContainer.innerHTML = filtered.map(skill => `
-        <div class="skill-item readonly">
-          <div class="skill-info-container">
-            <div class="skill-name">${skill.name}</div>
-            ${skill.realName && skill.realName !== skill.name ? `<div class="skill-real-name">${skill.realName}</div>` : ''}
-            ${skill.elementGroup ? `<div class="skill-element-group">${skill.elementGroup}</div>` : ''}
-          </div>
-          <span class="skill-difficulty ${skill.difficulty}">${skill.difficulty}</span>
-        </div>
-      `).join('');
-    };
-
-    // Reset inputs
-    searchInput.value = '';
-    renderResults();
-
-    // Attach listeners (once)
-    if (!eventSelect.dataset.listenerAttached) {
-      eventSelect.addEventListener('change', renderResults);
-      eventSelect.dataset.listenerAttached = 'true';
-    }
-    if (!searchInput.dataset.listenerAttached) {
-      searchInput.addEventListener('input', renderResults);
-      searchInput.dataset.listenerAttached = 'true';
-    }
-
-    modal.style.display = 'block';
-    searchInput.focus();
-  }
 }
 
 // Initialize the app when DOM is loaded
