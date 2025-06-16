@@ -479,7 +479,9 @@ class AuthService {
         return [];
       }
 
-      const groupIds = userDoc.data().groups || [];
+      // Correctly extract just the group IDs from the user's group array
+      const groupIds = (userDoc.data().groups || []).map(g => g.groupId);
+
       if (groupIds.length === 0) {
         this.currentGroups = [];
         return [];
