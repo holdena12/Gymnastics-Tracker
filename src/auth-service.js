@@ -13,42 +13,37 @@ class AuthService {
     this.currentGroups = []; // User's groups
     this.groupListeners = new Map(); // Group data listeners
     
-    // Wait for Firebase to be loaded
-    this.waitForFirebase();
+    this.initializeFirebase();
   }
   
-  async waitForFirebase() {
-    // Wait for Firebase scripts to load
+  async initializeFirebase() {
+    // This function will be called by the constructor.
+    // It replaces the logic previously in waitForFirebase.
     let attempts = 0;
     const maxAttempts = 50; // 5 seconds max
     
     while (attempts < maxAttempts) {
       if (typeof firebase !== 'undefined' && window.initializeFirebase) {
         try {
-          this.isFirebaseReady = window.initializeFirebase();
-          if (this.isFirebaseReady) {
-            // Check if Firebase config has valid credentials
+          const isInitialized = window.initializeFirebase();
+          if (isInitialized) {
             const config = firebase.app().options;
-            if (config.apiKey && 
-                config.apiKey !== 'your-api-key-here' && 
-                config.authDomain && 
-                config.authDomain !== 'your-project-id.firebaseapp.com') {
-              
+            if (config.apiKey && config.apiKey !== 'your-api-key-here') {
               this.auth = firebase.auth();
               this.db = firebase.firestore();
+              this.isFirebaseReady = true;
               this.setupAuthStateListener();
-              console.log('Firebase initialized successfully with valid credentials');
-              break;
-            } else {
-              console.warn('Firebase has placeholder credentials, falling back to localStorage');
-              this.isFirebaseReady = false;
-              break;
+              console.log('Firebase initialized successfully.');
+              
+              // Dispatch the custom event to notify the app
+              window.dispatchEvent(new CustomEvent('firebaseReady'));
+              return; // Exit after successful initialization
             }
           }
         } catch (error) {
           console.warn('Firebase initialization failed:', error);
           this.isFirebaseReady = false;
-          break;
+          break; // Exit loop on error
         }
       }
       await new Promise(resolve => setTimeout(resolve, 100));
@@ -56,9 +51,16 @@ class AuthService {
     }
     
     if (!this.isFirebaseReady) {
-      console.warn('Firebase not available or has invalid credentials. Using localStorage fallback authentication.');
-      // Check for existing fallback authentication
+      console.warn('Firebase not available or has invalid credentials. Using localStorage fallback.');
       this.checkFallbackAuth();
+    }
+  }
+  
+  waitForFirebase() {
+    // This function is now deprecated and its logic is moved to initializeFirebase.
+    // It is kept for compatibility in case it's called elsewhere, but should be removed in the future.
+    if (!this.isFirebaseReady) {
+        console.warn("waitForFirebase is deprecated. Initialization is now handled in the constructor.");
     }
   }
 

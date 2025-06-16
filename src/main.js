@@ -55,6 +55,8 @@ class GymnasticsTracker {
     
     // Core app properties
     this.currentUser = null;
+    this.isFirebaseReady = false; // New flag
+    this.isUserAuthenticated = false; // New flag
     this.userData = {
       routines: {
         floor: [],
@@ -95,17 +97,24 @@ class GymnasticsTracker {
     // Listen for auth state changes from Firebase
     window.addEventListener('authStateChanged', (event) => {
       const { isSignedIn, user, groups } = event.detail;
+      this.isUserAuthenticated = isSignedIn;
       if (isSignedIn) {
         this.currentUser = user;
         this.currentGroups = groups || [];
         this.loadUserData();
         this.showMainApp();
-        this.updateGroupUI(); // Update teams button
       } else {
         this.currentUser = null;
         this.currentGroups = [];
         this.showLoginPage();
       }
+      this.updateUIForAuthState(); // Update UI based on auth state
+    });
+
+    // Listen for Firebase readiness
+    window.addEventListener('firebaseReady', () => {
+      this.isFirebaseReady = true;
+      this.updateUIForAuthState(); // Update UI now that Firebase is ready
     });
   }
   
@@ -125,6 +134,26 @@ class GymnasticsTracker {
     if (!this.authService) {
       console.warn('AuthService not available. Some features may not work.');
     }
+  }
+
+  updateUIForAuthState() {
+    const isReady = this.isFirebaseReady && this.isUserAuthenticated;
+    const teamsButton = document.getElementById('teams-button');
+    const createGroupButton = document.querySelector('.create-group-btn');
+    const joinGroupButton = document.querySelector('.join-group-btn');
+
+    if (teamsButton) {
+      teamsButton.disabled = !isReady;
+      teamsButton.style.cursor = isReady ? 'pointer' : 'not-allowed';
+      teamsButton.title = isReady ? 'Manage your teams' : 'Connecting to server...';
+    }
+
+    // This logic can be expanded for other buttons
+    if (createGroupButton) createGroupButton.disabled = !isReady;
+    if (joinGroupButton) joinGroupButton.disabled = !isReady;
+    
+    // Also, update the group UI in general
+    this.updateGroupUI();
   }
 
   setupMobileFeatures() {
@@ -2629,12 +2658,11 @@ class GymnasticsTracker {
   // ========================================
   
   async showGroupsModal() {
-    if (!this.authService || !this.authService.isSignedIn()) {
-      this.showNotification('Please sign in to view your teams.', 'error');
+    if (!this.isFirebaseReady || !this.isUserAuthenticated) {
+      this.showNotification('Please wait until connection is established.', 'error');
       return;
     }
-
-    const modal = document.getElementById('groups-modal');
+    const groupsModal = document.getElementById('groups-modal');
     modal.style.display = 'block';
 
     try {
@@ -3115,25 +3143,28 @@ class GymnasticsTracker {
   }
   
   updateGroupUI() {
-    // Update the Teams button with group count
-    if (this.authService && this.authService.isSignedIn()) {
-      this.updateTeamsButtonCount();
+    const teamsButton = document.getElementById('teams-button');
+    if (!teamsButton) return;
+    
+    const isReady = this.isFirebaseReady && this.isUserAuthenticated;
+
+    if (!isReady) {
+      teamsButton.innerHTML = 'Teams <span class="badge">...</span>';
+      teamsButton.disabled = true;
+      return;
     }
+
+    if (this.currentGroups && this.currentGroups.length > 0) {
+      teamsButton.innerHTML = `Teams <span class="badge">${this.currentGroups.length}</span>`;
+    } else {
+      teamsButton.innerHTML = 'Teams';
+    }
+    teamsButton.disabled = false;
   }
   
   async updateTeamsButtonCount() {
-    try {
-      const groups = await this.authService.loadUserGroups();
-      const teamsButton = document.getElementById('groups-btn');
-      
-      if (teamsButton && groups.length > 0) {
-        teamsButton.textContent = `Teams (${groups.length})`;
-      } else if (teamsButton) {
-        teamsButton.textContent = 'Teams';
-      }
-    } catch (error) {
-      console.error('Error updating teams count:', error);
-    }
+    // This function is now mostly handled by updateGroupUI
+    this.updateGroupUI();
   }
 
   // ========================================
