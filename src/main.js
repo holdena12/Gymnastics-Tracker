@@ -2629,6 +2629,48 @@ class GymnasticsTracker {
   // ========================================
   
   async showGroupsModal() {
+    const modal = document.getElementById('groups-modal');
+    modal.style.display = 'block';
+
+    if (this.authService) {
+      const groups = await this.authService.getUserGroups();
+      this.renderGroupsList(groups);
+    }
+
+    // Add event listeners for the new buttons
+    document.getElementById('create-group-btn').addEventListener('click', () => this.showCreateGroupModal());
+    document.getElementById('join-group-btn').addEventListener('click', () => this.showJoinGroupModal());
+    document.querySelector('.close-groups-modal').addEventListener('click', () => {
+      modal.style.display = 'none';
+    });
+  }
+
+  renderGroupsList(groups) {
+    const listElement = document.getElementById('groups-list');
+    if (!listElement) return;
+
+    if (!groups || groups.length === 0) {
+      listElement.innerHTML = '<p>You are not a member of any teams yet.</p>';
+      return;
+    }
+
+    listElement.innerHTML = groups.map(group => `
+      <div class="group-item">
+        <span>${group.name}</span>
+        <button class="view-group-btn" data-group-id="${group.id}">View</button>
+      </div>
+    `).join('');
+
+    // Add event listeners for the view buttons
+    listElement.querySelectorAll('.view-group-btn').forEach(button => {
+      button.addEventListener('click', (event) => {
+        const groupId = event.target.dataset.groupId;
+        this.showGroupDetailsModal(groupId);
+      });
+    });
+  }
+
+  async showGroupsModal() {
     if (!this.authService || !this.authService.isSignedIn()) {
       this.showNotification('Please sign in to use team features', 'warning');
       return;

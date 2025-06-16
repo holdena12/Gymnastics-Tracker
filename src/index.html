@@ -456,22 +456,12 @@
     <!-- Groups Overview Modal -->
     <div id="groups-modal" class="modal">
       <div class="modal-content">
-        <span class="close" id="groups-close">&times;</span>
-        <h2>Your Teams</h2>
-        <p class="modal-subtitle">Create teams, join groups, and collaborate on routines</p>
-
-        <!-- Groups Actions -->
+        <span class="close-groups-modal close">&times;</span>
+        <h2>My Teams</h2>
+        <div id="groups-list"></div>
         <div class="groups-actions">
-          <button id="create-group-btn" class="auth-btn">Create New Team</button>
-          <button id="join-group-btn" class="secondary-btn">Join Team with Code</button>
-        </div>
-
-        <!-- User's Groups List -->
-        <div class="groups-section">
-          <h3>Your Teams</h3>
-          <div id="user-groups-list">
-            <!-- Populated by JavaScript -->
-          </div>
+          <button id="create-group-btn">Create New Team</button>
+          <button id="join-group-btn">Join Team</button>
         </div>
       </div>
     </div>

@@ -333,7 +333,7 @@ class AuthService {
     }
     // Fallback local group join when Firebase not ready
     if (!this.isFirebaseReady) {
-      const group = this.currentGroups.find(g => g.inviteCode === inviteCode);
+      const group = this.currentGroups.find(g => g.inviteCode === inviteCode.toUpperCase());
       if (!group) {
         return { success: false, error: 'Invalid invite code' };
       }
