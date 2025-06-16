@@ -59,47 +59,53 @@ function cleanSkillName(text) {
     .replace(/^\d+\.\s*/, '') // Remove leading numbers
     .replace(/\n+/g, ' ') // Replace newlines with spaces
     .replace(/\s+/g, ' ') // Normalize spaces
+    .replace(/\s*\([A-J]\)$/, '') // Remove trailing difficulty indicator like (F)
     .trim();
 }
 
-function determineSkillDifficulty(skillText) {
+function determineSkillDifficulty(skillText, columnDifficulty = null) {
   if (!skillText) return null;
-  
-  // Look for a trailing difficulty letter optionally wrapped in parentheses or followed by punctuation
-  const difficultyMatch = skillText.match(/([FGHIJ])\s*(?:[)\.\*]*)$/i);
-  if (difficultyMatch) {
-    const difficulty = difficultyMatch[1].toUpperCase();
+
+  // Most reliable: explicit difficulty letter in parentheses, e.g., "Salto fwd tucked (F)"
+  const explicitMatch = skillText.match(/\(([A-J])\)/i);
+  if (explicitMatch) {
+    const difficulty = explicitMatch[1].toUpperCase();
+    return {
+      difficulty,
+      value: DIFFICULTY_VALUES[difficulty]
+    };
+  }
+
+  // Next reliable: trailing difficulty letter
+  const trailingMatch = skillText.match(/([FGHIJ])\s*(?:[)\.\*]*)$/i);
+  if (trailingMatch) {
+    const difficulty = trailingMatch[1].toUpperCase();
     return {
       difficulty,
       value: DIFFICULTY_VALUES[difficulty]
     };
   }
   
-  // Look for standalone difficulty letters anywhere in the skill name (G, H, I, J)
-  const standaloneMatch = skillText.match(/\b([GHIJ])\b(?![a-z])/i);
-  if (standaloneMatch) {
-    const difficulty = standaloneMatch[1].toUpperCase();
-    return {
-      difficulty,
-      value: DIFFICULTY_VALUES[difficulty]
-    };
-  }
-  
-  // Special case: Arabian jump bwd to double salto fwd piked should be E
+  // Special case for Arabian as requested
   if (/arabian.*jump.*bwd.*double.*salto.*fwd.*piked/i.test(skillText)) {
-    return {
-      difficulty: 'E',
-      value: 0.5
-    };
+    return { difficulty: 'E', value: 0.5 };
   }
-  
-  // Check for special high-difficulty skills
+
+  // Fallback to high-difficulty keyword map
   for (const [pattern, info] of Object.entries(HIGH_DIFFICULTY_SKILLS)) {
     if (new RegExp(pattern, 'i').test(skillText)) {
       return info;
     }
   }
-  
+
+  // Finally, use the column's difficulty if no other indicator was found
+  if (columnDifficulty) {
+      return {
+          difficulty: columnDifficulty.difficulty,
+          value: columnDifficulty.value
+      }
+  }
+
   return null;
 }
 
@@ -147,21 +153,24 @@ function parseEventSkills(eventData) {
       // Split cell into individual skill lines
       const lines = splitLines(cellText);
       for (const rawLine of lines) {
-        const cleaned = cleanSkillName(rawLine);
-        if (!cleaned) continue;
+        const originalText = rawLine.trim();
+        if (!originalText) continue;
+        
         // Skip lines that are just numbers or too short to be meaningful
-        if (/^\d+\.?$/.test(cleaned) || cleaned.length < 4) {
+        if (/^\d+\.?$/.test(originalText) || originalText.length < 4) {
           continue;
         }
 
-        // Detect explicit difficulty in the skill text (overrides column when present)
-        let finalDifficulty = difficulty;
-        let finalValue = value;
-        const diffInfo = determineSkillDifficulty(cleaned);
-        if (diffInfo) {
-          finalDifficulty = diffInfo.difficulty;
-          finalValue = diffInfo.value;
-        }
+        // Determine difficulty, prioritizing explicit text over column
+        const diffInfo = determineSkillDifficulty(originalText, { difficulty, value });
+        if (!diffInfo) continue; // Cannot determine difficulty, skip
+
+        const finalDifficulty = diffInfo.difficulty;
+        const finalValue = diffInfo.value;
+
+        // Clean the name AFTER difficulty extraction
+        const cleaned = cleanSkillName(originalText);
+        if (!cleaned) continue;
 
         // Avoid duplicates (same name & difficulty)
         const key = `${cleaned}__${finalDifficulty}`;
@@ -179,37 +188,6 @@ function parseEventSkills(eventData) {
         skills.push(skillObj);
         lastSkillObj = skillObj;
       }
-
-      // Check for standalone letter line following a description
-      for (let i = 0; i < lines.length; i++) {
-        const token = lines[i].trim();
-        if (/^[FGHIJ]$/i.test(token) && lastSkillObj) {
-          const letter = token.toUpperCase();
-          lastSkillObj.difficulty = letter;
-          lastSkillObj.value = DIFFICULTY_VALUES[letter];
-        }
-      }
-    }
-  }
-
-  // --- Post-process: fix F skills that mention higher letter in name ---
-  for (const sk of skills) {
-    if (sk.isHeader) continue;
-    
-    // For skills valued F and above, check if they have standalone letters G, H, I, J in name
-    if (sk.difficulty === 'F' || ['G', 'H', 'I', 'J'].includes(sk.difficulty)) {
-      const letterMatch = sk.name.match(/\b([GHIJ])\b(?![a-z])/i);
-      if (letterMatch) {
-        const letter = letterMatch[1].toUpperCase();
-        sk.difficulty = letter;
-        sk.value = DIFFICULTY_VALUES[letter] || sk.value;
-      }
-    }
-    
-    // Special case: Arabian jump bwd to double salto fwd piked should be E
-    if (/arabian.*jump.*bwd.*double.*salto.*fwd.*piked/i.test(sk.name)) {
-      sk.difficulty = 'E';
-      sk.value = 0.5;
     }
   }
 

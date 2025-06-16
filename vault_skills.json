@@ -1,0 +1,494 @@
+[
+  {
+    "element": 101,
+    "description": "Hdspr. tucked. 1/2t.(Cuervo t.)",
+    "difficulty": "2.4",
+    "value": 2.4
+  },
+  {
+    "element": 102,
+    "description": "Hdspr. tucked 1/1t.(Cuervo t.w.1/2t.)",
+    "difficulty": "2.8",
+    "value": 2.8
+  },
+  {
+    "element": 103,
+    "description": "Hdspr. tucked 3/2t.(Kroll)",
+    "difficulty": "3.2",
+    "value": 3.2
+  },
+  {
+    "element": 104,
+    "description": "Hdspr. tucked 2/1t.(Canbas)",
+    "difficulty": "3.6",
+    "value": 3.6
+  },
+  {
+    "element": 107,
+    "description": "Hdspr. Piked (Cuervo p.)",
+    "difficulty": "2.8",
+    "value": 2.8
+  },
+  {
+    "element": 108,
+    "description": "Hdspr. piked 1/1t.",
+    "difficulty": "3.2",
+    "value": 3.2
+  },
+  {
+    "element": 109,
+    "description": "Hdspr. piked 3/2t.",
+    "difficulty": "3.6",
+    "value": 3.6
+  },
+  {
+    "element": 113,
+    "description": "Hdspr. str. 1/2t.(Cuervo str.)",
+    "difficulty": "3.6",
+    "value": 3.6
+  },
+  {
+    "element": 114,
+    "description": "Hdspr. str. 1/1t.(Cuervo str.1/2t.)",
+    "difficulty": "4.0",
+    "value": 4.0
+  },
+  {
+    "element": 115,
+    "description": "Hdspr. str. 3/2t.(Lou Yun)",
+    "difficulty": "4.4",
+    "value": 4.4
+  },
+  {
+    "element": 116,
+    "description": "Hdspr. str. 2/1t.(Cuervo str.3/2t.)",
+    "difficulty": "4.8",
+    "value": 4.8
+  },
+  {
+    "element": 117,
+    "description": "Hdspr. str. 5/2t.(Yeo 2)",
+    "difficulty": "5.2",
+    "value": 5.2
+  },
+  {
+    "element": 118,
+    "description": "Hdspr. str. 3/1t.(Yang Hak Seon)",
+    "difficulty": "5.6",
+    "value": 5.6
+  },
+  {
+    "element": 119,
+    "description": "Tsuk. tucked 1/1t.(Kasamatsu)",
+    "difficulty": "2.4",
+    "value": 2.4
+  },
+  {
+    "element": 120,
+    "description": "Tsuk. tucked 3/2t.",
+    "difficulty": "2.8",
+    "value": 2.8
+  },
+  {
+    "element": 121,
+    "description": "Tsuk. tucked 2/1 t.(Barbieri)",
+    "difficulty": "3.2",
+    "value": 3.2
+  },
+  {
+    "element": 122,
+    "description": "Tsuk. tucked 5/2 t.",
+    "difficulty": "3.6",
+    "value": 3.6
+  },
+  {
+    "element": 125,
+    "description": "Tsuk. str. 1/1 t.",
+    "difficulty": "3.6",
+    "value": 3.6
+  },
+  {
+    "element": 126,
+    "description": "Tsuk. str. 3/2 t.",
+    "difficulty": "4.0",
+    "value": 4.0
+  },
+  {
+    "element": 127,
+    "description": "Tsuk. str. 2/1 t.(Akopian)",
+    "difficulty": "4.4",
+    "value": 4.4
+  },
+  {
+    "element": 131,
+    "description": "Tsuk. str. 5/2 t.(Driggs)",
+    "difficulty": "4.8",
+    "value": 4.8
+  },
+  {
+    "element": 132,
+    "description": "Tsuk. str. 3/1 t.(Lopez)",
+    "difficulty": "5.2",
+    "value": 5.2
+  },
+  {
+    "element": 133,
+    "description": "Tsuk. str. 7/2 t.(Yonekura)",
+    "difficulty": "5.6",
+    "value": 5.6
+  },
+  {
+    "element": 201,
+    "description": "Handspring",
+    "difficulty": "1.2",
+    "value": 1.2
+  },
+  {
+    "element": 202,
+    "description": "Hdspr. 1/2t.",
+    "difficulty": "1.4",
+    "value": 1.4
+  },
+  {
+    "element": 203,
+    "description": "Hdspr. 1/1t.",
+    "difficulty": "1.6",
+    "value": 1.6
+  },
+  {
+    "element": 204,
+    "description": "Hdspr. 3/2t.",
+    "difficulty": "1.8",
+    "value": 1.8
+  },
+  {
+    "element": 205,
+    "description": "Hdspr. 2/1t.",
+    "difficulty": "2.0",
+    "value": 2.0
+  },
+  {
+    "element": 206,
+    "description": "Hdspr. 5/2t.(Tsygnkov)",
+    "difficulty": "2.2",
+    "value": 2.2
+  },
+  {
+    "element": 207,
+    "description": "Hdspr. tucked.",
+    "difficulty": "2.0",
+    "value": 2.0
+  },
+  {
+    "element": 213,
+    "description": "Hdspr. piked.",
+    "difficulty": "2.4",
+    "value": 2.4
+  },
+  {
+    "element": 219,
+    "description": "Hdspr. str.",
+    "difficulty": "3.2",
+    "value": 3.2
+  },
+  {
+    "element": 225,
+    "description": "Hdspr. dbl. salto.(Roche)",
+    "difficulty": "4.8",
+    "value": 4.8
+  },
+  {
+    "element": 226,
+    "description": "Roche 1/2t.(Dragulescu)",
+    "difficulty": "5.2",
+    "value": 5.2
+  },
+  {
+    "element": 228,
+    "description": "Hdspr. 1/2t. bwd.(Zimmerman)",
+    "difficulty": "5.2",
+    "value": 5.2
+  },
+  {
+    "element": 231,
+    "description": "Hdspr. dbl. piked.(Blanik)",
+    "difficulty": "5.2",
+    "value": 5.2
+  },
+  {
+    "element": 232,
+    "description": "Dragulescu piked.(RI Se Gwang2)",
+    "difficulty": "5.6",
+    "value": 5.6
+  },
+  {
+    "element": 301,
+    "description": "Hdspr. sw. 1/4t.",
+    "difficulty": "1.2",
+    "value": 1.2
+  },
+  {
+    "element": 302,
+    "description": "Hdspr. 3/4t.",
+    "difficulty": "1.4",
+    "value": 1.4
+  },
+  {
+    "element": 303,
+    "description": "Hdspr. sw. 5/4t.",
+    "difficulty": "1.6",
+    "value": 1.6
+  },
+  {
+    "element": 307,
+    "description": "Tsuk. Tucked.(Tsukahara)",
+    "difficulty": "1.8",
+    "value": 1.8
+  },
+  {
+    "element": 308,
+    "description": "Tsuk. piked.",
+    "difficulty": "2.0",
+    "value": 2.0
+  },
+  {
+    "element": 309,
+    "description": "Tsuk. tucked 1/2t.",
+    "difficulty": "2.0",
+    "value": 2.0
+  },
+  {
+    "element": 313,
+    "description": "Tsuk. str.",
+    "difficulty": "2.8",
+    "value": 2.8
+  },
+  {
+    "element": 314,
+    "description": "Tsuk. str. 1/2t.",
+    "difficulty": "3.2",
+    "value": 3.2
+  },
+  {
+    "element": 319,
+    "description": "Tsuk. dbl. tucked.(Yeo)",
+    "difficulty": "4.8",
+    "value": 4.8
+  },
+  {
+    "element": 320,
+    "description": "Tsuk. dbl. piked.(Lu Yu Fu)",
+    "difficulty": "5.2",
+    "value": 5.2
+  },
+  {
+    "element": 321,
+    "description": "Tsuk. dbl. 1/1t.(Ri Se Gwang)",
+    "difficulty": "5.6",
+    "value": 5.6
+  },
+  {
+    "element": 401,
+    "description": "Yur. tucked 1/1t.",
+    "difficulty": "2.4",
+    "value": 2.4
+  },
+  {
+    "element": 402,
+    "description": "Yur. tucked 3/2t.",
+    "difficulty": "2.8",
+    "value": 2.8
+  },
+  {
+    "element": 403,
+    "description": "Yur. tucked 2/1t.",
+    "difficulty": "3.2",
+    "value": 3.2
+  },
+  {
+    "element": 404,
+    "description": "Yur. tucked 5/2t.",
+    "difficulty": "3.6",
+    "value": 3.6
+  },
+  {
+    "element": 405,
+    "description": "Yur. str. 1/1t.",
+    "difficulty": "3.6",
+    "value": 3.6
+  },
+  {
+    "element": 406,
+    "description": "Yur. str. 3/2t.",
+    "difficulty": "4.0",
+    "value": 4.0
+  },
+  {
+    "element": 407,
+    "description": "Yur. str. 2/1t.",
+    "difficulty": "4.4",
+    "value": 4.4
+  },
+  {
+    "element": 408,
+    "description": "Yur. str. 5/2t.(Shewfelt)",
+    "difficulty": "4.8",
+    "value": 4.8
+  },
+  {
+    "element": 409,
+    "description": "Yur. str. 3/1t.(Shirai, KIM Hee Hoon)",
+    "difficulty": "5.2",
+    "value": 5.2
+  },
+  {
+    "element": 410,
+    "description": "Yur. str. 7/2t.(Shirai 2)",
+    "difficulty": "5.6",
+    "value": 5.6
+  },
+  {
+    "element": 413,
+    "description": "Rou. off, 1/2t. tucked. 1/2t.",
+    "difficulty": "2.6",
+    "value": 2.6
+  },
+  {
+    "element": 414,
+    "description": "Rou. off, 1/2t. piked. 1/2t. (Nemov)",
+    "difficulty": "3.0",
+    "value": 3.0
+  },
+  {
+    "element": 415,
+    "description": "Rou. off, 1/2t. str. 1/2t.(Hutcheon)",
+    "difficulty": "3.8",
+    "value": 3.8
+  },
+  {
+    "element": 416,
+    "description": "Rou. off, 1/2t. str. 1/1t.",
+    "difficulty": "4.2",
+    "value": 4.2
+  },
+  {
+    "element": 417,
+    "description": "Rou. off, 1/2t. str. 3/2t.",
+    "difficulty": "4.6",
+    "value": 4.6
+  },
+  {
+    "element": 419,
+    "description": "Rou. off, 1/2t. str. 2/1t.",
+    "difficulty": "5.0",
+    "value": 5.0
+  },
+  {
+    "element": 420,
+    "description": "Rou. off, 1/2t. str. 5/2t.(Li Xiao Peng)",
+    "difficulty": "5.4",
+    "value": 5.4
+  },
+  {
+    "element": 501,
+    "description": "Rou. off, hdspr. bwd.",
+    "difficulty": "1.2",
+    "value": 1.2
+  },
+  {
+    "element": 502,
+    "description": "Rou. off, hdspr. bwd. 1/2t.",
+    "difficulty": "1.4",
+    "value": 1.4
+  },
+  {
+    "element": 503,
+    "description": "Rou. off, hdspr. bwd. 1/1t.",
+    "difficulty": "1.6",
+    "value": 1.6
+  },
+  {
+    "element": 507,
+    "description": "Rou. off, tucked salto.(Yurchenko)",
+    "difficulty": "1.8",
+    "value": 1.8
+  },
+  {
+    "element": 508,
+    "description": "Yur. tucked 1/2t.",
+    "difficulty": "2.0",
+    "value": 2.0
+  },
+  {
+    "element": 509,
+    "description": "Yur. piked.",
+    "difficulty": "2.0",
+    "value": 2.0
+  },
+  {
+    "element": 510,
+    "description": "Yur. str.",
+    "difficulty": "2.8",
+    "value": 2.8
+  },
+  {
+    "element": 511,
+    "description": "Yur. str. 1/2t.",
+    "difficulty": "3.2",
+    "value": 3.2
+  },
+  {
+    "element": 513,
+    "description": "Rou. off, 1/2t. hdspr.",
+    "difficulty": "1.4",
+    "value": 1.4
+  },
+  {
+    "element": 514,
+    "description": "Rou. off, 1/2t. hdspr. 1/2t.",
+    "difficulty": "1.6",
+    "value": 1.6
+  },
+  {
+    "element": 515,
+    "description": "Rou. off, 1/2t. hdspr. 1/1t.",
+    "difficulty": "1.8",
+    "value": 1.8
+  },
+  {
+    "element": 516,
+    "description": "Rou. off, 1/2t. tucked.",
+    "difficulty": "2.2",
+    "value": 2.2
+  },
+  {
+    "element": 517,
+    "description": "Rou. off, 1/2t. piked.",
+    "difficulty": "2.6",
+    "value": 2.6
+  },
+  {
+    "element": 518,
+    "description": "Rou. off, 1/2t. str.",
+    "difficulty": "3.4",
+    "value": 3.4
+  },
+  {
+    "element": 519,
+    "description": "Yur. dbl. tucked.(Melissanidis)",
+    "difficulty": "4.8",
+    "value": 4.8
+  },
+  {
+    "element": 520,
+    "description": "Yur. dbl. piked.(Yang Wei)",
+    "difficulty": "5.2",
+    "value": 5.2
+  },
+  {
+    "element": 521,
+    "description": "Rou. off, 1/2t. dbl. salto.",
+    "difficulty": "5.0",
+    "value": 5.0
+  }
+]

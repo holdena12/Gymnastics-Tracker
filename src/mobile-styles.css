@@ -337,9 +337,13 @@
 }
 
 .mobile-device .add-routine-btn {
-  /* Large, thumb-friendly button */
-  min-height: var(--mobile-touch-target-large);
-  padding: var(--mobile-spacing-md);
+  /* Ensure it's on top of other elements */
+  position: relative;
+  z-index: 10;
+
+  /* Enhanced touch targets */
+  min-height: var(--mobile-touch-target-comfortable);
+  padding: var(--mobile-spacing-sm) var(--mobile-spacing-md);
   font-size: var(--mobile-font-md);
   font-weight: 600;
   

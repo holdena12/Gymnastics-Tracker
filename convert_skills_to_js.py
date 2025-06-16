@@ -47,45 +47,8 @@ def convert_json_to_js():
                 if correct_value > 0:
                     skill['value'] = correct_value
     
-    # Read vault skills database
-    vault_skills = []
-    try:
-        with open('src/skills_pdf_clean.json', 'r', encoding='utf-8') as f:
-            vault_data = json.load(f)
-        
-        # Parse vault data
-        if 'Vault' in vault_data and vault_data['Vault']:
-            for item in vault_data['Vault']:
-                for key, value in item.items():
-                    if 'EG' in key or key == '' or not value:
-                        continue
-                    
-                    if isinstance(value, str) and value.strip():
-                        lines = value.split('\n')
-                        skill_line = lines[0]
-                        value_line = lines[-1]
-                        
-                        skill_match = re.match(r'^(\d+)\.\s*(.+)$', skill_line)
-                        if skill_match:
-                            element = int(skill_match.group(1))
-                            description = skill_match.group(2)
-                            
-                            value_match = re.match(r'^(\d+(?:\.\d+)?)$', value_line)
-                            if value_match:
-                                vault_skills.append({
-                                    "element": element,
-                                    "description": description,
-                                    "difficulty": value_match.group(1),
-                                    "value": float(value_match.group(1))
-                                })
-        
-        # Add vault skills to main database
-        skills_data['Vault'] = vault_skills
-        print(f"✅ Added {len(vault_skills)} vault skills")
-        
-    except Exception as e:
-        print(f"⚠️ Warning: Could not load vault skills: {e}")
-    
+    # Vault skills are already in the main database, no need to load from another file.
+
     # Convert to JavaScript format
     js_content = '''// MAG Code of Points 2025-2028 Comprehensive Skills Database
 // Complete skills database embedded directly in JavaScript to ensure 100% reliability

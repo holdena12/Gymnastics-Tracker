@@ -5,8 +5,8 @@
   "main": "src/main.js",
   "type": "module",
   "scripts": {
-    "start": "python3 -m http.server 8000 --directory src",
-    "dev": "python3 -m http.server 8001 --directory src",
+    "start": "python -m http.server 8000 --directory src",
+    "dev": "python -m http.server 8001 --directory src",
     "build": "echo 'Static app - no build step required. Firebase dependencies installed in preBuild.'",
     "install-firebase": "npm install firebase",
     "setup": "npm run install-firebase && echo 'Setup complete! Configure Firebase settings in firebase-config.js'"

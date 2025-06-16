@@ -1,6 +1,6 @@
 // FIG Code of Points 2025-2028 Skills Database
 // This database contains ALL skills from the official FIG Code of Points
-// Generated: 2025-06-15T21:14:25.064Z
+// Generated: 2025-06-15T20:47:57.702Z
 
 export const skills = {
   "Floor Exercise": [
@@ -14,8 +14,8 @@ export const skills = {
     {
       "name": "EG I: Non-acrobatic Elements",
       "realName": "EG I: Non-acrobatic Elements",
-      "difficulty": "A",
-      "value": 0.1,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
@@ -282,6 +282,29 @@ export const skills = {
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
     {
+      "name": "front support",
+      "realName": "front support",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG I: Non-acrobatic Elements"
+    },
+    {
+      "name": "(Endo)",
+      "realName": "(Endo)",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG I: Non-acrobatic Elements"
+    },
+    {
+      "name": "EG I: Non-acrobatic Elements",
+      "realName": "EG I: Non-acrobatic Elements",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
       "name": "Butterfly.",
       "realName": "Butterfly.",
       "difficulty": "A",
@@ -294,6 +317,14 @@ export const skills = {
       "realName": "Butterfly with 1/1 twist fwd. or bwd.",
       "difficulty": "B",
       "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG I: Non-acrobatic Elements"
+    },
+    {
+      "name": "(Tong Fei)",
+      "realName": "(Tong Fei)",
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
@@ -324,6 +355,14 @@ export const skills = {
     {
       "name": "Flair or circle to hdst. continue to flair or circle.",
       "realName": "Flair or circle to hdst. continue to flair or circle.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG I: Non-acrobatic Elements"
+    },
+    {
+      "name": "(Gogoladze)",
+      "realName": "(Gogoladze)",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
@@ -378,6 +417,21 @@ export const skills = {
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
     {
+      "name": "handstand.",
+      "realName": "handstand.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG I: Non-acrobatic Elements"
+    },
+    {
+      "name": "EG I: Non-acrobatic Elements",
+      "realName": "EG I: Non-acrobatic Elements",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
       "name": "Flair with ½ spindle to handstand.",
       "realName": "Flair with ½ spindle to handstand.",
       "difficulty": "B",
@@ -386,8 +440,16 @@ export const skills = {
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
     {
-      "name": "Flair with > 270º spindle (in 2 circles) directly to handstand and continue to circle or flair.",
-      "realName": "Flair with > 270º spindle (in 2 circles) directly to handstand and continue to circle or flair.",
+      "name": "Flair with > 270º spindle (in 2 circles) directly",
+      "realName": "Flair with > 270º spindle (in 2 circles) directly",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG I: Non-acrobatic Elements"
+    },
+    {
+      "name": "to handstand and continue to circle or flair.",
+      "realName": "to handstand and continue to circle or flair.",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -410,8 +472,16 @@ export const skills = {
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
     {
-      "name": "Fedorchenko",
+      "name": "Russian wendeswing with 1080° or more.",
       "realName": "Russian wendeswing with 1080° or more.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG I: Non-acrobatic Elements"
+    },
+    {
+      "name": "(Fedorchenko)",
+      "realName": "(Fedorchenko)",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
@@ -434,18 +504,41 @@ export const skills = {
       "elementGroup": "EG I: Non-acrobatic Elements"
     },
     {
-      "name": "Forward handspring or flyspring.",
-      "realName": "Forward handspring or flyspring.",
+      "name": "EG II: Acrobatic elements forward",
+      "realName": "EG II: Acrobatic elements forward",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "EG II: Acrobatic elements forward",
+      "realName": "EG II: Acrobatic elements forward",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG II: Acrobatic elements forward"
     },
     {
-      "name": "Morandi",
-      "realName": "Handsrping foward tuck",
+      "name": "Forward handspring or flyspring.",
+      "realName": "Forward handspring or flyspring.",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG II: Acrobatic elements forward"
+    },
+    {
+      "name": "Handspring salto fwd. tuck.",
+      "realName": "Handspring salto fwd. tuck.",
       "difficulty": "D",
       "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Acrobatic elements forward"
+    },
+    {
+      "name": "(Morandi)",
+      "realName": "(Morandi)",
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG II: Acrobatic elements forward"
     },
@@ -490,6 +583,13 @@ export const skills = {
       "elementGroup": "EG II: Acrobatic elements forward"
     },
     {
+      "name": "EG II: Acrobatic elements forward",
+      "realName": "EG II: Acrobatic elements forward",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
       "name": "Double salto fwd. tucked with 1/1 turn.",
       "realName": "Double salto fwd. tucked with 1/1 turn.",
       "difficulty": "F",
@@ -506,8 +606,16 @@ export const skills = {
       "elementGroup": "EG II: Acrobatic elements forward"
     },
     {
-      "name": "Zapata",
+      "name": "Double salto fwd. tucked with 3/2 turn.",
       "realName": "Double salto fwd. tucked with 3/2 turn.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Acrobatic elements forward"
+    },
+    {
+      "name": "(Zapata)",
+      "realName": "(Zapata)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
@@ -530,12 +638,35 @@ export const skills = {
       "elementGroup": "EG II: Acrobatic elements forward"
     },
     {
-      "name": "Zapata 2",
+      "name": "Double salto fwd. piked or straight with 3/2 turn.",
       "realName": "Double salto fwd. piked or straight with 3/2 turn.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Acrobatic elements forward"
+    },
+    {
+      "name": "(Zapata 2)",
+      "realName": "(Zapata 2)",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Acrobatic elements forward"
+    },
+    {
+      "name": "EG III: Acrobatic elements backward",
+      "realName": "EG III: Acrobatic elements backward",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "EG III: Acrobatic elements backward",
+      "realName": "EG III: Acrobatic elements backward",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
       "name": "Salto backwards tucked or piked.",
@@ -562,7 +693,7 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Tsukahara",
+      "name": "Salto bwd. with 1/1 t. and salto bwd.",
       "realName": "Salto bwd. with 1/1 t. and salto bwd.",
       "difficulty": "D",
       "value": 0.4,
@@ -570,8 +701,24 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Arabian jump bwd. to double salto fwd tucked, also with ½ t.",
-      "realName": "Arabian jump bwd. to double salto fwd tucked, also with ½ t.",
+      "name": "(Tsukahara)",
+      "realName": "(Tsukahara)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Arabian jump bwd. to double salto fwd tucked, also",
+      "realName": "Arabian jump bwd. to double salto fwd tucked, also",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "with ½ t.",
+      "realName": "with ½ t.",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -586,16 +733,40 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "double salto bwd t. with 3/2 t..or salto bwd. str. 3/2 to fwd. salto tucked. Also (Korosteljev)",
-      "realName": "double salto bwd t. with 3/2 t..or salto bwd. str. 3/2 to fwd. salto tucked. Also (Korosteljev)",
+      "name": "double salto bwd t. with 3/2 t..or salto bwd.",
+      "realName": "double salto bwd t. with 3/2 t..or salto bwd.",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Ri Jong Song",
+      "name": "str. 3/2 to fwd. salto tucked.",
+      "realName": "str. 3/2 to fwd. salto tucked.",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Also (Korosteljev)",
+      "realName": "Also (Korosteljev)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Double salto bwd. tucked with 3/1 t.",
       "realName": "Double salto bwd. tucked with 3/1 t.",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "(Ri Jong Song)",
+      "realName": "(Ri Jong Song)",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false,
@@ -626,8 +797,16 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Arabian jump bwd. to double salto fwd piked, also with ½ turn",
-      "realName": "Arabian jump bwd. to double salto fwd piked, also with ½ turn",
+      "name": "Arabian jump bwd. to double salto fwd piked, also with",
+      "realName": "Arabian jump bwd. to double salto fwd piked, also with",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "½ turn",
+      "realName": "½ turn",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
@@ -644,8 +823,8 @@ export const skills = {
     {
       "name": "Back handspring.",
       "realName": "Back handspring.",
-      "difficulty": "A",
-      "value": 0.1,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
@@ -658,7 +837,7 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Liukin",
+      "name": "Triple salto bwd. tucked.",
       "realName": "Triple salto bwd. tucked.",
       "difficulty": "I",
       "value": 0.9,
@@ -666,7 +845,15 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Nagornyy",
+      "name": "(Liukin)",
+      "realName": "(Liukin)",
+      "difficulty": "I",
+      "value": 0.9,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Triple salto bwd. piked.",
       "realName": "Triple salto bwd. piked.",
       "difficulty": "J",
       "value": 1,
@@ -674,7 +861,22 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Lou Yun",
+      "name": "(Nagornyy)",
+      "realName": "(Nagornyy)",
+      "difficulty": "J",
+      "value": 1,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "EG III: Acrobatic elements backward",
+      "realName": "EG III: Acrobatic elements backward",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "Double salto bwd. straddled with 1/1 t.",
       "realName": "Double salto bwd. straddled with 1/1 t.",
       "difficulty": "E",
       "value": 0.5,
@@ -682,8 +884,24 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Minami",
+      "name": "(Lou Yun)",
+      "realName": "(Lou Yun)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Double salto tucked bwd. tucked with 7/2 t.",
       "realName": "Double salto tucked bwd. tucked with 7/2 t.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "(Minami)",
+      "realName": "(Minami)",
       "difficulty": "H",
       "value": 0.8,
       "isHeader": false,
@@ -706,7 +924,7 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Kolyvanov",
+      "name": "Salto bwd. str. with 2/1 t and salto bwd piked.",
       "realName": "Salto bwd. str. with 2/1 t and salto bwd piked.",
       "difficulty": "F",
       "value": 0.6,
@@ -714,8 +932,32 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Double salto bwd. straight or Double salto bwd. str. with ½ t., or Arabian Jump bwd. to dbl. salto fwd. str.",
-      "realName": "Double salto bwd. straight or Double salto bwd. str. with ½ t., or Arabian Jump bwd. to dbl. salto fwd. str.",
+      "name": "(Kolyvanov)",
+      "realName": "(Kolyvanov)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Double salto bwd. straight or Double salto bwd.",
+      "realName": "Double salto bwd. straight or Double salto bwd.",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "straight and with ½ t., or Arabian Jump bwd. to",
+      "realName": "straight and with ½ t., or Arabian Jump bwd. to",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "dbl. salto fwd. str.",
+      "realName": "dbl. salto fwd. str.",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
@@ -730,36 +972,59 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t.",
-      "realName": "Double salto bwd. str. with 3/2 t. or Arabian Jump bwd. to dbl. salto fwd. str. with 1/1 t.",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG III: Acrobatic elements backward"
-    },
-    {
-      "name": "Hypolito",
-      "realName": "Hypolito",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG III: Acrobatic elements backward"
-    },
-    {
-      "name": "Double salto bwd. straight with 1/1 t. or Arabian jump bwd. to dbl. salto fwd. str. with ½ t.",
-      "realName": "Double salto bwd. straight with 1/1 t. or Arabian jump bwd. to dbl. salto fwd. str. with ½ t.",
+      "name": "Double salto bwd. str. with 3/2 t. or Arabian",
+      "realName": "Double salto bwd. str. with 3/2 t. or Arabian",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Penev",
-      "realName": "Penev",
+      "name": "Jump bwd. to dbl. salto fwd. str. with 1/1 t.",
+      "realName": "Jump bwd. to dbl. salto fwd. str. with 1/1 t.",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Also Hypolito",
+      "realName": "Also Hypolito",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Double salto bwd. straight with 1/1 t. or Arabian",
+      "realName": "Double salto bwd. straight with 1/1 t. or Arabian",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "jump bwd. to dbl. salto fwd. str. with ½ t.",
+      "realName": "jump bwd. to dbl. salto fwd. str. with ½ t.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Also Penev",
+      "realName": "Also Penev",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "EG III: Acrobatic elements backward",
+      "realName": "EG III: Acrobatic elements backward",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
     },
     {
       "name": "Double salto bwd. str. with 2/1 t.",
@@ -778,7 +1043,7 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Shirai 3",
+      "name": "Double salto bwd. str. with 3/1 t.",
       "realName": "Double salto bwd. str. with 3/1 t.",
       "difficulty": "I",
       "value": 0.9,
@@ -786,12 +1051,43 @@ export const skills = {
       "elementGroup": "EG III: Acrobatic elements backward"
     },
     {
-      "name": "Jarman",
+      "name": "(Shirai 3)",
+      "realName": "(Shirai 3)",
+      "difficulty": "I",
+      "value": 0.9,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "Double salto bwd. str. with 7/2 t.",
       "realName": "Double salto bwd. str. with 7/2 t.",
       "difficulty": "J",
       "value": 1,
       "isHeader": false,
       "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "(Jarman)",
+      "realName": "(Jarman)",
+      "difficulty": "J",
+      "value": 1,
+      "isHeader": false,
+      "elementGroup": "EG III: Acrobatic elements backward"
+    },
+    {
+      "name": "EG IV: Single salto forward and backward with 1 or more turns.",
+      "realName": "EG IV: Single salto forward and backward with 1 or more turns.",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "EG IV: Single salto forward and backward with 1 or more turns.",
+      "realName": "EG IV: Single salto forward and backward with 1 or more turns.",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
     },
     {
       "name": "Salto fwd. tucked with 1/1 t., also with 3/2 t.",
@@ -826,8 +1122,16 @@ export const skills = {
       "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
     },
     {
-      "name": "Shirai 2",
-      "realName": "Salto fwd. str. with 3/1 t.",
+      "name": ". Salto fwd. str. with 3/1 t.",
+      "realName": ". Salto fwd. str. with 3/1 t.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
+    },
+    {
+      "name": "(Shirai 2)",
+      "realName": "(Shirai 2)",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
@@ -858,17 +1162,32 @@ export const skills = {
       "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
     },
     {
-      "name": "González",
+      "name": "Salto bwd. str. with 7/2 t",
       "realName": "Salto bwd. str. with 7/2 t",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
     },
-
     {
-      "name": "Goshima",
+      "name": "(González)",
+      "realName": "(González)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
+    },
+    {
+      "name": "Salto fwd. str. with 7/2 t.",
       "realName": "Salto fwd. str. with 7/2 t.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
+    },
+    {
+      "name": "(Goshima)",
+      "realName": "(Goshima)",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false,
@@ -891,13 +1210,21 @@ export const skills = {
       "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
     },
     {
-      "name": "Shirai / Nguyen",
+      "name": "Salto bwd. str. with 4/1 t.",
       "realName": "Salto bwd. str. with 4/1 t.",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
     },
+    {
+      "name": "(Shirai / Nguyen)",
+      "realName": "(Shirai / Nguyen)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG IV: Single salto forward and backward with 1 or more turns."
+    }
   ],
   "Pommel Horse": [
     {
@@ -905,6 +1232,13 @@ export const skills = {
       "realName": "EG I: Single leg swings and scissors",
       "difficulty": "A",
       "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "EG I: Single leg swings and scissors",
+      "realName": "EG I: Single leg swings and scissors",
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
     },
@@ -925,8 +1259,16 @@ export const skills = {
       "elementGroup": "EG I: Single leg swings and scissors"
     },
     {
-      "name": "Scissor fwd. with hop sideways from one end to the other (3/3).",
-      "realName": "Scissor fwd. with hop sideways from one end to the other (3/3).",
+      "name": "Scissor fwd. with hop sideways from one end to",
+      "realName": "Scissor fwd. with hop sideways from one end to",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "the other (3/3).",
+      "realName": "the other (3/3).",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
@@ -949,44 +1291,131 @@ export const skills = {
       "elementGroup": "EG I: Single leg swings and scissors"
     },
     {
-      "name": "Double scissor fwd. (¼ t. fwd. a. ¼ t. bwd.) with travel sideways.",
-      "realName": "Double scissor fwd. (¼ t. fwd. a. ¼ t. bwd.) with travel sideways.",
+      "name": "Double scissor fwd. (¼ t. fwd. a. ¼ t. bwd.) with",
+      "realName": "Double scissor fwd. (¼ t. fwd. a. ¼ t. bwd.) with",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "travel sideways.",
+      "realName": "travel sideways.",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
     },
     {
-      "name": "Mikulak ",
-      "realName": "Double scissor forward sideways from one end to the other (3/3).",
+      "name": "Double scissor forward sideways from one end to",
+      "realName": "Double scissor forward sideways from one end to",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "the other (3/3).",
+      "realName": "the other (3/3).",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "(Mikulak)",
+      "realName": "(Mikulak)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "Double Scissor fwd. with travel sideways through",
+      "realName": "Double Scissor fwd. with travel sideways through",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "handstand.",
+      "realName": "handstand.",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
     },
     {
-      "name": "Stepanyan",
-      "realName": "Double Scissor fwd. with travel sideways through handstand.",
+      "name": "(Stepanyan)",
+      "realName": "(Stepanyan)",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
     },
     {
-      "name": "Leg cut or undercut bwd. through handstand and lower to support with straddle legs.",
-      "realName": "Leg cut or undercut bwd. through handstand and lower to support with straddle legs.",
+      "name": "Leg cut or undercut bwd. through handstand",
+      "realName": "Leg cut or undercut bwd. through handstand",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
     },
     {
-      "name": "Li Ning/ Bryan",
-      "realName": "Scissor fwd. with ¼ t. through handstand on 1 pommel, lower to support with straddle legs on the other arm (with legs changing)",
+      "name": "and lower to support with straddle legs.",
+      "realName": "and lower to support with straddle legs.",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "Scissor fwd. with ¼ t. through handstand on 1",
+      "realName": "Scissor fwd. with ¼ t. through handstand on 1",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "pommel, lower to support with straddle legs on the",
+      "realName": "pommel, lower to support with straddle legs on the",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "other arm (with legs changing)",
+      "realName": "other arm (with legs changing)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "(Li Ning)",
+      "realName": "(Li Ning)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "(Bryan)",
+      "realName": "(Bryan)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "EG I: Single leg swings and scissors",
+      "realName": "EG I: Single leg swings and scissors",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
     },
     {
       "name": "Scissor backward.",
@@ -1005,8 +1434,16 @@ export const skills = {
       "elementGroup": "EG I: Single leg swings and scissors"
     },
     {
-      "name": "Scissor bwd. with hop sideways from one end to the other (1-2 to 4-5).",
-      "realName": "Scissor bwd. with hop sideways from one end to the other (1-2 to 4-5).",
+      "name": "Scissor bwd. with hop sideways from one end to",
+      "realName": "Scissor bwd. with hop sideways from one end to",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "the other (1-2 to 4-5).",
+      "realName": "the other (1-2 to 4-5).",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
@@ -1029,12 +1466,43 @@ export const skills = {
       "elementGroup": "EG I: Single leg swings and scissors"
     },
     {
-      "name": "Swing bwd. w. ¼ t. through handstand on 1 pommel (also with ¼ t. after), lower to support with straddle legs (with legs changing)",
-      "realName": "Swing bwd. w. ¼ t. through handstand on 1 pommel (also with ¼ t. after), lower to support with straddle legs (with legs changing)",
+      "name": "Swing bwd. w. ¼ t. through handstand on 1",
+      "realName": "Swing bwd. w. ¼ t. through handstand on 1",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "pommel (also with ¼ t. after), lower to support with",
+      "realName": "pommel (also with ¼ t. after), lower to support with",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "straddle legs (with legs changing)",
+      "realName": "straddle legs (with legs changing)",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG I: Single leg swings and scissors"
+    },
+    {
+      "name": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "realName": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "realName": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
       "name": "Any circle or flair in side support.",
@@ -1045,8 +1513,24 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Circle in side support outside pommels or between the pommels.",
-      "realName": "Circle in side support outside pommels or between the pommels.",
+      "name": "(Thomas)",
+      "realName": "(Thomas)",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Circle in side support outside pommels or between",
+      "realName": "Circle in side support outside pommels or between",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "the pommels.",
+      "realName": "the pommels.",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
@@ -1061,8 +1545,16 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Circles in cross support on 1 pommel (from or to ¼. fwd.).",
-      "realName": "Circles in cross support on 1 pommel (from or to ¼. fwd.).",
+      "name": "Circles in cross support on 1 pommel (from or to ¼",
+      "realName": "Circles in cross support on 1 pommel (from or to ¼",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "t. fwd.).",
+      "realName": "t. fwd.).",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
@@ -1085,6 +1577,13 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
+      "name": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "realName": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
       "name": "Any ¼ spindle",
       "realName": "Any ¼ spindle",
       "difficulty": "A",
@@ -1101,31 +1600,87 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Any side support pommel between hands 1/1 spindle w. legs straddle inside max. 2 circles.",
-      "realName": "Any side support pommel between hands 1/1 spindle w. legs straddle inside max. 2 circles.",
+      "name": "(Keikha 2)",
+      "realName": "(Keikha 2)",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Any side support pommel between hands 1/1",
+      "realName": "Any side support pommel between hands 1/1",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Eichorn",
-      "realName": "Any side support 1/1 spindle with hand support to the other side and return (max. 2 flairs or circles).",
+      "name": "spindle w. legs straddle inside max. 2 circles.",
+      "realName": "spindle w. legs straddle inside max. 2 circles.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Any side support 1/1 spindle with hand support to",
+      "realName": "Any side support 1/1 spindle with hand support to",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "(Keikha 1)/(Keikha 5)",
-      "realName": "Any 1/1 spindle with both pommels between the hands (flair or circle).",
+      "name": "the other side and return (max. 2 flairs or circles)",
+      "realName": "the other side and return (max. 2 flairs or circles)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Eichorn)",
+      "realName": "(Eichorn)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Any 1/1 spindle with both pommels between the",
+      "realName": "Any 1/1 spindle with both pommels between the",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Magyar",
+      "name": "hands (flair or circle).",
+      "realName": "hands (flair or circle).",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Keikha 1)",
+      "realName": "(Keikha 1)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Keikha 5)",
+      "realName": "(Keikha 5)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Any 1/1 spindle within max. 2 circles on the end.",
       "realName": "Any 1/1 spindle within max. 2 circles on the end.",
       "difficulty": "D",
       "value": 0.4,
@@ -1133,32 +1688,96 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Berki",
-      "realName": "1/1 spindle w. legs straddle or together on the pommels inside max. 2 circles.",
+      "name": "(Magyar)",
+      "realName": "(Magyar)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "1/1 spindle w. legs straddle or together on the",
+      "realName": "1/1 spindle w. legs straddle or together on the",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Mousichidis",
-      "realName": "Cross support, 1/1 spindle with hands between the pommels max. 2 circles.",
+      "name": "pommels inside max. 2 circles.",
+      "realName": "pommels inside max. 2 circles.",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Berki)",
+      "realName": "(Berki)",
+      "difficulty": "I",
+      "value": 0.9,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Cross support, 1/1 spindle with hands between the",
+      "realName": "Cross support, 1/1 spindle with hands between the",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Direct Stöckli A (DSA) on the pommels or pommel between hands.",
-      "realName": "Direct Stöckli A (DSA) on the pommels or pommel between hands.",
+      "name": "pommels max. 2 circles.",
+      "realName": "pommels max. 2 circles.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Mousichidis)",
+      "realName": "(Mousichidis)",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Direct Stöckli A (DSA) on the pommels or pommel",
+      "realName": "Direct Stöckli A (DSA) on the pommels or pommel",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Keikha 3/ Keikha 6",
+      "name": "between hands.",
+      "realName": "between hands.",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Direct Stöckli A (DSA) outside pommels.",
       "realName": "Direct Stöckli A (DSA) outside pommels.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Keikha 3)",
+      "realName": "(Keikha 3)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Keikha 6)",
+      "realName": "(Keikha 6)",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -1173,27 +1792,81 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Tippelt",
-      "realName": "Flair or circle through handstand (with or without ½ t.) and lower to flair or circle.",
+      "name": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "realName": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "Flair or circle through handstand (with or",
+      "realName": "Flair or circle through handstand (with or",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
-
     {
-      "name": "Flair with hop travel bwd. through handstand and lower to flair or circle.",
-      "realName": "Flair with hop travel bwd. through handstand and lower to flair or circle.",
+      "name": "without ½ t.) and lower to flair or circle.",
+      "realName": "without ½ t.) and lower to flair or circle.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Tippelt)",
+      "realName": "(Tippelt)",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Flair with hop travel bwd. through handstand and",
+      "realName": "Flair with hop travel bwd. through handstand and",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Busnari",
-      "realName": "Reverse Stöckli, DSA or pommel circle straddle through handstand, 3/3 travel (fwd.- bwd), 360° turn to flairs.",
+      "name": "lower to circles or flairs",
+      "realName": "lower to circles or flairs",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Reverse Stöckli, DSA or pommel circle straddle",
+      "realName": "Reverse Stöckli, DSA or pommel circle straddle",
       "difficulty": "F",
       "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "through handstand, 3/3 travel (fwd.- bwd), 360° turn",
+      "realName": "through handstand, 3/3 travel (fwd.- bwd), 360° turn",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "to flairs.",
+      "realName": "to flairs.",
+      "difficulty": "F",
+      "value": 0.6,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Busnari)",
+      "realName": "(Busnari)",
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
@@ -1206,24 +1879,56 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Kehr with 270° t. on 1 p. (Sohn technique) from cross to side support.",
-      "realName": "Kehr with 270° t. on 1 p. (Sohn technique) from cross to side support.",
+      "name": "Kehr with 270° t. on 1 p. (Sohn technique) from",
+      "realName": "Kehr with 270° t. on 1 p. (Sohn technique) from",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Bertoncelj",
-      "realName": "Kehr with 270° t. on 1 pommel (Sohn technique) from side to cross support.",
+      "name": "cross to side support.",
+      "realName": "cross to side support.",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Kehr with 270° t. on 1 pommel (Sohn technique)",
+      "realName": "Kehr with 270° t. on 1 pommel (Sohn technique)",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Sohn",
+      "name": "from side to cross support.",
+      "realName": "from side to cross support.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Bertoncelj)",
+      "realName": "(Bertoncelj)",
+      "difficulty": "J",
+      "value": 1,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Kehr with 1/1 turn on 1 pommel.",
       "realName": "Kehr with 1/1 turn on 1 pommel.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Sohn)",
+      "realName": "(Sohn)",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -1238,23 +1943,47 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Reverse Stöckli 180° (or 270° from one pommel) turn in one circle.",
-      "realName": "Reverse Stöckli 180° (or 270° from one pommel) turn in one circle.",
+      "name": "Reverse Stöckli 180° (or 270° from one pommel)",
+      "realName": "Reverse Stöckli 180° (or 270° from one pommel)",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Davtyan",
-      "realName": "Reverse Stöckli with 270° t. (Bezugo technique) from cross to side support on one pommel.",
+      "name": "turn in one circle.",
+      "realName": "turn in one circle.",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Reverse Stöckli with 270° t. (Bezugo technique)",
+      "realName": "Reverse Stöckli with 270° t. (Bezugo technique)",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Bezugo",
+      "name": "from 2 pommels to cross support on 1 pommel",
+      "realName": "from 2 pommels to cross support on 1 pommel",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "(Davtyan)",
+      "realName": "(Davtyan)",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Reverse Stöckli with 360° t. on 1 pommel.",
       "realName": "Reverse Stöckli with 360° t. on 1 pommel.",
       "difficulty": "E",
       "value": 0.5,
@@ -1262,23 +1991,46 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
+      "name": "(Bezugo)",
+      "realName": "(Bezugo)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "realName": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
       "name": "Schwabenflank.",
-      "realName": "Schwabenflank. (180° t. on 1 pommel)",
+      "realName": "Schwabenflank.",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Czechkehre on the pommels or pommel between hands.",
-      "realName": "Czechkehre on the pommels or pommel between hands.",
+      "name": "Czechkehre on the pommels or pommel between",
+      "realName": "Czechkehre on the pommels or pommel between",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Pinheiro",
+      "name": "hands.",
+      "realName": "hands.",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Czechkehre outside pommels",
       "realName": "Czechkehre outside pommels",
       "difficulty": "D",
       "value": 0.4,
@@ -1286,8 +2038,24 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Wendeswing fwd. with ½ t. to support fwd. on the end, from side support using 1 or 2 pommels.",
-      "realName": "Wendeswing fwd. with ½ t. to support fwd. on the end, from side support using 1 or 2 pommels.",
+      "name": "(Pinheiro)",
+      "realName": "(Pinheiro)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Wendeswing fwd. with ½ t. to support fwd. on the",
+      "realName": "Wendeswing fwd. with ½ t. to support fwd. on the",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "end, from side support using 1 or 2 pommels.",
+      "realName": "end, from side support using 1 or 2 pommels.",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
@@ -1326,74 +2094,168 @@ export const skills = {
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "On the leather, Russian wendeswing with 180°, or 270° also with travel.",
-      "realName": "On the leather, Russian wendeswing with 180°, or 270° also with travel.",
+      "name": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "realName": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "On the leather, Russian wendeswing with 180°,",
+      "realName": "On the leather, Russian wendeswing with 180°,",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "On the leather, Russian wendeswing with 360° or 540°.",
-      "realName": "On the leather, Russian wendeswing with 360° or 540°.",
+      "name": "or 270° also with travel.",
+      "realName": "or 270° also with travel.",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "On the leather, Russian wendeswing with 720° or 900°.",
-      "realName": "On the leather, Russian wendeswing with 720° or 900°.",
+      "name": "On the leather, Russian wendeswing with 360° or",
+      "realName": "On the leather, Russian wendeswing with 360° or",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "540°.",
+      "realName": "540°.",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "On the leather, Russian wendeswing with 720° or",
+      "realName": "On the leather, Russian wendeswing with 720° or",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "On the leather, Russian wendeswing with 1080° or more.",
-      "realName": "On the leather, Russian wendeswing with 1080° or more.",
-      "difficulty": "C",
-      "value": 0.3,
-      "isHeader": false,
-      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
-    },
-    {
-      "name": "Russian wendeswing with 180° or 270° on 1 pommel or between the pommels.",
-      "realName": "Russian wendeswing with 180° or 270° on 1 pommel or between the pommels.",
+      "name": "900°.",
+      "realName": "900°.",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Russian wendeswing with 360° or 540° on 1 pommel or between the pommels.",
-      "realName": "Russian wendeswing with 360° or 540° on 1 pommel or between the pommels.",
+      "name": "On the leather, Russian wendeswing with 1080°",
+      "realName": "On the leather, Russian wendeswing with 1080°",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "720° or 900° Russian wendeswing on 1 pommel or between the pommels.",
-      "realName": "720° or 900° Russian wendeswing on 1 pommel or between the pommels.",
+      "name": "or more.",
+      "realName": "or more.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Russian wendeswing with 180° or 270° on 1",
+      "realName": "Russian wendeswing with 180° or 270° on 1",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "pommel or between the pommels.",
+      "realName": "pommel or between the pommels.",
+      "difficulty": "B",
+      "value": 0.2,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "Russian wendeswing with 360° or 540° on 1",
+      "realName": "Russian wendeswing with 360° or 540° on 1",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "pommel or between the pommels.",
+      "realName": "pommel or between the pommels.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "720° or 900° Russian wendeswing on 1 pommel or",
+      "realName": "720° or 900° Russian wendeswing on 1 pommel or",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "1080° Russian wendeswing or more on 1 pommel or between the pommels.",
-      "realName": "1080° Russian wendeswing or more on 1 pommel or between the pommels.",
+      "name": "between the pommels.",
+      "realName": "between the pommels.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "1080° Russian wendeswing or more on 1",
+      "realName": "1080° Russian wendeswing or more on 1",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
     },
     {
-      "name": "Circles with any travel in side support (1/3) (also with ¼ t.)",
-      "realName": "Circles with any travel in side support (1/3) (also with ¼ t.)",
+      "name": "pommel or between the pommels.",
+      "realName": "pommel or between the pommels.",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG II: Circle and flairs, with and/or without spindles and handstands, Kehrswings, Russian wendeswings, flops and combined elements"
+    },
+    {
+      "name": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "realName": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "realName": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Circles with any travel in side support (1/3) (also with",
+      "realName": "Circles with any travel in side support (1/3) (also with",
       "difficulty": "H",
       "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "¼ t.).",
+      "realName": "¼ t.).",
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
@@ -1406,24 +2268,40 @@ export const skills = {
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Any travel in side support (3/3), hands between the pommels",
-      "realName": "Any travel in side support (3/3), hands between the pommels",
+      "name": "Any travel in side support (3/3), hands between",
+      "realName": "Any travel in side support (3/3), hands between",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Any travel in side support (3/3) over both pommels",
-      "realName": "Any travel in side support (3/3) over both pommels",
+      "name": "pommels.",
+      "realName": "pommels.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "4 Any travel in side support (3/3) over both pommels",
+      "realName": "4 Any travel in side support (3/3) over both pommels",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Circles with any hop travel in side support (1/3) (also with ½ t.)",
-      "realName": "Circles with any hop travel in side support (1/3) (also with ½ t.)",
+      "name": "(also with hop).",
+      "realName": "(also with hop).",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Circles with any hop travel in side support (1/3)",
+      "realName": "Circles with any hop travel in side support (1/3)",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
@@ -1438,55 +2316,111 @@ export const skills = {
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Yamawaki",
-      "realName": "From side support beside the pommel, hop over 2 pommels to support fwd. on other end (1-1 to 5-5).",
+      "name": "From side support beside the pommel, travel",
+      "realName": "From side support beside the pommel, travel",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
-    { 
-      "name": "Travel fwd. or bwd. with ¼ spindle to side support on 2 pommels.",
-      "realName": "Travel fwd. or bwd. with ¼ spindle to side support on 2 pommels.",
+    {
+      "name": "hop over 2 pommels to support fwd on other end",
+      "realName": "hop over 2 pommels to support fwd on other end",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(1-1 to 5-5).",
+      "realName": "(1-1 to 5-5).",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Yamawaki)",
+      "realName": "(Yamawaki)",
+      "difficulty": "I",
+      "value": 0.9,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Travel fwd. or bwd. with ¼ spindle to side support on",
+      "realName": "Travel fwd. or bwd. with ¼ spindle to side support on",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Travel fwd. or bwd. with ½ spindle to side support on 2 pommels.",
-      "realName": "Travel fwd. or bwd. with ½ spindle to side support on 2 pommels.",
+      "name": "2 pommels.",
+      "realName": "2 pommels.",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "All travels with ½ spindle in side support (1/3) (also with ¼ t.)",
-      "realName": "All travels with ½ spindle in side support (1/3) (also with ¼ t.)",
+      "name": "All travels with ½ spindle in side support.",
+      "realName": "All travels with ½ spindle in side support.",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "From an end side travel with 2x ½ spindle (1/3) (also with ¼ t.) to other end.",
-      "realName": "From an end side travel with 2x ½ spindle (1/3) (also with ¼ t.) to other end.",
+      "name": "From an end side travel with 2x ½ spindle",
+      "realName": "From an end side travel with 2x ½ spindle",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Nin Reyes",
-      "realName": "Any travel fwd. 3/3 with ½ Spindle from one pommel over the other pommel.",
+      "name": "to other end.",
+      "realName": "to other end.",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Any travel fwd. 3/3 with ½ Spindle from one",
+      "realName": "Any travel fwd. 3/3 with ½ Spindle from one",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Nin Reyes 2",
+      "name": "pommel over the other pommel.",
+      "realName": "pommel over the other pommel.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Nin Reyes)",
+      "realName": "(Nin Reyes)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Titov)",
+      "realName": "(Titov)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Travel 3/3 over both pommels with ½ Spindle.",
       "realName": "Travel 3/3 over both pommels with ½ Spindle.",
       "difficulty": "E",
       "value": 0.5,
@@ -1494,8 +2428,55 @@ export const skills = {
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Urzica 2/ Burkhart",
-      "realName": "Any 3/3 travel in flairs with 1/1 Spindle inside 2 circles",
+      "name": "(Nin Reyes 2)",
+      "realName": "(Nin Reyes 2)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Keikha 4)",
+      "realName": "(Keikha 4)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "realName": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "Any 3/3 travel in flairs with 1/1 Spindle inside 2",
+      "realName": "Any 3/3 travel in flairs with 1/1 Spindle inside 2",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "circles.",
+      "realName": "circles.",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Urzica 2)",
+      "realName": "(Urzica 2)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Burkhart)",
+      "realName": "(Burkhart)",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
@@ -1510,32 +2491,72 @@ export const skills = {
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Travel fwd. in cross support with support on leather, pommel, pommel, leather (3/3) (1-2-4-5).",
-      "realName": "Travel fwd. in cross support with support on leather, pommel, pommel, leather (3/3) (1-2-4-5).",
+      "name": "Travel fwd. in cross support with support on",
+      "realName": "Travel fwd. in cross support with support on",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Magyar",
-      "realName": "Any other travel fwd. in cross support to other end (3/3).",
+      "name": "leather, pommel, pommel, leather (3/3) (1-2-4-5).",
+      "realName": "leather, pommel, pommel, leather (3/3) (1-2-4-5).",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Any other travel fwd. in cross support to other",
+      "realName": "Any other travel fwd. in cross support to other",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Driggs",
-      "realName": "Travel forward in cross support over both pommels (also with hop).",
+      "name": "end (3/3).",
+      "realName": "end (3/3).",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Travel forward in cross support over both",
+      "realName": "Travel forward in cross support over both",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "pommels (also with hop).",
+      "realName": "pommels (also with hop).",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Travel bwd. in cross support from one horse part to another (⅓).",
-      "realName": "Travel bwd. in cross support from one horse part to another (⅓).",
+      "name": "(Driggs)",
+      "realName": "(Driggs)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Travel bwd. in cross support from one horse part",
+      "realName": "Travel bwd. in cross support from one horse part",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "or pommel to another (⅓).",
+      "realName": "or pommel to another (⅓).",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
@@ -1550,31 +2571,63 @@ export const skills = {
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Travel bwd. in cross support with support on leather, pommel, pommel, leather (3/3) (5-4-2-1).",
-      "realName": "Travel bwd. in cross support with support on leather, pommel, pommel, leather (3/3) (5-4-2-1).",
+      "name": "Travel bwd. in cross sup with support on leather,",
+      "realName": "Travel bwd. in cross sup with support on leather,",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Sivado",
-      "realName": "Any other travel bwd. in cross support to other end (3/3).",
+      "name": "pommel, pommel, leather (3/3) (5-4-2-1).",
+      "realName": "pommel, pommel, leather (3/3) (5-4-2-1).",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Any other travel bwd. in cross support to other",
+      "realName": "Any other travel bwd. in cross support to other",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Kurbanov/Reid",
-      "realName": "Travel backward in cross support over both pommels (also with hop).",
+      "name": "(Sivado)",
+      "realName": "(Sivado)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Travel backward in cross support over both",
+      "realName": "Travel backward in cross support over both",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Kurbanov)",
+      "realName": "(Kurbanov)",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Moguilny",
+      "name": "(Reid)",
+      "realName": "(Reid)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Kehre fwd., reverse Stöckli, kehre fwd.",
       "realName": "Kehre fwd., reverse Stöckli, kehre fwd.",
       "difficulty": "D",
       "value": 0.4,
@@ -1582,40 +2635,126 @@ export const skills = {
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Belenki",
+      "name": "(Moguilny)",
+      "realName": "(Moguilny)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "realName": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "Kehre bwd., kehre fwd., kehre bwd.",
       "realName": "Kehre bwd., kehre fwd., kehre bwd.",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
-
     {
-      "name": "From support on 1 pommel, Russian wendeswing fwd. to other end without support on or between the pommels (side to side support, side to cross support).",
-      "realName": "From support on 1 pommel, Russian wendeswing fwd. to other end without support on or between the pommels",
+      "name": "(Belenki)",
+      "realName": "(Belenki)",
+      "difficulty": "I",
+      "value": 0.9,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "From support on 1 pommel, Russian wendeswing",
+      "realName": "From support on 1 pommel, Russian wendeswing",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "fwd. to other end without support on or between the",
+      "realName": "fwd. to other end without support on or between the",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Tong Fei",
-      "realName": "From support on end, Russian wendeswing fwd. to other end without support on or between the pommels (side to side, side to cross, cross to side, cross to cross).",
+      "name": "pommels (side to side support, side to cross support).",
+      "realName": "pommels (side to side support, side to cross support).",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "From support on end, Russian wendeswing fwd. to",
+      "realName": "From support on end, Russian wendeswing fwd. to",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Vammen",
-      "realName": "On the leather, from cross support, Russian wendeswing with 360° or more over both pommels.",
+      "name": "other end without support on or between the pommels",
+      "realName": "other end without support on or between the pommels",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(side to side, side to cross, cross to side, cross to cross).",
+      "realName": "(side to side, side to cross, cross to side, cross to cross).",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Tong Fei)",
+      "realName": "(Tong Fei)",
+      "difficulty": "I",
+      "value": 0.9,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "On the leather, from cross support, Russian",
+      "realName": "On the leather, from cross support, Russian",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "From support 1-2, 3/3 travel in Russian type wendeswing with 630° or more turning.",
+      "name": "wendeswing with 360° or more over both",
+      "realName": "wendeswing with 360° or more over both",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "pommels.",
+      "realName": "pommels.",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Vammen)",
+      "realName": "(Vammen)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "From support 1-2, 3/3 travel in Russian type",
       "realName": "From support 1-2, 3/3 travel in Russian type",
       "difficulty": "D",
       "value": 0.4,
@@ -1623,15 +2762,47 @@ export const skills = {
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Wu Guonian",
-      "realName": "Any 3/3 travel in Russian type wendeswing with 720° or more turning.",
+      "name": "wendeswing with 630° or more turning.",
+      "realName": "wendeswing with 630° or more turning.",
+      "difficulty": "G",
+      "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Any 3/3 travel in Russian type wendeswing with",
+      "realName": "Any 3/3 travel in Russian type wendeswing with",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "720° or more turning w. two hands between",
+      "realName": "720° or more turning w. two hands between",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
-    {   
-      "name": "Roth",
+    {
+      "name": "pommels",
+      "realName": "pommels",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Wu Guonian)",
+      "realName": "(Wu Guonian)",
+      "difficulty": "E",
+      "value": 0.5,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Any Russian wendeswing with 360° t. and 3/3 travel.",
       "realName": "Any Russian wendeswing with 360° t. and 3/3 travel.",
       "difficulty": "D",
       "value": 0.4,
@@ -1639,25 +2810,94 @@ export const skills = {
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Romero",
-      "realName": "Reverse Stöckli from cross support on end to the far pommel.",
+      "name": "(Roth)",
+      "realName": "(Roth)",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "realName": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "Reverse Stöckli from cross support on end to the",
+      "realName": "Reverse Stöckli from cross support on end to the",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
     {
-      "name": "Abu Alsoud",
-      "realName": "Reverse Stöckli from cross support on one end to the other.",
+      "name": "far pommel",
+      "realName": "far pommel",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Romero)",
+      "realName": "(Romero)",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "Reverse Stöckli from cross support on one end to the",
+      "realName": "Reverse Stöckli from cross support on one end to the",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
     },
-  
     {
-      "name": "On the end Wende from circle (also Russian 180° or 270° to wende).",
-      "realName": "On the end Wende from circle (also Russian 180° or 270° to wende).",
+      "name": "other.",
+      "realName": "other.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "(Abu Alsoud)",
+      "realName": "(Abu Alsoud)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG III: Travel type elements, including Tong Fei, Wu Guonian, Roth and Traveling Spindles"
+    },
+    {
+      "name": "EG IV: Dismounts",
+      "realName": "EG IV: Dismounts",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": true
+    },
+    {
+      "name": "EG IV: Dismounts",
+      "realName": "EG IV: Dismounts",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "On the end Wende from circle (also Russian 180° or",
+      "realName": "On the end Wende from circle (also Russian 180° or",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "270° to Wende)",
+      "realName": "270° to Wende)",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
@@ -1672,8 +2912,24 @@ export const skills = {
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "Kolyvanov",
-      "realName": "From side support on end, circle or flair to handstand and travel 3/3 with 450° or more turn.",
+      "name": "From side support on end, circle or flair to handstand",
+      "realName": "From side support on end, circle or flair to handstand",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "and travel 3/3 with 450° or more turn.",
+      "realName": "and travel 3/3 with 450° or more turn.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "(Kolyvanov)",
+      "realName": "(Kolyvanov)",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -1704,77 +2960,157 @@ export const skills = {
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "On the end, Russian wendeswing with 1080° or more.",
-      "realName": "On the end, Russian wendeswing with 1080° or more.",
+      "name": "On the end, Russian wendeswing with 1080° or",
+      "realName": "On the end, Russian wendeswing with 1080° or",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "Dolidze",
-      "realName": "From pommels, circle with 1/4 turn to Russian wendeswing 270° on one pommel to handstand.",
+      "name": "more.",
+      "realName": "more.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "From pommels, circle with 1/4 turn to Russian",
+      "realName": "From pommels, circle with 1/4 turn to Russian",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "From side support wendeswing fwd. with ½ t. to support followed by wende.",
-      "realName": "From side support wendeswing fwd. with ½ t. to support followed by wende.",
+      "name": "wendeswing 270° on one pommel to handstand.",
+      "realName": "wendeswing 270° on one pommel to handstand.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "(Dolidze)",
+      "realName": "(Dolidze)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "From side support wendeswing fwd. with ½ t. to",
+      "realName": "From side support wendeswing fwd. with ½ t. to",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "DSA, reverse Stöckli or circle on one pommel through handstand.",
-      "realName": "DSA, reverse Stöckli or circle on one pommel through handstand.",
+      "name": "support followed by wende.",
+      "realName": "support followed by wende.",
+      "difficulty": "A",
+      "value": 0.1,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "DSA, reverse Stöckli or circle on one pommel",
+      "realName": "DSA, reverse Stöckli or circle on one pommel",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "Jessen/Loos",
-      "realName": "DSA with hop bwd. through handstand on other end.",
+      "name": "through handstand.",
+      "realName": "through handstand.",
+      "difficulty": "C",
+      "value": 0.3,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "DSA with hop bwd. through handstand on other",
+      "realName": "DSA with hop bwd. through handstand on other",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "Circle or flair through handstand (also with ¾ t. with or without travel).",
-      "realName": "Circle or flair through handstand (also with ¾ t. with or without travel).",
+      "name": "end.",
+      "realName": "end.",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "(Jessen) (Loos)",
+      "realName": "(Jessen) (Loos)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "Circle or flair through handstand (also with ¾ t.",
+      "realName": "Circle or flair through handstand (also with ¾ t.",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "Circle or flair with hop travel bwd. through handstand.",
-      "realName": "Circle or flair with hop travel bwd. through handstand.",
-      "difficulty": "C",
-      "value": 0.3,
+      "name": "with or without travel).",
+      "realName": "with or without travel).",
+      "difficulty": "B",
+      "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "180° Russian from one end of the horse to the other end through handstand to dismount.",
-      "realName": "180° Russian from one end of the horse to the other end through handstand to dismount.",
+      "name": "Circle or flair with hop travel bwd. through",
+      "realName": "Circle or flair with hop travel bwd. through",
+      "difficulty": "H",
+      "value": 0.8,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "180° Russian from one end of the horse to the",
+      "realName": "180° Russian from one end of the horse to the",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "Targhetta",
+      "name": "other end through handstand to dismount",
+      "realName": "other end through handstand to dismount",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    },
+    {
+      "name": "Bertoncelj through handstand to dismount.",
       "realName": "Bertoncelj through handstand to dismount.",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
+    {
+      "name": "(Targhetta)",
+      "realName": "(Targhetta)",
+      "difficulty": "D",
+      "value": 0.4,
+      "isHeader": false,
+      "elementGroup": "EG IV: Dismounts"
+    }
   ],
   "Still Rings": [
     {
@@ -1787,8 +3123,8 @@ export const skills = {
     {
       "name": "EG I: Kip and swing elements & swings through or to handstand",
       "realName": "EG I: Kip and swing elements & swings through or to handstand",
-      "difficulty": "A",
-      "value": 0.1,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
@@ -2221,14 +3557,6 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": ".",
-      "realName": ".",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
       "name": "Any cross (2 s.)or V cross (2 s.).",
       "realName": "Any cross (2 s.)or V cross (2 s.).",
       "difficulty": "C",
@@ -2645,8 +3973,8 @@ export const skills = {
     {
       "name": "(Tulloch 2)",
       "realName": "(Tulloch 2)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -2812,8 +4140,8 @@ export const skills = {
     {
       "name": "(Carmona)",
       "realName": "(Carmona)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -3138,8 +4466,8 @@ export const skills = {
     {
       "name": "(Balandin 2)",
       "realName": "(Balandin 2)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -3628,8 +4956,8 @@ export const skills = {
     {
       "name": "Triple salto bwd. tucked.",
       "realName": "Triple salto bwd. tucked.",
-      "difficulty": "I",
-      "value": 0.9,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -3644,8 +4972,8 @@ export const skills = {
     {
       "name": "(Whittenburg)",
       "realName": "(Whittenburg)",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -3723,8 +5051,8 @@ export const skills = {
     {
       "name": "Double salto bwd. tuck with 3/1 turn",
       "realName": "Double salto bwd. tuck with 3/1 turn",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     }
@@ -4126,8 +5454,8 @@ export const skills = {
     {
       "name": "EG I: Elements starting in upper arm position",
       "realName": "EG I: Elements starting in upper arm position",
-      "difficulty": "A",
-      "value": 0.1,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG I: Elements starting in upper arm position"
     },
@@ -4238,8 +5566,8 @@ export const skills = {
     {
       "name": "(Tsolakidis 1)",
       "realName": "(Tsolakidis 1)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG I: Elements starting in upper arm position"
     },
@@ -4334,8 +5662,8 @@ export const skills = {
     {
       "name": "(Dimitrenko)",
       "realName": "(Dimitrenko)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG I: Elements starting in upper arm position"
     },
@@ -5017,8 +6345,8 @@ export const skills = {
     {
       "name": "(Kuavita)",
       "realName": "(Kuavita)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Elements in support or through support on 2 bars"
     },
@@ -5202,14 +6530,6 @@ export const skills = {
       "realName": "Min.",
       "difficulty": "D",
       "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Elements in support or through support on 2 bars"
-    },
-    {
-      "name": ".",
-      "realName": ".",
-      "difficulty": "B",
-      "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Elements in support or through support on 2 bars"
     },
@@ -5620,14 +6940,6 @@ export const skills = {
       "elementGroup": "EG III: Long swings in hang on 1 or 2 bars and Underswings"
     },
     {
-      "name": ".",
-      "realName": ".",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG III: Long swings in hang on 1 or 2 bars and Underswings"
-    },
-    {
       "name": "Giant swing bwd. to handstand or with inlocation",
       "realName": "Giant swing bwd. to handstand or with inlocation",
       "difficulty": "C",
@@ -5900,8 +7212,8 @@ export const skills = {
     {
       "name": "Belle with 1/1 turn.",
       "realName": "Belle with 1/1 turn.",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG III: Long swings in hang on 1 or 2 bars and Underswings"
     },
@@ -6043,8 +7355,8 @@ export const skills = {
     {
       "name": "(Esparza)",
       "realName": "(Esparza)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG III: Long swings in hang on 1 or 2 bars and Underswings"
     },
@@ -6354,8 +7666,8 @@ export const skills = {
     {
       "name": "(Yamamuro)",
       "realName": "(Yamamuro)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG III: Long swings in hang on 1 or 2 bars and Underswings"
     },
@@ -6592,8 +7904,8 @@ export const skills = {
     {
       "name": "(Larduet)",
       "realName": "(Larduet)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -6711,8 +8023,8 @@ export const skills = {
     {
       "name": "(Hiroyuki Kato)",
       "realName": "(Hiroyuki Kato)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -6775,8 +8087,8 @@ export const skills = {
     {
       "name": "From hang on end, triple salto bwd. Tuck",
       "realName": "From hang on end, triple salto bwd. Tuck",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -6823,8 +8135,8 @@ export const skills = {
     {
       "name": "EG I: Long hang swings and turns",
       "realName": "EG I: Long hang swings and turns",
-      "difficulty": "A",
-      "value": 0.1,
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG I: Long hang swings and turns"
     },
@@ -7211,8 +8523,8 @@ export const skills = {
     {
       "name": "(Wals trom)",
       "realName": "(Wals trom)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7307,8 +8619,8 @@ export const skills = {
     {
       "name": "(Liukin)",
       "realName": "(Liukin)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7442,8 +8754,8 @@ export const skills = {
     {
       "name": "(Suarez)",
       "realName": "(Suarez)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7466,8 +8778,8 @@ export const skills = {
     {
       "name": "(Jäger)",
       "realName": "(Jäger)",
-      "difficulty": "C",
-      "value": 0.3,
+      "difficulty": "J",
+      "value": 1,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7514,24 +8826,16 @@ export const skills = {
     {
       "name": "(Winkler - Pogorelev)",
       "realName": "(Winkler - Pogorelev)",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Flight elements"
-    },
-    {
-      "name": ".",
-      "realName": ".",
-      "difficulty": "C",
-      "value": 0.3,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
     {
       "name": "Salto fwd. straight with 2/1 t. also from el grip.",
       "realName": "Salto fwd. straight with 2/1 t. also from el grip.",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7633,8 +8937,8 @@ export const skills = {
     {
       "name": "(Deff)",
       "realName": "(Deff)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7665,8 +8969,8 @@ export const skills = {
     {
       "name": "(Pegan)",
       "realName": "(Pegan)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7681,8 +8985,8 @@ export const skills = {
     {
       "name": "(Koudinov)",
       "realName": "(Koudinov)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7692,14 +8996,6 @@ export const skills = {
       "difficulty": "A",
       "value": 0.1,
       "isHeader": true
-    },
-    {
-      "name": ".).",
-      "realName": ".).",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Flight elements"
     },
     {
       "name": "Gaylord piked.",
@@ -7744,8 +9040,8 @@ export const skills = {
     {
       "name": "(Maras)",
       "realName": "(Maras)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7792,8 +9088,8 @@ export const skills = {
     {
       "name": "(Bretschneider)",
       "realName": "(Bretschneider)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "H",
+      "value": 0.8,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7824,8 +9120,8 @@ export const skills = {
     {
       "name": "(Pineda - piked)",
       "realName": "(Pineda - piked)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7863,8 +9159,8 @@ export const skills = {
     {
       "name": "(Shaham)",
       "realName": "(Shaham)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Flight elements"
     },
@@ -7920,14 +9216,6 @@ export const skills = {
       "realName": "through handstand.",
       "difficulty": "A",
       "value": 0.1,
-      "isHeader": false,
-      "elementGroup": "EG III: In bar and Adler elements"
-    },
-    {
-      "name": ".",
-      "realName": ".",
-      "difficulty": "E",
-      "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG III: In bar and Adler elements"
     },
@@ -8305,8 +9593,8 @@ export const skills = {
     {
       "name": "(Rumbutis)",
       "realName": "(Rumbutis)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -8575,8 +9863,8 @@ export const skills = {
     {
       "name": "(Fardan)",
       "realName": "(Fardan)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -8639,8 +9927,8 @@ export const skills = {
     {
       "name": "(Belle)",
       "realName": "(Belle)",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
