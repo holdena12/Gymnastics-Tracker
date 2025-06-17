@@ -3629,3 +3629,142 @@ select:focus-visible {
   display: flex;
   justify-content: space-between;
 }
+
+/* Skill Explorer Modal Styles */
+.skill-explorer-content {
+  max-width: 900px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.skill-explorer-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.skill-explorer-stats {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background: #e9ecef;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.skill-explorer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.skill-explorer-item {
+  padding: 1rem;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  background: #f8f9fa;
+  transition: all 0.2s ease;
+}
+
+.skill-explorer-item:hover {
+  border-color: #007bff;
+  box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
+  transform: translateY(-1px);
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  margin: 0;
+  font-size: 1rem;
+  color: #212529;
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.skill-difficulty {
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-align: center;
+  min-width: 2rem;
+}
+
+.difficulty-a { background: #d4edda; color: #155724; }
+.difficulty-b { background: #d1ecf1; color: #0c5460; }
+.difficulty-c { background: #fff3cd; color: #856404; }
+.difficulty-d { background: #f8d7da; color: #721c24; }
+.difficulty-e { background: #e2e3e5; color: #383d41; }
+.difficulty-f { background: #f5c6cb; color: #721c24; }
+.difficulty-g { background: #d6d8db; color: #383d41; }
+.difficulty-h { background: #c3e6cb; color: #155724; }
+.difficulty-i { background: #bee5eb; color: #0c5460; }
+.difficulty-unknown { background: #f8f9fa; color: #6c757d; }
+
+.skill-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.skill-event {
+  padding: 0.25rem 0.5rem;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.skill-value {
+  font-weight: 500;
+  color: #28a745;
+}
+
+.skill-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+  line-height: 1.4;
+}
+
+.no-results {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  padding: 2rem;
+}
+
+/* Mobile responsive for skill explorer */
+@media (max-width: 768px) {
+  .skill-explorer-filters {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .skill-explorer-grid {
+    grid-template-columns: 1fr;
+    max-height: 300px;
+  }
+  
+  .skill-explorer-content {
+    max-height: 90vh;
+  }
+}

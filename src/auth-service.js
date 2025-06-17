@@ -98,11 +98,13 @@ class AuthService {
 
     // Generate a username that's not in email format (required when email alias is enabled)
     const username = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+    
+    // Ensure we have a name value
+    const displayName = fullName && fullName.trim() ? fullName.trim() : 'User';
 
     const attributeList = [
       new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }),
-      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: fullName || 'User' }),
-      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name.formatted', Value: fullName || 'User' }),
+      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: displayName }),
       new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'custom:gymnastics_level', Value: gymnasticsLevel || '' })
     ];
 
