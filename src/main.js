@@ -1068,49 +1068,27 @@ class GymnasticsTracker {
 
     // Update page title and event badge
     document.getElementById('routine-page-title').textContent = routine.name;
-    document.getElementById('routine-page-event').textContent = eventNames[eventType];
+    document.getElementById('routine-page-event').textContent = eventNames[eventType] || eventType;
+    document.getElementById('routine-page-date').textContent = this.formatDate(routine.date);
+    document.getElementById('routine-page-notes').textContent = routine.notes || 'No notes for this routine.';
 
-    // Update add skill button
-    const addSkillBtn = document.getElementById('routine-add-skill');
-    addSkillBtn.dataset.event = eventType;
-    addSkillBtn.dataset.routine = routine.id;
-
-    // Render routine progress
-    const progressContainer = document.getElementById('routine-progress-container');
-    const { total, completed, percentage } = this.calculateProgress(routine);
-    progressContainer.innerHTML = `
-      <div class="progress-info">
-        <span class="progress-title">Routine Progress</span>
-        <span class="progress-percentage">${percentage}%</span>
-      </div>
-      <div class="progress-bar-container">
-        <div class="progress-bar-fill" style="width: ${percentage}%;"></div>
-      </div>
-      <div class="progress-summary">${completed} of ${total} skills completed</div>
-    `;
-
-    // Calculate and render start value
-    const startValueContainer = document.getElementById('start-value-container');
-    const startValue = this.calculateStartValue(routine, eventType);
-    startValueContainer.innerHTML = `
-      <div class="start-value-info">
-        <span class="start-value-title">Start Value</span>
-        <span class="start-value-total">${startValue.total.toFixed(1)}</span>
-      </div>
-      <div class="start-value-breakdown">
-        (Skills: ${startValue.skillsValue.toFixed(1)})
-      </div>
-    `;
-
-    // Render skills in the routine page
+    // Render skills for this routine
     this.renderRoutineSkills(eventType, routine);
 
-    // Update notes
-    const notesContent = document.getElementById('routine-notes-content');
-    if (routine.notes && routine.notes.trim()) {
-      notesContent.innerHTML = `<p class="notes-text">${routine.notes.replace(/\n/g, '<br>')}</p>`;
-    } else {
-      notesContent.innerHTML = `<p class="notes-empty">No notes added yet. Click "Edit" to add some notes about this routine.</p>`;
+    // Dynamically add event listener for the "Add Skill" button
+    const addSkillBtn = document.getElementById('routine-add-skill');
+    if (addSkillBtn) {
+      addSkillBtn.dataset.event = eventType;
+      addSkillBtn.dataset.routine = routine.id;
+      // Clone and replace to remove old listeners before adding a new one
+      const newBtn = addSkillBtn.cloneNode(true);
+      addSkillBtn.parentNode.replaceChild(newBtn, addSkillBtn);
+      
+      newBtn.addEventListener('click', (e) => {
+        const event = e.currentTarget.dataset.event;
+        const routineId = e.currentTarget.dataset.routine;
+        this.showSkillModal(event, routineId);
+      });
     }
   }
 
@@ -1203,6 +1181,8 @@ class GymnasticsTracker {
     document.getElementById('skill-form').addEventListener('submit', (e) => this.handleSkillSubmit(e));
     document.getElementById('progression-form').addEventListener('submit', (e) => this.handleProgressionSubmit(e));
     document.getElementById('routine-notes-form').addEventListener('submit', (e) => this.handleNotesSubmit(e));
+    
+    // Note: The "Add Skill" button listener is now set dynamically in `renderRoutinePage`.
     
     // Profile Management Modal Tabs
     const profileTabs = document.querySelectorAll('.profile-tab');
