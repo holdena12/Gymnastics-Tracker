@@ -1777,21 +1777,7 @@ export const skills = {
     },
   ],
   "Still Rings": [
-    {
-      "name": "EG I: Kip and swing elements & swings through or to handstand",
-      "realName": "EG I: Kip and swing elements & swings through or to handstand",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "EG I: Kip and swing elements & swings through or to handstand",
-      "realName": "EG I: Kip and swing elements & swings through or to handstand",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
+
     {
       "name": "Uprise fwd. to support.",
       "realName": "Uprise fwd. to support.",
@@ -1801,42 +1787,18 @@ export const skills = {
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
-      "name": "From any support scale, swallow or swing bwd",
-      "realName": "From any support scale, swallow or swing bwd",
+      "name": "From any support scale, swallow or swing bwd in support, roll forward to bwd swing in hang.",
+      "realName": "From any support scale, swallow or swing bwd in support, roll forward to bwd swing in hang.",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
-      "name": "in support, roll forward to bwd swing in hang.",
-      "realName": "in support, roll forward to bwd swing in hang.",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "Uprise fwd and counter salto fwd. to bwd swing",
-      "realName": "Uprise fwd and counter salto fwd. to bwd swing",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "in hang.",
-      "realName": "in hang.",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
       "name": "(Chechi)",
-      "realName": "(Chechi)",
-      "difficulty": "I",
-      "value": 0.9,
+      "realName": "Uprise fwd and counter salto fwd. to bwd swing in hang.",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
@@ -1857,16 +1819,8 @@ export const skills = {
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
-      "name": "Tucked double salto bwd. to hang",
-      "realName": "Tucked double salto bwd. to hang",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
       "name": "(Guczoghy)",
-      "realName": "(Guczoghy)",
+      "realName": "Tucked double salto bwd. to hang.",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
@@ -1875,17 +1829,10 @@ export const skills = {
     {
       "name": "Piked or straight double salto bwd. to hang.",
       "realName": "Piked or straight double salto bwd. to hang.",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "D",
+      "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "EG I: Kip and swing elements & swings through or to handstand",
-      "realName": "EG I: Kip and swing elements & swings through or to handstand",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
     },
     {
       "name": "Dislocate bwd. piked or straight.",
@@ -1920,16 +1867,8 @@ export const skills = {
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
-      "name": "Backward swing to salto fwd. piked to support",
+      "name": "Honma",
       "realName": "Backward swing to salto fwd. piked to support",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "(Honma)",
-      "realName": "(Honma)",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
@@ -1946,49 +1885,26 @@ export const skills = {
     {
       "name": "Slow inlocate from hang.",
       "realName": "Slow inlocate from hang.",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "Double salto fwd. tucked to hang.",
-      "realName": "Double salto fwd. tucked to hang.",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
       "name": "(Yamawaki)",
-      "realName": "(Yamawaki)",
-      "difficulty": "I",
-      "value": 0.9,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "Double salto fwd. piked or straight to hang.",
-      "realName": "Double salto fwd. piked or straight to hang.",
-      "difficulty": "G",
-      "value": 0.7,
+      "realName": "Double salto fwd. tucked to hang.",
+      "difficulty": "B",
+      "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
       "name": "(Jonasson)",
-      "realName": "(Jonasson)",
-      "difficulty": "C",
-      "value": 0.3,
+      "realName": "Double salto fwd. piked or straight to hang.",
+      "difficulty": "D",
+      "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "EG I: Kip and swing elements & swings through or to handstand",
-      "realName": "EG I: Kip and swing elements & swings through or to handstand",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
     },
     {
       "name": "Kip to support.",
@@ -2017,8 +1933,8 @@ export const skills = {
     {
       "name": "Fwd. swing to swing bwd. in hang.",
       "realName": "Fwd. swing to swing bwd. in hang.",
-      "difficulty": "G",
-      "value": 0.7,
+      "difficulty": "A",
+      "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
@@ -2031,71 +1947,32 @@ export const skills = {
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
-      "name": "From support or cross, felge bwd. piked or",
-      "realName": "From support or cross, felge bwd. piked or",
+      "name": "From support or cross, felge bwd. piked or straight with bent arms to support.",
+      "realName": "From support or cross, felge bwd. piked or straight with bent arms to support.",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
-      "name": "straight with bent arms to support.",
-      "realName": "straight with bent arms to support.",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "EG I: Kip and swing elements & swings through or to handstand",
-      "realName": "EG I: Kip and swing elements & swings through or to handstand",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "Back kip or roll bwd str. with bent arms to",
-      "realName": "Back kip or roll bwd str. with bent arms to",
+      "name": "Back kip or roll bwd str. with bent arms to handstand.",
+      "realName": "Back kip or roll bwd str. with bent arms to handstand.",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
-      "name": "handstand (2 s.).",
-      "realName": "handstand (2 s.).",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "Swing fwd. to handstand or giant swing bwd",
-      "realName": "Swing fwd. to handstand or giant swing bwd",
+      "name": "Swing fwd. to handstand or giant swing bwd to handstand (2 s.).",
+      "realName": "Swing fwd. to handstand or giant swing bwd to handstand (2 s.).",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
     },
     {
-      "name": "to handstand (2 s.).",
-      "realName": "to handstand (2 s.).",
-      "difficulty": "C",
-      "value": 0.3,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "Uprise bwd. to handstand or giant swing fwd to",
-      "realName": "Uprise bwd. to handstand or giant swing fwd to",
-      "difficulty": "C",
-      "value": 0.3,
-      "isHeader": false,
-      "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "handstand (2 s.).",
-      "realName": "handstand (2 s.).",
+      "name": "Uprise bwd. to handstand or giant swing fwd to handstand (2 s.).",
+      "realName": "Uprise bwd. to handstand or giant swing fwd to handstand (2 s.).",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
@@ -2124,21 +2001,6 @@ export const skills = {
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG I: Kip and swing elements & swings through or to handstand"
-    },
-    {
-      "name": "EG II: Strength elements and hold elements (2 sec.)",
-      "realName": "EG II: Strength elements and hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "EG II: Strength elements and hold elements (2 sec.)",
-      "realName": "EG II: Strength elements and hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
       "name": "L-sit (2 s.) or straddled L-sit (2 s.).",
@@ -2181,24 +2043,8 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "Support scale at ring height (swallow or maltese",
-      "realName": "Support scale at ring height (swallow or maltese",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "cross) (2 s.).",
-      "realName": "cross) (2 s.).",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(Hirondelle)",
-      "realName": "(Hirondelle)",
+      "name": "Hirondelle",
+      "realName": "Support scale at ring height (swallow or maltese cross) (2 s.).",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -2221,14 +2067,6 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": ".",
-      "realName": ".",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
       "name": "Any cross (2 s.)or V cross (2 s.).",
       "realName": "Any cross (2 s.)or V cross (2 s.).",
       "difficulty": "C",
@@ -2245,7 +2083,7 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "V Cross, press to V-sit (2 sec.).",
+      "name": "(Tsukahara 3)",
       "realName": "V Cross, press to V-sit (2 sec.).",
       "difficulty": "D",
       "value": 0.4,
@@ -2253,15 +2091,7 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "(Tsukahara 3)",
-      "realName": "(Tsukahara 3)",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Vertical pull up with str. arms to V-cross (2 s.).",
+      "name": "(Colak)",
       "realName": "Vertical pull up with str. arms to V-cross (2 s.).",
       "difficulty": "E",
       "value": 0.5,
@@ -2269,87 +2099,32 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "(Colak)",
-      "realName": "(Colak)",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "EG II: Strength elements and hold elements (2 sec.)",
-      "realName": "EG II: Strength elements and hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "Press to hdst. with bent body and bent arms (2 s)",
-      "realName": "Press to hdst. with bent body and bent arms (2 s)",
+      "name": "Press to hdst. with bent body and bent arms (2 s) - Also straddle legs.",
+      "realName": "Press to hdst. with bent body and bent arms (2 s) - Also straddle legs.",
       "difficulty": "A",
       "value": 0.1,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "- Also straddle legs.",
-      "realName": "- Also straddle legs.",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Press to hdst. with str. body a. bent arms or b.",
-      "realName": "Press to hdst. with str. body a. bent arms or b.",
+      "name": "Press to hdst. with str. body a. bent arms or b. body. a. str. arms, or fr. strad. sup. lever (2 s.). - Also straddle legs.",
+      "realName": "Press to hdst. with str. body a. bent arms or b. body. a. str. arms, or fr. strad. sup. lever (2 s.). - Also straddle legs.",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "body. a. str. arms, or fr. strad. sup. lever (2 s.).",
-      "realName": "body. a. str. arms, or fr. strad. sup. lever (2 s.).",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "- Also straddle legs.",
-      "realName": "- Also straddle legs.",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Press to hdst. with str. body and str. arms from",
-      "realName": "Press to hdst. with str. body and str. arms from",
+      "name": "Press to hdst. with str. body and str. arms from support or support scale (2 s.).",
+      "realName": "Press to hdst. with str. body and str. arms from support or support scale (2 s.).",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "support or support scale (2 s.).",
-      "realName": "support or support scale (2 s.).",
-      "difficulty": "C",
-      "value": 0.3,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "28 . Press to hdst. with str. body and str. arms from",
-      "realName": "28 . Press to hdst. with str. body and str. arms from",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "swallow (2 s.).",
-      "realName": "swallow (2 s.).",
+      "name": "Press to hdst. with str. body and str. arms from swallow (2 s.).",
+      "realName": "Press to hdst. with str. body and str. arms from swallow (2 s.).",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -2364,32 +2139,16 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "Slow roll fwd. straight with bent arms, to",
-      "realName": "Slow roll fwd. straight with bent arms, to",
+      "name": "Slow roll fwd. straight with bent arms, to support.",
+      "realName": "Slow roll fwd. straight with bent arms, to support.",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "support.",
-      "realName": "support.",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Slow roll bwd. w. str. body and str. arms and",
-      "realName": "Slow roll bwd. w. str. body and str. arms and",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "straight. body to L sit (2 s.).",
-      "realName": "straight. body to L sit (2 s.).",
+      "name": "Slow roll bwd. w. str. body and str. arms and straight body to L-sit (2 s.).",
+      "realName": "Slow roll bwd. w. str. body and str. arms and straight body to L-sit (2 s.).",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
@@ -2404,71 +2163,24 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "EG II: Strength elements and hold elements (2 sec.)",
-      "realName": "EG II: Strength elements and hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "Vertical pull up with bent arms to hanging scale",
-      "realName": "Vertical pull up with bent arms to hanging scale",
+      "name": "Vertical pull up with bent arms to hanging scale rearways (2 s.).",
+      "realName": "Vertical pull up with bent arms to hanging scale rearways (2 s.).",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "rearways (2 s.).",
-      "realName": "rearways (2 s.).",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Vertical pull up with straight arms to hanging",
-      "realName": "Vertical pull up with straight arms to hanging",
+      "name": "Vertical pull up with straight arms to hanging scale rearways (2 s.).",
+      "realName": "Vertical pull up with straight arms to hanging scale rearways (2 s.).",
       "difficulty": "G",
       "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "scale rearways (2 s.).",
-      "realName": "scale rearways (2 s.).",
-      "difficulty": "C",
-      "value": 0.3,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Slow Roll bwd. with straight body to cross, L-",
-      "realName": "Slow Roll bwd. with straight body to cross, L-",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "cross or V cross (2 s.).",
-      "realName": "cross or V cross (2 s.).",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(Azarian)",
-      "realName": "(Azarian)",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(Tay)",
-      "realName": "(Tay)",
+      "name": "(Azarian)/(Tay)",
+      "realName": "Slow Roll bwd. with straight body to cross, L-cross or V-cross (2 s.).",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -2491,98 +2203,34 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From or through hanging scale rearways pull",
-      "realName": "From or through hanging scale rearways pull",
+      "name": "(Nakayama)/(NG Kiu Chung)",
+      "realName": "From or through hanging scale rearways pull to cross, L-cross, or V-cross (2 s.).",
       "difficulty": "D",
       "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "to cross, L-cross, or V cross (2 s.).",
-      "realName": "to cross, L-cross, or V cross (2 s.).",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(Nakayama)",
-      "realName": "(Nakayama)",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(NG Kiu Chung)",
-      "realName": "(NG Kiu Chung)",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Through hanging scale rearways pull with str. body",
-      "realName": "Through hanging scale rearways pull with str. body",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "through cross to inv. swallow (2 s.).",
-      "realName": "through cross to inv. swallow (2 s.).",
-      "difficulty": "F",
-      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
       "name": "(Zahran)",
-      "realName": "(Zahran)",
+      "realName": "Through hanging scale rearways pull with str. body through cross to inv. swallow (2 s.).",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From hdst., lower horiz. through swallow to",
-      "realName": "From hdst., lower horiz. through swallow to",
+      "name": "From hdst., lower horiz. through swallow to back lever (2 s.).",
+      "realName": "From hdst., lower horiz. through swallow to back lever (2 s.).",
       "difficulty": "B",
       "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "back lever (2 s.).",
-      "realName": "back lever (2 s.).",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From sup. or cross, lower slowly to hang, and",
-      "realName": "From sup. or cross, lower slowly to hang, and",
-      "difficulty": "C",
-      "value": 0.3,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "pull with str. arms to cross (2 s.).",
-      "realName": "pull with str. arms to cross (2 s.).",
-      "difficulty": "C",
-      "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
       "name": "(Li Xiaoshuang)",
-      "realName": "(Li Xiaoshuang)",
-      "difficulty": "G",
-      "value": 0.7,
+      "realName": "From sup. or cross, lower slowly to hang, and pull with str. arms to cross (2 s.).",
+      "difficulty": "C",
+      "value": 0.3,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -2595,74 +2243,26 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From planche, lower horiz. and slowly to",
-      "realName": "From planche, lower horiz. and slowly to",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "hanging scale rw. and press to swallow (2 s.) or from",
-      "realName": "hanging scale rw. and press to swallow (2 s.) or from",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "swallow same to planche or planche to planche.",
-      "realName": "swallow same to planche or planche to planche.",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
       "name": "(Van Gelder)",
-      "realName": "(Van Gelder)",
+      "realName": "From planche, lower horiz. and slowly to hanging scale rw. and press to swallow (2 s.) or from swallow same to planche or planche to planche (2 s.).",
       "difficulty": "E",
       "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From hang vertical pull up, slowly with straight",
-      "realName": "From hang vertical pull up, slowly with straight",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "arms through cross to inverted swallow (2 s.).",
-      "realName": "arms through cross to inverted swallow (2 s.).",
-      "difficulty": "F",
-      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
       "name": "(Tulloch 2)",
-      "realName": "(Tulloch 2)",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From handstand, lower slowly through inverted",
-      "realName": "From handstand, lower slowly through inverted",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "cross to inverted hang.",
-      "realName": "cross to inverted hang.",
+      "realName": "From hang vertical pull up, slowly with straight arms through cross to inverted swallow (2 s.).",
       "difficulty": "G",
       "value": 0.7,
+      "isHeader": false,
+      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
+    },
+    {
+      "name": "From handstand, lower slowly through inverted cross to inverted hang (2 s.).",
+      "realName": "From handstand, lower slowly through inverted cross to inverted hang (2 s.).",
+      "difficulty": "B",
+      "value": 0.2,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -2675,43 +2275,20 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From swallow, lower slowly to hanging",
-      "realName": "From swallow, lower slowly to hanging",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "scale rw, press to swallow (2 s.).",
-      "realName": "scale rw, press to swallow (2 s.).",
+      "name": "From swallow, lower slowly to hanging scale rearways and press to swallow (2 s.).",
+      "realName": "From swallow, lower slowly to hanging scale rearways and press to swallow (2 s.).",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From hanging scale rw. press to swallow (also to",
-      "realName": "From hanging scale rw. press to swallow (also to",
+      "name": "From hanging scale rw. press to swallow (also to support scale) (2 s.).",
+      "realName": "From hanging scale rw. press to swallow (also to support scale) (2 s.).",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Support Scale) (2 s.).",
-      "realName": "Support Scale) (2 s.).",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "EG II: Strength elements and hold elements (2 sec.)",
-      "realName": "EG II: Strength elements and hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
     },
     {
       "name": "From cross or L-cross, press to L-sit (2 s.).",
@@ -2722,66 +2299,34 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From L-cross, press with bent body to inverted",
-      "realName": "From L-cross, press with bent body to inverted",
+      "name": "From L-cross, press with bent body to inverted cross (2 s.).",
+      "realName": "From L-cross, press with bent body to inverted cross (2 s.).",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "cross (2 s.).",
-      "realName": "cross (2 s.).",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From cross, press with straight body to inverted",
-      "realName": "From cross, press with straight body to inverted",
+      "name": "From cross, press with straight body to inverted cross (2 s.).",
+      "realName": "From cross, press with straight body to inverted cross (2 s.).",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "cross (2 s.).",
-      "realName": "cross (2 s.).",
+      "name": "From swallow, press w. str. body to inverted cross (2 s.).",
+      "realName": "From swallow, press w. str. body to inverted cross (2 s.).",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From swallow, press w. str. body to inverted cross",
-      "realName": "From swallow, press w. str. body to inverted cross",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(2 s.).",
-      "realName": "(2 s.).",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From cross, press to planche without first going",
-      "realName": "From cross, press to planche without first going",
+      "name": "From cross, press to planche without first going to support (2 s.)",
+      "realName": "From cross, press to planche without first going to support (2 s.)",
       "difficulty": "G",
       "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "to support (2 s.).",
-      "realName": "to support (2 s.).",
-      "difficulty": "D",
-      "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -2794,111 +2339,24 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "Through hang rearways press and straight body to",
-      "realName": "Through hang rearways press and straight body to",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "inverted cross (2 s.)",
-      "realName": "inverted cross (2 s.)",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
       "name": "(Carmona)",
-      "realName": "(Carmona)",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From inverted cross lower slowly to inverted",
-      "realName": "From inverted cross lower slowly to inverted",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "hang and felge bwd. slowly to cross or V-cross (2 s.)",
-      "realName": "hang and felge bwd. slowly to cross or V-cross (2 s.)",
-      "difficulty": "D",
-      "value": 0.4,
+      "realName": "Through hang rearways press and straight body to inverted cross (2 s.).",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
       "name": "(Vorobiov/Zou)",
-      "realName": "(Vorobiov/Zou)",
+      "realName": "From inverted cross lower slowly to inverted hang and felge bwd. slowly to cross or V-cross (2 s.)",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From inverted cross lower slowly to inverted",
-      "realName": "From inverted cross lower slowly to inverted",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "hang and felge bwd. slowly to swallow (2 s.) or to",
-      "realName": "hang and felge bwd. slowly to swallow (2 s.) or to",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "support scale (2 s.)",
-      "realName": "support scale (2 s.)",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(Jotchev)",
-      "realName": "(Jotchev)",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(Zou 2)",
-      "realName": "(Zou 2)",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "EG II: Strength elements and hold elements (2 sec.)",
-      "realName": "EG II: Strength elements and hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "Roll bwd. slowly with str. arms and body to free",
-      "realName": "Roll bwd. slowly with str. arms and body to free",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "sup. scale (2 s.).",
-      "realName": "sup. scale (2 s.).",
+      "name": "(Jotchev)/(Zou 2)",
+      "realName": "From inverted cross lower slowly to inverted hang and felge bwd. slowly to swallow (2 s.) or to support scale (2 s.)",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
@@ -2906,9 +2364,9 @@ export const skills = {
     },
     {
       "name": "(Yan Mijayoung)",
-      "realName": "(Yan Mijayoung)",
-      "difficulty": "G",
-      "value": 0.7,
+      "realName": "Roll bwd. slowly with str. arms and body to free sup. scale (2 s.).",
+      "difficulty": "E",
+      "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
@@ -2921,87 +2379,31 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "Roll backward slowly with straight arms and body",
-      "realName": "Roll backward slowly with straight arms and body",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "to inverted cross through swallow.",
-      "realName": "to inverted cross through swallow.",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
       "name": "(Simonov)",
-      "realName": "(Simonov)",
+      "realName": "Roll backward slowly with straight arms and body to inverted cross through swallow (2 s.).",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "Slow roll fwd. with straight body through cross",
-      "realName": "Slow roll fwd. with straight body through cross",
+      "name": "Ng Kiu Chung 2",
+      "realName": "Slow roll fwd. with straight body through cross and press to support scale without first going to support (2 s.).",
       "difficulty": "D",
       "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "and press to support scale without first going to",
-      "realName": "and press to support scale without first going to",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "support (2 s.).",
-      "realName": "support (2 s.).",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "(Ng Kiu Chung 2)",
-      "realName": "(Ng Kiu Chung 2)",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Slow roll fwd. with straight body through cross",
-      "realName": "Slow roll fwd. with straight body through cross",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "to inverted cross (2 s.).",
-      "realName": "to inverted cross (2 s.).",
-      "difficulty": "E",
-      "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
       "name": "(Wynn)",
-      "realName": "(Wynn)",
+      "realName": "Slow roll fwd. with straight body through cross to inverted cross (2 s.).",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "Azarian to inverted Swallow (2 s.).",
+      "name": "(Tulloch)",
       "realName": "Azarian to inverted Swallow (2 s.).",
       "difficulty": "F",
       "value": 0.6,
@@ -3009,86 +2411,31 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "(Tulloch)",
-      "realName": "(Tulloch)",
-      "difficulty": "H",
-      "value": 0.8,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "EG II: Strength elements and hold elements (2 sec.)",
-      "realName": "EG II: Strength elements and hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "Slow roll fwd. with str. body to Cross",
-      "realName": "Slow roll fwd. with str. body to Cross",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "or L-Cross (2 s.), also from inverted hang.",
-      "realName": "or L-Cross (2 s.), also from inverted hang.",
-      "difficulty": "G",
-      "value": 0.7,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
       "name": "(Davtyan)",
-      "realName": "(Davtyan)",
+      "realName": "Slow roll fwd. with str. body to Cross or L-Cross (2 s.), also from inverted hang.",
       "difficulty": "D",
       "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "Slow roll forward with straight body through",
-      "realName": "Slow roll forward with straight body through",
-      "difficulty": "H",
-      "value": 0.8,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "cross to swallow (2 sec).",
-      "realName": "cross to swallow (2 sec).",
-      "difficulty": "E",
-      "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
       "name": "(Pham 2)",
-      "realName": "(Pham 2)",
+      "realName": "Slow roll forward with straight body through cross to swallow (2 s.).",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "From hang vertical pull up support and press",
-      "realName": "From hang vertical pull up support and press",
+      "name": "(Cingolani)",
+      "realName": "From hang vertical pull up support and press to hdst. with straight body and straight arms (2 s.).",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "to hdst. with straight body and straight arms.",
-      "realName": "to hdst. with straight body and straight arms.",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From hang vertical pull up to swallow (2 s.).",
+      "name": "(Balandin 1)",
       "realName": "From hang vertical pull up to swallow (2 s.).",
       "difficulty": "F",
       "value": 0.6,
@@ -3096,67 +2443,20 @@ export const skills = {
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
-      "name": "(Balandin 1)",
-      "realName": "(Balandin 1)",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From hang vertical pull up thr. swallow to sup.",
-      "realName": "From hang vertical pull up thr. swallow to sup.",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "scale (2 s.).",
-      "realName": "scale (2 s.).",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
       "name": "(Balandin 3)",
-      "realName": "(Balandin 3)",
+      "realName": "From hang vertical pull up thr. swallow to sup. scale (2 s.).",
       "difficulty": "E",
       "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "From hang vertical pull up to inv. cross (2 s.).",
-      "realName": "From hang vertical pull up to inv. cross (2 s.).",
-      "difficulty": "F",
-      "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
     },
     {
       "name": "(Balandin 2)",
-      "realName": "(Balandin 2)",
-      "difficulty": "F",
-      "value": 0.6,
+      "realName": "From hang vertical pull up to inv. cross (2 s.).",
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG II: Strength elements and hold elements (2 sec.)"
-    },
-    {
-      "name": "EG III: Swing to Strength hold elements (2 sec.)",
-      "realName": "EG III: Swing to Strength hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "EG III: Swing to Strength hold elements (2 sec.)",
-      "realName": "EG III: Swing to Strength hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": false,
-      "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
     },
     {
       "name": "Uprise fwd. to L-sit, (2 s.).",
@@ -3207,16 +2507,8 @@ export const skills = {
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
     },
     {
-      "name": "Homna to V-sit (2 s.).",
-      "realName": "Homna to V-sit (2 s.).",
-      "difficulty": "C",
-      "value": 0.3,
-      "isHeader": false,
-      "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
-    },
-    {
       "name": "(Gracia)",
-      "realName": "(Gracia)",
+      "realName": "Homna to V-sit (2 s.).",
       "difficulty": "C",
       "value": 0.3,
       "isHeader": false,
@@ -3231,16 +2523,8 @@ export const skills = {
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
     },
     {
-      "name": "Honma to V cross (2 s.).",
-      "realName": "Honma to V cross (2 s.).",
-      "difficulty": "E",
-      "value": 0.5,
-      "isHeader": false,
-      "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
-    },
-    {
       "name": "(Tanaka)",
-      "realName": "(Tanaka)",
+      "realName": "Honma to V cross (2 s.).",
       "difficulty": "E",
       "value": 0.5,
       "isHeader": false,
@@ -3253,13 +2537,6 @@ export const skills = {
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
-    },
-    {
-      "name": "EG III: Swing to Strength hold elements (2 sec.)",
-      "realName": "EG III: Swing to Strength hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
     },
     {
       "name": "Uprise fwd. to cross or L-cross (2 s.).",
@@ -3286,18 +2563,10 @@ export const skills = {
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
     },
     {
-      "name": "Kip to V cross (2 s.).",
+      "name": "(Molinari)",
       "realName": "Kip to V cross (2 s.).",
       "difficulty": "D",
       "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
-    },
-    {
-      "name": "(Molinari)",
-      "realName": "(Molinari)",
-      "difficulty": "I",
-      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
     },
@@ -3334,31 +2603,8 @@ export const skills = {
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
     },
     {
-      "name": "EG III: Swing to Strength hold elements (2 sec.)",
-      "realName": "EG III: Swing to Strength hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "Felge upward to support with straddled legs",
-      "realName": "Felge upward to support with straddled legs",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
-    },
-    {
-      "name": "supported above the rings (2 s.).",
-      "realName": "supported above the rings (2 s.).",
-      "difficulty": "B",
-      "value": 0.2,
-      "isHeader": false,
-      "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
-    },
-    {
       "name": "(Deltchev)",
-      "realName": "(Deltchev)",
+      "realName": "Felge upward to support with straddled legs (2 s.).",
       "difficulty": "B",
       "value": 0.2,
       "isHeader": false,
@@ -3405,16 +2651,8 @@ export const skills = {
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
     },
     {
-      "name": "Uprise forward to inverted swallow (2 s.).",
-      "realName": "Uprise forward to inverted swallow (2 s.).",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
-    },
-    {
       "name": "(Rodrigues)",
-      "realName": "(Rodrigues)",
+      "realName": "Uprise forward to inverted swallow (2 s.).",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
@@ -3453,13 +2691,6 @@ export const skills = {
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
     },
     {
-      "name": "EG III: Swing to Strength hold elements (2 sec.)",
-      "realName": "EG III: Swing to Strength hold elements (2 sec.)",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
       "name": "Uprise bwd. to inverted cross (2 s.).",
       "realName": "Uprise bwd. to inverted cross (2 s.).",
       "difficulty": "E",
@@ -3474,21 +2705,6 @@ export const skills = {
       "value": 0.4,
       "isHeader": false,
       "elementGroup": "EG III: Swing to Strength hold elements (2 sec.)"
-    },
-    {
-      "name": "EG IV: Dismounts",
-      "realName": "EG IV: Dismounts",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
-    },
-    {
-      "name": "EG IV: Dismounts",
-      "realName": "EG IV: Dismounts",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": false,
-      "elementGroup": "EG IV: Dismounts"
     },
     {
       "name": "Salto fwd. piked or straight, also with ½ t.",
@@ -3531,7 +2747,7 @@ export const skills = {
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "Double salto fwd. tucked with 3/2 t (also 1/1 t.)",
+      "name": "(Fischer)",
       "realName": "Double salto fwd. tucked with 3/2 t (also 1/1 t.)",
       "difficulty": "D",
       "value": 0.4,
@@ -3539,24 +2755,8 @@ export const skills = {
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "(Fischer)",
-      "realName": "(Fischer)",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG IV: Dismounts"
-    },
-    {
-      "name": "Double salto fwd. piked or piked with ½ t.",
-      "realName": "Double salto fwd. piked or piked with ½ t.",
-      "difficulty": "D",
-      "value": 0.4,
-      "isHeader": false,
-      "elementGroup": "EG IV: Dismounts"
-    },
-    {
       "name": "(Balabanov)",
-      "realName": "(Balabanov)",
+      "realName": "Double salto fwd. piked with 3/2 t. (also 1/1 t.).",
       "difficulty": "D",
       "value": 0.4,
       "isHeader": false,
@@ -3628,24 +2828,16 @@ export const skills = {
     {
       "name": "Triple salto bwd. tucked.",
       "realName": "Triple salto bwd. tucked.",
-      "difficulty": "I",
-      "value": 0.9,
-      "isHeader": false,
-      "elementGroup": "EG IV: Dismounts"
-    },
-    {
-      "name": "Triple salto bwd. piked.",
-      "realName": "Triple salto bwd. piked.",
-      "difficulty": "J",
-      "value": 1,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
     {
       "name": "(Whittenburg)",
-      "realName": "(Whittenburg)",
-      "difficulty": "G",
-      "value": 0.7,
+      "realName": "Triple salto bwd. piked.",
+      "difficulty": "I",
+      "value": 0.9,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     },
@@ -3674,27 +2866,12 @@ export const skills = {
       "elementGroup": "EG IV: Dismounts"
     },
     {
-      "name": "Double salto bwd. t. with 5/2 t.",
+      "name": "(Tuuha)",
       "realName": "Double salto bwd. t. with 5/2 t.",
       "difficulty": "F",
       "value": 0.6,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
-    },
-    {
-      "name": "(Tuuha)",
-      "realName": "(Tuuha)",
-      "difficulty": "F",
-      "value": 0.6,
-      "isHeader": false,
-      "elementGroup": "EG IV: Dismounts"
-    },
-    {
-      "name": "EG IV: Dismounts",
-      "realName": "EG IV: Dismounts",
-      "difficulty": "A",
-      "value": 0.1,
-      "isHeader": true
     },
     {
       "name": "Salto bwd. str. with 1/1 t. and salto t.",
@@ -3723,8 +2900,8 @@ export const skills = {
     {
       "name": "Double salto bwd. tuck with 3/1 turn",
       "realName": "Double salto bwd. tuck with 3/1 turn",
-      "difficulty": "F",
-      "value": 0.6,
+      "difficulty": "G",
+      "value": 0.7,
       "isHeader": false,
       "elementGroup": "EG IV: Dismounts"
     }

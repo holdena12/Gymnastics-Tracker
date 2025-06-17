@@ -856,14 +856,12 @@ class GymnasticsTracker {
     const logoutBtn = document.getElementById('logout-btn');
     const manageBtn = document.getElementById('manage-profile-btn');
     const switchBtn = document.getElementById('switch-profile-btn');
-    const skillExplorerBtn = document.getElementById('skill-explorer-btn');
     const teamsBtn = document.getElementById('teams-button');
 
     console.log('Button elements found:', {
       logout: !!logoutBtn,
       manage: !!manageBtn,
       switch: !!switchBtn,
-      skillExplorer: !!skillExplorerBtn,
       teams: !!teamsBtn
     });
 
@@ -883,12 +881,6 @@ class GymnasticsTracker {
       switchBtn.addEventListener('click', () => this.showSwitchProfileModal());
       switchBtn.setAttribute('data-listener-added', 'true');
       console.log('Switch Profile button listener added');
-    }
-
-    if (skillExplorerBtn && !skillExplorerBtn.hasAttribute('data-listener-added')) {
-      skillExplorerBtn.addEventListener('click', () => this.showSkillExplorerModal());
-      skillExplorerBtn.setAttribute('data-listener-added', 'true');
-      console.log('Skill Explorer button listener added');
     }
 
     if (teamsBtn && !teamsBtn.hasAttribute('data-listener-added')) {
@@ -1762,7 +1754,8 @@ class GymnasticsTracker {
     `;
   }
 
-  handleProfileUpdate() {
+  handleProfileUpdate(event) {
+    event.preventDefault();
     const fullName = document.getElementById('edit-fullname').value.trim();
     const level = document.getElementById('edit-level').value;
 
@@ -1780,7 +1773,8 @@ class GymnasticsTracker {
       });
   }
 
-  handlePasswordChange() {
+  handlePasswordChange(event) {
+    event.preventDefault();
     const currentPassword = document.getElementById('current-password').value;
     const newPassword = document.getElementById('new-password').value;
     const confirmNewPassword = document.getElementById('confirm-new-password').value;
@@ -1790,8 +1784,8 @@ class GymnasticsTracker {
       return;
     }
 
-    if (newPassword.length < 4) {
-      this.showNotification('Password must be at least 4 characters long', 'warning');
+    if (newPassword.length < 12) {
+      this.showNotification('Password must be at least 12 characters long', 'warning');
       return;
     }
 
@@ -3312,188 +3306,6 @@ class GymnasticsTracker {
   }
 
   // Data Management Methods
-  showSkillExplorerModal() {
-    // Create skill explorer modal if it doesn't exist
-    let modal = document.getElementById('skill-explorer-modal');
-    if (!modal) {
-      modal = document.createElement('div');
-      modal.id = 'skill-explorer-modal';
-      modal.className = 'modal';
-      modal.innerHTML = `
-        <div class="modal-content skill-explorer-content">
-          <span class="close">&times;</span>
-          <h2>🤸 Skill Explorer</h2>
-          <p class="modal-subtitle">Browse all 676+ official FIG Code of Points skills</p>
-          
-          <div class="skill-explorer-filters">
-            <div class="form-group">
-              <label for="explorer-search">Search Skills:</label>
-              <input type="text" id="explorer-search" placeholder="Search by name, difficulty, or technique...">
-            </div>
-            <div class="form-group">
-              <label for="explorer-event">Filter by Event:</label>
-              <select id="explorer-event">
-                <option value="">All Events</option>
-                <option value="floor">Floor Exercise</option>
-                <option value="pommel">Pommel Horse</option>
-                <option value="rings">Still Rings</option>
-                <option value="vault">Vault</option>
-                <option value="pbars">Parallel Bars</option>
-                <option value="hbar">High Bar</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="explorer-difficulty">Filter by Difficulty:</label>
-              <select id="explorer-difficulty">
-                <option value="">All Difficulties</option>
-                <option value="A">A - 0.1</option>
-                <option value="B">B - 0.2</option>
-                <option value="C">C - 0.3</option>
-                <option value="D">D - 0.4</option>
-                <option value="E">E - 0.5</option>
-                <option value="F">F - 0.6</option>
-                <option value="G">G - 0.7</option>
-                <option value="H">H - 0.8</option>
-                <option value="I">I - 0.9</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="skill-explorer-stats">
-            <span id="skills-count">Loading skills...</span>
-          </div>
-          
-          <div id="skill-explorer-results" class="skill-explorer-grid">
-            <!-- Skills will be loaded here -->
-          </div>
-        </div>
-      `;
-      document.body.appendChild(modal);
-      
-      // Add event listeners for the explorer
-      modal.querySelector('#explorer-search').addEventListener('input', (e) => this.filterSkillExplorer());
-      modal.querySelector('#explorer-event').addEventListener('change', (e) => this.filterSkillExplorer());
-      modal.querySelector('#explorer-difficulty').addEventListener('change', (e) => this.filterSkillExplorer());
-      
-      // Close button
-      modal.querySelector('.close').addEventListener('click', () => this.closeModal(modal));
-    }
-    
-    // Load and display all skills
-    this.loadSkillExplorer();
-    modal.style.display = 'block';
-  }
-
-  loadSkillExplorer() {
-    const resultsContainer = document.getElementById('skill-explorer-results');
-    const statsContainer = document.getElementById('skills-count');
-    
-    if (!resultsContainer) return;
-    
-    // Get all skills from all events
-    const allSkills = [];
-    const eventNames = {
-      'floor': 'Floor Exercise',
-      'pommel': 'Pommel Horse', 
-      'rings': 'Still Rings',
-      'vault': 'Vault',
-      'pbars': 'Parallel Bars',
-      'hbar': 'High Bar'
-    };
-    
-    Object.keys(eventNames).forEach(eventKey => {
-      const eventSkills = getSkillsForEvent(eventKey);
-      if (eventSkills && eventSkills.length > 0) {
-        eventSkills.forEach(skill => {
-          allSkills.push({
-            ...skill,
-            event: eventKey,
-            eventName: eventNames[eventKey]
-          });
-        });
-      }
-    });
-    
-    // Update stats
-    statsContainer.textContent = `${allSkills.length} skills loaded`;
-    
-    // Display all skills initially
-    this.displaySkillExplorerResults(allSkills);
-  }
-
-  filterSkillExplorer() {
-    const searchTerm = document.getElementById('explorer-search')?.value.toLowerCase() || '';
-    const eventFilter = document.getElementById('explorer-event')?.value || '';
-    const difficultyFilter = document.getElementById('explorer-difficulty')?.value || '';
-    
-    // Get all skills
-    const allSkills = [];
-    const eventNames = {
-      'floor': 'Floor Exercise',
-      'pommel': 'Pommel Horse', 
-      'rings': 'Still Rings',
-      'vault': 'Vault',
-      'pbars': 'Parallel Bars',
-      'hbar': 'High Bar'
-    };
-    
-    Object.keys(eventNames).forEach(eventKey => {
-      const eventSkills = getSkillsForEvent(eventKey);
-      if (eventSkills && eventSkills.length > 0) {
-        eventSkills.forEach(skill => {
-          allSkills.push({
-            ...skill,
-            event: eventKey,
-            eventName: eventNames[eventKey]
-          });
-        });
-      }
-    });
-    
-    // Apply filters
-    const filteredSkills = allSkills.filter(skill => {
-      const matchesSearch = !searchTerm || 
-        skill.name.toLowerCase().includes(searchTerm) ||
-        skill.difficulty?.toLowerCase().includes(searchTerm);
-      
-      const matchesEvent = !eventFilter || skill.event === eventFilter;
-      const matchesDifficulty = !difficultyFilter || skill.difficulty === difficultyFilter;
-      
-      return matchesSearch && matchesEvent && matchesDifficulty;
-    });
-    
-    // Update stats
-    const statsContainer = document.getElementById('skills-count');
-    if (statsContainer) {
-      statsContainer.textContent = `${filteredSkills.length} of ${allSkills.length} skills`;
-    }
-    
-    this.displaySkillExplorerResults(filteredSkills);
-  }
-
-  displaySkillExplorerResults(skills) {
-    const resultsContainer = document.getElementById('skill-explorer-results');
-    if (!resultsContainer) return;
-    
-    if (skills.length === 0) {
-      resultsContainer.innerHTML = '<p class="no-results">No skills match your search criteria.</p>';
-      return;
-    }
-    
-    resultsContainer.innerHTML = skills.map(skill => `
-      <div class="skill-explorer-item">
-        <div class="skill-header">
-          <h4 class="skill-name">${skill.name}</h4>
-          <span class="skill-difficulty difficulty-${skill.difficulty?.toLowerCase() || 'unknown'}">${skill.difficulty || 'N/A'}</span>
-        </div>
-        <div class="skill-meta">
-          <span class="skill-event">${skill.eventName}</span>
-          ${skill.value ? `<span class="skill-value">${skill.value} pts</span>` : ''}
-        </div>
-        ${skill.description ? `<p class="skill-description">${skill.description}</p>` : ''}
-      </div>
-    `).join('');
-  }
 }
 
 // Initialize the app when DOM is loaded
