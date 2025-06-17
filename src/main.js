@@ -834,6 +834,9 @@ class GymnasticsTracker {
     document.getElementById('main-page').style.display = 'block';
     document.getElementById('routine-page').style.display = 'none';
     
+    // Set up header button event listeners now that they exist
+    this.setupHeaderButtonListeners();
+    
     // Load user data first, then update UI
     this.loadUserData().then(() => {
       this.updateCurrentProfileDisplay();
@@ -843,6 +846,57 @@ class GymnasticsTracker {
     // Only set up auto-save interval once
     if (!this.autoSaveInterval) {
       this.autoSaveInterval = setInterval(() => this.saveUserData(), 30000);
+    }
+  }
+
+  setupHeaderButtonListeners() {
+    console.log('Setting up header button listeners...');
+    
+    // Profile management buttons - only set up if they exist and don't already have listeners
+    const logoutBtn = document.getElementById('logout-btn');
+    const manageBtn = document.getElementById('manage-profile-btn');
+    const switchBtn = document.getElementById('switch-profile-btn');
+    const skillExplorerBtn = document.getElementById('skill-explorer-btn');
+    const teamsBtn = document.getElementById('teams-button');
+
+    console.log('Button elements found:', {
+      logout: !!logoutBtn,
+      manage: !!manageBtn,
+      switch: !!switchBtn,
+      skillExplorer: !!skillExplorerBtn,
+      teams: !!teamsBtn
+    });
+
+    if (logoutBtn && !logoutBtn.hasAttribute('data-listener-added')) {
+      logoutBtn.addEventListener('click', () => this.logout());
+      logoutBtn.setAttribute('data-listener-added', 'true');
+      console.log('Logout button listener added');
+    }
+
+    if (manageBtn && !manageBtn.hasAttribute('data-listener-added')) {
+      manageBtn.addEventListener('click', () => this.showManageProfileModal());
+      manageBtn.setAttribute('data-listener-added', 'true');
+      console.log('Manage button listener added');
+    }
+
+    if (switchBtn && !switchBtn.hasAttribute('data-listener-added')) {
+      switchBtn.addEventListener('click', () => this.showSwitchProfileModal());
+      switchBtn.setAttribute('data-listener-added', 'true');
+      console.log('Switch Profile button listener added');
+    }
+
+    if (skillExplorerBtn && !skillExplorerBtn.hasAttribute('data-listener-added')) {
+      skillExplorerBtn.addEventListener('click', () => this.showSkillExplorerModal());
+      skillExplorerBtn.setAttribute('data-listener-added', 'true');
+      console.log('Skill Explorer button listener added');
+    }
+
+    if (teamsBtn && !teamsBtn.hasAttribute('data-listener-added')) {
+      teamsBtn.disabled = false;
+      teamsBtn.title = 'Manage Teams';
+      teamsBtn.addEventListener('click', () => this.showGroupsModal());
+      teamsBtn.setAttribute('data-listener-added', 'true');
+      console.log('Teams button listener added');
     }
   }
 
@@ -1116,19 +1170,7 @@ class GymnasticsTracker {
     document.getElementById('register-form').addEventListener('submit', (e) => this.handleRegister(e));
     document.getElementById('login-form').addEventListener('submit', (e) => this.handleLogin(e));
 
-    // Profile management
-    document.getElementById('logout-btn').addEventListener('click', () => this.logout());
-    document.getElementById('manage-profile-btn').addEventListener('click', () => this.showManageProfileModal());
-    document.getElementById('switch-profile-btn').addEventListener('click', () => this.showSwitchProfileModal());
-    document.getElementById('skill-explorer-btn').addEventListener('click', () => this.showSkillExplorerModal());
-    
-    // Teams button (enable it since we have the functionality)
-    const teamsBtn = document.getElementById('teams-button');
-    if (teamsBtn) {
-      teamsBtn.disabled = false;
-      teamsBtn.title = 'Manage Teams';
-      teamsBtn.addEventListener('click', () => this.showGroupsModal());
-    }
+    // Note: Header button listeners are set up in setupHeaderButtonListeners() when showMainApp() is called
 
     // ========================================
     // GROUP MANAGEMENT EVENT LISTENERS (Optional)
