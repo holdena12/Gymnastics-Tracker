@@ -1181,13 +1181,14 @@ class GymnasticsTracker {
       eventTabs[0].classList.add('active');
     }
 
-    // "Add Routine" button
-    const addRoutineBtn = document.getElementById('add-routine-btn');
-    if (addRoutineBtn) {
-      addRoutineBtn.addEventListener('click', () => {
-        this.showAddRoutineModal(this.currentEvent);
+    // "Add Routine" buttons
+    const addRoutineBtns = document.querySelectorAll('.add-routine-btn');
+    addRoutineBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const eventType = e.target.dataset.event;
+        this.showAddRoutineModal(eventType);
       });
-    }
+    });
 
     // Modal close buttons
     document.querySelectorAll('.modal .close').forEach(btn => {
