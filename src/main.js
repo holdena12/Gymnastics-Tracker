@@ -1037,18 +1037,57 @@ class GymnasticsTracker {
 
   // Navigation methods
   showRoutinePage(eventType, routineId) {
-    const routine = this.userData.routines[eventType].find(r => r.id === routineId);
-    if (!routine) return;
+    console.log('Showing routine page for event:', eventType, 'and routine ID:', routineId);
+    this.showMainPage();
+    
+    let routinePage = document.getElementById('routine-page');
+    if (!routinePage) {
+        console.log('Creating routine page structure');
+        const mainContent = document.getElementById('main-content');
+        if (mainContent) {
+            routinePage = document.createElement('div');
+            routinePage.id = 'routine-page';
+            routinePage.className = 'page';
+            mainContent.appendChild(routinePage);
+        } else {
+            console.error('Main content element not found');
+            return;
+        }
+    }
+    
+    // Hide other pages if necessary
+    document.querySelectorAll('.page').forEach(page => {
+        if (page.id !== 'routine-page') {
+            page.style.display = 'none';
+        } else {
+            page.style.display = 'block';
+        }
+    });
+    
+    // Always rebuild the structure to ensure required elements are present
+    routinePage.innerHTML = `
+        <h2 id="routine-page-title">Routine Title</h2>
+        <div class="badge event-badge" id="routine-page-event">Event</div>
+        <div class="routine-meta">
+            <span class="date" id="routine-page-date"></span>
+        </div>
+        <div class="notes" id="routine-page-notes">No notes for this routine.</div>
+        <div class="skills-list" id="routine-skills-list"></div>
+        <div class="action-buttons">
+            <button id="routine-add-skill" class="btn primary">Add Skill</button>
+        </div>
+    `;
+    
+    let routine = null;
+    if (this.userData && this.userData.routines && this.userData.routines[eventType] && Array.isArray(this.userData.routines[eventType])) {
+        routine = this.userData.routines[eventType].find(r => r.id === routineId);
+    }
 
-    this.currentPage = 'routine';
-    this.currentRoutineView = { eventType, routineId, routine };
-
-    // Hide main page, show routine page
-    document.getElementById('main-page').style.display = 'none';
-    document.getElementById('routine-page').style.display = 'block';
-
-    // Update page content
-    this.renderRoutinePage(eventType, routine);
+    if (routine) {
+        this.renderRoutinePage(eventType, routine);
+    } else {
+        console.error('Routine not found for ID:', routineId, 'in event type:', eventType);
+    }
   }
 
   showMainPage() {
@@ -1057,59 +1096,98 @@ class GymnasticsTracker {
   }
 
   renderRoutinePage(eventType, routine) {
+    console.log('Rendering routine page for ID:', routine.id);
+    const routinePage = document.getElementById('routine-page');
+    if (!routinePage) {
+        console.error('Routine page element not found');
+        return;
+    }
+    // Note: We no longer clear routinePage.innerHTML here to preserve the existing structure created in showRoutinePage.
+    
     const eventNames = {
-      'floor': 'Floor Exercise',
-      'pommel': 'Pommel Horse',
-      'rings': 'Still Rings',
-      'vault': 'Vault',
-      'pbars': 'Parallel Bars',
-      'hbar': 'High Bar'
+        'floor': 'Floor Exercise',
+        'pommel': 'Pommel Horse',
+        'rings': 'Still Rings',
+        'vault': 'Vault',
+        'pbars': 'Parallel Bars',
+        'hbar': 'High Bar'
     };
-
-    // Update page title and event badge
-    document.getElementById('routine-page-title').textContent = routine.name;
-    document.getElementById('routine-page-event').textContent = eventNames[eventType] || eventType;
-    document.getElementById('routine-page-date').textContent = this.formatDate(routine.date);
-    document.getElementById('routine-page-notes').textContent = routine.notes || 'No notes for this routine.';
-
+    
+    // Update page title and event badge with null checks
+    const routinePageTitle = document.getElementById('routine-page-title');
+    if (routinePageTitle) {
+        routinePageTitle.textContent = routine ? routine.name : 'Routine Not Found';
+    } else {
+        console.error('Routine page title element not found');
+    }
+    
+    const routinePageEvent = document.getElementById('routine-page-event');
+    if (routinePageEvent) {
+        routinePageEvent.textContent = eventNames[eventType] || eventType;
+    } else {
+        console.error('Routine page event element not found');
+    }
+    
+    const routinePageDate = document.getElementById('routine-page-date');
+    if (routinePageDate) {
+        routinePageDate.textContent = routine ? this.formatDate(routine.date) : '';
+    } else {
+        console.error('Routine page date element not found');
+    }
+    
+    const routinePageNotes = document.getElementById('routine-page-notes');
+    if (routinePageNotes) {
+        routinePageNotes.textContent = routine && routine.notes ? routine.notes : 'No notes for this routine.';
+    } else {
+        console.error('Routine page notes element not found');
+    }
+    
     // Render skills for this routine
-    this.renderRoutineSkills(eventType, routine);
-
+    if (routine) {
+        this.renderRoutineSkills(eventType, routine);
+    }
+    
     // Dynamically add event listener for the "Add Skill" button
     const addSkillBtn = document.getElementById('routine-add-skill');
     if (addSkillBtn) {
-      addSkillBtn.dataset.event = eventType;
-      addSkillBtn.dataset.routine = routine.id;
-      // Clone and replace to remove old listeners before adding a new one
-      const newBtn = addSkillBtn.cloneNode(true);
-      addSkillBtn.parentNode.replaceChild(newBtn, addSkillBtn);
-      
-      newBtn.addEventListener('click', (e) => {
-        const event = e.currentTarget.dataset.event;
-        const routineId = e.currentTarget.dataset.routine;
-        this.showSkillModal(event, routineId);
-      });
+        addSkillBtn.dataset.event = eventType;
+        addSkillBtn.dataset.routine = routine.id;
+        // Clone and replace to remove old listeners before adding a new one
+        const newBtn = addSkillBtn.cloneNode(true);
+        addSkillBtn.parentNode.replaceChild(newBtn, addSkillBtn);
+        
+        newBtn.addEventListener('click', (e) => {
+            const event = e.currentTarget.dataset.event;
+            const routineId = e.currentTarget.dataset.routine;
+            this.showSkillModal(event, routineId);
+        });
+    } else {
+        console.error('Add skill button not found');
     }
   }
 
   renderRoutineSkills(eventType, routine) {
     const container = document.getElementById('routine-skills-list');
+    if (!container) {
+        console.error('Routine skills list container not found');
+        return;
+    }
     
     if (!routine.skills || routine.skills.length === 0) {
-      container.innerHTML = `
-        <div class="empty-state">
-          <div class="empty-state-icon">🤸‍♂️</div>
-          <div class="empty-state-text">No skills added yet</div>
-          <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
-            Click "Add Skill" to start building your routine
-          </p>
-        </div>
-      `;
-      return;
+        container.innerHTML = `
+            <div class="empty-state">
+                <div class="empty-state-icon">🤸‍♂️</div>
+                <div class="empty-state-text">No skills added yet</div>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem;">
+                    Click "Add Skill" to start building your routine
+                </p>
+            </div>
+        `;
+        return;
     }
 
     const skillsHtml = routine.skills.map((skill, index) => 
-      this.renderSkill(eventType, routine.id, skill, index)
+        this.renderSkill(eventType, routine.id, skill, index)
     ).join('');
     
     container.innerHTML = skillsHtml;
@@ -1176,11 +1254,23 @@ class GymnasticsTracker {
       });
     });
 
-    // Main forms
-    document.getElementById('routine-form').addEventListener('submit', (e) => this.handleRoutineSubmit(e));
-    document.getElementById('skill-form').addEventListener('submit', (e) => this.handleSkillSubmit(e));
-    document.getElementById('progression-form').addEventListener('submit', (e) => this.handleProgressionSubmit(e));
-    document.getElementById('routine-notes-form').addEventListener('submit', (e) => this.handleNotesSubmit(e));
+    // Main forms with null checks
+    const routineForm = document.getElementById('routine-form');
+    if (routineForm) {
+      routineForm.addEventListener('submit', (e) => this.handleRoutineSubmit(e));
+    }
+    const skillForm = document.getElementById('skill-form');
+    if (skillForm) {
+      skillForm.addEventListener('submit', (e) => this.handleSkillSubmit(e));
+    }
+    const progressionForm = document.getElementById('progression-form');
+    if (progressionForm) {
+      progressionForm.addEventListener('submit', (e) => this.handleProgressionSubmit(e));
+    }
+    const routineNotesForm = document.getElementById('routine-notes-form');
+    if (routineNotesForm) {
+      routineNotesForm.addEventListener('submit', (e) => this.handleNotesSubmit(e));
+    }
     
     // Note: The "Add Skill" button listener is now set dynamically in `renderRoutinePage`.
     
@@ -2207,10 +2297,15 @@ class GymnasticsTracker {
   }
 
   deleteRoutine(eventType, routineId) {
+    console.log('deleteRoutine called with:', { eventType, routineId });
+    console.trace('Call stack for deleteRoutine:');
+    
+    if (!this.userData.routines || !this.userData.routines[eventType]) return;
+    
     this.userData.routines[eventType] = this.userData.routines[eventType].filter(r => r.id !== routineId);
     this.saveUserData();
     this.renderRoutines(eventType);
-    this.showNotification('Routine deleted', 'info');
+    this.showNotification('Routine deleted successfully', 'success');
   }
 
   // Rendering
@@ -2578,8 +2673,10 @@ class GymnasticsTracker {
         
         // View routine button
         if (target.classList.contains('view-routine-btn')) {
+          e.stopPropagation(); // Prevent context menu from interfering
           const eventType = target.dataset.event;
           const routineId = target.dataset.routine;
+          console.log('View routine button clicked:', { eventType, routineId });
           this.showRoutinePage(eventType, routineId);
           return;
         }

@@ -10,7 +10,7 @@ const awsConfig = {
     domain: 'https://us-east-1nugiuaybc.auth.us-east-1.amazoncognito.com'
   },
   dynamodb: {
-    tableName: 'GymnasticsTracker-Users',
+    tableName: 'GymnasticsTracker',
     groupsTableName: 'GymnasticsTracker-Groups',
     invitesTableName: 'GymnasticsTracker-Invites'
   }

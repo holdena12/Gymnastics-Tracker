@@ -262,13 +262,117 @@ class AuthService {
   // ========================================
   
   async loadUserData() {
-    console.log('loadUserData needs to be implemented for DynamoDB');
-    return { routines: {} }; // Return default empty data
+    if (!this.currentUser) {
+      console.log('No current user, returning empty data');
+      return { routines: {} };
+    }
+
+    try {
+      const dynamodb = new AWS.DynamoDB.DocumentClient();
+      const params = {
+        TableName: window.awsConfig.dynamodb.tableName || 'GymnasticsTracker',
+        Key: {
+          userId: this.currentUser.username
+        }
+      };
+
+      console.log('Attempting to load data from DynamoDB with params:', params);
+      console.log('AWS credentials configured:', AWS.config.credentials);
+      
+      const result = await dynamodb.get(params).promise();
+      
+      if (result.Item && result.Item.userData) {
+        console.log('Loaded user data from DynamoDB:', result.Item.userData);
+        return result.Item.userData;
+      } else {
+        console.log('No user data found in DynamoDB, returning default structure');
+        // Return default structure for new users
+        const defaultData = {
+          routines: {
+            floor: [],
+            pommel: [],
+            rings: [],
+            vault: [],
+            pbars: [],
+            hbar: []
+          }
+        };
+        // Save the default structure to DynamoDB
+        await this.saveUserData(defaultData);
+        return defaultData;
+      }
+    } catch (error) {
+      console.error('Error loading user data from DynamoDB:', error);
+      console.error('Error details:', error.code, error.message);
+      console.log('Falling back to localStorage');
+      
+      // Fallback to localStorage if DynamoDB fails
+      const localData = localStorage.getItem(`gymnastics-data-${this.currentUser.username}`);
+      if (localData) {
+        try {
+          return JSON.parse(localData);
+        } catch (parseError) {
+          console.error('Error parsing localStorage data:', parseError);
+        }
+      }
+      
+      // Return default structure on error
+      const defaultData = {
+        routines: {
+          floor: [],
+          pommel: [],
+          rings: [],
+          vault: [],
+          pbars: [],
+          hbar: []
+        }
+      };
+      
+      // Save default to localStorage as fallback
+      localStorage.setItem(`gymnastics-data-${this.currentUser.username}`, JSON.stringify(defaultData));
+      return defaultData;
+    }
   }
   
   async saveUserData(data) {
-    console.log('saveUserData needs to be implemented for DynamoDB');
-    return true;
+    if (!this.currentUser) {
+      console.log('No current user, cannot save data');
+      return false;
+    }
+
+    try {
+      const dynamodb = new AWS.DynamoDB.DocumentClient();
+      const params = {
+        TableName: window.awsConfig.dynamodb.tableName || 'GymnasticsTracker',
+        Item: {
+          userId: this.currentUser.username,
+          userData: data,
+          lastModified: new Date().toISOString()
+        }
+      };
+
+      console.log('Attempting to save data to DynamoDB with params:', params);
+      await dynamodb.put(params).promise();
+      console.log('Successfully saved user data to DynamoDB');
+      
+      // Also save to localStorage as backup
+      localStorage.setItem(`gymnastics-data-${this.currentUser.username}`, JSON.stringify(data));
+      return true;
+    } catch (error) {
+      console.error('Error saving user data to DynamoDB:', error);
+      console.error('Error details:', error.code, error.message);
+      console.log('Falling back to localStorage');
+      
+      // Fallback to localStorage if DynamoDB fails
+      try {
+        localStorage.setItem(`gymnastics-data-${this.currentUser.username}`, JSON.stringify(data));
+        console.log('Successfully saved user data to localStorage as fallback');
+        return true;
+      } catch (localError) {
+        console.error('Error saving to localStorage:', localError);
+        return false;
+      }
+    }
   }
 
   async getUserProfile() {
