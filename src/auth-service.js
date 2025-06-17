@@ -96,8 +96,8 @@ class AuthService {
   async signUp(email, password, fullName, gymnasticsLevel) {
     if (!this.isAwsReady) return { success: false, error: 'AWS service not ready.' };
 
-    // Generate a username that's not in email format (required when email alias is enabled)
-    const username = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5);
+    // Use email as username for simplicity - Cognito will handle email verification
+    const username = email;
     
     // Ensure we have a name value
     const displayName = fullName && fullName.trim() ? fullName.trim() : 'User';
@@ -116,7 +116,7 @@ class AuthService {
         }
         // After sign up, we should store their profile data in DynamoDB
         // This will happen after they confirm their email and sign in for the first time.
-        resolve({ success: true, user: result.user });
+        resolve({ success: true, user: result.user, needsConfirmation: true });
       });
     });
   }
@@ -171,6 +171,46 @@ class AuthService {
 
   getCurrentUser() {
     return this.currentUser;
+  }
+
+  async confirmSignUp(email, confirmationCode) {
+    if (!this.isAwsReady) return { success: false, error: 'AWS service not ready.' };
+
+    const cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+      Username: email,
+      Pool: this.pool,
+    });
+
+    return new Promise((resolve) => {
+      cognitoUser.confirmRegistration(confirmationCode, true, (err, result) => {
+        if (err) {
+          console.error('Confirmation error:', err);
+          resolve({ success: false, error: err.message || JSON.stringify(err) });
+          return;
+        }
+        resolve({ success: true, result });
+      });
+    });
+  }
+
+  async resendConfirmationCode(email) {
+    if (!this.isAwsReady) return { success: false, error: 'AWS service not ready.' };
+
+    const cognitoUser = new AmazonCognitoIdentity.CognitoUser({
+      Username: email,
+      Pool: this.pool,
+    });
+
+    return new Promise((resolve) => {
+      cognitoUser.resendConfirmationCode((err, result) => {
+        if (err) {
+          console.error('Resend confirmation error:', err);
+          resolve({ success: false, error: err.message || JSON.stringify(err) });
+          return;
+        }
+        resolve({ success: true, result });
+      });
+    });
   }
   
   // ========================================

@@ -1540,10 +1540,16 @@ class GymnasticsTracker {
       const result = await this.authService.signUp(email, password, fullName, level);
       
       if (result.success) {
-        this.currentUser = result.user;
-        await this.loadUserData();
-        this.showMainApp();
-        this.showNotification('Account created successfully! Your data will sync across all devices.', 'success');
+        if (result.needsConfirmation) {
+          this.showNotification('Account created! Please check your email for a confirmation code, then sign in with your email and password.', 'success');
+          // Switch to login form for user to sign in after confirmation
+          this.switchLoginForm('login');
+        } else {
+          this.currentUser = result.user;
+          await this.loadUserData();
+          this.showMainApp();
+          this.showNotification('Account created successfully! Your data will sync across all devices.', 'success');
+        }
       } else {
         this.showNotification(result.error, 'warning');
       }
