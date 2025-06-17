@@ -833,8 +833,12 @@ class GymnasticsTracker {
     document.getElementById('login-page').style.display = 'none';
     document.getElementById('main-page').style.display = 'block';
     document.getElementById('routine-page').style.display = 'none';
-    this.updateCurrentProfileDisplay();
-    this.renderAll();
+    
+    // Load user data first, then update UI
+    this.loadUserData().then(() => {
+      this.updateCurrentProfileDisplay();
+      this.renderAll();
+    });
     
     // Only set up auto-save interval once
     if (!this.autoSaveInterval) {
@@ -1548,9 +1552,24 @@ class GymnasticsTracker {
 
     try {
       const data = await this.authService.loadUserData();
-      if (data) {
+      
+      // Initialize userData structure for new users or if data doesn't exist
+      if (!data) {
+        this.userData = {
+          routines: {
+            floor: [],
+            pommel: [],
+            rings: [],
+            vault: [],
+            pbars: [],
+            hbar: []
+          }
+        };
+        // Save the initial structure
+        await this.saveUserData();
+      } else {
         this.userData = data;
-        // Ensure userData has the correct structure
+        // Ensure userData has the correct structure even for existing users
         if (!this.userData.routines) {
           this.userData.routines = {
             floor: [],
@@ -1561,11 +1580,32 @@ class GymnasticsTracker {
             hbar: []
           };
         }
-        this.refreshUI();
+        
+        // Ensure all event types exist
+        const eventTypes = ['floor', 'pommel', 'rings', 'vault', 'pbars', 'hbar'];
+        eventTypes.forEach(eventType => {
+          if (!this.userData.routines[eventType]) {
+            this.userData.routines[eventType] = [];
+          }
+        });
       }
+      
+      this.refreshUI();
     } catch (error) {
       console.error('Error loading user data:', error);
-      this.showNotification('Error loading your data', 'warning');
+      // Initialize with empty structure if loading fails
+      this.userData = {
+        routines: {
+          floor: [],
+          pommel: [],
+          rings: [],
+          vault: [],
+          pbars: [],
+          hbar: []
+        }
+      };
+      this.showNotification('Error loading your data, starting fresh', 'warning');
+      this.refreshUI();
     }
   }
 
@@ -1978,6 +2018,36 @@ class GymnasticsTracker {
     const name = document.getElementById('routine-name').value;
     const date = document.getElementById('routine-date').value;
     const notes = document.getElementById('routine-notes').value;
+
+    // Ensure userData structure exists
+    if (!this.userData) {
+      this.userData = {
+        routines: {
+          floor: [],
+          pommel: [],
+          rings: [],
+          vault: [],
+          pbars: [],
+          hbar: []
+        }
+      };
+    }
+
+    if (!this.userData.routines) {
+      this.userData.routines = {
+        floor: [],
+        pommel: [],
+        rings: [],
+        vault: [],
+        pbars: [],
+        hbar: []
+      };
+    }
+
+    // Ensure the specific event array exists
+    if (!this.userData.routines[this.currentEvent]) {
+      this.userData.routines[this.currentEvent] = [];
+    }
 
     const routine = {
       id: Date.now().toString(),
