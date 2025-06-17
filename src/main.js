@@ -1467,8 +1467,10 @@ class GymnasticsTracker {
     }
 
     // AWS Cognito password policy validation
-    if (password.length < 8) {
-      this.showNotification('Password must be at least 8 characters long', 'warning');
+    console.log('Password validation - Length:', password.length, 'Password:', password.substring(0, 3) + '...');
+    
+    if (password.length < 12) {
+      this.showNotification('Password must be at least 12 characters long', 'warning');
       return;
     }
 

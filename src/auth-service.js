@@ -101,8 +101,9 @@ class AuthService {
 
     const attributeList = [
       new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }),
-      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: fullName }),
-      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'custom:gymnastics_level', Value: gymnasticsLevel })
+      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: fullName || 'User' }),
+      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name.formatted', Value: fullName || 'User' }),
+      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'custom:gymnastics_level', Value: gymnasticsLevel || '' })
     ];
 
     return new Promise((resolve) => {
