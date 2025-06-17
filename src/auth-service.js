@@ -270,6 +270,27 @@ class AuthService {
     console.log('saveUserData needs to be implemented for DynamoDB');
     return true;
   }
+
+  async getUserProfile() {
+    // Return basic profile info from current user
+    if (!this.currentUser) return null;
+    
+    return {
+      fullName: this.currentUser.name || '',
+      email: this.currentUser.email || '',
+      gymnasticsLevel: this.currentUser.custom_gymnastics_level || ''
+    };
+  }
+
+  async updateUserProfile(profileData) {
+    console.log('updateUserProfile needs to be implemented for DynamoDB');
+    return true;
+  }
+
+  async loadUserGroups() {
+    console.log('loadUserGroups needs to be implemented for DynamoDB');
+    return []; // Return empty groups for now
+  }
   
   async createGroup(groupName) {
     console.log('createGroup needs to be implemented for DynamoDB');
