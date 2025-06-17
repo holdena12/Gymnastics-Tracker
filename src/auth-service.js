@@ -108,15 +108,23 @@ class AuthService {
     ];
 
     return new Promise((resolve) => {
+      console.log('Attempting to sign up user with username:', username);
       this.pool.signUp(username, password, attributeList, null, (err, result) => {
         if (err) {
           console.error('Sign up error:', err);
           resolve({ success: false, error: err.message || JSON.stringify(err) });
           return;
         }
+        console.log('Sign up successful:', result);
+        console.log('User needs confirmation:', !result.userConfirmed);
         // After sign up, we should store their profile data in DynamoDB
         // This will happen after they confirm their email and sign in for the first time.
-        resolve({ success: true, user: result.user, needsConfirmation: true });
+        resolve({ 
+          success: true, 
+          user: result.user, 
+          needsConfirmation: !result.userConfirmed,
+          userConfirmed: result.userConfirmed 
+        });
       });
     });
   }
@@ -124,6 +132,8 @@ class AuthService {
   async signIn(email, password) {
     if (!this.isAwsReady) return { success: false, error: 'AWS service not ready.' };
 
+    console.log('Attempting to sign in user with email:', email);
+    
     const authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
       Username: email,
       Password: password,
@@ -148,8 +158,23 @@ class AuthService {
         },
         onFailure: (err) => {
           console.error('Sign in error:', err);
-          resolve({ success: false, error: err.message || JSON.stringify(err) });
+          let errorMessage = err.message || 'Authentication failed';
+          
+          // Handle specific Cognito error cases
+          if (err.code === 'UserNotConfirmedException') {
+            errorMessage = 'Please check your email and confirm your account before signing in.';
+          } else if (err.code === 'NotAuthorizedException') {
+            errorMessage = 'Invalid email or password. Please check your credentials.';
+          } else if (err.code === 'UserNotFoundException') {
+            errorMessage = 'No account found with this email address. Please register first.';
+          }
+          
+          resolve({ success: false, error: errorMessage, code: err.code });
         },
+        newPasswordRequired: (userAttributes, requiredAttributes) => {
+          // Handle case where user needs to set a new password
+          resolve({ success: false, error: 'New password required. Please contact support.', code: 'NewPasswordRequired' });
+        }
       });
     });
   }

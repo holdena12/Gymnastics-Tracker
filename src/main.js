@@ -1481,7 +1481,22 @@ class GymnasticsTracker {
         this.showMainApp();
         this.showNotification(`Welcome back, ${this.currentUser.displayName || 'User'}!`, 'success');
       } else {
-        this.showNotification(result.error, 'warning');
+        console.log('Login failed with error:', result.error, 'Code:', result.code);
+        
+        // Handle specific error cases
+        if (result.code === 'UserNotConfirmedException') {
+          const confirmCode = prompt('Your account is not confirmed. Please enter the confirmation code from your email:');
+          if (confirmCode) {
+            const confirmResult = await this.authService.confirmSignUp(email, confirmCode);
+            if (confirmResult.success) {
+              this.showNotification('Account confirmed! Please try signing in again.', 'success');
+            } else {
+              this.showNotification('Confirmation failed: ' + confirmResult.error, 'warning');
+            }
+          }
+        } else {
+          this.showNotification(result.error, 'warning');
+        }
       }
     } catch (error) {
       console.error('Login error:', error);
