@@ -1145,13 +1145,8 @@ class GymnasticsTracker {
 
   // Event Listeners
   setupEventListeners() {
-    // ========================================
-    // AUTHENTICATION EVENT LISTENERS
-    // ========================================
-    
-    // Login tabs
-    const loginTabs = document.querySelectorAll('.login-tab');
-    loginTabs.forEach(tab => {
+    // Login/Register form switch
+    document.querySelectorAll('.login-tab').forEach(tab => {
       tab.addEventListener('click', (e) => {
         const targetForm = e.target.dataset.tab;
         this.switchLoginForm(targetForm);
@@ -1159,216 +1154,100 @@ class GymnasticsTracker {
     });
 
     // Auth forms
-    document.getElementById('register-form').addEventListener('submit', (e) => this.handleRegister(e));
     document.getElementById('login-form').addEventListener('submit', (e) => this.handleLogin(e));
-
-    // Note: Header button listeners are set up in setupHeaderButtonListeners() when showMainApp() is called
+    document.getElementById('register-form').addEventListener('submit', (e) => this.handleRegister(e));
 
     // ========================================
-    // GROUP MANAGEMENT EVENT LISTENERS (Optional)
+    // MAIN APP EVENT LISTENERS
     // ========================================
     
-    // Only add group event listeners if elements exist
-    const createGroupBtn = document.getElementById('create-group-btn');
-    const joinGroupBtn = document.getElementById('join-group-btn');
-    const createGroupForm = document.getElementById('create-group-form');
-    const joinGroupForm = document.getElementById('join-group-form');
-    const copyInviteCodeBtn = document.getElementById('copy-invite-code');
-    const inviteCodeInput = document.getElementById('invite-code');
-    
-    if (createGroupBtn) {
-      createGroupBtn.addEventListener('click', () => this.showCreateGroupModal());
+    // Logout button (in header) is handled by setupHeaderButtonListeners
+
+    // Event tabs
+    const eventTabs = document.querySelectorAll('.nav-tab');
+    if (eventTabs.length > 0) {
+      eventTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+          this.currentEvent = e.target.dataset.event;
+          
+          eventTabs.forEach(t => t.classList.remove('active'));
+          e.target.classList.add('active');
+          
+          this.renderRoutines(this.currentEvent);
+        });
+      });
+      // Set initial state
+      this.currentEvent = eventTabs[0].dataset.event;
+      eventTabs[0].classList.add('active');
     }
-    
-    if (joinGroupBtn) {
-      joinGroupBtn.addEventListener('click', () => this.showJoinGroupModal());
-    }
-    
-    if (createGroupForm) {
-      createGroupForm.addEventListener('submit', (e) => this.handleCreateGroup(e));
-    }
-    
-    if (joinGroupForm) {
-      joinGroupForm.addEventListener('submit', (e) => this.handleJoinGroup(e));
-    }
-    
-    if (copyInviteCodeBtn) {
-      copyInviteCodeBtn.addEventListener('click', () => this.copyInviteCode());
-    }
-    
-    if (inviteCodeInput) {
-      inviteCodeInput.addEventListener('input', (e) => {
-        e.target.value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+    // "Add Routine" button
+    const addRoutineBtn = document.getElementById('add-routine-btn');
+    if (addRoutineBtn) {
+      addRoutineBtn.addEventListener('click', () => {
+        this.showAddRoutineModal(this.currentEvent);
       });
     }
 
-    // ========================================
-    // MODAL CLOSE EVENT LISTENERS
-    // ========================================
-    
-    // Close buttons for all modals
-    const closeButtons = document.querySelectorAll('.close, .modal-close');
-    closeButtons.forEach(btn => {
+    // Modal close buttons
+    document.querySelectorAll('.modal .close').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const modal = e.target.closest('.modal');
-        if (modal) {
-          this.closeModal(modal);
-        }
+        if (modal) this.closeModal(modal);
       });
     });
 
-    // Click outside modal to close
-    window.addEventListener('click', (e) => {
-      if (e.target.classList.contains('modal')) {
-        this.closeModal(e.target);
-      }
-    });
-
-    // ========================================
-    // ROUTINE MANAGEMENT EVENT LISTENERS
-    // ========================================
-    
-    // Add routine buttons
-    const addRoutineBtns = document.querySelectorAll('.add-routine-btn');
-    addRoutineBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const eventType = e.target.dataset.event;
-        this.showAddRoutineModal(eventType);
-      });
-    });
-
-    // Routine form submission
+    // Main forms
     document.getElementById('routine-form').addEventListener('submit', (e) => this.handleRoutineSubmit(e));
-
-    // Back to main button
-    document.getElementById('back-to-dashboard').addEventListener('click', () => this.showMainPage());
-
-    // ========================================
-    // SKILL MANAGEMENT EVENT LISTENERS
-    // ========================================
+    document.getElementById('skill-form').addEventListener('submit', (e) => this.handleSkillSubmit(e));
+    document.getElementById('progression-form').addEventListener('submit', (e) => this.handleProgressionSubmit(e));
+    document.getElementById('routine-notes-form').addEventListener('submit', (e) => this.handleNotesSubmit(e));
     
-    // Add skill button in routine page (use correct ID)
-    const addSkillBtn = document.getElementById('routine-add-skill');
-    if (addSkillBtn) {
-      addSkillBtn.addEventListener('click', () => {
-        const eventType = this.currentRoutineView?.eventType;
-        if (eventType) {
-          this.showAddSkillModal(eventType);
-        }
-      });
-    }
-
-    // Skill form submission
-    const skillForm = document.getElementById('skill-form');
-    if (skillForm) {
-      skillForm.addEventListener('submit', (e) => this.handleSkillSubmit(e));
-    }
-
-    // Progression form submission
-    const progressionForm = document.getElementById('progression-form');
-    if (progressionForm) {
-      progressionForm.addEventListener('submit', (e) => this.handleProgressionSubmit(e));
-    }
-
-    // Notes form submission
-    const notesForm = document.getElementById('notes-form');
-    if (notesForm) {
-      notesForm.addEventListener('submit', (e) => this.handleNotesSubmit(e));
-    }
-
-    // Skills search (use correct ID)
-    const skillsSearch = document.getElementById('skill-search');
-    if (skillsSearch) {
-      skillsSearch.addEventListener('input', (e) => this.handleSkillsSearch(e));
-    }
-
-    // Event selection for skills - This element might not exist, adding null check
-    const skillEvent = document.getElementById('skill-event');
-    if (skillEvent) {
-      skillEvent.addEventListener('change', (e) => {
-        const eventType = e.target.value;
-        if (eventType) {
-          this.loadEventSkills(eventType);
-        }
-      });
-    }
-
-    // Custom skill toggle - This element might not exist, adding null check
-    const customSkillToggle = document.getElementById('custom-skill-toggle');
-    if (customSkillToggle) {
-      customSkillToggle.addEventListener('change', (e) => {
-        this.toggleCustomSkillForm(e.target.checked);
-      });
-    }
-
-    // ========================================
-    // PROFILE MANAGEMENT EVENT LISTENERS
-    // ========================================
-    
-    // Profile tabs
+    // Profile Management Modal Tabs
     const profileTabs = document.querySelectorAll('.profile-tab');
     profileTabs.forEach(tab => {
       tab.addEventListener('click', (e) => {
-        const targetTab = e.target.dataset.tab;
-        this.switchProfileTab(targetTab);
+        this.switchProfileTab(e.target.dataset.tab);
       });
     });
 
-    // Profile update form (use correct ID)
+    // Profile update and password change forms
     const profileUpdateForm = document.getElementById('edit-profile-form');
     if (profileUpdateForm) {
       profileUpdateForm.addEventListener('submit', (e) => this.handleProfileUpdate(e));
     }
-
-    // Password change form (use correct ID)
     const passwordChangeForm = document.getElementById('change-password-form');
     if (passwordChangeForm) {
       passwordChangeForm.addEventListener('submit', (e) => this.handlePasswordChange(e));
     }
-
+    
+    // Note: The skill search event listener is set up dynamically in `setupSkillSearch`
+    // when the skill modal is opened. This is to ensure the correct `eventName`
+    // is captured for the search context.
+    
     // ========================================
     // KEYBOARD SHORTCUTS
     // ========================================
     
     document.addEventListener('keydown', (e) => {
-      // ESC to close modals
-      if (e.key === 'Escape') {
-        const openModal = document.querySelector('.modal[style*="block"]');
-        if (openModal) {
-          this.closeModal(openModal);
-        }
-      }
-      
-      // Ctrl/Cmd + Enter to submit forms
-      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-        const activeForm = document.activeElement.closest('form');
-        if (activeForm) {
-          activeForm.dispatchEvent(new Event('submit', { cancelable: true }));
-        }
-      }
+      // ... existing code ...
     });
 
     // ========================================
     // RESPONSIVE AND MOBILE OPTIMIZATIONS
     // ========================================
     
-    // Touch events for mobile
-    if ('ontouchstart' in window) {
-      document.addEventListener('touchstart', (e) => {
-        // Add touch feedback
-        if (e.target.closest('button, .btn, .tab')) {
-          e.target.closest('button, .btn, .tab').classList.add('touching');
-        }
-      });
-      
-      document.addEventListener('touchend', (e) => {
-        // Remove touch feedback
-        document.querySelectorAll('.touching').forEach(el => {
-          el.classList.remove('touching');
-        });
-      });
-    }
+    // ... existing code ...
   }
+  
+  // ... existing code ...
+  
+  handleSkillsSearch(event) {
+    const query = event.target.value.trim();
+    const eventType = this.currentEvent; // Assumes currentEvent is set when modal is opened
+    this.renderSkillsSearchResults(eventType, query);
+  }
+  // ... existing code ...
 
   // Utility Functions
   calculateProgress(routine) {
@@ -1962,7 +1841,12 @@ class GymnasticsTracker {
 
   renderSkillsSearchResults(eventName, query) {
     const resultsContainer = document.getElementById('skills-search-results');
-    const skills = searchSkills(eventName, query);
+    const skills = searchSkills(query, eventName);
+    
+    if (!resultsContainer) {
+      console.error("Search results container not found!");
+      return;
+    }
     
     if (skills.length === 0) {
       resultsContainer.innerHTML = `
@@ -3315,9 +3199,9 @@ class GymnasticsTracker {
   }
   
   handleSkillsSearch(event) {
-    const query = event.target.value;
-    // This would normally search skills - stub for now
-    console.log('Skills search:', query);
+    const query = event.target.value.trim();
+    const eventType = this.currentEvent; // Assumes currentEvent is set when modal is opened
+    this.renderSkillsSearchResults(eventType, query);
   }
   
   switchProfileTab(targetTab) {
