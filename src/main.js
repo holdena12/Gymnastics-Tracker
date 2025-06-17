@@ -1,5 +1,5 @@
 // Import skills database
-import { searchSkills, getSkillsForEvent } from './skills-database.js';
+import { searchSkills, getSkillsForEvent } from './skills-database.js?v=2';
 
 
 // Firebase auth service will be available globally via CDN scripts
@@ -1466,8 +1466,29 @@ class GymnasticsTracker {
       return;
     }
 
-    if (password.length < 6) {
-      this.showNotification('Password must be at least 6 characters long', 'warning');
+    // AWS Cognito password policy validation
+    if (password.length < 8) {
+      this.showNotification('Password must be at least 8 characters long', 'warning');
+      return;
+    }
+
+    if (!/[a-z]/.test(password)) {
+      this.showNotification('Password must contain at least one lowercase letter', 'warning');
+      return;
+    }
+
+    if (!/[A-Z]/.test(password)) {
+      this.showNotification('Password must contain at least one uppercase letter', 'warning');
+      return;
+    }
+
+    if (!/[0-9]/.test(password)) {
+      this.showNotification('Password must contain at least one number', 'warning');
+      return;
+    }
+
+    if (!/[^a-zA-Z0-9]/.test(password)) {
+      this.showNotification('Password must contain at least one special character (!@#$%^&*)', 'warning');
       return;
     }
 

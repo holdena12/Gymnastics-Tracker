@@ -4,7 +4,7 @@
 // Source: FlippedDecisions.com summary of the 2025-2028 MAG Code of Points
 
 // Import the comprehensive skills database
-import { skills as comprehensiveSkills } from './skills_pdf_final.js';
+import { skills as comprehensiveSkills } from './skills_pdf_final.js?v=2';
 
 // Define difficulty value mappings
 const DIFFICULTY_VALUES = {
