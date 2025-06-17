@@ -96,19 +96,22 @@ class AuthService {
   async signUp(email, password, fullName, gymnasticsLevel) {
     if (!this.isAwsReady) return { success: false, error: 'AWS service not ready.' };
 
-    // Use email as username for simplicity - Cognito will handle email verification
-    const username = email;
+    // Generate a unique username (not email format) as some Cognito pools don't allow email as username
+    const timestamp = Date.now();
+    const randomSuffix = Math.random().toString(36).substr(2, 5);
+    const username = `user_${timestamp}_${randomSuffix}`;
     
     // Ensure we have a name value
     const displayName = fullName && fullName.trim() ? fullName.trim() : 'User';
 
     const attributeList = [
       new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'email', Value: email }),
-      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: displayName })
+      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'name', Value: displayName }),
+      new AmazonCognitoIdentity.CognitoUserAttribute({ Name: 'preferred_username', Value: email })
     ];
 
     return new Promise((resolve) => {
-      console.log('Attempting to sign up user with username:', username);
+      console.log('Attempting to sign up user with username:', username, 'email:', email);
       this.pool.signUp(username, password, attributeList, null, (err, result) => {
         if (err) {
           console.error('Sign up error:', err);
@@ -117,11 +120,13 @@ class AuthService {
         }
         console.log('Sign up successful:', result);
         console.log('User needs confirmation:', !result.userConfirmed);
-        // After sign up, we should store their profile data in DynamoDB
-        // This will happen after they confirm their email and sign in for the first time.
+        // Store the mapping between email and username for login
+        localStorage.setItem(`cognito_username_${email}`, username);
+        
         resolve({ 
           success: true, 
           user: result.user, 
+          username: username,
           needsConfirmation: !result.userConfirmed,
           userConfirmed: result.userConfirmed 
         });
@@ -134,13 +139,19 @@ class AuthService {
 
     console.log('Attempting to sign in user with email:', email);
     
+    // Try to get the actual username from localStorage (stored during registration)
+    const storedUsername = localStorage.getItem(`cognito_username_${email}`);
+    const username = storedUsername || email; // Fallback to email if no stored username
+    
+    console.log('Using username for authentication:', username);
+    
     const authenticationDetails = new AmazonCognitoIdentity.AuthenticationDetails({
-      Username: email,
+      Username: username,
       Password: password,
     });
     
     const cognitoUser = new AmazonCognitoIdentity.CognitoUser({
-      Username: email,
+      Username: username,
       Pool: this.pool,
     });
 
@@ -201,8 +212,12 @@ class AuthService {
   async confirmSignUp(email, confirmationCode) {
     if (!this.isAwsReady) return { success: false, error: 'AWS service not ready.' };
 
+    // Get the actual username from localStorage
+    const storedUsername = localStorage.getItem(`cognito_username_${email}`);
+    const username = storedUsername || email;
+
     const cognitoUser = new AmazonCognitoIdentity.CognitoUser({
-      Username: email,
+      Username: username,
       Pool: this.pool,
     });
 
@@ -221,8 +236,12 @@ class AuthService {
   async resendConfirmationCode(email) {
     if (!this.isAwsReady) return { success: false, error: 'AWS service not ready.' };
 
+    // Get the actual username from localStorage
+    const storedUsername = localStorage.getItem(`cognito_username_${email}`);
+    const username = storedUsername || email;
+
     const cognitoUser = new AmazonCognitoIdentity.CognitoUser({
-      Username: email,
+      Username: username,
       Pool: this.pool,
     });
 
