@@ -1755,7 +1755,14 @@ class GymnasticsTracker {
     }, 0);
 
     const user = this.authService.getCurrentUser();
-    const memberSince = user ? new Date(user.metadata.creationTime).toLocaleDateString() : 'Unknown';
+    // Handle missing metadata gracefully
+    let memberSince = 'Unknown';
+    if (user && user.metadata && user.metadata.creationTime) {
+      memberSince = new Date(user.metadata.creationTime).toLocaleDateString();
+    } else if (user && user.iat) {
+      // Use token issued at time as fallback
+      memberSince = new Date(user.iat * 1000).toLocaleDateString();
+    }
 
     statsContainer.innerHTML = `
       <div class="stats-grid">
@@ -2777,7 +2784,11 @@ class GymnasticsTracker {
       const groups = await this.authService.loadUserGroups();
       this.currentGroups = groups;
       
-      const groupsList = document.getElementById('user-groups-list');
+      const groupsList = document.getElementById('groups-list');
+      if (!groupsList) {
+        console.error('Groups list element not found');
+        return;
+      }
       
       if (groups.length === 0) {
         groupsList.innerHTML = `
@@ -2820,7 +2831,8 @@ class GymnasticsTracker {
   }
   
   setupGroupActionListeners() {
-    const groupsList = document.getElementById('user-groups-list');
+    const groupsList = document.getElementById('groups-list');
+    if (!groupsList) return;
     
     groupsList.addEventListener('click', (e) => {
       const groupId = e.target.dataset.groupId;
